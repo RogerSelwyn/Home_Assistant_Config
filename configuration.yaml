@@ -1,4 +1,4 @@
-homeassistant: 
+homeassistant:
   customize: !include includes/customize.yaml
   customize_glob:
     "climate.genius_*":
