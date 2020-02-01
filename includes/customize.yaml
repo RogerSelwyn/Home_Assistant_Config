@@ -1,0 +1,20 @@
+light.bedroom_1:
+  friendly_name: Bedroom 1 Lights
+light.bedroom_2:
+  friendly_name: Bedroom 2 Lights
+light.bedroom_3:
+  friendly_name: Bedroom 3 Lights
+light.living_room:
+  friendly_name: Living Room Lights
+person.benjamin_selwyn:
+  entity_picture: /local/benjamin.png
+person.clare_selwyn:
+  entity_picture: /local/clare.png
+person.robyn_winfield:
+  entity_picture: /local/robyn.png
+person.roger_selwyn:
+  entity_picture: /local/roger.png
+switch.living_room_s1:
+  icon: mdi:power-cycle
+switch.living_room_s2:
+  icon: mdi:power-cycle

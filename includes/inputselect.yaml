@@ -1,0 +1,7 @@
+location_mode:
+  name: Location Mode
+  options:
+    - Home
+    - Away
+    - Night
+    - Evening Time

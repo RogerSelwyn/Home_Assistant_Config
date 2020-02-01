@@ -1,0 +1,24 @@
+exclude:
+  entities:
+    - binary_sensor.geniushub_bedroom1_occupancy
+    - binary_sensor.geniushub_bedroom2_occupancy
+    - binary_sensor.geniushub_bedroom3_occupancy
+    - binary_sensor.geniushub_living_room_occupancy
+    - binary_sensor.geniushub_kitchen_occupancy
+    - binary_sensor.downstairs_occupancy
+    - binary_sensor.upstairs_occupancy
+    - binary_sensor.living_room_occupancy
+    - binary_sensor.living_room_fibaro_motion
+    - weather.ty_r_celyn
+    - light.main_light
+    - light.side_light
+    - light.table_light
+    - light.bedroom_1
+    - light.bedroom_2
+    - light.bedroom_3
+    - light.living_room
+    - light.house
+    - binary_sensor.bedroom1_lights_power
+    - binary_sensor.bedroom2_lights_power
+    - device_tracker.rogers_macbook_pro
+    

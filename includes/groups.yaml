@@ -1,0 +1,60 @@
+presence_all:
+  name: Presence - All
+  icon: mdi:account-group
+  entities:
+    - person.benjamin_selwyn
+    - person.clare_selwyn
+    - person.roger_selwyn
+    - person.robyn_winfield
+
+security_lights:
+  name: Security Lights
+  icon: mdi:shield-lock
+  entities:
+    - light.main_light
+    - light.side_light
+    - light.table_light
+    - light.bedroom_light
+    
+main_light_actual:
+  name: Main Light Actual
+  icon: mdi:ceiling-light
+  all: true
+  entities:
+    - switch.living_room_s1
+    - light.main_light
+side_light_actual:
+  name: Side Light Actual
+  icon: mdi:wall-sconce-flat
+  all: true
+  entities:
+    - switch.living_room_s2
+    - light.side_light
+table_light_actual:
+  name: Table Light Actual
+  icon: mdi:lamp
+  all: true
+  entities:
+    - binary_sensor.table_light_power
+    - light.table_light
+bedroom_1_lights_actual:
+  name: Bedroom 1 Lights Actual
+  icon: mdi:ceiling-light
+  all: true
+  entities:
+    - binary_sensor.bedroom1_lights_power
+    - light.bedroom_1
+bedroom_2_lights_actual:
+  name: Bedroom 2 Lights Actual
+  icon: mdi:ceiling-light
+  all: true
+  entities:
+    - binary_sensor.bedroom2_lights_power
+    - light.bedroom_2
+bedroom_3_lights_actual:
+  name: Bedroom 3 Lights Actual
+  icon: mdi:lamp
+  all: true
+  entities:
+    - binary_sensor.bedroom3_lights_power
+    - light.bedroom_3

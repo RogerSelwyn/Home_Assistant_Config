@@ -1,0 +1,14 @@
+- platform: group
+  name: all_ios_devices
+  services:
+    - service: mobile_app_rogers_iphone
+    
+- platform: file
+  name: noderedlog
+  filename: noderedlog.csv
+  timestamp: true
+  
+- platform: file
+  name: mqtt
+  filename: mqtt.csv
+  timestamp: true

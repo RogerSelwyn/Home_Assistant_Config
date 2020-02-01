@@ -1,0 +1,8 @@
+#- platform: badnest
+
+- platform: ffmpeg
+  name: Garage Camera
+  input: !secret garage_url
+- platform: ffmpeg
+  name: Workshop Camera
+  input: !secret workshop_url

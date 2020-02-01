@@ -1,0 +1,95 @@
+homeassistant: 
+  customize: !include includes/customize.yaml
+  customize_glob:
+    "climate.genius_*":
+      icon: mdi:radiator
+      
+# Configure a default setup of Home Assistant (frontend, api, etc)
+# default_config:
+automation: !include includes/automations.yaml
+config:
+frontend:
+  themes: !include_dir_merge_named themes
+<<<<<<< HEAD
+history: !include includes/history.yaml
+logbook: !include includes/logbook.yaml
+=======
+history: !include history.yaml
+logbook: !include logbook.yaml
+>>>>>>> 60dfea81b16d1e9e76c1b40cd930d608f2cf80e4
+mobile_app:
+person:
+recorder: !include includes/recorder.yaml
+script: !include includes/scripts.yaml
+ssdp:
+sun:
+system_health:
+updater:
+zeroconf:
+
+# Non-default items added
+binary_sensor: !include includes/binarysensor.yaml
+camera: !include includes/camera.yaml
+climate: !include includes/climate.yaml
+device_tracker: !include includes/devicetracker.yaml
+group: !include includes/groups.yaml
+input_boolean: !include includes/inputboolean.yaml
+input_select: !include includes/inputselect.yaml
+media_player: !include includes/mediaplayer.yaml
+notify: !include includes/notify.yaml
+scene: !include includes/scenes.yaml
+sensor: !include includes/sensor.yaml
+timer: !include includes/timer.yaml
+weather: !include includes/weather.yaml
+zone: !include includes/zone.yaml
+
+  
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  base_url: !secret base_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  server_port: !secret server_port
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+  
+# Text to speech
+tts:
+  - platform: google_translate
+
+# Device integrations
+geniushub:
+  host: !secret genius_host
+  username: !secret genius_username
+  password: !secret genius_password
+  
+asuswrt:
+  host: !secret asus_host
+  username: !secret asus_username
+  ssh_key: /config/ssh/asusmerlin
+  sensors:
+    - upload
+    - download
+    - upload_speed
+    - download_speed
+
+logger:
+  default: warning
+  logs:
+#    custom_components.braviatv_psk: debug
+    NodeRed: debug
+
+mqtt:
+  broker: a0d7b954-mqtt
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  client_id: home-assistant
+  
+# customizer:
+#   custom_ui: local
+ 
+#badnest:
+#  email: !secret nest_username
+#  password: !secret nest_password
+#  region: eu
+

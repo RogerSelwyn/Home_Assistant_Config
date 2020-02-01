@@ -1,0 +1,28 @@
+scene_evening_chill:
+  name: Evening Chill
+  initial: off
+  icon: 'mdi:weather-night'
+scene_evening_movie:
+  name: Evening Movie
+  initial: off
+  icon: 'mdi:movie'
+scene_normal:
+  name: Normal
+  initial: off
+  icon: 'mdi:ceiling-light'
+scene_reading:
+  name: Reading
+  initial: off
+  icon: 'mdi:book-open-variant'
+flash_benjamin:
+  name: Dinner
+  initial: off
+  icon: 'mdi:flash-circle'
+url_profile:
+  name: Profile
+  initial: off
+  icon: 'mdi:settings-outline'
+url_pihole:
+  name: Pi-hole
+  initial: off
+  icon: 'mdi:security'

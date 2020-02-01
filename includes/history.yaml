@@ -1,0 +1,28 @@
+use_include_order: true
+include:
+  entities:
+    - input_select.location_mode
+    - group.presence_all
+    - person.benjamin_selwyn
+    - person.clare_selwyn
+    - person.roger_selwyn
+    - binary_sensor.downstairs_occupancy
+    - binary_sensor.living_room_fibaro_motion
+    - binary_sensor.upstairs_occupancy
+    - binary_sensor.updater
+    - binary_sensor.dual_channel_receiver_3_1
+    - binary_sensor.dual_channel_receiver_3_2
+    - group.main_light_actual
+    - group.side_light_actual
+    - group.table_light_actual
+    - group.bedroom_1_lights_actual
+    - group.bedroom_2_lights_actual
+    - group.bedroom_3_lights_actual
+    - binary_sensor.hue
+    - binary_sensor.internet
+    - sensor.nest_protect_downstairs_smoke_detector
+    - sensor.nest_protect_upstairs_smoke_detector
+    - sensor.geniushub_errors
+    - weather.home
+    - weather.ty_r_celyn
+    - sun.sun

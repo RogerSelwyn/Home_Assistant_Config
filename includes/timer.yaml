@@ -1,0 +1,11 @@
+lights_living_room:
+  name: Time to Lights Off
+  duration: '00:15:00'
+  
+night:
+  name: Time to Night
+  duration: '00:15:00'
+
+away:
+  name: Time to Away
+  duration: '00:07:00'

@@ -1,0 +1,23 @@
+# Ignore folders.
+.cloud
+.google.token
+.storage/*
+custom_components
+node-red
+ssh
+themes
+www
+
+# Ignore files
+.uuid
+home-assistant*
+noderedlog*
+update.sh
+
+Reinclude files
+!.storage/lovelace
+
+# Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+ip_bans.yaml
+secrets.yaml
+known_devices.yaml

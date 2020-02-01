@@ -1,0 +1,50 @@
+- platform: systemmonitor
+  resources:
+    - type: processor_use
+    - type: memory_free
+#- platform: time_date
+#  display_options:
+#    - 'time'
+#    - 'date'
+#    - 'date_time'
+#    - 'date_time_iso'
+#    - 'time_date'
+#    - 'time_utc'
+#    - 'beat'
+#- platform: badnest
+
+- platform: template
+  sensors:
+    tc_current_temperature:
+      friendly_name: "Ty'r Celyn Current Temperature"
+      value_template: "{{ state_attr('climate.nest_thermostat_living_room_tyr_celyn', 'current_temperature') }}"
+    tc_set_temperature:
+      friendly_name: "Ty'r Celyn Set Temperature"
+      value_template: "{{ state_attr('climate.nest_thermostat_living_room_tyr_celyn', 'temperature') }}"
+    geniushub_living_room_luminance:
+      value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_20', 'state').luminance | float) }}"
+      friendly_name: 'Living Room Genius Illuminance' 
+      unit_of_measurement: 'lux'
+    geniushub_kitchen_luminance:
+      value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_19', 'state').luminance | float) }}"
+      friendly_name: 'Kitchen Genius Illuminance' 
+      unit_of_measurement: 'lux'
+    geniushub_bedroom1_luminance:
+      value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_30', 'state').luminance | float) }}"
+      friendly_name: 'Bedroom 1 Genius Illuminance' 
+      unit_of_measurement: 'lux'
+    geniushub_bedroom2_luminance:
+      value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_21', 'state').luminance | float) }}"
+      friendly_name: 'Bedroom 2 Genius Illuminance' 
+      unit_of_measurement: 'lux'
+    geniushub_bedroom3_luminance:
+      value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_22', 'state').luminance | float) }}"
+      friendly_name: 'Bedroom 3 Genius Illuminance' 
+      unit_of_measurement: 'lux'
+
+- platform: command_line
+  name: CPU Temperature
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | multiply(0.001) | round(1) }}'
+  
