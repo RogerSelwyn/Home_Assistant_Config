@@ -120,7 +120,6 @@
                             "type": "glance"
                         },
                         {
-<<<<<<< HEAD
                             "card": {
                                 "title": "Living Room",
                                 "type": "entities"
@@ -132,8 +131,6 @@
                             "type": "custom:auto-entities"
                         },
                         {
-=======
->>>>>>> 60dfea81b16d1e9e76c1b40cd930d608f2cf80e4
                             "entities": [
                                 {
                                     "entity": "climate.kitchen"
@@ -153,14 +150,6 @@
                             "type": "entities"
                         },
                         {
-<<<<<<< HEAD
-=======
-                            "entity": "weather.home",
-                            "name": "Home",
-                            "type": "custom:weather-card"
-                        },
-                        {
->>>>>>> 60dfea81b16d1e9e76c1b40cd930d608f2cf80e4
                             "entities": [
                                 {
                                     "entity": "input_boolean.flash_benjamin",
@@ -699,11 +688,7 @@
                         },
                         {
                             "entity": "weather.ty_r_celyn",
-<<<<<<< HEAD
                             "name": "TC",
-=======
-                            "name": "Ty'r Celyn",
->>>>>>> 60dfea81b16d1e9e76c1b40cd930d608f2cf80e4
                             "type": "custom:weather-card"
                         },
                         {

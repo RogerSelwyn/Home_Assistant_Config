@@ -1,4 +1,4 @@
-homeassistant: 
+homeassistant:
   customize: !include includes/customize.yaml
   customize_glob:
     "climate.genius_*":
@@ -10,13 +10,8 @@ automation: !include includes/automations.yaml
 config:
 frontend:
   themes: !include_dir_merge_named themes
-<<<<<<< HEAD
 history: !include includes/history.yaml
 logbook: !include includes/logbook.yaml
-=======
-history: !include history.yaml
-logbook: !include logbook.yaml
->>>>>>> 60dfea81b16d1e9e76c1b40cd930d608f2cf80e4
 mobile_app:
 person:
 recorder: !include includes/recorder.yaml
@@ -92,4 +87,3 @@ mqtt:
 #  email: !secret nest_username
 #  password: !secret nest_password
 #  region: eu
-
