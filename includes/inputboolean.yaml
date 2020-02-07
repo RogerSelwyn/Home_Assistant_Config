@@ -15,7 +15,7 @@ scene_reading:
   initial: off
   icon: 'mdi:book-open-variant'
 flash_benjamin:
-  name: Dinner
+  name: Flash Benjamin
   initial: off
   icon: 'mdi:flash-circle'
 url_profile:

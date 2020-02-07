@@ -54,6 +54,10 @@
                 {
                     "type": "module",
                     "url": "/community_plugin/lovelace-auto-entities/auto-entities.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/icloud3/icloud3-event-log-card.js"
                 }
             ],
             "title": "Home",
@@ -315,40 +319,49 @@
                         {
                             "cards": [
                                 {
-                                    "entity": "media_player.kitchen",
-                                    "type": "media-control"
-                                },
-                                {
+                                    "artwork": "cover",
                                     "entity": "media_player.conservatory",
-                                    "type": "media-control"
+                                    "hide": {
+                                        "power": true
+                                    },
+                                    "icon": "mdi:blank",
+                                    "speaker_group": {
+                                        "entities": [
+                                            {
+                                                "entity_id": "media_player.conservatory",
+                                                "name": "Sonos Conservatory"
+                                            },
+                                            {
+                                                "entity_id": "media_player.kitchen",
+                                                "name": "Sonos Kitchen"
+                                            },
+                                            {
+                                                "entity_id": "media_playerliving_room",
+                                                "name": "Living Room"
+                                            }
+                                        ],
+                                        "platform": "sonos",
+                                        "show_group_count": true
+                                    },
+                                    "type": "custom:mini-media-player"
                                 },
                                 {
+                                    "artwork": "cover",
                                     "entity": "media_player.living_room",
-                                    "type": "media-control"
+                                    "hide": {
+                                        "power": true
+                                    },
+                                    "icon": "mdi:blank",
+                                    "type": "custom:mini-media-player"
                                 }
                             ],
                             "title": "Sonos",
-                            "type": "horizontal-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "media_player.sftv_3",
-                                    "type": "media-control"
-                                }
-                            ],
-                            "title": "TV",
                             "type": "vertical-stack"
                         },
                         {
                             "cards": [
                                 {
-                                    "entity": "media_player.sky_q",
-                                    "type": "media-control"
-                                },
-                                {
                                     "artwork": "cover",
-                                    "background": "https://wi-images.condecdn.net/image/m9qkOnPpZnz/crop/1620/f/screen-shot-2015-11-18-at-100440.jpg",
                                     "entity": "media_player.sky_q",
                                     "hide": {
                                         "power_state": false,
@@ -356,7 +369,6 @@
                                         "volume": true
                                     },
                                     "icon": "mdi:blank",
-                                    "more_info": true,
                                     "name": "SkyQ",
                                     "shortcuts": {
                                         "buttons": [
@@ -453,11 +465,123 @@
                                     "type": "custom:mini-media-player"
                                 },
                                 {
+                                    "artwork": "cover",
                                     "entity": "media_player.sky_q_mini",
-                                    "type": "media-control"
+                                    "hide": {
+                                        "power_state": false,
+                                        "source": true,
+                                        "volume": true
+                                    },
+                                    "icon": "mdi:blank",
+                                    "name": "SkyQ Mini",
+                                    "shortcuts": {
+                                        "buttons": [
+                                            {
+                                                "icon": "mdi:chevron-up",
+                                                "id": "CHup",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": "mdi:chevron-down",
+                                                "id": "CHdn",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": "mdi:record-rec",
+                                                "id": "Record",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": null,
+                                                "id": "Sky",
+                                                "name": "Sky",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": null,
+                                                "id": "TVGuide",
+                                                "name": "Guide",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": "mdi:home-outline",
+                                                "id": "Home",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": "mdi:menu-open",
+                                                "id": "Sidebar",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": "mdi:keyboard-return",
+                                                "id": "Dismiss",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": "mdi:information-variant",
+                                                "id": "I",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": "mdi:arrow-right-thick",
+                                                "id": "Right",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": "mdi:arrow-left-thick",
+                                                "id": "Left",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": "mdi:arrow-up-thick",
+                                                "id": "Up",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": "mdi:arrow-down-thick",
+                                                "id": "Down",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": null,
+                                                "id": "Select",
+                                                "name": "Select",
+                                                "type": "source"
+                                            },
+                                            {
+                                                "icon": null,
+                                                "name": null
+                                            },
+                                            {
+                                                "icon": null
+                                            },
+                                            {
+                                                "icon": null
+                                            },
+                                            {
+                                                "icon": null
+                                            }
+                                        ],
+                                        "columns": 6,
+                                        "hide_when_off": true
+                                    },
+                                    "type": "custom:mini-media-player"
                                 }
                             ],
                             "title": "Sky Q",
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "artwork": "cover",
+                                    "entity": "media_player.sftv_3",
+                                    "icon": "mdi:blank",
+                                    "type": "custom:mini-media-player"
+                                }
+                            ],
+                            "title": "TV",
                             "type": "vertical-stack"
                         }
                     ],
@@ -496,7 +620,7 @@
                         }
                     ],
                     "icon": "mdi:map-marker",
-                    "panel": true,
+                    "panel": false,
                     "path": "map",
                     "title": "Map"
                 },
@@ -646,6 +770,29 @@
                             "show_header_toggle": false,
                             "title": "Timers",
                             "type": "entities"
+                        },
+                        {
+                            "card": {
+                                "card": {
+                                    "title": "Security Lights",
+                                    "type": "entities"
+                                },
+                                "filter": {
+                                    "include": [
+                                        {
+                                            "group": "group.security_lights"
+                                        }
+                                    ]
+                                },
+                                "type": "custom:auto-entities"
+                            },
+                            "conditions": [
+                                {
+                                    "entity": "input_select.location_mode",
+                                    "state": "Away"
+                                }
+                            ],
+                            "type": "conditional"
                         }
                     ],
                     "icon": "mdi:information",

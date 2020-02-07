@@ -1,4 +1,6 @@
 exclude:
+  domains:
+    - timer
   entities:
     - binary_sensor.geniushub_bedroom1_occupancy
     - binary_sensor.geniushub_bedroom2_occupancy

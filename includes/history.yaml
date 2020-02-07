@@ -23,6 +23,7 @@ include:
     - sensor.nest_protect_downstairs_smoke_detector
     - sensor.nest_protect_upstairs_smoke_detector
     - sensor.geniushub_errors
+    - sensor.geniushub_warnings
     - weather.home
     - weather.ty_r_celyn
     - sun.sun

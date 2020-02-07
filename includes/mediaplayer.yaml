@@ -53,6 +53,6 @@
   amp: False
   android: True
   sourcefilter:
-    - ' HD'
     - HDMI
+    - ' HD'
   name: SFTV

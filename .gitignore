@@ -1,8 +1,10 @@
 # Ignore folders.
 .cloud
 .google.token
+icloud
 .storage/*
 custom_components
+icloud
 node-red
 ssh
 themes
