@@ -1,6 +1,7 @@
 # Ignore folders.
 .cloud
 .google.token
+.O365-token-cache
 icloud
 .storage/*
 custom_components

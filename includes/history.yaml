@@ -27,3 +27,6 @@ include:
     - weather.home
     - weather.ty_r_celyn
     - sun.sun
+    - sensor.cpu_temperature
+    - sensor.memory_free
+    - sensor.processor_use

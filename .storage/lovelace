@@ -58,6 +58,10 @@
                 {
                     "type": "module",
                     "url": "/community_plugin/icloud3/icloud3-event-log-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/atomic_calendar/atomic_calendar.js"
                 }
             ],
             "title": "Home",
@@ -336,7 +340,7 @@
                                                 "name": "Sonos Kitchen"
                                             },
                                             {
-                                                "entity_id": "media_playerliving_room",
+                                                "entity_id": "media_player.living_room",
                                                 "name": "Living Room"
                                             }
                                         ],
@@ -809,6 +813,21 @@
                         },
                         {
                             "entity": "sensor.nest_protect_dining_room_tyr_celyn_battery"
+                        },
+                        {
+                            "entity": "binary_sensor.tyrcelyn_presence_all"
+                        },
+                        {
+                            "entity": "calendar.bookings",
+                            "style": {
+                                "ha-state-label-badge": {
+                                    "$": {
+                                        "ha-label-badge": {
+                                            "$": ".label-badge {\n  {% if is_state('calendar.bookings', 'on') %} \n    background-color: #008000 !important;\n    background-image: url(\"/local/icons/home.png\");\n  {% elif is_state('calendar.bookings', 'off') %} \n    background-color: #DC143C !important;\n    background-image: url(\"/local/icons/home-outline.png\");\n {% endif %} !important;\n}\n.value {display:none}\n"
+                                        }
+                                    }
+                                }
+                            }
                         }
                     ],
                     "cards": [
@@ -820,11 +839,13 @@
                             "entities": [
                                 {
                                     "entity": "sensor.tc_current_temperature",
+                                    "index": 0,
                                     "name": "Current",
                                     "show_points": false
                                 },
                                 {
                                     "entity": "sensor.tc_set_temperature",
+                                    "index": 1,
                                     "name": "Set",
                                     "show_points": false
                                 }
@@ -847,9 +868,17 @@
                             "aspect_ratio": "56%",
                             "entity": "camera.garage_camera",
                             "type": "picture-entity"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "calendar.bookings"
+                                }
+                            ],
+                            "type": "custom:atomic-calendar"
                         }
                     ],
-                    "icon": "mdi:home-variant-outline",
+                    "icon": "mdi:home-outline",
                     "path": "tyr-celyn",
                     "title": "Ty\u2019r Celyn"
                 },

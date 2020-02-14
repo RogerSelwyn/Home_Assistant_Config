@@ -23,4 +23,4 @@ exclude:
     - binary_sensor.bedroom1_lights_power
     - binary_sensor.bedroom2_lights_power
     - device_tracker.rogers_macbook_pro
-    
+    - device_tracker.benjamins_iphone_2

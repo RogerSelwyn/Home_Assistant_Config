@@ -49,6 +49,8 @@ http:
   server_port: !secret server_port
   ip_ban_enabled: true
   login_attempts_threshold: 5
+  use_x_forwarded_for: true
+  trusted_proxies: 192.168.1.254
   
 # Text to speech
 tts:
@@ -82,6 +84,24 @@ mqtt:
   password: !secret mqtt_password
   client_id: home-assistant
   
+remote_homeassistant:
+  instances:
+  - host: !secret remote_tc_host
+    port: !secret remote_tc_port
+    secure: true
+    verify_ssl: false
+    access_token: !secret remote_tc_token
+    entity_prefix: "tyrcelyn_"
+    include:
+      entities:
+      - binary_sensor.presence_all
+
+o365:
+  client_secret: !secret o365_secret
+  client_id: !secret o365_id
+  calendars:
+    - calendar_name: "Bookings"
+
 # customizer:
 #   custom_ui: local
  
