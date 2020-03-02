@@ -1,3 +1,4 @@
+db_url: !secret mariadb_url
 exclude:
   entities:
     - light.bedroom_1_bulb_1

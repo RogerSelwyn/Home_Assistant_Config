@@ -2,11 +2,11 @@
   resources:
     - type: processor_use
     - type: memory_free
-- platform: command_line
-  name: CPU Temperature
-  command: "cat /sys/class/thermal/thermal_zone0/temp"
-  unit_of_measurement: "°C"
-  value_template: '{{ value | multiply(0.001) | round(1) }}'
+#- platform: command_line
+#  name: CPU Temperature
+#  command: "cat /sys/class/thermal/thermal_zone0/temp"
+#  unit_of_measurement: "°C"
+#  value_template: '{{ value | multiply(0.001) | round(1) }}'
 
 #- platform: time_date
 #  display_options:
@@ -24,9 +24,15 @@
     tc_current_temperature:
       friendly_name: "Ty'r Celyn Current Temperature"
       value_template: "{{ state_attr('climate.nest_thermostat_living_room_tyr_celyn', 'current_temperature') }}"
+      unit_of_measurement: °C
     tc_set_temperature:
       friendly_name: "Ty'r Celyn Set Temperature"
       value_template: "{{ state_attr('climate.nest_thermostat_living_room_tyr_celyn', 'temperature') }}"
+      unit_of_measurement: °C
+    tc_hvac_action:
+      friendly_name: "Ty'r Celyn HVAC Action"
+      value_template: "{{ state_attr('climate.nest_thermostat_living_room_tyr_celyn', 'hvac_action') }}"
+      unit_of_measurement: none
     geniushub_living_room_luminance:
       value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_20', 'state').luminance | float) }}"
       friendly_name: 'Living Room Genius Illuminance' 

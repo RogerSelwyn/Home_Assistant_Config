@@ -30,6 +30,7 @@ binary_sensor: !include includes/binarysensor.yaml
 camera: !include includes/camera.yaml
 climate: !include includes/climate.yaml
 device_tracker: !include includes/devicetracker.yaml
+#ffmpeg:
 group: !include includes/groups.yaml
 input_boolean: !include includes/inputboolean.yaml
 input_select: !include includes/inputselect.yaml
@@ -50,7 +51,7 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 5
   use_x_forwarded_for: true
-  trusted_proxies: 192.168.1.254
+  trusted_proxies: !secret asus_host
   
 # Text to speech
 tts:
@@ -77,6 +78,7 @@ logger:
   logs:
 #    custom_components.braviatv_psk: debug
     NodeRed: debug
+    homeassistant.loader: error
 
 mqtt:
   broker: a0d7b954-mqtt
@@ -95,6 +97,9 @@ remote_homeassistant:
     include:
       entities:
       - binary_sensor.presence_all
+      - input_number.bookings_today
+      - input_number.bookings_tomorrow
+      - input_number.bookings_total
 
 o365:
   client_secret: !secret o365_secret

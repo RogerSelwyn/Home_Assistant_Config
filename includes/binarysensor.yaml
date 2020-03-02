@@ -82,12 +82,20 @@
         or state_attr('climate.bedroom_3', 'status').occupied == true }}
       device_class: motion
       friendly_name: 'Upstairs Occupancy' 
-     
-- platform: ping
-  name: hue
-  host: !secret hue_host
-  scan_interval: 10
-- platform: ping
-  name: internet
-  host: 8.8.8.8
-  scan_interval: 10
+
+    hue:
+      friendly_name: "Hue"
+      device_class: connectivity
+      value_template: "{{ is_state('input_boolean.hue', 'on') }}"
+    internet:
+      friendly_name: "Internet"
+      device_class: connectivity
+      value_template: "{{ is_state('input_boolean.internet', 'on') }}"
+#- platform: ping
+#  name: hue
+#  host: !secret hue_host
+#  scan_interval: 10
+#- platform: ping
+#  name: internet
+#  host: 8.8.8.8
+#  scan_interval: 10

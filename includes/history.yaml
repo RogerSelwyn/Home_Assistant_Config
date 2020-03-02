@@ -6,6 +6,7 @@ include:
     - person.benjamin_selwyn
     - person.clare_selwyn
     - person.roger_selwyn
+    - person.robyn_winfield
     - binary_sensor.downstairs_occupancy
     - binary_sensor.living_room_fibaro_motion
     - binary_sensor.upstairs_occupancy
@@ -27,6 +28,15 @@ include:
     - weather.home
     - weather.ty_r_celyn
     - sun.sun
-    - sensor.cpu_temperature
+
+    - binary_sensor.tyrcelyn_presence_all
+    - binary_sensor.nest_presence_tyrcelyn
+    - calendar.bookings
+#    - sensor.tc_current_temperature
+#    - sensor.tc_set_temperature
+#    - sensor.tc_hvac_action
+    - climate.nest_thermostat_living_room_tyr_celyn
+
+#    - sensor.cpu_temperature
     - sensor.memory_free
     - sensor.processor_use
