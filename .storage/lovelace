@@ -210,7 +210,7 @@
                             "entity": "binary_sensor.tyrcelyn_presence_all"
                         },
                         {
-                            "entity": "binary_sensor.nest_presence_tyrcelyn"
+                            "entity": "binary_sensor.nest_presence_device_presence"
                         },
                         {
                             "entity": "calendar.bookings",
@@ -473,6 +473,7 @@
                                         "volume": true
                                     },
                                     "icon": "mdi:blank",
+                                    "info": "scroll",
                                     "name": "SkyQ",
                                     "shortcuts": {
                                         "buttons": [
@@ -577,6 +578,7 @@
                                         "volume": true
                                     },
                                     "icon": "mdi:blank",
+                                    "info": "scroll",
                                     "name": "SkyQ Mini",
                                     "shortcuts": {
                                         "buttons": [
@@ -838,7 +840,7 @@
                                 }
                             ],
                             "show_header_toggle": false,
-                            "title": "Pi",
+                            "title": "HassioVM",
                             "type": "entities"
                         },
                         {

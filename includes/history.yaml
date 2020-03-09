@@ -30,7 +30,7 @@ include:
     - sun.sun
 
     - binary_sensor.tyrcelyn_presence_all
-    - binary_sensor.nest_presence_tyrcelyn
+    - binary_sensor.nest_presence_device_presence
     - calendar.bookings
 #    - sensor.tc_current_temperature
 #    - sensor.tc_set_temperature

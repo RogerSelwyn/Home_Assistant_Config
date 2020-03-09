@@ -1,11 +1,1 @@
 db_url: !secret mariadb_url
-exclude:
-  entities:
-    - light.bedroom_1_bulb_1
-    - light.bedroom_1_bulb_2
-    - light.bedroom_1_bulb_3
-    - light.bedroom_2_bulb_1
-    - light.bedroom_2_bulb_2
-    - light.bedroom_2_bulb_3
-    - device_tracker.rogers_iphone_2
-    
