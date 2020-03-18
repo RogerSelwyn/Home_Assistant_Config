@@ -1,0 +1,15 @@
+- cal_id: !secret o365_calendar
+  entities:
+  - device_id: Calendar
+    end_offset: 24
+    name: Calendar
+    start_offset: 0
+    track: false
+
+- cal_id: !secret o365_bookings
+  entities:
+  - device_id: Bookings
+    end_offset: 168
+    name: Bookings
+    start_offset: 0
+    track: true

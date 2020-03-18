@@ -108,8 +108,6 @@ remote_homeassistant:
 o365:
   client_secret: !secret o365_secret
   client_id: !secret o365_id
-  calendars:
-    - calendar_name: "Bookings"
 
 # customizer:
 #   custom_ui: local
