@@ -1,0 +1,8 @@
+host: !secret asus_host
+username: !secret asus_username
+ssh_key: /config/ssh/asusmerlin
+sensors:
+  - upload
+  - download
+  - upload_speed
+  - download_speed

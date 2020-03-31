@@ -30,40 +30,6 @@
                 "options_hide": true,
                 "show_tabs": "0,1,2,3,4"
             },
-            "resources": [
-                {
-                    "type": "module",
-                    "url": "/community_plugin/custom-header/custom-header.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/lovelace-card-mod/card-mod.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/mini-media-player/mini-media-player-bundle.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/weather-card/weather-card.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/mini-graph-card/mini-graph-card-bundle.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/lovelace-auto-entities/auto-entities.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/icloud3/icloud3-event-log-card.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/atomic_calendar/atomic_calendar.js"
-                }
-            ],
             "title": "Home",
             "views": [
                 {
@@ -211,6 +177,9 @@
                         },
                         {
                             "entity": "binary_sensor.nest_presence_device_presence"
+                        },
+                        {
+                            "entity": "binary_sensor.tyrcelyn_presence_cleaner"
                         },
                         {
                             "entity": "calendar.bookings",
@@ -428,7 +397,7 @@
                                     "hide": {
                                         "power": true
                                     },
-                                    "icon": "mdi:blank",
+                                    "icon": "mdi:library-music-outline",
                                     "speaker_group": {
                                         "entities": [
                                             {
@@ -455,7 +424,7 @@
                                     "hide": {
                                         "power": true
                                     },
-                                    "icon": "mdi:blank",
+                                    "icon": "mdi:library-music-outline",
                                     "type": "custom:mini-media-player"
                                 }
                             ],
@@ -472,7 +441,7 @@
                                         "source": true,
                                         "volume": true
                                     },
-                                    "icon": "mdi:blank",
+                                    "icon": "mdi:satellite-uplink",
                                     "info": "scroll",
                                     "name": "SkyQ",
                                     "shortcuts": {
@@ -577,7 +546,7 @@
                                         "source": true,
                                         "volume": true
                                     },
-                                    "icon": "mdi:blank",
+                                    "icon": "mdi:satellite-uplink",
                                     "info": "scroll",
                                     "name": "SkyQ Mini",
                                     "shortcuts": {
@@ -683,7 +652,7 @@
                                 {
                                     "artwork": "cover",
                                     "entity": "media_player.sftv_3",
-                                    "icon": "mdi:blank",
+                                    "icon": "mdi:television",
                                     "type": "custom:mini-media-player"
                                 }
                             ],
@@ -933,6 +902,37 @@
                                 }
                             ],
                             "type": "glance"
+                        },
+                        {
+                            "artwork": "cover",
+                            "entity": "media_player.conservatory",
+                            "hide": {
+                                "power": true
+                            },
+                            "icon": "mdi:library-music-outline",
+                            "speaker_group": {
+                                "entities": [
+                                    {
+                                        "entity_id": "media_player.conservatory",
+                                        "name": "Sonos Conservatory"
+                                    },
+                                    {
+                                        "entity_id": "media_player.kitchen",
+                                        "name": "Sonos Kitchen"
+                                    },
+                                    {
+                                        "entity_id": "media_player.living_room",
+                                        "name": "Living Room"
+                                    }
+                                ],
+                                "platform": "sonos",
+                                "show_group_count": true
+                            },
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entity": "media_player.sky_q_mini",
+                            "type": "media-control"
                         }
                     ],
                     "icon": "mdi:trash-can",

@@ -31,6 +31,7 @@ include:
 
     - binary_sensor.tyrcelyn_presence_all
     - binary_sensor.nest_presence_device_presence
+    - binary_sensor.tyrcelyn_presence_cleaner
     - calendar.bookings
 #    - sensor.tc_current_temperature
 #    - sensor.tc_set_temperature

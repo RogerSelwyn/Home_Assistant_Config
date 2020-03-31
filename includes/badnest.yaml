@@ -1,0 +1,3 @@
+email: !secret nest_username
+password: !secret nest_password
+region: eu

@@ -1,0 +1,3 @@
+host: !secret genius_host
+username: !secret genius_username
+password: !secret genius_password

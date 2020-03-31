@@ -1,18 +1,15 @@
 homeassistant:
   customize: !include includes/customize.yaml
-  customize_glob:
-    "climate.genius_*":
-      icon: mdi:radiator
+  customize_glob: !include includes/customizeglob.yaml
+
+frontend:
+  themes: !include_dir_merge_named themes
       
-# Configure a default setup of Home Assistant (frontend, api, etc)
-# default_config:
 automation: !include includes/automations.yaml
 #cloud: !include includes/cloud.yaml
 config:
-frontend:
-  themes: !include_dir_merge_named themes
 history: !include includes/history.yaml
-logbook: !include includes/logbook.yaml
+#logbook: !include includes/logbook.yaml
 mobile_app:
 person:
 recorder: !include includes/recorder.yaml
@@ -21,7 +18,6 @@ ssdp:
 sun:
 system_health:
 system_log:
-#  fire_event: true
 updater:
 zeroconf:
 
@@ -30,89 +26,24 @@ binary_sensor: !include includes/binarysensor.yaml
 camera: !include includes/camera.yaml
 climate: !include includes/climate.yaml
 device_tracker: !include includes/devicetracker.yaml
-#ffmpeg:
 group: !include includes/groups.yaml
+http: !include includes/http.yaml
 input_boolean: !include includes/inputboolean.yaml
 input_select: !include includes/inputselect.yaml
+logger: !include includes/logger.yaml
 media_player: !include includes/mediaplayer.yaml
 notify: !include includes/notify.yaml
 scene: !include includes/scenes.yaml
 sensor: !include includes/sensor.yaml
 timer: !include includes/timer.yaml
+tts: !include includes/tts.yaml
 weather: !include includes/weather.yaml
 zone: !include includes/zone.yaml
 
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-http:
-  base_url: !secret base_url
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
-  server_port: !secret server_port
-  ip_ban_enabled: true
-  login_attempts_threshold: 5
-  use_x_forwarded_for: true
-  trusted_proxies: !secret asus_host
-  
-# Text to speech
-tts:
-  - platform: google_translate
-
 # Device integrations
-geniushub:
-  host: !secret genius_host
-  username: !secret genius_username
-  password: !secret genius_password
-  
-asuswrt:
-  host: !secret asus_host
-  username: !secret asus_username
-  ssh_key: /config/ssh/asusmerlin
-  sensors:
-    - upload
-    - download
-    - upload_speed
-    - download_speed
-
-logger:
-  default: warning
-  logs:
-#    custom_components.braviatv_psk: debug
-    NodeRed: debug
-    homeassistant.loader: error
-
-mqtt:
-  broker: core-mosquitto
-  client_id: home-assistant
-  discovery: False
-  username: !secret mqtt_username
-  password: !secret mqtt_password
-
-remote_homeassistant:
-  instances:
-  - host: !secret remote_tc_host
-    port: !secret remote_tc_port
-    secure: true
-    verify_ssl: false
-    access_token: !secret remote_tc_token
-    entity_prefix: "tyrcelyn_"
-    exclude:
-      domains:
-      - persistent_notification
-    include:
-      entities:
-      - binary_sensor.presence_all
-      - input_number.bookings_today
-      - input_number.bookings_tomorrow
-      - input_number.bookings_total
-
-o365:
-  client_secret: !secret o365_secret
-  client_id: !secret o365_id
-
-# customizer:
-#   custom_ui: local
- 
-#badnest:
-#  email: !secret nest_username
-#  password: !secret nest_password
-#  region: eu
+asuswrt: !include includes/asuswrt.yaml
+#badnest: !include includes/badnest.yaml
+geniushub: !include includes/geniushub.yaml
+mqtt: !include includes/mqtt.yaml
+o365: !include includes/o365.yaml
+remote_homeassistant: !include includes/remoteha.yaml
