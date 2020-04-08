@@ -33,6 +33,10 @@
       friendly_name: "Ty'r Celyn HVAC Action"
       value_template: "{{ state_attr('climate.nest_thermostat_living_room_tyr_celyn', 'hvac_action') }}"
       unit_of_measurement: none
+    tc_humidity:
+      friendly_name: "TC - Humidity"
+      value_template: "{{ state_attr('climate.nest_thermostat_living_room_tyr_celyn', 'current_humidity') }}"
+      unit_of_measurement: '%'
     geniushub_living_room_luminance:
       value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_20', 'state').luminance | float) }}"
       friendly_name: 'Living Room Genius Illuminance' 

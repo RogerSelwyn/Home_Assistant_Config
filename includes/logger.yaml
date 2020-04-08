@@ -4,5 +4,5 @@ logs:
   nodeRed: debug
   custom_components.skyq: debug
   homeassistant.loader: error
-  homeassistant.components.media_player: error
+#  homeassistant.components.media_player: error
   homeassistant.components.mobile_app.webhook: fatal

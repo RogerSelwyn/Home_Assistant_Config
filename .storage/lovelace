@@ -173,6 +173,9 @@
                             "entity": "sensor.nest_protect_dining_room_tyr_celyn_battery"
                         },
                         {
+                            "entity": "sensor.tc_humidity"
+                        },
+                        {
                             "entity": "binary_sensor.tyrcelyn_presence_all"
                         },
                         {
@@ -395,7 +398,9 @@
                                     "artwork": "cover",
                                     "entity": "media_player.conservatory",
                                     "hide": {
-                                        "power": true
+                                        "icon_state": false,
+                                        "power": true,
+                                        "power_state": false
                                     },
                                     "icon": "mdi:library-music-outline",
                                     "speaker_group": {
@@ -422,7 +427,9 @@
                                     "artwork": "cover",
                                     "entity": "media_player.living_room",
                                     "hide": {
-                                        "power": true
+                                        "icon_state": false,
+                                        "power": true,
+                                        "power_state": false
                                     },
                                     "icon": "mdi:library-music-outline",
                                     "type": "custom:mini-media-player"
@@ -437,11 +444,11 @@
                                     "artwork": "cover",
                                     "entity": "media_player.sky_q",
                                     "hide": {
+                                        "icon_state": false,
                                         "power_state": false,
                                         "source": true,
                                         "volume": true
                                     },
-                                    "icon": "mdi:satellite-uplink",
                                     "info": "scroll",
                                     "name": "SkyQ",
                                     "shortcuts": {
@@ -542,11 +549,11 @@
                                     "artwork": "cover",
                                     "entity": "media_player.sky_q_mini",
                                     "hide": {
+                                        "icon_state": false,
                                         "power_state": false,
                                         "source": true,
                                         "volume": true
                                     },
-                                    "icon": "mdi:satellite-uplink",
                                     "info": "scroll",
                                     "name": "SkyQ Mini",
                                     "shortcuts": {
@@ -652,6 +659,10 @@
                                 {
                                     "artwork": "cover",
                                     "entity": "media_player.sftv_3",
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power_state": false
+                                    },
                                     "icon": "mdi:television",
                                     "type": "custom:mini-media-player"
                                 }
