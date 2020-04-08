@@ -1,0 +1,48 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "30af7c9784704acbb4003a84f961ce71",
+                "type": "module",
+                "url": "/hacsfiles/custom-header/custom-header.js"
+            },
+            {
+                "id": "3b27f7d8e213427783daa2a2879d9c7a",
+                "type": "module",
+                "url": "/hacsfiles/lovelace-card-mod/card-mod.js"
+            },
+            {
+                "id": "d8ee4c7ff19c456897194e2977406707",
+                "type": "module",
+                "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js"
+            },
+            {
+                "id": "862a683811d641dd8558a980710d0e2e",
+                "type": "module",
+                "url": "/hacsfiles/weather-card/weather-card.js"
+            },
+            {
+                "id": "622cc125fe2e47b1bcb310d94759f17c",
+                "type": "module",
+                "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js"
+            },
+            {
+                "id": "811177717c4b435a9e6cf5f712246235",
+                "type": "module",
+                "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js"
+            },
+            {
+                "id": "c13fa029ff2a4aca978f2f72c0d06b4c",
+                "type": "module",
+                "url": "/hacsfiles/icloud3/icloud3-event-log-card.js"
+            },
+            {
+                "id": "14ea8da39be04f1898c87c15b1bc1f50",
+                "type": "module",
+                "url": "/hacsfiles/atomic_calendar/atomic_calendar.js"
+            }
+        ]
+    },
+    "key": "lovelace_resources",
+    "version": 1
+}
