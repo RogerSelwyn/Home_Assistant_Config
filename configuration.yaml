@@ -8,6 +8,7 @@ frontend:
 automation: !include includes/automations.yaml
 #cloud: !include includes/cloud.yaml
 config:
+discovery:
 history: !include includes/history.yaml
 #logbook: !include includes/logbook.yaml
 mobile_app:

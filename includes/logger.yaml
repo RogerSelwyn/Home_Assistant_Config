@@ -1,8 +1,9 @@
 default: warning
 logs:
 #  custom_components.braviatv_psk: debug
-  nodeRed: debug
-  custom_components.skyq: debug
+  NodeRed: debug
+  custom_components.skyq: warning
+  custom_components.o365: info
   homeassistant.loader: error
 #  homeassistant.components.media_player: error
   homeassistant.components.mobile_app.webhook: fatal

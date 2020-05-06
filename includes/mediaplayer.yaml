@@ -52,7 +52,7 @@
   mac: !secret tv_mac
   amp: False
   android: True
+  user_labels: True
   sourcefilter:
     - HDMI
-    - ' HD'
   name: SFTV

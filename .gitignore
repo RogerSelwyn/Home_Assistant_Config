@@ -10,6 +10,7 @@ node-red
 ssh
 themes
 www
+__pycache__/
 
 # Ignore files
 .uuid

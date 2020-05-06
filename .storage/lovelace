@@ -140,11 +140,7 @@
                                     }
                                 },
                                 {
-                                    "entity": "input_boolean.url_pihole",
-                                    "tap_action": {
-                                        "action": "navigate",
-                                        "navigation_path": "/a0d7b954_pi-hole"
-                                    }
+                                    "entity": "switch.adguard_filtering"
                                 }
                             ],
                             "show_state": false,
@@ -446,7 +442,7 @@
                                     "hide": {
                                         "icon_state": false,
                                         "power_state": false,
-                                        "source": true,
+                                        "source": false,
                                         "volume": true
                                     },
                                     "info": "scroll",
@@ -885,6 +881,94 @@
                                 }
                             ],
                             "type": "conditional"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.adguard_average_processing_speed"
+                                },
+                                {
+                                    "entity": "sensor.adguard_dns_queries"
+                                },
+                                {
+                                    "entity": "sensor.adguard_dns_queries_blocked_ratio"
+                                },
+                                {
+                                    "entity": "switch.adguard_filtering"
+                                },
+                                {
+                                    "entity": "switch.adguard_protection"
+                                }
+                            ],
+                            "title": "AdGuard",
+                            "type": "entities"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "sensor.hp_officejet_pro_9010_series",
+                                    "type": "entity"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.hp_officejet_pro_9010_series_black_cartridge",
+                                            "max": 100,
+                                            "min": 0,
+                                            "name": "Black",
+                                            "severity": {
+                                                "green": 30,
+                                                "red": 10,
+                                                "yellow": 20
+                                            },
+                                            "type": "gauge"
+                                        },
+                                        {
+                                            "entity": "sensor.hp_officejet_pro_9010_series_cyan_cartridge",
+                                            "max": 100,
+                                            "min": 0,
+                                            "name": "Cyan",
+                                            "severity": {
+                                                "green": 30,
+                                                "red": 10,
+                                                "yellow": 20
+                                            },
+                                            "type": "gauge"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.hp_officejet_pro_9010_series_magenta_cartridge",
+                                            "max": 100,
+                                            "min": 0,
+                                            "name": "Magenta",
+                                            "severity": {
+                                                "green": 30,
+                                                "red": 10,
+                                                "yellow": 20
+                                            },
+                                            "type": "gauge"
+                                        },
+                                        {
+                                            "entity": "sensor.hp_officejet_pro_9010_series_yellow_cartridge",
+                                            "max": 100,
+                                            "min": 0,
+                                            "name": "Yellow",
+                                            "severity": {
+                                                "green": 30,
+                                                "red": 10,
+                                                "yellow": 20
+                                            },
+                                            "type": "gauge"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
                         }
                     ],
                     "icon": "mdi:information",

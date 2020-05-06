@@ -22,11 +22,9 @@ url_profile:
   name: Profile
   initial: off
   icon: 'mdi:settings-outline'
-url_pihole:
-  name: Pi-hole
-  initial: off
-  icon: 'mdi:security'
 
 internet:
+  name: Internet
 
 hue:
+  name: Hue
