@@ -41,3 +41,4 @@ include:
 #    - sensor.cpu_temperature
     - sensor.memory_free
     - sensor.processor_use
+    - sensor.connected_clients

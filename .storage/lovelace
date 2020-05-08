@@ -969,6 +969,14 @@
                                 }
                             ],
                             "type": "vertical-stack"
+                        },
+                        {
+                            "entities": [
+                                "sensor.connected_clients"
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "type": "history-graph"
                         }
                     ],
                     "icon": "mdi:information",
