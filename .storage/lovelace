@@ -6,20 +6,17 @@
                 "background": "rgba(155, 155, 155, 0.25)",
                 "compact_mode": true,
                 "default_tab": "0",
-                "disable_sidebar": true,
                 "exceptions": [
                     {
                         "conditions": {
                             "user": "Roger Selwyn"
                         },
                         "config": {
-                            "disable_sidebar": false,
                             "hide_config": false,
                             "hide_help": false,
                             "hide_raw": false,
                             "hide_unused": false,
-                            "options_hide": false,
-                            "show_tabs": []
+                            "options_hide": false
                         }
                     }
                 ],
@@ -44,16 +41,7 @@
                             "entity": "person.benjamin_selwyn"
                         },
                         {
-                            "entity": "input_select.location_mode",
-                            "style": {
-                                "ha-state-label-badge": {
-                                    "$": {
-                                        "ha-label-badge": {
-                                            "$": ".label-badge {\n  {% if is_state('input_select.location_mode', 'Home') %} \n    background-color: #008000 !important;\n    background-image: url(\"/local/icons/home.png\");\n  {% elif is_state('input_select.location_mode', 'Away') %} \n    background-color: #DC143C !important;\n    background-image: url(\"/local/icons/shield-lock.png\");\n  {% elif is_state('input_select.location_mode', 'Night') %} \n    background-color: #191970 !important;\n    background-image: url(\"/local/icons/weather-night.png\");\n  {% elif is_state('input_select.location_mode', 'Evening Time') %} \n    background-color: #FFD700 !important;\n    background-image: url(\"/local/icons/weather-sunset.png\");\n  {% endif %} !important;\n}\n.value {display:none}\n"
-                                        }
-                                    }
-                                }
-                            }
+                            "entity": "sensor.location_mode"
                         }
                     ],
                     "cards": [
@@ -61,7 +49,7 @@
                             "entities": [
                                 {
                                     "entity": "input_boolean.scene_normal",
-                                    "style": ":host {\n  --paper-item-icon-color: {% if is_state('input_boolean.scene_normal', 'on') %} green {% endif %};}\n",
+                                    "name": "Normal",
                                     "tap_action": {
                                         "action": "toggle"
                                     }
@@ -69,14 +57,12 @@
                                 {
                                     "entity": "input_boolean.scene_evening_chill",
                                     "name": "Chill",
-                                    "style": ":host {\n  --paper-item-icon-color: {% if is_state('input_boolean.scene_evening_chill', 'on') %} green {% endif %};}\n",
                                     "tap_action": {
                                         "action": "toggle"
                                     }
                                 },
                                 {
                                     "entity": "input_boolean.scene_reading",
-                                    "style": ":host {\n  --paper-item-icon-color: {% if is_state('input_boolean.scene_reading', 'on') %} green {% endif %};}\n",
                                     "tap_action": {
                                         "action": "toggle"
                                     }
@@ -84,7 +70,6 @@
                                 {
                                     "entity": "input_boolean.scene_evening_movie",
                                     "name": "Movie",
-                                    "style": ":host {\n  --paper-item-icon-color: {% if is_state('input_boolean.scene_evening_movie', 'on') %} green {% endif %};}\n",
                                     "tap_action": {
                                         "action": "toggle"
                                     }
@@ -99,7 +84,7 @@
                                 "type": "entities"
                             },
                             "filter": {
-                                "template": "{%if is_state('switch.living_room_s1','on')%}light.main_light{%endif%} {%if is_state('switch.living_room_s1','off')%}switch.living_room_s1{%endif%} {%if is_state('switch.living_room_s2','on')%}light.side_light{%endif%} {%if is_state('switch.living_room_s2','off')%}switch.living_room_s2{%endif%} {%if is_state('binary_sensor.table_light_power','on')%}light.table_light{%endif%} {%if is_state('binary_sensor.table_light_power','off')%}binary_sensor.table_light_power{%endif%} timer.lights_living_room climate.living_room binary_sensor.living_room_occupancy\n"
+                                "template": "{%if is_state('switch.zwave_living_room_main_light_switch','on')%}light.main_light{%endif%} {%if is_state('switch.zwave_living_room_main_light_switch','off')%}switch.zwave_living_room_main_light_switch{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.side_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','off')%}switch.zwave_living_room_side_light_switch{%endif%} {%if is_state('binary_sensor.table_light_power','on')%}light.table_light{%endif%} {%if is_state('binary_sensor.table_light_power','off')%}binary_sensor.table_light_power{%endif%} timer.lights_living_room climate.living_room binary_sensor.living_room_occupancy\n"
                             },
                             "show_empty": false,
                             "type": "custom:auto-entities"
@@ -127,7 +112,6 @@
                             "entities": [
                                 {
                                     "entity": "input_boolean.flash_benjamin",
-                                    "style": ":host {\n  --paper-item-icon-color: {% if is_state('input_boolean.flash_benjamin', 'on') %} green {% endif %};}\n",
                                     "tap_action": {
                                         "action": "toggle"
                                     }
@@ -181,26 +165,22 @@
                             "entity": "binary_sensor.tyrcelyn_presence_cleaner"
                         },
                         {
-                            "entity": "calendar.bookings",
-                            "style": {
-                                "ha-state-label-badge": {
-                                    "$": {
-                                        "ha-label-badge": {
-                                            "$": ".label-badge {\n  {% if is_state('calendar.bookings', 'on') %} \n    background-color: #008000 !important;\n    background-image: url(\"/local/icons/home.png\");\n  {% elif is_state('calendar.bookings', 'off') %} \n    background-color: #DC143C !important;\n    background-image: url(\"/local/icons/home-outline.png\");\n {% endif %} !important;\n}\n.value {display:none}\n"
-                                        }
-                                    }
-                                }
-                            }
+                            "entity": "sensor.bookings"
                         }
                     ],
                     "cards": [
                         {
+                            "disableEventLink": true,
                             "entities": [
                                 {
                                     "entity": "calendar.bookings"
                                 }
                             ],
-                            "type": "custom:atomic-calendar"
+                            "showDescription": false,
+                            "showMonth": true,
+                            "showNoEventsForToday": true,
+                            "showWeekDay": true,
+                            "type": "custom:atomic-calendar-revive"
                         },
                         {
                             "entity": "climate.nest_thermostat_living_room_tyr_celyn",
@@ -262,87 +242,6 @@
                     "icon": "mdi:home-outline",
                     "path": "tyr-celyn",
                     "title": "Ty\u2019r Celyn"
-                },
-                {
-                    "badges": [
-                        {
-                            "entity": "binary_sensor.dual_channel_receiver_3_1"
-                        },
-                        {
-                            "entity": "binary_sensor.dual_channel_receiver_3_2"
-                        }
-                    ],
-                    "cards": [
-                        {
-                            "cards": [
-                                {
-                                    "entity": "climate.living_room",
-                                    "type": "thermostat"
-                                },
-                                {
-                                    "entity": "climate.kitchen",
-                                    "type": "thermostat"
-                                }
-                            ],
-                            "type": "horizontal-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "climate.bedroom_1",
-                                    "type": "thermostat"
-                                },
-                                {
-                                    "entity": "climate.bedroom_2",
-                                    "type": "thermostat"
-                                }
-                            ],
-                            "type": "horizontal-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "climate.bedroom_3",
-                                    "type": "thermostat"
-                                },
-                                {
-                                    "entity": "climate.bathroom",
-                                    "type": "thermostat"
-                                }
-                            ],
-                            "type": "horizontal-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "climate.ensuite",
-                                    "type": "thermostat"
-                                },
-                                {
-                                    "entity": "climate.cloakroom",
-                                    "type": "thermostat"
-                                }
-                            ],
-                            "type": "horizontal-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "climate.dining_room",
-                                    "type": "thermostat"
-                                },
-                                {
-                                    "entity": "climate.hall",
-                                    "type": "thermostat"
-                                }
-                            ],
-                            "type": "horizontal-stack"
-                        }
-                    ],
-                    "icon": "mdi:radiator",
-                    "panel": false,
-                    "theme": "Backend-selected",
-                    "title": "Heating"
                 },
                 {
                     "badges": [],
@@ -412,10 +311,45 @@
                                             {
                                                 "entity_id": "media_player.living_room",
                                                 "name": "Living Room"
+                                            },
+                                            {
+                                                "entity_id": "media_player.living_room_tv",
+                                                "name": "Living Room TV"
                                             }
                                         ],
                                         "platform": "sonos",
                                         "show_group_count": true
+                                    },
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "artwork": "cover",
+                                    "entity": "media_player.living_room_tv",
+                                    "hide": {
+                                        "icon_state": false,
+                                        "power": true,
+                                        "power_state": false
+                                    },
+                                    "icon": "mdi:library-music-outline",
+                                    "speaker_group": {
+                                        "entities": [
+                                            {
+                                                "entity_id": "media_player.conservatory",
+                                                "name": "Sonos Conservatory"
+                                            },
+                                            {
+                                                "entity_id": "media_player.kitchen",
+                                                "name": "Sonos Kitchen"
+                                            },
+                                            {
+                                                "entity_id": "media_player.living_room",
+                                                "name": "Living Room"
+                                            },
+                                            {
+                                                "entity_id": "media_player.living_room_tv",
+                                                "name": "Living Room TV"
+                                            }
+                                        ]
                                     },
                                     "type": "custom:mini-media-player"
                                 },
@@ -451,76 +385,76 @@
                                         "buttons": [
                                             {
                                                 "icon": "mdi:chevron-up",
-                                                "id": "CHup",
-                                                "type": "source"
+                                                "id": "channelup",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:chevron-down",
-                                                "id": "CHdn",
-                                                "type": "source"
+                                                "id": "channeldown",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:record-rec",
-                                                "id": "Record",
-                                                "type": "source"
+                                                "id": "record",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": null,
-                                                "id": "Sky",
+                                                "id": "sky",
                                                 "name": "Sky",
-                                                "type": "source"
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": null,
-                                                "id": "TVGuide",
+                                                "id": "tvguide",
                                                 "name": "Guide",
-                                                "type": "source"
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:home-outline",
-                                                "id": "Home",
-                                                "type": "source"
+                                                "id": "home",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:menu-open",
-                                                "id": "Sidebar",
-                                                "type": "source"
+                                                "id": "sidebar",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:keyboard-return",
-                                                "id": "Dismiss",
-                                                "type": "source"
+                                                "id": "dismiss",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:information-variant",
-                                                "id": "I",
-                                                "type": "source"
+                                                "id": "i",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:arrow-right-thick",
-                                                "id": "Right",
-                                                "type": "source"
+                                                "id": "right",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:arrow-left-thick",
-                                                "id": "Left",
-                                                "type": "source"
+                                                "id": "left",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:arrow-up-thick",
-                                                "id": "Up",
-                                                "type": "source"
+                                                "id": "up",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:arrow-down-thick",
-                                                "id": "Down",
-                                                "type": "source"
+                                                "id": "down",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": null,
-                                                "id": "Select",
+                                                "id": "select",
                                                 "name": "Select",
-                                                "type": "source"
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": null,
@@ -547,7 +481,7 @@
                                     "hide": {
                                         "icon_state": false,
                                         "power_state": false,
-                                        "source": true,
+                                        "source": false,
                                         "volume": true
                                     },
                                     "info": "scroll",
@@ -556,76 +490,76 @@
                                         "buttons": [
                                             {
                                                 "icon": "mdi:chevron-up",
-                                                "id": "CHup",
-                                                "type": "source"
+                                                "id": "channelup",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:chevron-down",
-                                                "id": "CHdn",
-                                                "type": "source"
+                                                "id": "channeldown",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:record-rec",
-                                                "id": "Record",
-                                                "type": "source"
+                                                "id": "record",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": null,
-                                                "id": "Sky",
+                                                "id": "sky",
                                                 "name": "Sky",
-                                                "type": "source"
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": null,
-                                                "id": "TVGuide",
+                                                "id": "tvguide",
                                                 "name": "Guide",
-                                                "type": "source"
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:home-outline",
-                                                "id": "Home",
-                                                "type": "source"
+                                                "id": "home",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:menu-open",
-                                                "id": "Sidebar",
-                                                "type": "source"
+                                                "id": "sidebar",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:keyboard-return",
-                                                "id": "Dismiss",
-                                                "type": "source"
+                                                "id": "dismiss",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:information-variant",
-                                                "id": "I",
-                                                "type": "source"
+                                                "id": "i",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:arrow-right-thick",
-                                                "id": "Right",
-                                                "type": "source"
+                                                "id": "right",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:arrow-left-thick",
-                                                "id": "Left",
-                                                "type": "source"
+                                                "id": "left",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:arrow-up-thick",
-                                                "id": "Up",
-                                                "type": "source"
+                                                "id": "up",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": "mdi:arrow-down-thick",
-                                                "id": "Down",
-                                                "type": "source"
+                                                "id": "down",
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": null,
-                                                "id": "Select",
+                                                "id": "select",
                                                 "name": "Select",
-                                                "type": "source"
+                                                "type": "skyq"
                                             },
                                             {
                                                 "icon": null,
@@ -670,377 +604,6 @@
                     "icon": "mdi:library-music",
                     "path": "music",
                     "title": "Media"
-                },
-                {
-                    "badges": [
-                        {
-                            "entity": "person.benjamin_selwyn"
-                        },
-                        {
-                            "entity": "person.clare_selwyn"
-                        },
-                        {
-                            "entity": "person.roger_selwyn"
-                        }
-                    ],
-                    "cards": [
-                        {
-                            "dark_mode": false,
-                            "default_zoom": 10,
-                            "entities": [
-                                {
-                                    "entity": "person.roger_selwyn"
-                                },
-                                {
-                                    "entity": "person.clare_selwyn"
-                                },
-                                {
-                                    "entity": "person.benjamin_selwyn"
-                                }
-                            ],
-                            "type": "map"
-                        }
-                    ],
-                    "icon": "mdi:map-marker",
-                    "panel": true,
-                    "path": "map",
-                    "title": "Map"
-                },
-                {
-                    "badges": [
-                        {
-                            "entity": "binary_sensor.dual_channel_receiver_3_1"
-                        },
-                        {
-                            "entity": "binary_sensor.dual_channel_receiver_3_2"
-                        },
-                        {
-                            "entity": "sensor.geniushub_errors"
-                        },
-                        {
-                            "entity": "sensor.geniushub_warnings"
-                        },
-                        {
-                            "entity": "binary_sensor.updater"
-                        },
-                        {
-                            "entity": "sensor.hacs"
-                        },
-                        {
-                            "entity": "input_select.location_mode"
-                        }
-                    ],
-                    "cards": [
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.asuswrt_download"
-                                },
-                                {
-                                    "entity": "sensor.asuswrt_upload"
-                                },
-                                {
-                                    "entity": "sensor.asuswrt_download_speed"
-                                },
-                                {
-                                    "entity": "sensor.asuswrt_upload_speed"
-                                },
-                                {
-                                    "entity": "binary_sensor.internet"
-                                },
-                                {
-                                    "entity": "binary_sensor.hue"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Router",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "switch.living_room_s1"
-                                },
-                                {
-                                    "entity": "switch.living_room_s2"
-                                },
-                                {
-                                    "entity": "binary_sensor.table_light_power"
-                                },
-                                {
-                                    "entity": "binary_sensor.bedroom1_lights_power"
-                                },
-                                {
-                                    "entity": "binary_sensor.bedroom2_lights_power"
-                                },
-                                {
-                                    "entity": "binary_sensor.bedroom3_lights_power"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Power",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.geniushub_living_room_luminance"
-                                },
-                                {
-                                    "entity": "sensor.living_room_fibaro_illuminance"
-                                },
-                                {
-                                    "entity": "sensor.geniushub_kitchen_luminance"
-                                },
-                                {
-                                    "entity": "sensor.geniushub_bedroom1_luminance"
-                                },
-                                {
-                                    "entity": "sensor.geniushub_bedroom2_luminance"
-                                },
-                                {
-                                    "entity": "sensor.geniushub_bedroom3_luminance"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Brightness",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.processor_use"
-                                },
-                                {
-                                    "entity": "sensor.memory_free"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "HassioVM",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.smart_plug_6"
-                                },
-                                {
-                                    "entity": "binary_sensor.smart_plug_5"
-                                },
-                                {
-                                    "entity": "binary_sensor.smart_plug_7"
-                                },
-                                {
-                                    "entity": "switch.plug_box_room"
-                                },
-                                {
-                                    "entity": "switch.plug_dining_room"
-                                },
-                                {
-                                    "entity": "switch.plug_kitchen"
-                                }
-                            ],
-                            "title": "Genius Plugs",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "timer.away"
-                                },
-                                {
-                                    "entity": "timer.night"
-                                },
-                                {
-                                    "entity": "timer.lights_living_room"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Timers",
-                            "type": "entities"
-                        },
-                        {
-                            "card": {
-                                "card": {
-                                    "title": "Security Lights",
-                                    "type": "entities"
-                                },
-                                "filter": {
-                                    "include": [
-                                        {
-                                            "group": "group.security_lights"
-                                        }
-                                    ]
-                                },
-                                "type": "custom:auto-entities"
-                            },
-                            "conditions": [
-                                {
-                                    "entity": "input_select.location_mode",
-                                    "state": "Away"
-                                }
-                            ],
-                            "type": "conditional"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.adguard_average_processing_speed"
-                                },
-                                {
-                                    "entity": "sensor.adguard_dns_queries"
-                                },
-                                {
-                                    "entity": "sensor.adguard_dns_queries_blocked_ratio"
-                                },
-                                {
-                                    "entity": "switch.adguard_filtering"
-                                },
-                                {
-                                    "entity": "switch.adguard_protection"
-                                }
-                            ],
-                            "title": "AdGuard",
-                            "type": "entities"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "sensor.hp_officejet_pro_9010_series",
-                                    "type": "entity"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "entity": "sensor.hp_officejet_pro_9010_series_black_cartridge",
-                                            "max": 100,
-                                            "min": 0,
-                                            "name": "Black",
-                                            "severity": {
-                                                "green": 30,
-                                                "red": 10,
-                                                "yellow": 20
-                                            },
-                                            "type": "gauge"
-                                        },
-                                        {
-                                            "entity": "sensor.hp_officejet_pro_9010_series_cyan_cartridge",
-                                            "max": 100,
-                                            "min": 0,
-                                            "name": "Cyan",
-                                            "severity": {
-                                                "green": 30,
-                                                "red": 10,
-                                                "yellow": 20
-                                            },
-                                            "type": "gauge"
-                                        }
-                                    ],
-                                    "type": "horizontal-stack"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "entity": "sensor.hp_officejet_pro_9010_series_magenta_cartridge",
-                                            "max": 100,
-                                            "min": 0,
-                                            "name": "Magenta",
-                                            "severity": {
-                                                "green": 30,
-                                                "red": 10,
-                                                "yellow": 20
-                                            },
-                                            "type": "gauge"
-                                        },
-                                        {
-                                            "entity": "sensor.hp_officejet_pro_9010_series_yellow_cartridge",
-                                            "max": 100,
-                                            "min": 0,
-                                            "name": "Yellow",
-                                            "severity": {
-                                                "green": 30,
-                                                "red": 10,
-                                                "yellow": 20
-                                            },
-                                            "type": "gauge"
-                                        }
-                                    ],
-                                    "type": "horizontal-stack"
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "entities": [
-                                "sensor.connected_clients"
-                            ],
-                            "hours_to_show": 24,
-                            "refresh_interval": 0,
-                            "type": "history-graph"
-                        }
-                    ],
-                    "icon": "mdi:information",
-                    "path": "info",
-                    "title": "Info"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
-                                {
-                                    "entity": "climate.living_room"
-                                },
-                                {
-                                    "entity": "climate.kitchen"
-                                },
-                                {
-                                    "entity": "climate.bedroom_1"
-                                },
-                                {
-                                    "entity": "climate.bedroom_2"
-                                },
-                                {
-                                    "entity": "climate.bedroom_3"
-                                }
-                            ],
-                            "type": "glance"
-                        },
-                        {
-                            "artwork": "cover",
-                            "entity": "media_player.conservatory",
-                            "hide": {
-                                "power": true
-                            },
-                            "icon": "mdi:library-music-outline",
-                            "speaker_group": {
-                                "entities": [
-                                    {
-                                        "entity_id": "media_player.conservatory",
-                                        "name": "Sonos Conservatory"
-                                    },
-                                    {
-                                        "entity_id": "media_player.kitchen",
-                                        "name": "Sonos Kitchen"
-                                    },
-                                    {
-                                        "entity_id": "media_player.living_room",
-                                        "name": "Living Room"
-                                    }
-                                ],
-                                "platform": "sonos",
-                                "show_group_count": true
-                            },
-                            "type": "custom:mini-media-player"
-                        },
-                        {
-                            "entity": "media_player.sky_q_mini",
-                            "type": "media-control"
-                        }
-                    ],
-                    "icon": "mdi:trash-can",
-                    "path": "bin",
-                    "title": "Bin"
                 }
             ]
         }

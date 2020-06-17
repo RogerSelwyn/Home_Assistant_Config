@@ -9,7 +9,7 @@
 - cal_id: !secret o365_bookings
   entities:
   - device_id: Bookings
-    end_offset: 168
+    end_offset: 672
     name: Bookings
     start_offset: 0
     track: true

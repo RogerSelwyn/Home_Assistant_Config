@@ -21,14 +21,14 @@ main_light_actual:
   icon: mdi:ceiling-light
   all: true
   entities:
-    - switch.living_room_s1
+    - switch.zwave_living_room_main_light_switch
     - light.main_light
 side_light_actual:
   name: Side Light Actual
   icon: mdi:wall-sconce-flat
   all: true
   entities:
-    - switch.living_room_s2
+    - switch.zwave_living_room_side_light_switch
     - light.side_light
 table_light_actual:
   name: Table Light Actual

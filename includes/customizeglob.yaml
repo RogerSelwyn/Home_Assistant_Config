@@ -1,2 +1,6 @@
 "climate.genius_*":
   icon: mdi:radiator
+  
+"binary_sensor.*_contact":
+  icon: mdi:walk
+  device_class: motion

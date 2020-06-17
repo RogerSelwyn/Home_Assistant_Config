@@ -7,11 +7,6 @@
                 "url": "/hacsfiles/custom-header/custom-header.js"
             },
             {
-                "id": "3b27f7d8e213427783daa2a2879d9c7a",
-                "type": "module",
-                "url": "/hacsfiles/lovelace-card-mod/card-mod.js"
-            },
-            {
                 "id": "d8ee4c7ff19c456897194e2977406707",
                 "type": "module",
                 "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js"
@@ -32,14 +27,9 @@
                 "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js"
             },
             {
-                "id": "c13fa029ff2a4aca978f2f72c0d06b4c",
+                "id": "5d66101e33d54da192a194771405e2eb",
                 "type": "module",
-                "url": "/hacsfiles/icloud3/icloud3-event-log-card.js"
-            },
-            {
-                "id": "14ea8da39be04f1898c87c15b1bc1f50",
-                "type": "module",
-                "url": "/hacsfiles/atomic_calendar/atomic_calendar.js"
+                "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js"
             }
         ]
     },

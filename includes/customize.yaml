@@ -14,8 +14,10 @@ person.robyn_winfield:
   entity_picture: /local/robyn.png
 person.roger_selwyn:
   entity_picture: /local/roger.png
-switch.living_room_s1:
+switch.living_room_fibaro_switch_switch:
+  friendly_name: Main Light Switch
   icon: mdi:power-cycle
-switch.living_room_s2:
+switch.living_room_fibaro_switch_switch_2:
+  friendly_name: Side Light Switch
   icon: mdi:power-cycle
   

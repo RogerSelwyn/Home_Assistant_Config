@@ -36,6 +36,7 @@ notify: !include includes/notify.yaml
 # ptvsd:
 scene: !include includes/scenes.yaml
 sensor: !include includes/sensor.yaml
+switch: !include includes/switch.yaml
 timer: !include includes/timer.yaml
 tts: !include includes/tts.yaml
 weather: !include includes/weather.yaml
@@ -45,6 +46,7 @@ zone: !include includes/zone.yaml
 asuswrt: !include includes/asuswrt.yaml
 #badnest: !include includes/badnest.yaml
 geniushub: !include includes/geniushub.yaml
-mqtt: !include includes/mqtt.yaml
+#mqtt: !include includes/mqtt.yaml
 o365: !include includes/o365.yaml
+panel_iframe: !include includes/paneliframe.yaml
 remote_homeassistant: !include includes/remoteha.yaml

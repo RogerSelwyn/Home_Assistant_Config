@@ -9,8 +9,8 @@ include:
     - person.robyn_winfield
     - binary_sensor.downstairs_occupancy
     - binary_sensor.living_room_fibaro_motion
+    - binary_sensor.zwave_living_room_fibaro_motion
     - binary_sensor.upstairs_occupancy
-    - binary_sensor.updater
     - binary_sensor.dual_channel_receiver_3_1
     - binary_sensor.dual_channel_receiver_3_2
     - group.main_light_actual

@@ -8,6 +8,24 @@
 #  command: "cat /sys/class/thermal/thermal_zone0/temp"
 #  unit_of_measurement: "°C"
 #  value_template: '{{ value | multiply(0.001) | round(1) }}'
+# - platform: command_line
+#   name: Addons
+#   scan_interval: 3600
+#   command: "ha supervisor info --raw-json"
+# Sensor to track available updates for supervisor & addons
+# - platform: command_line
+#   name: Supervisor updates
+#   scan_interval: 3600
+#   command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"addons":[.data.addons[]]}'''
+#   json_attributes:
+#   - addons
+- platform: command_line
+  name: Supervisor addons
+  scan_interval: 3600
+  command: 'curl http://supervisor/supervisor/info -s -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"addons":[.data.addons[]]}'''
+  value_template: "{{ value_json.addons | length }}"
+  json_attributes:
+    - addons
 
 #- platform: time_date
 #  display_options:
@@ -64,3 +82,38 @@
       unit_of_measurement: 'lux'
       device_class: illuminance
 
+    location_mode:
+      value_template: "{{ states('input_select.location_mode') }}"
+      friendly_name_template: >-
+        {{ states('input_select.location_mode') }}
+      entity_picture_template: >-
+        {% if is_state('input_select.location_mode', 'Home') %}
+          /local/icons/home.png
+        {% elif is_state('input_select.location_mode', 'Away') %}
+          /local/icons/shield-lock.png
+        {% elif is_state('input_select.location_mode', 'Night') %}
+          /local/icons/weather-night.png
+        {% elif is_state('input_select.location_mode', 'Evening Time') %}
+          /local/icons/weather-sunset.png
+        {% endif %}
+    bookings:
+      value_template: "{{ states('calendar.bookings') }}"
+      friendly_name_template: >-
+        {% if is_state('calendar.bookings', 'on') %}
+          Booked
+        {% else %}
+          Empty
+        {% endif %}
+      entity_picture_template: >-
+        {% if is_state('calendar.bookings', 'on') %}
+          /local/icons/home.png
+        {% else %}
+          /local/icons/home-outline.png
+        {% endif %}
+
+
+    zwave_living_room_fibaro_illuminance:
+      value_template: "{{ '%.0f'%(states('sensor.fgms001_zw5_motion_sensor_illuminance') | float) }}"
+      friendly_name: 'Living Room Fibaro Illuminance'
+      unit_of_measurement: 'lux'
+      device_class: illuminance
