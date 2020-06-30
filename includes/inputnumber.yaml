@@ -1,0 +1,12 @@
+tyrcelyn_bookings_today:
+  name: Bookings Today
+  min: 0
+  max: 10
+tyrcelyn_bookings_tomorrow:
+  name: Bookings Tomorrow
+  min: 0
+  max: 10
+tyrcelyn_bookings_total:
+  name: Bookings Total
+  min: 0
+  max: 10

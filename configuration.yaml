@@ -29,6 +29,7 @@ device_tracker: !include includes/devicetracker.yaml
 group: !include includes/groups.yaml
 http: !include includes/http.yaml
 input_boolean: !include includes/inputboolean.yaml
+input_number: !include includes/inputnumber.yaml
 input_select: !include includes/inputselect.yaml
 logger: !include includes/logger.yaml
 media_player: !include includes/mediaplayer.yaml
@@ -49,4 +50,4 @@ geniushub: !include includes/geniushub.yaml
 #mqtt: !include includes/mqtt.yaml
 o365: !include includes/o365.yaml
 panel_iframe: !include includes/paneliframe.yaml
-remote_homeassistant: !include includes/remoteha.yaml
+#remote_homeassistant: !include includes/remoteha.yaml
