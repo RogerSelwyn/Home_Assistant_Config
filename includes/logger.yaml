@@ -6,4 +6,4 @@ logs:
   custom_components.o365: info
   homeassistant.loader: error
 #  homeassistant.components.media_player: error
-  homeassistant.components.mobile_app.webhook: fatal
+#  homeassistant.components.mobile_app.webhook: fatal

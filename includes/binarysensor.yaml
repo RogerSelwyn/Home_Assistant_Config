@@ -105,6 +105,14 @@
       friendly_name: "TC - Presence - Cleaner"
       device_class: presence
       value_template: "{{ is_state('input_boolean.tyrcelyn_presence_cleaner', 'on') }}"
+    tyrcelyn_bookings:
+      friendly_name: "TC - Booked"
+      device_class: presence
+      value_template: "{{ is_state('calendar.bookings', 'on') }}"
+    tyrcelyn_guests:
+      friendly_name: "TC - Guests"
+      device_class: presence
+      value_template: "{{ is_state('input_boolean.tyrcelyn_guests', 'on') }}"
 
 
 #- platform: ping

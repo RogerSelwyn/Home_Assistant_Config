@@ -7,6 +7,11 @@
   name: noderedlog
   filename: noderedlog.csv
   timestamp: true
+
+- platform: file
+  name: tyrcelyn
+  filename: tyrcelyn.csv
+  timestamp: true
   
 - platform: file
   name: mqtt

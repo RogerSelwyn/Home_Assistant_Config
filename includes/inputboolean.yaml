@@ -21,7 +21,7 @@ flash_benjamin:
 url_profile:
   name: Profile
   initial: off
-  icon: 'mdi:settings-outline'
+  icon: 'mdi:cog-outline'
 
 internet:
   name: Internet
@@ -30,3 +30,4 @@ hue:
 
 tyrcelyn_presence_all:
 tyrcelyn_presence_cleaner:
+tyrcelyn_guests:

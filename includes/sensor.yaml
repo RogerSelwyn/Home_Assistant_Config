@@ -96,20 +96,20 @@
         {% elif is_state('input_select.location_mode', 'Evening Time') %}
           /local/icons/weather-sunset.png
         {% endif %}
-    bookings:
-      value_template: "{{ states('calendar.bookings') }}"
-      friendly_name_template: >-
-        {% if is_state('calendar.bookings', 'on') %}
-          Booked
-        {% else %}
-          Empty
-        {% endif %}
-      entity_picture_template: >-
-        {% if is_state('calendar.bookings', 'on') %}
-          /local/icons/home.png
-        {% else %}
-          /local/icons/home-outline.png
-        {% endif %}
+    # bookings:
+    #   value_template: "{{ states('calendar.bookings') }}"
+    #   friendly_name_template: >-
+    #     {% if is_state('calendar.bookings', 'on') %}
+    #       Booked
+    #     {% else %}
+    #       Empty
+    #     {% endif %}
+    #   entity_picture_template: >-
+    #     {% if is_state('calendar.bookings', 'on') %}
+    #       /local/icons/home.png
+    #     {% else %}
+    #       /local/icons/home-outline.png
+    #     {% endif %}
 
 
     zwave_living_room_fibaro_illuminance:

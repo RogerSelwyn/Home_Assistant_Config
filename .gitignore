@@ -15,7 +15,7 @@ __pycache__/
 # Ignore files
 .uuid
 home-assistant*
-noderedlog*
+*.csv
 update.sh
 
 Reinclude files
