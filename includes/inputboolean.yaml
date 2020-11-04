@@ -2,6 +2,10 @@ scene_evening_chill:
   name: Evening Chill
   initial: off
   icon: 'mdi:weather-night'
+scene_evening_friends:
+  name: Evening Friends
+  initial: off
+  icon: 'mdi:account-group'
 scene_evening_movie:
   name: Evening Movie
   initial: off
@@ -31,3 +35,4 @@ hue:
 tyrcelyn_presence_all:
 tyrcelyn_presence_cleaner:
 tyrcelyn_guests:
+tyrcelyn_utility_motion:

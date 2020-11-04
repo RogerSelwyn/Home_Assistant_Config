@@ -9,3 +9,7 @@ night:
 away:
   name: Time to Away
   duration: '00:07:00'
+
+tycelyn_presence:
+  name: TC - Presence
+  duration: '00:10:00'

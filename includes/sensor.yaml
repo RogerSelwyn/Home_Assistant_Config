@@ -42,19 +42,19 @@
   sensors:
     tc_current_temperature:
       friendly_name: "Ty'r Celyn Current Temperature"
-      value_template: "{{ state_attr('climate.nest_thermostat_living_room_tyr_celyn', 'current_temperature') }}"
+      value_template: "{{ state_attr('climate.tyr_celyn_thermostat', 'current_temperature') }}"
       unit_of_measurement: °C
     tc_set_temperature:
       friendly_name: "Ty'r Celyn Set Temperature"
-      value_template: "{{ state_attr('climate.nest_thermostat_living_room_tyr_celyn', 'temperature') }}"
+      value_template: "{{ state_attr('climate.tyr_celyn_thermostat', 'temperature') }}"
       unit_of_measurement: °C
     tc_hvac_action:
       friendly_name: "Ty'r Celyn HVAC Action"
-      value_template: "{{ state_attr('climate.nest_thermostat_living_room_tyr_celyn', 'hvac_action') }}"
+      value_template: "{{ state_attr('climate.tyr_celyn_thermostat', 'hvac_action') }}"
       unit_of_measurement: none
     tc_humidity:
       friendly_name: "TC - Humidity"
-      value_template: "{{ state_attr('climate.nest_thermostat_living_room_tyr_celyn', 'current_humidity') }}"
+      value_template: "{{ state_attr('climate.tyr_celyn_thermostat', 'current_humidity') }}"
       unit_of_measurement: '%'
     geniushub_living_room_luminance:
       value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_20', 'state').luminance | float) }}"

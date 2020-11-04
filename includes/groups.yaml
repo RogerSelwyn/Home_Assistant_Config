@@ -5,16 +5,16 @@ presence_all:
     - person.benjamin_selwyn
     - person.clare_selwyn
     - person.roger_selwyn
-    - person.robyn_winfield
 
 security_lights:
   name: Security Lights
   icon: mdi:shield-lock
   entities:
     - light.main_light
-    - light.side_light
+    - light.fireplace
     - light.table_light
     - light.bedroom_light
+    - light.office_light
     
 main_light_actual:
   name: Main Light Actual
@@ -30,6 +30,13 @@ side_light_actual:
   entities:
     - switch.zwave_living_room_side_light_switch
     - light.side_light
+tv_light_actual:
+  name: TV Light Actual
+  icon: mdi:wall-sconce-flat
+  all: true
+  entities:
+    - switch.zwave_living_room_side_light_switch
+    - light.tv_light
 table_light_actual:
   name: Table Light Actual
   icon: mdi:lamp
@@ -58,3 +65,10 @@ bedroom_3_lights_actual:
   entities:
     - binary_sensor.bedroom3_lights_power
     - light.bedroom_3
+office_lights_actual:
+  name: Office Lights Actual
+  icon: mdi:ceiling-light
+  all: true
+  entities:
+    - binary_sensor.office_lights_power
+    - light.office

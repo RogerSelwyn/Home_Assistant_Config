@@ -1,11 +1,8 @@
 {
+    "version": 1,
+    "key": "lovelace_resources",
     "data": {
         "items": [
-            {
-                "id": "30af7c9784704acbb4003a84f961ce71",
-                "type": "module",
-                "url": "/hacsfiles/custom-header/custom-header.js"
-            },
             {
                 "id": "d8ee4c7ff19c456897194e2977406707",
                 "type": "module",
@@ -32,7 +29,5 @@
                 "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js"
             }
         ]
-    },
-    "key": "lovelace_resources",
-    "version": 1
+    }
 }

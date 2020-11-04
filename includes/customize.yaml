@@ -20,4 +20,5 @@ switch.living_room_fibaro_switch_switch:
 switch.living_room_fibaro_switch_switch_2:
   friendly_name: Side Light Switch
   icon: mdi:power-cycle
-  
+sensor.hacs:
+  unit_of_measurement: 'Updates'

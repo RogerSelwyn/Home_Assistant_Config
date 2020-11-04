@@ -1,7 +1,0 @@
-alexa:
-  filter:
-    include_entities:
-      - input_boolean.flash_benjamin
-  entity_config:
-    input_boolean.flash_benjamin:
-      display_categories: LIGHT

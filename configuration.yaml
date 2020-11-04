@@ -5,11 +5,8 @@ homeassistant:
 frontend:
   themes: !include_dir_merge_named themes
       
-#automation: !include includes/automations.yaml
-#cloud: !include includes/cloud.yaml
 config:
 history: !include includes/history.yaml
-#logbook: !include includes/logbook.yaml
 mobile_app:
 person:
 recorder: !include includes/recorder.yaml
@@ -31,10 +28,10 @@ http: !include includes/http.yaml
 input_boolean: !include includes/inputboolean.yaml
 input_number: !include includes/inputnumber.yaml
 input_select: !include includes/inputselect.yaml
+ios: !include includes/ios.yaml
 logger: !include includes/logger.yaml
 media_player: !include includes/mediaplayer.yaml
 notify: !include includes/notify.yaml
-# ptvsd:
 scene: !include includes/scenes.yaml
 sensor: !include includes/sensor.yaml
 switch: !include includes/switch.yaml
@@ -45,9 +42,8 @@ zone: !include includes/zone.yaml
 
 # Device integrations
 asuswrt: !include includes/asuswrt.yaml
-#badnest: !include includes/badnest.yaml
 geniushub: !include includes/geniushub.yaml
+nest: !include includes/nest.yaml
 #mqtt: !include includes/mqtt.yaml
 o365: !include includes/o365.yaml
 panel_iframe: !include includes/paneliframe.yaml
-#remote_homeassistant: !include includes/remoteha.yaml

@@ -30,6 +30,16 @@
         {% else %}
           mdi:power-off
         {% endif %}
+    office_lights_power:
+      friendly_name: "Office 3 Lights - Power"
+      value_template: >-
+        {{ not is_state('light.office_light', 'unavailable') }}
+      icon_template: >-
+        {% if is_state('binary_sensor.office_lights_power', 'on') %}
+          mdi:power
+        {% else %}
+          mdi:power-off
+        {% endif %}
     table_light_power:
       friendly_name: "Table Light - Power"
       value_template: >-
@@ -68,10 +78,17 @@
         or state_attr('climate.living_room', 'status').occupied == true }}
       device_class: motion
       friendly_name: 'Living Room Occupancy' 
+    kitchen_occupancy:
+      value_template: >-
+        {{ is_state('binary_sensor.kitchen_pir', 'on')
+        or state_attr('climate.kitchen', 'status').occupied == true }}
+      device_class: motion
+      friendly_name: 'Kitchen Occupancy' 
     downstairs_occupancy:
       value_template: >-
         {{ is_state('binary_sensor.zwave_living_room_fibaro_motion', 'on')
         or state_attr('climate.living_room', 'status').occupied == true
+        or is_state('binary_sensor.kitchen_pir', 'on')
         or state_attr('climate.kitchen', 'status').occupied == true }}
       device_class: motion
       friendly_name: 'Downstairs Occupancy' 
@@ -101,10 +118,10 @@
       friendly_name: "TC - Presence - All"
       device_class: presence
       value_template: "{{ is_state('input_boolean.tyrcelyn_presence_all', 'on') }}"
-    tyrcelyn_presence_cleaner:
-      friendly_name: "TC - Presence - Cleaner"
-      device_class: presence
-      value_template: "{{ is_state('input_boolean.tyrcelyn_presence_cleaner', 'on') }}"
+    # tyrcelyn_presence_cleaner:
+    #   friendly_name: "TC - Presence - Cleaner"
+    #   device_class: presence
+    #   value_template: "{{ is_state('input_boolean.tyrcelyn_presence_cleaner', 'on') }}"
     tyrcelyn_bookings:
       friendly_name: "TC - Booked"
       device_class: presence
@@ -113,6 +130,10 @@
       friendly_name: "TC - Guests"
       device_class: presence
       value_template: "{{ is_state('input_boolean.tyrcelyn_guests', 'on') }}"
+    tyrcelyn_utility_motion:
+      friendly_name: "TC - Utility Motion"
+      device_class: motion
+      value_template: "{{ is_state('input_boolean.tyrcelyn_utility_motion', 'on') }}"
 
 
 #- platform: ping

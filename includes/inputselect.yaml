@@ -5,3 +5,9 @@ location_mode:
     - Away
     - Night
     - Evening Time
+    
+fireplace_lights_mode:
+  name: Fireplace Mode
+  options:
+    - Evening Chill
+    - Evening Friends

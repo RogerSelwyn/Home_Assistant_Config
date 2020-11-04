@@ -1,32 +1,9 @@
 {
+    "version": 1,
+    "key": "lovelace",
     "data": {
         "config": {
             "background": "var(--background-image)",
-            "custom_header": {
-                "background": "rgba(155, 155, 155, 0.25)",
-                "compact_mode": true,
-                "default_tab": "0",
-                "exceptions": [
-                    {
-                        "conditions": {
-                            "user": "Roger Selwyn"
-                        },
-                        "config": {
-                            "hide_config": false,
-                            "hide_help": false,
-                            "hide_raw": false,
-                            "hide_unused": false,
-                            "options_hide": false
-                        }
-                    }
-                ],
-                "hide_config": true,
-                "hide_help": true,
-                "hide_raw": true,
-                "hide_unused": true,
-                "options_hide": true,
-                "show_tabs": "0,1,2,3,4"
-            },
             "title": "Home",
             "views": [
                 {
@@ -62,6 +39,13 @@
                                     }
                                 },
                                 {
+                                    "entity": "input_boolean.scene_evening_friends",
+                                    "name": "Friends",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    }
+                                },
+                                {
                                     "entity": "input_boolean.scene_reading",
                                     "tap_action": {
                                         "action": "toggle"
@@ -84,7 +68,7 @@
                                 "type": "entities"
                             },
                             "filter": {
-                                "template": "{%if is_state('switch.zwave_living_room_main_light_switch','on')%}light.main_light{%endif%} {%if is_state('switch.zwave_living_room_main_light_switch','off')%}switch.zwave_living_room_main_light_switch{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.side_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','off')%}switch.zwave_living_room_side_light_switch{%endif%} {%if is_state('binary_sensor.table_light_power','on')%}light.table_light{%endif%} {%if is_state('binary_sensor.table_light_power','off')%}binary_sensor.table_light_power{%endif%} timer.lights_living_room climate.living_room binary_sensor.living_room_occupancy\n"
+                                "template": "{%if is_state('switch.zwave_living_room_main_light_switch','on')%}light.main_light{%endif%} {%if is_state('switch.zwave_living_room_main_light_switch','off')%}switch.zwave_living_room_main_light_switch{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.side_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.tv_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','off')%}switch.zwave_living_room_side_light_switch{%endif%} {%if is_state('binary_sensor.table_light_power','on')%}light.table_light{%endif%} {%if is_state('binary_sensor.table_light_power','off')%}binary_sensor.table_light_power{%endif%} timer.lights_living_room climate.living_room binary_sensor.living_room_occupancy\n"
                             },
                             "show_empty": false,
                             "type": "custom:auto-entities"
@@ -101,7 +85,7 @@
                                     "entity": "switch.plug_kitchen"
                                 },
                                 {
-                                    "entity": "binary_sensor.geniushub_kitchen_occupancy"
+                                    "entity": "binary_sensor.kitchen_occupancy"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -142,18 +126,18 @@
                     "title": "Home"
                 },
                 {
+                    "icon": "mdi:home-outline",
+                    "path": "tyr-celyn",
+                    "title": "Ty\u2019r Celyn",
                     "badges": [
                         {
-                            "entity": "sensor.nest_protect_dining_room_tyr_celyn_smoke_detector"
+                            "entity": "binary_sensor.tyr_celyn"
                         },
                         {
-                            "entity": "sensor.nest_protect_dining_room_tyr_celyn_carbon_monoxide_detector"
+                            "entity": "binary_sensor.tyr_celyn_2"
                         },
                         {
-                            "entity": "sensor.nest_protect_dining_room_tyr_celyn_battery"
-                        },
-                        {
-                            "entity": "sensor.tc_humidity"
+                            "entity": "sensor.tyr_celyn_thermostat_humidity"
                         },
                         {
                             "entity": "binary_sensor.tyrcelyn_bookings"
@@ -165,10 +149,13 @@
                             "entity": "binary_sensor.tyrcelyn_presence_all"
                         },
                         {
-                            "entity": "binary_sensor.nest_presence_device_presence"
+                            "entity": "binary_sensor.home_occupied_tyr_celyn"
                         },
                         {
-                            "entity": "binary_sensor.tyrcelyn_presence_cleaner"
+                            "entity": "binary_sensor.tyrcelyn_utility_motion"
+                        },
+                        {
+                            "entity": "timer.tycelyn_presence"
                         }
                     ],
                     "cards": [
@@ -186,27 +173,24 @@
                             "type": "custom:atomic-calendar-revive"
                         },
                         {
-                            "entity": "climate.nest_thermostat_living_room_tyr_celyn",
-                            "type": "thermostat"
-                        },
-                        {
-                            "entities": [
+                            "cards": [
                                 {
-                                    "entity": "sensor.tc_current_temperature",
-                                    "index": 0,
-                                    "name": "Current",
-                                    "show_points": true
+                                    "entity": "climate.tyr_celyn_thermostat",
+                                    "type": "thermostat"
                                 },
                                 {
-                                    "entity": "sensor.tc_set_temperature",
-                                    "index": 1,
-                                    "name": "Set",
-                                    "show_points": true
+                                    "entities": [
+                                        {
+                                            "entity": "switch.tyr_celyn_thermostat"
+                                        },
+                                        {
+                                            "entity": "switch.tyr_celyn_thermostat_2"
+                                        }
+                                    ],
+                                    "type": "glance"
                                 }
                             ],
-                            "name": "Temperature",
-                            "points_per_hour": 5,
-                            "type": "custom:mini-graph-card"
+                            "type": "vertical-stack"
                         },
                         {
                             "entity": "weather.ty_r_celyn",
@@ -240,11 +224,18 @@
                                 }
                             ],
                             "type": "conditional"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "climate.tyr_celyn_thermostat"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "type": "history-graph"
                         }
-                    ],
-                    "icon": "mdi:home-outline",
-                    "path": "tyr-celyn",
-                    "title": "Ty\u2019r Celyn"
+                    ]
                 },
                 {
                     "badges": [],
@@ -281,6 +272,17 @@
                             },
                             "show_empty": false,
                             "type": "custom:auto-entities"
+                        },
+                        {
+                            "card": {
+                                "title": "Office",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "template": "{%if is_state('binary_sensor.office_lights_power','on')%}light.office{%endif%} {%if is_state('binary_sensor.office_lights_power','off')%}binary_sensor.office_lights_power{%endif%}\n"
+                            },
+                            "show_empty": false,
+                            "type": "custom:auto-entities"
                         }
                     ],
                     "icon": "mdi:bed",
@@ -314,10 +316,6 @@
                                             {
                                                 "entity_id": "media_player.living_room",
                                                 "name": "Living Room"
-                                            },
-                                            {
-                                                "entity_id": "media_player.living_room_tv",
-                                                "name": "Living Room TV"
                                             }
                                         ],
                                         "platform": "sonos",
@@ -327,7 +325,7 @@
                                 },
                                 {
                                     "artwork": "cover",
-                                    "entity": "media_player.living_room_tv",
+                                    "entity": "media_player.living_room",
                                     "hide": {
                                         "icon_state": false,
                                         "power": true,
@@ -347,24 +345,9 @@
                                             {
                                                 "entity_id": "media_player.living_room",
                                                 "name": "Living Room"
-                                            },
-                                            {
-                                                "entity_id": "media_player.living_room_tv",
-                                                "name": "Living Room TV"
                                             }
                                         ]
                                     },
-                                    "type": "custom:mini-media-player"
-                                },
-                                {
-                                    "artwork": "cover",
-                                    "entity": "media_player.living_room",
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power": true,
-                                        "power_state": false
-                                    },
-                                    "icon": "mdi:music-box-multiple-outline",
                                     "type": "custom:mini-media-player"
                                 }
                             ],
@@ -610,7 +593,5 @@
                 }
             ]
         }
-    },
-    "key": "lovelace",
-    "version": 1
+    }
 }
