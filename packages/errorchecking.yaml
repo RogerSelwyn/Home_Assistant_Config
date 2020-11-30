@@ -1,0 +1,30 @@
+binary_sensor:
+  - platform: template
+    sensors:
+      hue:
+        friendly_name: "Hue"
+        device_class: connectivity
+        value_template: "{{ is_state('input_boolean.hue', 'on') }}"
+      internet:
+        friendly_name: "Internet"
+        device_class: connectivity
+        value_template: "{{ is_state('input_boolean.internet', 'on') }}"
+      dlan_dr:
+        friendly_name: "Devolo Dining Room"
+        device_class: connectivity
+        value_template: "{{ is_state('input_boolean.dlan_dr', 'on') }}"
+
+input_boolean:
+  internet:
+  hue:
+  dlan_dr:
+
+notify:
+  - platform: group
+    name: all_ios_devices
+    services:
+      - service: mobile_app_rogers_iphone
+  - platform: file
+    name: noderedlog
+    filename: noderedlog.csv
+    timestamp: true

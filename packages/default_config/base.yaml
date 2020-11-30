@@ -1,0 +1,19 @@
+frontend:
+  themes: !include_dir_merge_named themes
+
+camera:
+climate:
+config:
+device_tracker:
+mobile_app:
+person:
+script: 
+ssdp:
+sun:
+system_health:
+system_log:
+tts:
+  - platform: google_translate
+updater:
+zeroconf:
+

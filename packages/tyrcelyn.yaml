@@ -1,0 +1,70 @@
+input_boolean:
+  tyrcelyn_presence_all:
+  tyrcelyn_presence_cleaner:
+  tyrcelyn_guests:
+  tyrcelyn_utility_motion:
+  
+input_number:
+  tyrcelyn_bookings_today:
+    name: Bookings Today
+    min: 0
+    max: 10
+  tyrcelyn_bookings_tomorrow:
+    name: Bookings Tomorrow
+    min: 0
+    max: 10
+  tyrcelyn_bookings_total:
+    name: Bookings Total
+    min: 0
+    max: 10
+  
+binary_sensor:
+  - platform: template
+    sensors:
+      tyrcelyn_presence_all:
+        friendly_name: "TC - Presence - All"
+        device_class: presence
+        value_template: "{{ is_state('input_boolean.tyrcelyn_presence_all', 'on') }}"
+      # tyrcelyn_presence_cleaner:
+      #   friendly_name: "TC - Presence - Cleaner"
+      #   device_class: presence
+      #   value_template: "{{ is_state('input_boolean.tyrcelyn_presence_cleaner', 'on') }}"
+      tyrcelyn_bookings:
+        friendly_name: "TC - Booked"
+        device_class: presence
+        value_template: "{{ is_state('calendar.bookings', 'on') }}"
+      tyrcelyn_guests:
+        friendly_name: "TC - Guests"
+        device_class: presence
+        value_template: "{{ is_state('input_boolean.tyrcelyn_guests', 'on') }}"
+      tyrcelyn_utility_motion:
+        friendly_name: "TC - Utility Motion"
+        device_class: motion
+        value_template: "{{ is_state('input_boolean.tyrcelyn_utility_motion', 'on') }}"
+
+sensor:
+  - platform: template
+    sensors:
+      tc_current_temperature:
+        friendly_name: "Ty'r Celyn Current Temperature"
+        value_template: "{{ state_attr('climate.tyr_celyn', 'current_temperature') }}"
+        unit_of_measurement: °C
+      tc_set_temperature:
+        friendly_name: "Ty'r Celyn Set Temperature"
+        value_template: "{{ state_attr('climate.tyr_celyn', 'temperature') }}"
+        unit_of_measurement: °C
+      tc_hvac_action:
+        friendly_name: "Ty'r Celyn HVAC Action"
+        value_template: "{{ state_attr('climate.tyr_celyn', 'hvac_action') }}"
+        unit_of_measurement: none
+
+notify:
+  - platform: file
+    name: tyrcelyn
+    filename: tyrcelyn.csv
+    timestamp: true
+
+timer:
+  tycelyn_presence:
+    name: TC - Presence
+    duration: '00:10:00'

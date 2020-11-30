@@ -1,0 +1,29 @@
+input_boolean:
+  scene_evening_chill:
+    name: Evening Chill
+    initial: off
+    icon: 'mdi:weather-night'
+  scene_evening_friends:
+    name: Evening Friends
+    initial: off
+    icon: 'mdi:account-group'
+  scene_evening_movie:
+    name: Evening Movie
+    initial: off
+    icon: 'mdi:movie'
+  scene_normal:
+    name: Normal
+    initial: off
+    icon: 'mdi:ceiling-light'
+  scene_reading:
+    name: Reading
+    initial: off
+    icon: 'mdi:book-open-variant'
+  flash_benjamin:
+    name: Flash Benjamin
+    initial: off
+    icon: 'mdi:flash-circle'
+  url_profile:
+    name: Profile
+    initial: off
+    icon: 'mdi:cog-outline'

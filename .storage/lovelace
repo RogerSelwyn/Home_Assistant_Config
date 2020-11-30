@@ -137,7 +137,7 @@
                             "entity": "binary_sensor.tyr_celyn_2"
                         },
                         {
-                            "entity": "sensor.tyr_celyn_thermostat_humidity"
+                            "entity": "sensor.tyr_celyn_humidity"
                         },
                         {
                             "entity": "binary_sensor.tyrcelyn_bookings"
@@ -175,7 +175,7 @@
                         {
                             "cards": [
                                 {
-                                    "entity": "climate.tyr_celyn_thermostat",
+                                    "entity": "climate.tyr_celyn",
                                     "type": "thermostat"
                                 },
                                 {
@@ -200,12 +200,12 @@
                         {
                             "card": {
                                 "aspect_ratio": "56%",
-                                "entity": "camera.workshop_camera",
+                                "entity": "camera.workshop",
                                 "type": "picture-entity"
                             },
                             "conditions": [
                                 {
-                                    "entity": "camera.workshop_camera",
+                                    "entity": "camera.workshop",
                                     "state": "idle"
                                 }
                             ],
@@ -214,12 +214,12 @@
                         {
                             "card": {
                                 "aspect_ratio": "56%",
-                                "entity": "camera.garage_camera",
+                                "entity": "camera.garage",
                                 "type": "picture-entity"
                             },
                             "conditions": [
                                 {
-                                    "entity": "camera.garage_camera",
+                                    "entity": "camera.garage",
                                     "state": "idle"
                                 }
                             ],
@@ -228,7 +228,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "climate.tyr_celyn_thermostat"
+                                    "entity": "climate.tyr_celyn"
                                 }
                             ],
                             "hours_to_show": 24,

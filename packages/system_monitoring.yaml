@@ -1,0 +1,37 @@
+homeassistant:
+  customize:
+    sensor.hacs:
+      unit_of_measurement: 'Updates'
+      
+sensor:
+  - platform: websocket_api
+
+  - platform: systemmonitor
+    resources:
+      - type: processor_use
+      - type: memory_free
+
+  - platform: command_line
+    name: Supervisor addons
+    scan_interval: 3600
+    command: 'curl http://supervisor/supervisor/info -s -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"addons":[.data.addons[]]}'''
+    value_template: "{{ value_json.addons | length }}"
+    json_attributes:
+      - addons
+
+#- platform: command_line
+#  name: CPU Temperature
+#  command: "cat /sys/class/thermal/thermal_zone0/temp"
+#  unit_of_measurement: "°C"
+#  value_template: '{{ value | multiply(0.001) | round(1) }}'
+# - platform: command_line
+#   name: Addons
+#   scan_interval: 3600
+#   command: "ha supervisor info --raw-json"
+# Sensor to track available updates for supervisor & addons
+# - platform: command_line
+#   name: Supervisor updates
+#   scan_interval: 3600
+#   command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"addons":[.data.addons[]]}'''
+#   json_attributes:
+#   - addons

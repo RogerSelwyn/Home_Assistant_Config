@@ -1,0 +1,134 @@
+homeassistant:
+  customize:
+    light.bedroom_1:
+      friendly_name: Bedroom 1 Lights
+    light.bedroom_2:
+      friendly_name: Bedroom 2 Lights
+    light.bedroom_3:
+      friendly_name: Bedroom 3 Lights
+    light.living_room:
+      friendly_name: Living Room Lights
+
+binary_sensor:
+  - platform: template
+    sensors:
+      bedroom1_lights_power:
+        friendly_name: "Bedroom 1 Lights - Power"
+        value_template: >-
+          {{ not is_state('light.bedroom_1_bulb_1', 'unavailable') }}
+        icon_template: >-
+          {% if is_state('binary_sensor.bedroom1_lights_power', 'on') %}
+            mdi:power
+          {% else %}
+            mdi:power-off
+          {% endif %}
+      bedroom2_lights_power:
+        friendly_name: "Bedroom 2 Lights - Power"
+        value_template: >-
+          {{ not is_state('light.bedroom_2_bulb_1', 'unavailable') }}
+        icon_template: >-
+          {% if is_state('binary_sensor.bedroom2_lights_power', 'on') %}
+            mdi:power
+          {% else %}
+            mdi:power-off
+          {% endif %}
+      bedroom3_lights_power:
+        friendly_name: "Bedroom 3 Lights - Power"
+        value_template: >-
+          {{ not is_state('light.bedroom_light', 'unavailable') }}
+        icon_template: >-
+          {% if is_state('binary_sensor.bedroom3_lights_power', 'on') %}
+            mdi:power
+          {% else %}
+            mdi:power-off
+          {% endif %}
+      office_lights_power:
+        friendly_name: "Office Lights - Power"
+        value_template: >-
+          {{ not is_state('light.office_light', 'unavailable') }}
+        icon_template: >-
+          {% if is_state('binary_sensor.office_lights_power', 'on') %}
+            mdi:power
+          {% else %}
+            mdi:power-off
+          {% endif %}
+      table_light_power:
+        friendly_name: "Table Light - Power"
+        value_template: >-
+          {{ not is_state('light.table_light', 'unavailable') }}
+        icon_template: >-
+          {% if is_state('binary_sensor.table_light_power', 'on') %}
+            mdi:power
+          {% else %}
+            mdi:power-off
+          {% endif %}
+
+group:
+  security_lights:
+    name: Security Lights
+    icon: mdi:shield-lock
+    entities:
+      - light.main_light
+      - light.fireplace
+      - light.table_light
+      - light.bedroom_light
+      - light.office_light
+    
+  main_light_actual:
+    name: Main Light Actual
+    icon: mdi:ceiling-light
+    all: true
+    entities:
+      - switch.zwave_living_room_main_light_switch
+      - light.main_light
+  side_light_actual:
+    name: Side Light Actual
+    icon: mdi:wall-sconce-flat
+    all: true
+    entities:
+      - switch.zwave_living_room_side_light_switch
+      - light.side_light
+  tv_light_actual:
+    name: TV Light Actual
+    icon: mdi:wall-sconce-flat
+    all: true
+    entities:
+      - switch.zwave_living_room_side_light_switch
+      - light.tv_light
+  table_light_actual:
+    name: Table Light Actual
+    icon: mdi:lamp
+    all: true
+    entities:
+      - binary_sensor.table_light_power
+      - light.table_light
+  bedroom_1_lights_actual:
+    name: Bedroom 1 Lights Actual
+    icon: mdi:ceiling-light
+    all: true
+    entities:
+      - binary_sensor.bedroom1_lights_power
+      - light.bedroom_1
+  bedroom_2_lights_actual:
+    name: Bedroom 2 Lights Actual
+    icon: mdi:ceiling-light
+    all: true
+    entities:
+      - binary_sensor.bedroom2_lights_power
+      - light.bedroom_2
+  bedroom_3_lights_actual:
+    name: Bedroom 3 Lights Actual
+    icon: mdi:lamp
+
+      
+input_select:
+  fireplace_lights_mode:
+    name: Fireplace Mode
+    options:
+      - Evening Chill
+      - Evening Friends
+
+timer:
+  lights_living_room:
+    name: Time to Lights Off
+    duration: '00:15:00'

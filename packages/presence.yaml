@@ -1,0 +1,74 @@
+binary_sensor:
+  - platform: template
+    sensors:
+      living_room_occupancy:
+        value_template: >-
+          {{ is_state('binary_sensor.zwave_living_room_fibaro_motion', 'on')
+          or is_state('binary_sensor.geniushub_living_room_occupancy', 'on') }}
+        device_class: motion
+        friendly_name: 'Living Room Occupancy' 
+      kitchen_occupancy:
+        value_template: >-
+          {{ is_state('binary_sensor.kitchen_pir', 'on')
+          or is_state('binary_sensor.geniushub_kitchen_occupancy', 'on') }}
+        device_class: motion
+        friendly_name: 'Kitchen Occupancy' 
+      downstairs_occupancy:
+        value_template: >-
+          {{ is_state('binary_sensor.zwave_living_room_fibaro_motion', 'on')
+          or is_state('binary_sensor.geniushub_living_room_occupancy', 'on')
+          or is_state('binary_sensor.kitchen_pir', 'on')
+          or is_state('binary_sensor.geniushub_kitchenm_occupancy', 'on') }}
+        device_class: motion
+        friendly_name: 'Downstairs Occupancy' 
+      upstairs_occupancy:
+        value_template: >-
+          {{ is_state('binary_sensor.geniushub_bedroom1_occupancy', 'on')
+          or is_state('binary_sensor.geniushub_bedroom2_occupancy', 'on')
+          or is_state('binary_sensor.geniushub_bedroom3_occupancy', 'on') }}
+        device_class: motion
+        friendly_name: 'Upstairs Occupancy' 
+
+group:
+  presence_all:
+    name: Presence - All
+    icon: mdi:account-group
+    entities:
+      - person.benjamin_selwyn
+      - person.clare_selwyn
+      - person.roger_selwyn
+
+input_select:
+  location_mode:
+    name: Location Mode
+    options:
+      - Home
+      - Away
+      - Night
+      - Evening Time
+
+sensor:
+  - platform: template
+    sensors:
+      location_mode:
+        value_template: "{{ states('input_select.location_mode') }}"
+        friendly_name_template: >-
+          {{ states('input_select.location_mode') }}
+        entity_picture_template: >-
+          {% if is_state('input_select.location_mode', 'Home') %}
+            /local/icons/home.png
+          {% elif is_state('input_select.location_mode', 'Away') %}
+            /local/icons/shield-lock.png
+          {% elif is_state('input_select.location_mode', 'Night') %}
+            /local/icons/weather-night.png
+          {% elif is_state('input_select.location_mode', 'Evening Time') %}
+            /local/icons/weather-sunset.png
+          {% endif %}
+
+timer:
+  night:
+    name: Time to Night
+    duration: '00:15:00'
+  away:
+    name: Time to Away
+    duration: '00:07:00'
