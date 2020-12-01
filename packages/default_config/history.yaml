@@ -9,9 +9,14 @@ history:
       - person.roger_selwyn
       - binary_sensor.front_door_motion
       - binary_sensor.downstairs_occupancy
-      - binary_sensor.living_room_fibaro_motion
       - binary_sensor.zwave_living_room_fibaro_motion
+      - binary_sensor.kitchen_pir
+      - binary_sensor.geniushub_living_room_occupancy
+      - binary_sensor.geniushub_kitchen_occupancy
       - binary_sensor.upstairs_occupancy
+      - binary_sensor.geniushub_bedroom1_occupancy
+      - binary_sensor.geniushub_bedroom2_occupancy
+      - binary_sensor.geniushub_bedroom3_occupancy
       - binary_sensor.dual_channel_receiver_3_1
       - binary_sensor.dual_channel_receiver_3_2
       - group.main_light_actual

@@ -119,7 +119,10 @@ group:
   bedroom_3_lights_actual:
     name: Bedroom 3 Lights Actual
     icon: mdi:lamp
-
+    all: true
+    entities:
+      - binary_sensor.bedroom3_lights_power
+      - light.bedroom_3
       
 input_select:
   fireplace_lights_mode:

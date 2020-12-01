@@ -7,7 +7,7 @@ config:
 device_tracker:
 mobile_app:
 person:
-script: 
+# script: 
 ssdp:
 sun:
 system_health:
