@@ -34,4 +34,4 @@ sensor:
 #   scan_interval: 3600
 #   command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"addons":[.data.addons[]]}'''
 #   json_attributes:
-#   - addons
+#   - addons 
