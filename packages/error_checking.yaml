@@ -26,5 +26,5 @@ notify:
       - service: mobile_app_rogers_iphone
   - platform: file
     name: noderedlog
-    filename: noderedlog.csv
+    filename: logs/noderedlog.csv
     timestamp: true

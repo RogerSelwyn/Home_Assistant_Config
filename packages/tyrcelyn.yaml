@@ -61,7 +61,7 @@ sensor:
 notify:
   - platform: file
     name: tyrcelyn
-    filename: tyrcelyn.csv
+    filename: logs/tyrcelyn.csv
     timestamp: true
 
 timer:
