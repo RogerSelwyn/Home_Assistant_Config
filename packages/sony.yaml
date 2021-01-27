@@ -1,0 +1,11 @@
+media_player:
+  - platform: braviatv_psk
+    host: !secret tv_host
+    psk: !secret tv_psk
+    mac: !secret tv_mac
+    amp: False
+    android: True
+    user_labels: True
+    sourcefilter:
+      - HDMI
+    name: SFTV

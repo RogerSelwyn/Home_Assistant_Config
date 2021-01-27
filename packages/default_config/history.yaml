@@ -9,35 +9,35 @@ history:
       - person.roger_selwyn
       - binary_sensor.front_door_motion
       - binary_sensor.downstairs_occupancy
-      - binary_sensor.zwave_living_room_fibaro_motion
-      - binary_sensor.kitchen_pir
-      - binary_sensor.geniushub_living_room_occupancy
-      - binary_sensor.geniushub_kitchen_occupancy
+      - binary_sensor.living_room_hue_motion_motion
+#      - binary_sensor.kitchen_pir
+#      - binary_sensor.geniushub_living_room_occupancy
+#      - binary_sensor.geniushub_kitchen_occupancy
+      - binary_sensor.downstairs_4
       - binary_sensor.upstairs_occupancy
-      - binary_sensor.geniushub_bedroom1_occupancy
-      - binary_sensor.geniushub_bedroom2_occupancy
-      - binary_sensor.geniushub_bedroom3_occupancy
+      - binary_sensor.upstairs_4
+#      - binary_sensor.geniushub_bedroom1_occupancy
+#      - binary_sensor.geniushub_bedroom2_occupancy
+#      - binary_sensor.geniushub_bedroom3_occupancy
       - binary_sensor.dual_channel_receiver_3_1
       - binary_sensor.dual_channel_receiver_3_2
-      - group.main_light_actual
-      - group.side_light_actual
-      - group.tv_light_actual
-      - group.table_light_actual
+      - group.living_room_lights_actual
       - group.bedroom_1_lights_actual
       - group.bedroom_2_lights_actual
       - group.bedroom_3_lights_actual
       - group.office_lights_actual
+      - sensor.security_lights
       - binary_sensor.hue
       - binary_sensor.internet
-      - binary_sensor.dlan_dr
-      - binary_sensor.upstairs
-      - binary_sensor.downstairs
+#      - binary_sensor.dlan_dr
       - sensor.geniushub_errors
       - sensor.geniushub_warnings
       - weather.home
       - weather.ty_r_celyn
       - sun.sun
-    
+      - sensor.sfups_load
+      - sensor.sfups_battery_charge
+
       - binary_sensor.tyrcelyn_presence_all
       - binary_sensor.home_occupied_tyr_celyn
       - binary_sensor.tyrcelyn_utility_motion

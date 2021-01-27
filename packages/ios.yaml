@@ -24,3 +24,11 @@ ios:
     icon:
       icon: sofa
       color: "#f6f5f3"
+  - name: flash_benjamin
+    background_color: "#ff0338"
+    label:
+      text: "Flash Benjamin"
+      color: "#f6f5f3"
+    icon:
+      icon: flash-circle
+      color: "#f6f5f3"

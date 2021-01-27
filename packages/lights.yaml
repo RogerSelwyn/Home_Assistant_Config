@@ -8,6 +8,8 @@ homeassistant:
       friendly_name: Bedroom 3 Lights
     light.living_room:
       friendly_name: Living Room Lights
+    sensor.living_room_hue_motion_light_level:
+      unit_of_measurement: lux
 
 binary_sensor:
   - platform: template
@@ -32,12 +34,22 @@ binary_sensor:
           {% else %}
             mdi:power-off
           {% endif %}
-      bedroom3_lights_power:
-        friendly_name: "Bedroom 3 Lights - Power"
+      ceiling_light_power:
+        friendly_name: "Ceiling Light - Power"
         value_template: >-
-          {{ not is_state('light.bedroom_light', 'unavailable') }}
+          {{ not is_state('light.ceiling_light', 'unavailable') }}
         icon_template: >-
-          {% if is_state('binary_sensor.bedroom3_lights_power', 'on') %}
+          {% if is_state('binary_sensor.ceiling_light_power', 'on') %}
+            mdi:power
+          {% else %}
+            mdi:power-off
+          {% endif %}
+      bedside_light_power:
+        friendly_name: "Bedside Light - Power"
+        value_template: >-
+          {{ not is_state('light.bedside_light', 'unavailable') }}
+        icon_template: >-
+          {% if is_state('binary_sensor.bedside_light_power', 'on') %}
             mdi:power
           {% else %}
             mdi:power-off
@@ -71,7 +83,8 @@ group:
       - light.main_light
       - light.fireplace
       - light.table_light
-      - light.bedroom_light
+      - light.bedside_light
+      - light.ceiling_light
       - light.office_light
     
   main_light_actual:
@@ -102,6 +115,15 @@ group:
     entities:
       - binary_sensor.table_light_power
       - light.table_light
+  living_room_lights_actual:
+    name: Living Room Lights Actual
+    icon: mdi:ceiling-light
+    all: false
+    entities:
+      - group.main_light_actual
+      - group.side_light_actual
+      - group.tv_light_actual
+      - group.table_light_actual
   bedroom_1_lights_actual:
     name: Bedroom 1 Lights Actual
     icon: mdi:ceiling-light
@@ -116,14 +138,41 @@ group:
     entities:
       - binary_sensor.bedroom2_lights_power
       - light.bedroom_2
-  bedroom_3_lights_actual:
+  bedside_light_actual:
+    name: Bedside Light Actual
+    icon: mdi:lamp
+    all: true
+    entities:
+      - binary_sensor.bedside_light_power
+      - light.bedside_light
+  ceiling_light_actual:
     name: Bedroom 3 Lights Actual
     icon: mdi:lamp
     all: true
     entities:
-      - binary_sensor.bedroom3_lights_power
-      - light.bedroom_3
-      
+      - binary_sensor.ceiling_light_power
+      - light.ceiling_light
+  bedroom_3_lights_actual:
+    name: Bedroom 3 Lights Actual
+    icon: mdi:ceiling-light
+    all: false
+    entities:
+      - group.bedside_light_actual
+      - group.ceiling_light_actual
+  office_lights_actual:
+    name: Office Lights Actual
+    icon: mdi:ceiling-light
+    all: true
+    entities:
+      - binary_sensor.office_lights_power
+      - light.office
+
+input_number:
+  security_lights:
+    min: 0
+    max: 10
+    step: 1
+
 input_select:
   fireplace_lights_mode:
     name: Fireplace Mode
@@ -131,7 +180,27 @@ input_select:
       - Evening Chill
       - Evening Friends
 
+sensor:
+  - platform: template
+    sensors:
+      security_lights:
+        friendly_name: "Security Lights"
+        value_template: >
+          {{states('input_number.security_lights')|int}}
+      living_room_hue_lightlevel:
+        friendly_name: "Living Room Hue Light Level"
+        value_template: "{{state_attr('sensor.living_room_hue_motion_light_level', 'lightlevel')|int}}"
+      living_room_hue_battery_level:
+        friendly_name: "Living Room Hue battery level"
+        value_template: "{{state_attr('sensor.living_room_hue_motion_light_level', 'battery_level')|int}}"
+        unit_of_measurement: '%'
+        device_class: battery
+
+
 timer:
   lights_living_room:
     name: Time to Lights Off
     duration: '00:15:00'
+  lights_office:
+    name: Time to Office Lights Off
+    duration: '00:05:00'

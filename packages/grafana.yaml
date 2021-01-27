@@ -1,0 +1,30 @@
+influxdb:
+  api_version: 2
+  ssl: false
+  host: !secret influx_host
+  port: !secret influx_port
+  token: !secret influx_token
+  organization: !secret influx_organization
+  bucket: homeassistant
+  default_measurement: state
+  include:
+    domains:
+      - alarm_control_panel
+      - climate
+      - weather
+    entities:
+      - sensor.ovo_last_electricity_reading
+      - sensor.ovo_last_electricity_cost
+      - sensor.nest_heating
+      - sensor.tyr_celyn_humidity
+      - sensor.sfups_load
+      - sensor.sfups_battery_charge
+      
+      - input_number.circadian_kelvin
+      - sensor.office_lights_actual
+      - sensor.zwave_office_fibaro_illuminance
+      - light.office
+      - light.bedroom_1
+      - light.bedroom_2
+      - light.bedroom_3
+      - sun.sun

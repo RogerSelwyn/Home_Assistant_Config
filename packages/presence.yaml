@@ -3,7 +3,7 @@ binary_sensor:
     sensors:
       living_room_occupancy:
         value_template: >-
-          {{ is_state('binary_sensor.zwave_living_room_fibaro_motion', 'on')
+          {{ is_state('binary_sensor.living_room_hue_motion_motion', 'on')
           or is_state('binary_sensor.geniushub_living_room_occupancy', 'on') }}
         device_class: motion
         friendly_name: 'Living Room Occupancy' 
@@ -15,10 +15,10 @@ binary_sensor:
         friendly_name: 'Kitchen Occupancy' 
       downstairs_occupancy:
         value_template: >-
-          {{ is_state('binary_sensor.zwave_living_room_fibaro_motion', 'on')
+          {{ is_state('binary_sensor.living_room_hue_motion_motion', 'on')
           or is_state('binary_sensor.geniushub_living_room_occupancy', 'on')
           or is_state('binary_sensor.kitchen_pir', 'on')
-          or is_state('binary_sensor.geniushub_kitchenm_occupancy', 'on') }}
+          or is_state('binary_sensor.geniushub_kitchen_occupancy', 'on') }}
         device_class: motion
         friendly_name: 'Downstairs Occupancy' 
       upstairs_occupancy:
@@ -37,6 +37,12 @@ group:
       - person.benjamin_selwyn
       - person.clare_selwyn
       - person.roger_selwyn
+
+input_boolean:
+  office_occupied:
+    name: Office Occupied
+  living_room_occupied:
+    name: Living Room Occupied
 
 input_select:
   location_mode:

@@ -10,18 +10,23 @@ homeassistant:
 binary_sensor:
   - platform: template
     sensors:
-      zwave_living_room_fibaro_motion:
+      zwave_office_fibaro_motion:
         device_class: motion
-        friendly_name: Living Room Fibaro Motion
+        friendly_name: Office Fibaro Motion
         value_template: "{{ is_state('binary_sensor.fgms001_zw5_motion_sensor_home_security_motion_detected', 'on') }}"
 sensor:
   - platform: template
     sensors:
-      zwave_living_room_fibaro_illuminance:
+      zwave_office_fibaro_illuminance:
         value_template: "{{ '%.0f'%(states('sensor.fgms001_zw5_motion_sensor_illuminance') | float) }}"
-        friendly_name: 'Living Room Fibaro Illuminance'
+        friendly_name: 'Office Fibaro Illuminance'
         unit_of_measurement: 'lux'
         device_class: illuminance
+      zwave_office_fibaro_temperature:
+        value_template: "{{ '%.0f'%(states('sensor.fgms001_zw5_motion_sensor_air_temperature') | float) }}"
+        friendly_name: 'Office Fibaro Temperature'
+        unit_of_measurement: '°C'
+        device_class: temperature
 
 switch:
   - platform: template

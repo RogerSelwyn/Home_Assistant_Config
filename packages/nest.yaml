@@ -3,3 +3,15 @@ nest:
   client_secret: !secret nest-client-secret
   project_id: !secret nest-project-id
   subscriber_id: !secret nest-subscriber-id
+
+sensor:
+  - platform: template
+    sensors:
+      nest_heating:
+        device_class: temperature
+        value_template: >-
+          {% if state_attr('climate.tyr_celyn', 'hvac_action') == 'heating' %}
+            {{ state_attr('climate.tyr_celyn', 'current_temperature') }}
+          {% else %}
+            0
+          {% endif %}

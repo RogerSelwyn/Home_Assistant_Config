@@ -1,0 +1,57 @@
+sensor:
+  - platform: template
+    sensors:
+      office_lights_actual:
+        value_template: >-
+          {% if is_state('group.office_lights_actual', 'on') %}
+            {{ '%.0f'%(state_attr('light.office', 'brightness') / 255 * 100) | float}}
+          {% else %}
+            0
+          {% endif %}
+
+input_boolean:
+  work_day:
+    name: Work Day/Hours
+    icon: mdi:briefcase
+  circadian_office:
+    name: Office Circadian
+    icon: mdi:sine-wave
+  circadian_bedroom_1:
+    name: Bedroom 1 Circadian
+    icon: mdi:sine-wave
+  circadian_bedroom_2:
+    name: Bedroom 2 Circadian
+    icon: mdi:sine-wave
+  circadian_bedroom_3:
+    name: Bedroom 3 Circadian
+    icon: mdi:sine-wave
+
+input_number:
+  circadian_kelvin:
+    name: Target Kelvin
+    icon: mdi:temperature-kelvin
+    min: 0
+    max: 10000
+
+homeassistant:
+  customize:
+    input_boolean.circadian_office:
+      light_entity_id: group.office_lights_actual
+      circadian: true
+      min: 153
+      max: 454
+      workday_min: 181
+      workday_max: 285
+    input_boolean.circadian_bedroom_1:
+      light_entity_id: group.bedroom_1_lights_actual
+      circadian: true
+      min: 250
+      max: 454
+    input_boolean.circadian_bedroom_2:
+      light_entity_id: group.bedroom_2_lights_actual
+      circadian: true
+      min: 333
+      max: 400
+    input_boolean.circadian_bedroom_3:
+      light_entity_id: group.bedroom_3_lights_actual
+      circadian: true

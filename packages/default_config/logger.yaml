@@ -3,12 +3,15 @@ logger:
   logs:
 #  custom_components.braviatv_psk: debug
     NodeRed: debug
-    custom_components.skyq: debug
+    custom_components.skyq: info
 #   custom_components.o365: info
     homeassistant.loader: error
     homeassistant.components.ring: error
-    custom_components.hacs.repository: fatal
-    custom_components.hacs.factory: fatal
+    # homeassistant.components.nut: debug
+    # custom_components.hacs: debug
+    # hacs: debug
+    # queueman: debug
+    # AIOGitHubAPI: debug
 #  homeassistant.components.media_player: error
 #  homeassistant.components.mobile_app.webhook: fatal
 # Example configuration.yaml entry

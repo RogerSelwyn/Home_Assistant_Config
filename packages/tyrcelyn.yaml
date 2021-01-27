@@ -1,23 +1,3 @@
-input_boolean:
-  tyrcelyn_presence_all:
-  tyrcelyn_presence_cleaner:
-  tyrcelyn_guests:
-  tyrcelyn_utility_motion:
-  
-input_number:
-  tyrcelyn_bookings_today:
-    name: Bookings Today
-    min: 0
-    max: 10
-  tyrcelyn_bookings_tomorrow:
-    name: Bookings Tomorrow
-    min: 0
-    max: 10
-  tyrcelyn_bookings_total:
-    name: Bookings Total
-    min: 0
-    max: 10
-  
 binary_sensor:
   - platform: template
     sensors:
@@ -42,6 +22,32 @@ binary_sensor:
         device_class: motion
         value_template: "{{ is_state('input_boolean.tyrcelyn_utility_motion', 'on') }}"
 
+input_boolean:
+  tyrcelyn_presence_all:
+  tyrcelyn_presence_cleaner:
+  tyrcelyn_guests:
+  tyrcelyn_utility_motion:
+  
+input_number:
+  tyrcelyn_bookings_today:
+    name: Bookings Today
+    min: 0
+    max: 10
+  tyrcelyn_bookings_tomorrow:
+    name: Bookings Tomorrow
+    min: 0
+    max: 10
+  tyrcelyn_bookings_total:
+    name: Bookings Total
+    min: 0
+    max: 10
+  
+notify:
+  - platform: file
+    name: tyrcelyn
+    filename: logs/tyrcelyn.csv
+    timestamp: true
+
 sensor:
   - platform: template
     sensors:
@@ -57,12 +63,6 @@ sensor:
         friendly_name: "Ty'r Celyn HVAC Action"
         value_template: "{{ state_attr('climate.tyr_celyn', 'hvac_action') }}"
         unit_of_measurement: none
-
-notify:
-  - platform: file
-    name: tyrcelyn
-    filename: logs/tyrcelyn.csv
-    timestamp: true
 
 timer:
   tycelyn_presence:
