@@ -25,7 +25,8 @@ binary_sensor:
         value_template: >-
           {{ is_state('binary_sensor.geniushub_bedroom1_occupancy', 'on')
           or is_state('binary_sensor.geniushub_bedroom2_occupancy', 'on')
-          or is_state('binary_sensor.geniushub_bedroom3_occupancy', 'on') }}
+          or is_state('binary_sensor.geniushub_bedroom3_occupancy', 'on')
+          or is_state('binary_sensor.zwave_office_fibaro_motion', 'on') }}
         device_class: motion
         friendly_name: 'Upstairs Occupancy' 
 
@@ -37,11 +38,18 @@ group:
       - person.benjamin_selwyn
       - person.clare_selwyn
       - person.roger_selwyn
+  living_room_occupancy:
+    entities:
+      - binary_sensor.living_room_hue_motion_motion
+      - binary_sensor.geniushub_living_room_occupancy
+
 
 input_boolean:
-  office_occupied:
+  occupied_office:
     name: Office Occupied
-  living_room_occupied:
+#   living_room_occupied:
+#     name: Living Room Occupied
+  occupied_living_room:
     name: Living Room Occupied
 
 input_select:

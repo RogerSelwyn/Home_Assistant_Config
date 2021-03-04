@@ -18,7 +18,18 @@ input_boolean:
   internet:
   hue:
   dlan_dr:
+  ups:
 
+input_datetime:
+  core_log:
+    name: core_log
+    has_date: true
+    has_time: true
+  supervisor_log:
+    name: supervisor_log
+    has_date: true
+    has_time: true
+    
 notify:
   - platform: group
     name: all_ios_devices
@@ -27,4 +38,8 @@ notify:
   - platform: file
     name: noderedlog
     filename: logs/noderedlog.csv
+    timestamp: true
+  - platform: file
+    name: lights
+    filename: logs/lights.csv
     timestamp: true

@@ -7,9 +7,44 @@ influxdb:
   organization: !secret influx_organization
   bucket: homeassistant
   default_measurement: state
+  tags_attributes:
+    - friendly_name
+  ignore_attributes:
+    - hvac_action
+    - hvac_modes
+    - icon
+    - max_temp
+    - min_temp
+    - preset_mode
+    - preset_modes
+    - status
+    - supported_features
+    - attribution
+    - forecast
+    - ozone
+    - visibility
+    - wind_bearing
+    - wind_speed
+    - editable
+    - initial
+    - max
+    - min
+    - mode
+    - step
+    - is_hue_group
+    - max_mireds
+    - min_mireds
+    - device_class
+    - next_dawn
+    - next_dusk
+    - next_midnight
+    - next_noon
+    - next_rising
+    - next_setting
+    - rising
   include:
     domains:
-      - alarm_control_panel
+    #   - alarm_control_panel
       - climate
       - weather
     entities:
@@ -21,10 +56,13 @@ influxdb:
       - sensor.sfups_battery_charge
       
       - input_number.circadian_kelvin
-      - sensor.office_lights_actual
+      - sensor.office_kelvin
+      - sensor.office_lights_brightness
       - sensor.zwave_office_fibaro_illuminance
       - light.office
       - light.bedroom_1
       - light.bedroom_2
       - light.bedroom_3
       - sun.sun
+      
+      - input_boolean.tyrcelyn_presence_all

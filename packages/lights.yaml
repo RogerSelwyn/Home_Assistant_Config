@@ -16,64 +16,34 @@ binary_sensor:
     sensors:
       bedroom1_lights_power:
         friendly_name: "Bedroom 1 Lights - Power"
+        device_class: power
         value_template: >-
           {{ not is_state('light.bedroom_1_bulb_1', 'unavailable') }}
-        icon_template: >-
-          {% if is_state('binary_sensor.bedroom1_lights_power', 'on') %}
-            mdi:power
-          {% else %}
-            mdi:power-off
-          {% endif %}
       bedroom2_lights_power:
         friendly_name: "Bedroom 2 Lights - Power"
+        device_class: power
         value_template: >-
           {{ not is_state('light.bedroom_2_bulb_1', 'unavailable') }}
-        icon_template: >-
-          {% if is_state('binary_sensor.bedroom2_lights_power', 'on') %}
-            mdi:power
-          {% else %}
-            mdi:power-off
-          {% endif %}
       ceiling_light_power:
         friendly_name: "Ceiling Light - Power"
+        device_class: power
         value_template: >-
           {{ not is_state('light.ceiling_light', 'unavailable') }}
-        icon_template: >-
-          {% if is_state('binary_sensor.ceiling_light_power', 'on') %}
-            mdi:power
-          {% else %}
-            mdi:power-off
-          {% endif %}
       bedside_light_power:
         friendly_name: "Bedside Light - Power"
+        device_class: power
         value_template: >-
           {{ not is_state('light.bedside_light', 'unavailable') }}
-        icon_template: >-
-          {% if is_state('binary_sensor.bedside_light_power', 'on') %}
-            mdi:power
-          {% else %}
-            mdi:power-off
-          {% endif %}
       office_lights_power:
         friendly_name: "Office Lights - Power"
+        device_class: power
         value_template: >-
           {{ not is_state('light.office_light', 'unavailable') }}
-        icon_template: >-
-          {% if is_state('binary_sensor.office_lights_power', 'on') %}
-            mdi:power
-          {% else %}
-            mdi:power-off
-          {% endif %}
       table_light_power:
         friendly_name: "Table Light - Power"
+        device_class: power
         value_template: >-
           {{ not is_state('light.table_light', 'unavailable') }}
-        icon_template: >-
-          {% if is_state('binary_sensor.table_light_power', 'on') %}
-            mdi:power
-          {% else %}
-            mdi:power-off
-          {% endif %}
 
 group:
   security_lights:
@@ -199,7 +169,7 @@ sensor:
 
 timer:
   lights_living_room:
-    name: Time to Lights Off
+    name: Time to Living Room Lights Off
     duration: '00:15:00'
   lights_office:
     name: Time to Office Lights Off

@@ -265,7 +265,8 @@
                         {
                             "card": {
                                 "title": "Bedroom 3",
-                                "type": "entities"
+                                "type": "entities",
+                                "show_header_toggle": false
                             },
                             "filter": {
                                 "template": "{%if is_state('binary_sensor.ceiling_light_power','on')%}light.ceiling_light{%endif%} {%if is_state('binary_sensor.ceiling_light_power','off')%}binary_sensor.ceiling_light_power{%endif%} {%if is_state('binary_sensor.bedside_light_power','on')%}light.bedside_light{%endif%} {%if is_state('binary_sensor.bedside_light_power','off')%}binary_sensor.bedside_light_power{%endif%} {%if states('input_boolean.circadian_bedroom_3') %}input_boolean.circadian_bedroom_3{%endif%} climate.bedroom_3 binary_sensor.geniushub_bedroom3_occupancy\n"
@@ -276,10 +277,11 @@
                         {
                             "card": {
                                 "title": "Office",
-                                "type": "entities"
+                                "type": "entities",
+                                "show_header_toggle": false
                             },
                             "filter": {
-                                "template": "{%if is_state('binary_sensor.office_lights_power','on')%}light.office{%endif%} {%if is_state('binary_sensor.office_lights_power','off')%}binary_sensor.office_lights_power{%endif%} {%if states('input_boolean.circadian_office') %}input_boolean.circadian_office{%endif%} input_boolean.work_day binary_sensor.zwave_office_fibaro_motion timer.lights_office\n"
+                                "template": "{%if is_state('binary_sensor.office_lights_power','on')%}light.office{%endif%} {%if is_state('binary_sensor.office_lights_power','off')%}binary_sensor.office_lights_power{%endif%} {%if states('input_boolean.circadian_office') %}input_boolean.circadian_office{%endif%} sensor.zwave_office_fibaro_temperature input_boolean.work_day binary_sensor.zwave_office_fibaro_motion timer.lights_office\n"
                             },
                             "show_empty": false,
                             "type": "custom:auto-entities"

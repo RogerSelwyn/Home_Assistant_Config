@@ -28,4 +28,5 @@ Reinclude files
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+known_devices.old
 .vscode/launch.json

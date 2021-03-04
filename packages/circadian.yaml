@@ -1,13 +1,23 @@
 sensor:
   - platform: template
     sensors:
-      office_lights_actual:
+      office_lights_brightness:
         value_template: >-
-          {% if is_state('group.office_lights_actual', 'on') %}
+          {% if state_attr('light.office', 'brightness') and 
+          is_state('group.office_lights_actual', 'on') %}
             {{ '%.0f'%(state_attr('light.office', 'brightness') / 255 * 100) | float}}
           {% else %}
             0
           {% endif %}
+      office_kelvin:
+        value_template: >-
+          {% if state_attr('light.office', 'color_temp') %}
+            {{ '%.0f'%(1000000 / state_attr('light.office', 'color_temp')) | float}}
+          {% else %}
+            None
+          {% endif %}
+
+
 
 input_boolean:
   work_day:
@@ -37,21 +47,32 @@ homeassistant:
   customize:
     input_boolean.circadian_office:
       light_entity_id: group.office_lights_actual
+      lux_entity_id: sensor.zwave_office_fibaro_illuminance
+      power_entity_id: binary_sensor.office_lights_power
+      occupancy_entity_id: input_boolean.occupied_office
       circadian: true
-      min: 153
-      max: 454
-      workday_min: 181
-      workday_max: 285
+      adjustable_colour: true
+      min_kelvin: 2200
+      max_kelvin: 5500
+      workday_min_kelvin: 3500
+      workday_max_kelvin: 5500
+      adjustable_lux: true
+      day_lux: 55
+      evening_lux: 28
+      night_lux: 3
     input_boolean.circadian_bedroom_1:
       light_entity_id: group.bedroom_1_lights_actual
       circadian: true
-      min: 250
-      max: 454
+      adjustable_colour: true
+      min_kelvin: 2500
+      max_kelvin: 4000
     input_boolean.circadian_bedroom_2:
       light_entity_id: group.bedroom_2_lights_actual
       circadian: true
-      min: 333
-      max: 400
+      adjustable_colour: true
+      min_kelvin: 2500
+      max_kelvin: 4000
     input_boolean.circadian_bedroom_3:
       light_entity_id: group.bedroom_3_lights_actual
       circadian: true
+      adjustable_colour: true

@@ -9,13 +9,15 @@ history:
       - person.roger_selwyn
       - binary_sensor.front_door_motion
       - binary_sensor.downstairs_occupancy
+      - binary_sensor.living_room_occupancy2
       - binary_sensor.living_room_hue_motion_motion
+      - binary_sensor.geniushub_living_room_occupancy
 #      - binary_sensor.kitchen_pir
 #      - binary_sensor.geniushub_living_room_occupancy
 #      - binary_sensor.geniushub_kitchen_occupancy
-      - binary_sensor.downstairs_4
+      - binary_sensor.downstairs_3
       - binary_sensor.upstairs_occupancy
-      - binary_sensor.upstairs_4
+      - binary_sensor.upstairs_3
 #      - binary_sensor.geniushub_bedroom1_occupancy
 #      - binary_sensor.geniushub_bedroom2_occupancy
 #      - binary_sensor.geniushub_bedroom3_occupancy
@@ -42,8 +44,8 @@ history:
       - binary_sensor.home_occupied_tyr_celyn
       - binary_sensor.tyrcelyn_utility_motion
       - calendar.bookings
-      - climate.tyr_celyn
-      - sensor.tyr_celyn_humidity
+    #   - climate.tyr_celyn
+    #   - sensor.tyr_celyn_humidity
 #    - binary_sensor.nest_presence_device_presence
 #    - binary_sensor.home_occupied_workshop
 #    - binary_sensor.tyrcelyn_presence_cleaner

@@ -8,4 +8,4 @@ http:
   use_x_forwarded_for: true
   trusted_proxies: 
     - !secret proxy1
-    # - !secret proxy2
+    - !secret proxy2

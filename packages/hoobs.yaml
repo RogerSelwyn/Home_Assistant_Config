@@ -1,0 +1,72 @@
+homeassistant:
+  customize:
+    switch.home_occupied_the_mews:
+      friendly_name: Home - Nest Mode
+    switch.home_occupied_tyr_celyn:
+      friendly_name: TC - Nest Mode
+    switch.home_occupied_workshop:
+      friendly_name: Workshop - Nest Mode
+    switch.tyr_celyn_thermostat:
+      friendly_name: TC - Heating
+    switch.tyr_celyn_thermostat_2:
+      friendly_name: TC - Hot Water
+    binary_sensor.home_occupied_the_mews:
+      friendly_name: Home - Presence - Nest
+    binary_sensor.home_occupied_tyr_celyn:
+      friendly_name: TC - Presence - Nest
+    binary_sensor.home_occupied_workshop:
+      friendly_name: Workshop - Presence - Nest
+    binary_sensor.downstairs:
+      friendly_name: Downstairs - CO
+    binary_sensor.downstairs_2:
+      friendly_name: Downstairs - Smoke
+    binary_sensor.downstairs_3:
+      friendly_name: Downstairs - Nest Occupancy
+    binary_sensor.upstairs:
+      friendly_name: Upstairs - CO
+    binary_sensor.upstairs_2:
+      friendly_name: Upstairs - Smoke
+    binary_sensor.upstairs_3:
+      friendly_name: Upstairs - Nest Occupancy
+    binary_sensor.tyr_celyn:
+      friendly_name: TC - CO
+    binary_sensor.tyr_celyn_2:
+      friendly_name: TC - Smoke
+    sensor.tyr_celyn_thermostat_temperature:
+      friendly_name: TC - Current Temperature
+    sensor.tyr_celyn_thermostat_humidity:
+      friendly_name: TC - Humidity
+    climate.tyr_celyn_thermostat:
+      friendly_name: TC - Thermostat
+
+
+# binary_sensor:
+#   - platform: template
+#     sensors:
+#       hoobs_home_occupied_workshop:
+#         friendly_name: "TC - Presence - Workshop"
+#         device_class: occupancy
+#         value_template: "{{ is_state('input_boolean.hoobs_home_occupied_workshop', 'on') }}"
+#       hoobs_home_occupied_tyr_celyn:
+#         friendly_name: "TC - Presence - Nest"
+#         device_class: occupancy
+#         value_template: "{{ is_state('input_boolean.hoobs_home_occupied_tyr_celyn', 'on') }}"
+#       hoobs_upstairs_occupancy:
+#         friendly_name: "Home - Presence - Upstairs"
+#         device_class: occupancy
+#         value_template: "{{ is_state('input_boolean.hoobs_upstairs_occupancy', 'on') }}"
+#       hoobs_downstairs_occupancy:
+#         friendly_name: "Home - Presence - Downstairs"
+#         device_class: occupancy
+#         value_template: "{{ is_state('input_boolean.hoobs_downstairs_occupancy', 'on') }}"
+#       hoobs_home_occupied_the_mews:
+#         friendly_name: "Home - Presence - Nest"
+#         device_class: occupancy
+#         value_template: "{{ is_state('input_boolean.hoobs_home_occupied_the_mewsp', 'on') }}"
+
+# input_boolean:
+#   hoobs_home_occupied_workshop:
+#   hoobs_home_occupied_tyr_celyn:
+#   hoobs_upstairs_occupancy:
+#   hoobs_downstairs_occupancy:
+#   hoobs_home_occupied_the_mews:
