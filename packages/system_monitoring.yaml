@@ -4,6 +4,11 @@ homeassistant:
       unit_of_measurement: 'Updates'
       friendly_name: 'HACS'
       
+input_number:
+  addon_updates:
+    min: 0
+    max: 20
+
 sensor:
   - platform: websocket_api
 
@@ -27,11 +32,9 @@ sensor:
         friendly_name: 'Addons'
         unit_of_measurement: 'Updates'
 
-input_number:
-  addon_updates:
-    min: 0
-    max: 20
-
+shell_command:
+  run_dropbox_sync: /bin/bash -c "/config/shell_scripts/run_dropbox_sync.sh >/config/logs/dropbox.log"
+  
 
 #- platform: command_line
 #  name: CPU Temperature

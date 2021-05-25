@@ -24,7 +24,6 @@ shell_scripts/.dropbox_uploader
 Reinclude files
 !.storage/lovelace
 !.storage/lovelace_resources
-!shell_scripts/.dropbox_uploader.sh
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
