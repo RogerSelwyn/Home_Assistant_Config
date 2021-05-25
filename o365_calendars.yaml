@@ -1,4 +1,4 @@
-- cal_id: !secret o365_calendar
+- cal_id: AAMkAGQwYzQ5ZjZjLTQyYmItNDJmNy04NDNjLTJjYWY3NzMyMDBmYwBGAAAAAAC9VxHxYFTdSrdCHSJkXtJ-BwCoiRErLbiNRJDCFyMjq4khAAAAAAEGAACoiRErLbiNRJDCFyMjq4khAAABy_HnAAA=
   entities:
   - device_id: Calendar
     end_offset: 24
@@ -6,7 +6,7 @@
     start_offset: 0
     track: false
 
-- cal_id: !secret o365_bookings
+- cal_id: AAMkAGQwYzQ5ZjZjLTQyYmItNDJmNy04NDNjLTJjYWY3NzMyMDBmYwBGAAAAAAC9VxHxYFTdSrdCHSJkXtJ-BwCoiRErLbiNRJDCFyMjq4khAAAAAAEGAACoiRErLbiNRJDCFyMjq4khAALNr-v3AAA=
   entities:
   - device_id: Bookings
     end_offset: 672

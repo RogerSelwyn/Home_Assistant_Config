@@ -16,14 +16,22 @@ ios:
     icon:
       icon: account-group
       color: "#f6f5f3"
-  - name: normal
-    background_color: "#f3c87a"
+  - name: meal_time
+    background_color: "#f1b55d"
     label:
-      text: "Normal"
+      text: "Meal Time"
       color: "#ff0000"
     icon:
-      icon: sofa
+      icon: food-turkey
       color: "#f6f5f3"
+#  - name: normal
+#    background_color: "#f3c87a"
+#    label:
+#      text: "Normal"
+#      color: "#ff0000"
+#    icon:
+#      icon: sofa
+#      color: "#f6f5f3"
   - name: flash_benjamin
     background_color: "#ff0338"
     label:

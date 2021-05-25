@@ -25,13 +25,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "input_boolean.scene_normal",
-                                    "name": "Normal",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    }
-                                },
-                                {
                                     "entity": "input_boolean.scene_evening_chill",
                                     "name": "Chill",
                                     "tap_action": {
@@ -54,6 +47,13 @@
                                 {
                                     "entity": "input_boolean.scene_evening_movie",
                                     "name": "Movie",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    }
+                                },
+                                {
+                                    "entity": "input_boolean.scene_meal_time",
+                                    "name": "Meal",
                                     "tap_action": {
                                         "action": "toggle"
                                     }

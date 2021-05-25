@@ -9,9 +9,9 @@ history:
       - person.roger_selwyn
       - binary_sensor.front_door_motion
       - binary_sensor.downstairs_occupancy
-      - binary_sensor.living_room_occupancy2
-      - binary_sensor.living_room_hue_motion_motion
-      - binary_sensor.geniushub_living_room_occupancy
+      - binary_sensor.living_room_occupancy
+#      - binary_sensor.living_room_hue_motion_motion
+#      - binary_sensor.geniushub_living_room_occupancy
 #      - binary_sensor.kitchen_pir
 #      - binary_sensor.geniushub_living_room_occupancy
 #      - binary_sensor.geniushub_kitchen_occupancy

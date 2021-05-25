@@ -51,6 +51,7 @@ influxdb:
       - sensor.ovo_last_electricity_reading
       - sensor.ovo_last_electricity_cost
       - sensor.nest_heating
+      - sensor.nest_hotwater
       - sensor.tyr_celyn_humidity
       - sensor.sfups_load
       - sensor.sfups_battery_charge

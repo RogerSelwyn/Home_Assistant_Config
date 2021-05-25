@@ -2,6 +2,7 @@ homeassistant:
   customize:
     sensor.hacs:
       unit_of_measurement: 'Updates'
+      friendly_name: 'HACS'
       
 sensor:
   - platform: websocket_api
@@ -11,13 +12,26 @@ sensor:
       - type: processor_use
       - type: memory_free
 
-  - platform: command_line
-    name: Supervisor addons
-    scan_interval: 3600
-    command: 'curl http://supervisor/supervisor/info -s -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"addons":[.data.addons[]]}'''
-    value_template: "{{ value_json.addons | length }}"
-    json_attributes:
-      - addons
+#   - platform: command_line
+#     name: Supervisor addons
+#     scan_interval: 3600
+#     command: 'curl http://supervisor/supervisor/info -s -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"addons":[.data.addons[]]}'''
+#     value_template: "{{ value_json.addons | length }}"
+#     json_attributes:
+#       - addons
+
+  - platform: template
+    sensors:
+      addon_updates:
+        value_template: "{{ '%.0f'%(states('input_number.addon_updates') | float) }}"
+        friendly_name: 'Addons'
+        unit_of_measurement: 'Updates'
+
+input_number:
+  addon_updates:
+    min: 0
+    max: 20
+
 
 #- platform: command_line
 #  name: CPU Temperature

@@ -19,6 +19,10 @@ input_boolean:
     name: Reading
     initial: off
     icon: 'mdi:book-open-variant'
+  scene_meal_time:
+    name: Meal Time
+    initial: off
+    icon: 'mdi:food-turkey'
   flash_benjamin:
     name: Flash Benjamin
     initial: off
