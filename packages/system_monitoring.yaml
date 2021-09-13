@@ -32,10 +32,6 @@ sensor:
         friendly_name: 'Addons'
         unit_of_measurement: 'Updates'
 
-shell_command:
-  run_dropbox_sync: /bin/bash -c "/config/shell_scripts/run_dropbox_sync.sh >/config/logs/dropbox.log"
-  
-
 #- platform: command_line
 #  name: CPU Temperature
 #  command: "cat /sys/class/thermal/thermal_zone0/temp"

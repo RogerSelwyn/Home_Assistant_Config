@@ -1,0 +1,3 @@
+# surepetcare:
+#   username: !secret petcare_username
+#   password: !secret petcare_password

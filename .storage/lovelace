@@ -93,6 +93,21 @@
                             "type": "entities"
                         },
                         {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.cat_flap_back_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.cat_flap_back_door_connectivity"
+                                },
+                                {
+                                    "entity": "binary_sensor.hub_home"
+                                }
+                            ],
+                            "title": "Cats"
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "input_boolean.flash_benjamin",
@@ -118,6 +133,17 @@
                             "entity": "weather.home",
                             "name": "Home",
                             "type": "custom:weather-card"
+                        },
+                        {
+                            "card": {
+                                "title": "Front Door",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "template": "{%if is_state('binary_sensor.front_door_light_power','on')%}light.front_door{%endif%} {%if is_state('binary_sensor.front_door_light_power','off')%}binary_sensor.front_door_light_power{%endif%} timer.lights_front_door binary_sensor.front_door_motion_2\n"
+                            },
+                            "show_empty": false,
+                            "type": "custom:auto-entities"
                         }
                     ],
                     "icon": "mdi:home",
@@ -199,7 +225,7 @@
                         },
                         {
                             "card": {
-                                "aspect_ratio": "56%",
+                                "aspect_ratio": "16:9",
                                 "entity": "camera.workshop",
                                 "type": "picture-entity"
                             },
@@ -213,7 +239,7 @@
                         },
                         {
                             "card": {
-                                "aspect_ratio": "56%",
+                                "aspect_ratio": "16:9",
                                 "entity": "camera.garage",
                                 "type": "picture-entity"
                             },

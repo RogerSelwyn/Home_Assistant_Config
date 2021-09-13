@@ -6,7 +6,7 @@
             {
                 "id": "d8ee4c7ff19c456897194e2977406707",
                 "type": "module",
-                "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js"
+                "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js?hacstag=1485208381130"
             },
             {
                 "id": "862a683811d641dd8558a980710d0e2e",
@@ -26,7 +26,7 @@
             {
                 "id": "5d66101e33d54da192a194771405e2eb",
                 "type": "module",
-                "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js"
+                "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js?hacstag=246549747450"
             }
         ]
     }

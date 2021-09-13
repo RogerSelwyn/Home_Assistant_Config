@@ -4,11 +4,12 @@ logger:
 #  custom_components.braviatv_psk: debug
     NodeRed: debug
     custom_components.skyq: info
-#   custom_components.o365: info
+    # custom_components.o365: debug
     homeassistant.loader: error
     homeassistant.components.ring: error
     homeassistant.components.nut: critical
     homeassistant.components.ipp: critical
+    # O365: debug
     # custom_components.hacs: debug
     # hacs: debug
     # queueman: debug

@@ -44,6 +44,11 @@ binary_sensor:
         device_class: power
         value_template: >-
           {{ not is_state('light.table_light', 'unavailable') }}
+      front_door_light_power:
+        friendly_name: "Front Door Light - Power"
+        device_class: power
+        value_template: >-
+          {{ not is_state('light.front_door_down', 'unavailable') }}
 
 group:
   security_lights:
@@ -100,14 +105,18 @@ group:
     all: true
     entities:
       - binary_sensor.bedroom1_lights_power
-      - light.bedroom_1
+      - light.bedroom_1_bulb_1
+      - light.bedroom_1_bulb_2
+      - light.bedroom_1_bulb_3
   bedroom_2_lights_actual:
     name: Bedroom 2 Lights Actual
     icon: mdi:ceiling-light
     all: true
     entities:
       - binary_sensor.bedroom2_lights_power
-      - light.bedroom_2
+      - light.bedroom_2_bulb_1
+      - light.bedroom_2_bulb_2
+      - light.bedroom_2_bulb_3
   bedside_light_actual:
     name: Bedside Light Actual
     icon: mdi:lamp
@@ -173,4 +182,7 @@ timer:
     duration: '00:15:00'
   lights_office:
     name: Time to Office Lights Off
+    duration: '00:05:00'  
+  lights_front_door:
+    name: Time to Front Door Lights Off
     duration: '00:05:00'

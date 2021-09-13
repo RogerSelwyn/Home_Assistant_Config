@@ -1,0 +1,5 @@
+camera:
+  - platform: generic
+    name: Front Door Live
+    still_image_url: http://192.168.1.41:8123{{ states.camera.front_door_snapshot.attributes.entity_picture }}
+    stream_source: rtsp://03cabcc9-ring-mqtt:8554/54e01981fb8c_live
