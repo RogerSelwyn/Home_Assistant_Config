@@ -9,3 +9,4 @@ http:
   trusted_proxies: 
     - !secret proxy1
     - !secret proxy2
+    - !secret proxy3

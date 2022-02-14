@@ -6,6 +6,8 @@ homeassistant:
     switch.living_room_fibaro_switch_switch_2:
       friendly_name: Side Light Switch
       icon: mdi:power-cycle
+    sensor.motion_sensor_illuminance:
+      unit_of_measurement: Lux
 
 binary_sensor:
   - platform: template
@@ -18,12 +20,12 @@ sensor:
   - platform: template
     sensors:
       zwave_office_fibaro_illuminance:
-        value_template: "{{ '%.0f'%(states('sensor.motion_sensor_illuminance') | float) }}"
+        value_template: "{{ '%.0f'%(states('sensor.motion_sensor_illuminance') | float(0)) }}"
         friendly_name: 'Office Fibaro Illuminance'
         unit_of_measurement: 'lux'
         device_class: illuminance
       zwave_office_fibaro_temperature:
-        value_template: "{{ '%.0f'%(states('sensor.motion_sensor_air_temperature') | float) }}"
+        value_template: "{{ '%.0f'%(states('sensor.motion_sensor_air_temperature') | float(0)) }}"
         friendly_name: 'Office Fibaro Temperature'
         unit_of_measurement: '°C'
         device_class: temperature

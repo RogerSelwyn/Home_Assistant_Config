@@ -36,12 +36,12 @@ input_boolean:
     name: Bedroom 3 Circadian
     icon: mdi:sine-wave
 
-input_number:
-  circadian_kelvin:
-    name: Target Kelvin
-    icon: mdi:temperature-kelvin
-    min: 0
-    max: 10000
+# input_number:
+#   circadian_kelvin:
+#     name: Target Kelvin
+#     icon: mdi:temperature-kelvin
+#     min: 0
+#     max: 10000
 
 homeassistant:
   customize:
@@ -49,7 +49,7 @@ homeassistant:
       light_entity_id: group.office_lights_actual
       lux_entity_id: sensor.zwave_office_fibaro_illuminance
       power_entity_id: binary_sensor.office_lights_power
-      occupancy_entity_id: input_boolean.occupied_office
+      occupancy_entity_id: binary_sensor.occupied_office
       circadian: true
       adjustable_colour: true
       min_kelvin: 2200

@@ -18,12 +18,18 @@ binary_sensor:
         friendly_name: "Bedroom 1 Lights - Power"
         device_class: power
         value_template: >-
-          {{ not is_state('light.bedroom_1_bulb_1', 'unavailable') }}
+          {{ not is_state('light.bedroom_1_bulb_1', 'unavailable') or 
+             not is_state('light.bedroom_1_bulb_2', 'unavailable') or
+             not is_state('light.bedroom_1_bulb_3', 'unavailable')
+          }}
       bedroom2_lights_power:
         friendly_name: "Bedroom 2 Lights - Power"
         device_class: power
         value_template: >-
-          {{ not is_state('light.bedroom_2_bulb_1', 'unavailable') }}
+          {{ not is_state('light.bedroom_2_bulb_1', 'unavailable') or 
+             not is_state('light.bedroom_2_bulb_2', 'unavailable') or
+             not is_state('light.bedroom_2_bulb_3', 'unavailable') 
+          }}
       ceiling_light_power:
         friendly_name: "Ceiling Light - Power"
         device_class: power
@@ -44,11 +50,13 @@ binary_sensor:
         device_class: power
         value_template: >-
           {{ not is_state('light.table_light', 'unavailable') }}
-      front_door_light_power:
+      front_door_lights_power:
         friendly_name: "Front Door Light - Power"
         device_class: power
         value_template: >-
-          {{ not is_state('light.front_door_down', 'unavailable') }}
+          {{ not is_state('light.front_door_down', 'unavailable') or
+             not is_state('light.front_door_up', 'unavailable')
+          }}
 
 group:
   security_lights:
@@ -56,7 +64,7 @@ group:
     icon: mdi:shield-lock
     entities:
       - light.main_light
-      - light.fireplace
+      - light.side_light
       - light.table_light
       - light.bedside_light
       - light.ceiling_light
@@ -102,18 +110,18 @@ group:
   bedroom_1_lights_actual:
     name: Bedroom 1 Lights Actual
     icon: mdi:ceiling-light
-    all: true
+    all: false
     entities:
-      - binary_sensor.bedroom1_lights_power
+    #   - binary_sensor.bedroom1_lights_power
       - light.bedroom_1_bulb_1
       - light.bedroom_1_bulb_2
       - light.bedroom_1_bulb_3
   bedroom_2_lights_actual:
     name: Bedroom 2 Lights Actual
     icon: mdi:ceiling-light
-    all: true
+    all: false
     entities:
-      - binary_sensor.bedroom2_lights_power
+    #   - binary_sensor.bedroom2_lights_power
       - light.bedroom_2_bulb_1
       - light.bedroom_2_bulb_2
       - light.bedroom_2_bulb_3
@@ -145,12 +153,13 @@ group:
     entities:
       - binary_sensor.office_lights_power
       - light.office
-
-input_number:
-  security_lights:
-    min: 0
-    max: 10
-    step: 1
+  front_door_lights_actual:
+    name: Front Door Lights Actual
+    icon: mdi:wall-sconce-flat
+    all: true
+    entities:
+      - binary_sensor.front_door_lights_power
+      - light.front_door
 
 input_select:
   fireplace_lights_mode:
@@ -162,26 +171,24 @@ input_select:
 sensor:
   - platform: template
     sensors:
-      security_lights:
-        friendly_name: "Security Lights"
-        value_template: >
-          {{states('input_number.security_lights')|int}}
       living_room_hue_lightlevel:
         friendly_name: "Living Room Hue Light Level"
-        value_template: "{{state_attr('sensor.living_room_hue_motion_light_level', 'lightlevel')|int}}"
-      living_room_hue_battery_level:
-        friendly_name: "Living Room Hue battery level"
-        value_template: "{{state_attr('sensor.living_room_hue_motion_light_level', 'battery_level')|int}}"
-        unit_of_measurement: '%'
-        device_class: battery
+        value_template: "{{states('sensor.living_room_hue_motion_light_level')|float(0)}}"
+        unit_of_measurement: 'lux'
+        device_class: illuminance
+#      living_room_hue_battery_level:
+#        friendly_name: "Living Room Hue battery level"
+#        value_template: "{{state_attr('sensor.living_room_hue_motion_light_level', 'battery_level')|float(0)}}"
+#        unit_of_measurement: '%'
+#        device_class: battery
 
 
 timer:
   lights_living_room:
-    name: Time to Living Room Lights Off
+    name: Time to Living Room Unoccupied
     duration: '00:15:00'
   lights_office:
-    name: Time to Office Lights Off
+    name: Time to Office Unoccupied
     duration: '00:05:00'  
   lights_front_door:
     name: Time to Front Door Lights Off

@@ -1,12 +1,13 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace_resources",
     "data": {
         "items": [
             {
                 "id": "d8ee4c7ff19c456897194e2977406707",
                 "type": "module",
-                "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js?hacstag=1485208381130"
+                "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js?hacstag=1485208381150"
             },
             {
                 "id": "862a683811d641dd8558a980710d0e2e",
@@ -16,7 +17,7 @@
             {
                 "id": "622cc125fe2e47b1bcb310d94759f17c",
                 "type": "module",
-                "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js"
+                "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js?hacstag=1512800620110"
             },
             {
                 "id": "811177717c4b435a9e6cf5f712246235",
@@ -24,9 +25,9 @@
                 "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js"
             },
             {
-                "id": "5d66101e33d54da192a194771405e2eb",
+                "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js?hacstag=246549747620",
                 "type": "module",
-                "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js?hacstag=246549747450"
+                "id": "80de3000548944bd82e09d3bb7a76fd2"
             }
         ]
     }

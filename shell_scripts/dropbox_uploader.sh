@@ -1654,12 +1654,10 @@ case $COMMAND in
         fi
 
         FILE_DST="${*:$#:1}"
-
         for (( i=OPTIND+1; i<$#; i++ )); do
             FILE_SRC="${*:$i:1}"
             db_upload "$FILE_SRC" "/$FILE_DST"
         done
-
     ;;
 
     download)

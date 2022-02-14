@@ -6,6 +6,8 @@ camera:
 climate:
 config:
 device_tracker:
+diagnostics:
+input_button:
 mobile_app:
 person:
 # script: 

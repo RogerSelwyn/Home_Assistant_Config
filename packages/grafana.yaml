@@ -56,7 +56,7 @@ influxdb:
       - sensor.sfups_load
       - sensor.sfups_battery_charge
       
-      - input_number.circadian_kelvin
+      - sensor.circadian_kelvin
       - sensor.office_kelvin
       - sensor.office_lights_brightness
       - sensor.zwave_office_fibaro_illuminance
@@ -66,4 +66,4 @@ influxdb:
       - light.bedroom_3
       - sun.sun
       
-      - input_boolean.tyrcelyn_presence_all
+      - binary_sensor.tyrcelyn_presence_all

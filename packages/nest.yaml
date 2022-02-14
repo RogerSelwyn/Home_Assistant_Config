@@ -4,6 +4,30 @@ nest:
   project_id: !secret nest-project-id
   subscriber_id: !secret nest-subscriber-id
 
+binary_sensor:
+  - platform: template
+    sensors:
+      nest_heating:
+        friendly_name: TC - Heating
+        device_class: heat
+        value_template: >-
+          {{ is_state_attr('climate.tyr_celyn', 'hvac_action', 'heating') }}
+      nest_hotwater:
+        friendly_name: TC - Hot Water
+        device_class: heat
+        value_template: >-
+          {{ is_state('switch.tyr_celyn_thermostat_2', 'on') }}
+      nest_heating_manual:
+        friendly_name: TC - Heating Manual
+        device_class: heat
+        value_template: >-
+          {% if state_attr('climate.tyr_celyn', 'hvac_action') == 'heating' and
+             state_attr('climate.tyr_celyn', 'temperature') is defined and
+             state_attr('climate.tyr_celyn', 'current_temperature') > state_attr('climate.tyr_celyn', 'temperature') + 0.5 %}
+            true
+          {% else %}
+            false
+          {% endif %}
 sensor:
   - platform: template
     sensors:
@@ -23,3 +47,6 @@ sensor:
           {% else %}
             0
           {% endif %}
+      nest_hvac:
+        value_template: >-
+          {{ state_attr('climate.tyr_celyn', 'hvac_action')}}

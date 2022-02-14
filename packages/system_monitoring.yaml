@@ -4,12 +4,13 @@ homeassistant:
       unit_of_measurement: 'Updates'
       friendly_name: 'HACS'
       
-input_number:
-  addon_updates:
-    min: 0
-    max: 20
+# input_number:
+#   addon_updates:
+#     min: 0
+#     max: 20
 
 sensor:
+  - platform: uptime
   - platform: websocket_api
 
   - platform: systemmonitor
@@ -25,12 +26,12 @@ sensor:
 #     json_attributes:
 #       - addons
 
-  - platform: template
-    sensors:
-      addon_updates:
-        value_template: "{{ '%.0f'%(states('input_number.addon_updates') | float) }}"
-        friendly_name: 'Addons'
-        unit_of_measurement: 'Updates'
+#   - platform: template
+#     sensors:
+#       addon_updates:
+#         value_template: "{{ '%.0f'%(states('input_number.addon_updates') | float) }}"
+#         friendly_name: 'Addons'
+#         unit_of_measurement: 'Updates'
 
 #- platform: command_line
 #  name: CPU Temperature
@@ -48,3 +49,9 @@ sensor:
 #   command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"addons":[.data.addons[]]}'''
 #   json_attributes:
 #   - addons 
+
+
+timer:
+  test:
+    name: Test
+    duration: '00:15:00'

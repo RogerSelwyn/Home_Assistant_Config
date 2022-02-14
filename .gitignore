@@ -4,10 +4,12 @@
 .O365-token-cache
 .storage/*
 .vscode
+blueprints
 custom_components
 icloud
 image
 logs
+nest
 node-red
 ssh
 themes
@@ -23,6 +25,7 @@ shell_scripts/.dropbox_uploader
 
 Reinclude files
 !.storage/lovelace
+!.storage/lovelace.lovelace_admin
 !.storage/lovelace_resources
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.

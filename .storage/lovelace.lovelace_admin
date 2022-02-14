@@ -1,0 +1,832 @@
+{
+    "version": 1,
+    "minor_version": 1,
+    "key": "lovelace.lovelace_admin",
+    "data": {
+        "config": {
+            "background": "var(--background-image)",
+            "custom_header": {
+                "background": "rgba(155, 155, 155, 0.25)",
+                "compact_mode": true,
+                "default_tab": "0",
+                "disable_sidebar": true,
+                "exceptions": [
+                    {
+                        "conditions": {
+                            "user": "Roger Selwyn"
+                        },
+                        "config": {
+                            "disable_sidebar": false,
+                            "hide_config": false,
+                            "hide_help": false,
+                            "hide_raw": false,
+                            "hide_unused": false,
+                            "options_hide": false,
+                            "show_tabs": []
+                        }
+                    }
+                ],
+                "hide_config": true,
+                "hide_help": true,
+                "hide_raw": true,
+                "hide_unused": true,
+                "options_hide": true,
+                "show_tabs": "0,1,2,3,4"
+            },
+            "title": "Admin",
+            "views": [
+                {
+                    "icon": "mdi:information",
+                    "path": "info",
+                    "title": "Info",
+                    "badges": [
+                        {
+                            "entity": "binary_sensor.dual_channel_receiver_3_1"
+                        },
+                        {
+                            "entity": "binary_sensor.dual_channel_receiver_3_2"
+                        },
+                        {
+                            "entity": "sensor.geniushub_errors"
+                        },
+                        {
+                            "entity": "sensor.geniushub_warnings"
+                        },
+                        {
+                            "entity": "binary_sensor.updater"
+                        },
+                        {
+                            "entity": "sensor.hacs"
+                        },
+                        {
+                            "entity": "sensor.addon_updates"
+                        },
+                        {
+                            "entity": "input_select.location_mode"
+                        },
+                        {
+                            "entity": "alarm_control_panel.the_mews_mode"
+                        },
+                        {
+                            "entity": "alarm_control_panel.house"
+                        }
+                    ],
+                    "cards": [
+                        {
+                            "filter": {
+                                "include": [
+                                    {
+                                        "entity_id": "binary_sensor.zwave_office_fibaro_motion"
+                                    },
+                                    {
+                                        "entity_id": "input_boolean.occupied_office"
+                                    },
+                                    {
+                                        "entity_id": "timer.lights_office"
+                                    },
+                                    {
+                                        "entity_id": "binary_sensor.living_room_occupancy"
+                                    },
+                                    {
+                                        "entity_id": "input_boolean.occupied_living_room"
+                                    },
+                                    {
+                                        "entity_id": "timer.lights_living_room"
+                                    }
+                                ]
+                            },
+                            "type": "custom:auto-entities",
+                            "card": {
+                                "type": "entities",
+                                "title": "Occupied",
+                                "show_header_toggle": false,
+                                "state_color": true
+                            },
+                            "sort": {
+                                "method": "none"
+                            }
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.asuswrt_download"
+                                },
+                                {
+                                    "entity": "sensor.asuswrt_upload"
+                                },
+                                {
+                                    "entity": "sensor.asuswrt_download_speed"
+                                },
+                                {
+                                    "entity": "sensor.asuswrt_upload_speed"
+                                },
+                                {
+                                    "entity": "binary_sensor.internet"
+                                },
+                                {
+                                    "entity": "binary_sensor.hue"
+                                },
+                                {
+                                    "entity": "sensor.speedtest_download"
+                                },
+                                {
+                                    "entity": "sensor.speedtest_upload"
+                                },
+                                {
+                                    "entity": "sensor.speedtest_ping"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Router",
+                            "type": "entities",
+                            "state_color": false
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_select.fireplace_lights_mode"
+                                },
+                                {
+                                    "entity": "switch.zwave_living_room_main_light_switch"
+                                },
+                                {
+                                    "entity": "switch.zwave_living_room_side_light_switch"
+                                },
+                                {
+                                    "entity": "binary_sensor.table_light_power"
+                                },
+                                {
+                                    "entity": "binary_sensor.bedroom1_lights_power"
+                                },
+                                {
+                                    "entity": "binary_sensor.bedroom2_lights_power"
+                                },
+                                {
+                                    "entity": "binary_sensor.bedside_light_power"
+                                },
+                                {
+                                    "entity": "binary_sensor.ceiling_light_power"
+                                },
+                                {
+                                    "entity": "binary_sensor.office_lights_power"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Power",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.processor_use"
+                                },
+                                {
+                                    "entity": "sensor.memory_free"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "HassioVM",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.geniushub_living_room_luminance"
+                                },
+                                {
+                                    "entity": "sensor.living_room_hue_lightlevel"
+                                },
+                                {
+                                    "entity": "sensor.geniushub_kitchen_luminance"
+                                },
+                                {
+                                    "entity": "sensor.geniushub_bedroom1_luminance"
+                                },
+                                {
+                                    "entity": "sensor.geniushub_bedroom2_luminance"
+                                },
+                                {
+                                    "entity": "sensor.geniushub_bedroom3_luminance"
+                                },
+                                {
+                                    "entity": "sensor.zwave_office_fibaro_illuminance"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Brightness",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.smart_plug_6"
+                                },
+                                {
+                                    "entity": "binary_sensor.smart_plug_5"
+                                },
+                                {
+                                    "entity": "binary_sensor.smart_plug_7"
+                                },
+                                {
+                                    "entity": "switch.plug_box_room"
+                                },
+                                {
+                                    "entity": "switch.plug_dining_room"
+                                },
+                                {
+                                    "entity": "switch.plug_kitchen"
+                                }
+                            ],
+                            "title": "Genius Plugs",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "card": {
+                                "card": {
+                                    "title": "Security Lights",
+                                    "type": "entities",
+                                    "state_color": true
+                                },
+                                "filter": {
+                                    "include": [
+                                        {
+                                            "group": "group.security_lights"
+                                        }
+                                    ]
+                                },
+                                "type": "custom:auto-entities"
+                            },
+                            "conditions": [
+                                {
+                                    "entity": "input_select.location_mode",
+                                    "state": "Away"
+                                }
+                            ],
+                            "type": "conditional"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "timer.away"
+                                },
+                                {
+                                    "entity": "timer.night"
+                                },
+                                {
+                                    "entity": "timer.lights_living_room"
+                                },
+                                {
+                                    "entity": "timer.lights_office"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Timers",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.adguard_average_processing_speed"
+                                },
+                                {
+                                    "entity": "sensor.adguard_dns_queries"
+                                },
+                                {
+                                    "entity": "sensor.adguard_dns_queries_blocked_ratio"
+                                },
+                                {
+                                    "entity": "switch.adguard_filtering"
+                                },
+                                {
+                                    "entity": "switch.adguard_protection"
+                                }
+                            ],
+                            "title": "AdGuard",
+                            "type": "entities",
+                            "show_header_toggle": false
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "sensor.hp_officejet_pro_9010_series",
+                                    "type": "entity"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.hp_officejet_pro_9010_series_black_cartridge",
+                                            "max": 100,
+                                            "min": 0,
+                                            "name": "Black",
+                                            "severity": {
+                                                "green": 30,
+                                                "red": 10,
+                                                "yellow": 20
+                                            },
+                                            "type": "gauge"
+                                        },
+                                        {
+                                            "entity": "sensor.hp_officejet_pro_9010_series_cyan_cartridge",
+                                            "max": 100,
+                                            "min": 0,
+                                            "name": "Cyan",
+                                            "severity": {
+                                                "green": 30,
+                                                "red": 10,
+                                                "yellow": 20
+                                            },
+                                            "type": "gauge"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.hp_officejet_pro_9010_series_magenta_cartridge",
+                                            "max": 100,
+                                            "min": 0,
+                                            "name": "Magenta",
+                                            "severity": {
+                                                "green": 30,
+                                                "red": 10,
+                                                "yellow": 20
+                                            },
+                                            "type": "gauge"
+                                        },
+                                        {
+                                            "entity": "sensor.hp_officejet_pro_9010_series_yellow_cartridge",
+                                            "max": 100,
+                                            "min": 0,
+                                            "name": "Yellow",
+                                            "severity": {
+                                                "green": 30,
+                                                "red": 10,
+                                                "yellow": 20
+                                            },
+                                            "type": "gauge"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "entities": [
+                                "sensor.connected_clients"
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "type": "history-graph"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.front_door_motion_2"
+                                },
+                                {
+                                    "entity": "binary_sensor.downstairs_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.geniushub_kitchen_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.kitchen_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.living_room_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.living_room_hue_motion_motion"
+                                },
+                                {
+                                    "entity": "binary_sensor.geniushub_living_room_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.upstairs_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.geniushub_bedroom1_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.geniushub_bedroom2_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.geniushub_bedroom3_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.zwave_office_fibaro_motion"
+                                },
+                                {
+                                    "entity": "binary_sensor.downstairs_3"
+                                },
+                                {
+                                    "entity": "binary_sensor.upstairs_3"
+                                }
+                            ],
+                            "title": "Motion",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.living_room_hue_motion_light_level"
+                                },
+                                {
+                                    "entity": "sensor.zwave_office_fibaro_illuminance"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "type": "history-graph"
+                        },
+                        {
+                            "filter": {
+                                "include": [
+                                    {
+                                        "entity_id": "sensor.*battery*"
+                                    }
+                                ],
+                                "exclude": [
+                                    {
+                                        "state": "100"
+                                    },
+                                    {
+                                        "state": "100.0"
+                                    },
+                                    {
+                                        "entity_id": "sensor.*battery_state*"
+                                    },
+                                    {
+                                        "entity_id": "sensor.sfups*"
+                                    }
+                                ]
+                            },
+                            "type": "custom:auto-entities",
+                            "card": {
+                                "type": "entities",
+                                "title": "Batteries",
+                                "state_color": true
+                            },
+                            "sort": {
+                                "method": "state",
+                                "reverse": false
+                            }
+                        },
+                        {
+                            "filter": {
+                                "include": [
+                                    {
+                                        "entity_id": "sensor.room_*"
+                                    },
+                                    {
+                                        "entity_id": "sensor.radiator_valve_*"
+                                    },
+                                    {
+                                        "entity_id": "sensor.genius_valve_*"
+                                    }
+                                ],
+                                "exclude": [
+                                    {
+                                        "state": "100"
+                                    }
+                                ]
+                            },
+                            "type": "custom:auto-entities",
+                            "card": {
+                                "type": "entities",
+                                "title": "Genius Batteries",
+                                "state_color": true
+                            },
+                            "sort": {
+                                "method": "state",
+                                "reverse": false
+                            }
+                        },
+                        {
+                            "filter": {
+                                "include": [
+                                    {
+                                        "entity_id": "sensor.sfups*"
+                                    }
+                                ]
+                            },
+                            "type": "custom:auto-entities",
+                            "card": {
+                                "type": "entities",
+                                "title": "UPS"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Alarm",
+                    "path": "alarm",
+                    "icon": "mdi:security",
+                    "badges": [
+                        {
+                            "entity": "camera.front_door_live"
+                        },
+                        {
+                            "entity": "timer.lights_front_door"
+                        }
+                    ],
+                    "cards": [
+                        {
+                            "type": "alarm-panel",
+                            "states": [
+                                "arm_home",
+                                "arm_away"
+                            ],
+                            "entity": "alarm_control_panel.house",
+                            "name": "Texecom Alarm"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "alarm_control_panel.house"
+                                },
+                                {
+                                    "entity": "binary_sensor.kitchen_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_toilet_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.inner_doors"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_garage_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.external_bell"
+                                }
+                            ],
+                            "title": "Texecom",
+                            "show_header_toggle": false,
+                            "state_color": true
+                        },
+                        {
+                            "type": "alarm-panel",
+                            "states": [
+                                "arm_home",
+                                "arm_away"
+                            ],
+                            "entity": "alarm_control_panel.the_mews_mode",
+                            "name": "Ring Doorbell"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "picture-glance",
+                                    "title": "Front Door",
+                                    "entities": [
+                                        {
+                                            "entity": "alarm_control_panel.the_mews_mode"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.front_door_ding_2"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.front_door_motion_2"
+                                        },
+                                        {
+                                            "entity": "switch.front_door_stream"
+                                        },
+                                        {
+                                            "entity": "switch.front_door_event_stream"
+                                        }
+                                    ],
+                                    "camera_image": "camera.front_door_events",
+                                    "aspect_ratio": "4:3"
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "select.front_door_event_select"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "alarm_control_panel.the_mews_mode"
+                                },
+                                {
+                                    "entity": "number.kitchen_volume"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_ding_2"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_motion_2"
+                                },
+                                {
+                                    "entity": "sensor.front_door_info"
+                                },
+                                {
+                                    "entity": "camera.front_door_snapshot"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_info"
+                                },
+                                {
+                                    "entity": "switch.kitchen_play_ding_sound"
+                                },
+                                {
+                                    "entity": "switch.kitchen_play_motion_sound"
+                                },
+                                {
+                                    "entity": "switch.kitchen_snooze"
+                                },
+                                {
+                                    "entity": "number.kitchen_snooze_minutes"
+                                },
+                                {
+                                    "entity": "sensor.front_door_wireless"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_wireless"
+                                }
+                            ],
+                            "title": "Ring (Add-On)",
+                            "show_header_toggle": false,
+                            "state_color": true
+                        }
+                    ]
+                },
+                {
+                    "icon": "mdi:radiator",
+                    "theme": "Backend-selected",
+                    "title": "Heating",
+                    "badges": [
+                        {
+                            "entity": "binary_sensor.dual_channel_receiver_3_1"
+                        },
+                        {
+                            "entity": "binary_sensor.dual_channel_receiver_3_2"
+                        }
+                    ],
+                    "cards": [
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "climate.living_room",
+                                            "type": "thermostat"
+                                        },
+                                        {
+                                            "entity": "climate.kitchen",
+                                            "type": "thermostat"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "type": "entity",
+                                    "entity": "sensor.living_room_hue_motion_temperature"
+                                }
+                            ]
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "climate.bedroom_1",
+                                    "type": "thermostat"
+                                },
+                                {
+                                    "entity": "climate.bedroom_2",
+                                    "type": "thermostat"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "climate.bedroom_3",
+                                            "type": "thermostat"
+                                        },
+                                        {
+                                            "entity": "climate.bathroom",
+                                            "type": "thermostat"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "type": "entity",
+                                    "entity": "sensor.zwave_office_fibaro_temperature"
+                                }
+                            ]
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "climate.ensuite",
+                                    "type": "thermostat"
+                                },
+                                {
+                                    "entity": "climate.cloakroom",
+                                    "type": "thermostat"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "climate.dining_room",
+                                    "type": "thermostat"
+                                },
+                                {
+                                    "entity": "climate.hall",
+                                    "type": "thermostat"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        }
+                    ]
+                },
+                {
+                    "badges": [
+                        {
+                            "entity": "person.benjamin_selwyn"
+                        },
+                        {
+                            "entity": "person.clare_selwyn"
+                        },
+                        {
+                            "entity": "person.roger_selwyn"
+                        }
+                    ],
+                    "cards": [
+                        {
+                            "dark_mode": false,
+                            "default_zoom": 10,
+                            "entities": [
+                                {
+                                    "entity": "person.roger_selwyn"
+                                },
+                                {
+                                    "entity": "person.clare_selwyn"
+                                },
+                                {
+                                    "entity": "person.benjamin_selwyn"
+                                }
+                            ],
+                            "type": "map"
+                        }
+                    ],
+                    "icon": "mdi:map-marker",
+                    "panel": true,
+                    "path": "map",
+                    "title": "Map"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.test",
+                                    "name": "Chill",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    }
+                                }
+                            ],
+                            "show_state": false,
+                            "type": "glance"
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "switch.test"
+                        }
+                    ],
+                    "icon": "mdi:trash-can",
+                    "path": "bin",
+                    "title": "Bin"
+                }
+            ]
+        }
+    }
+}

@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# mkdir /mnt/data2
+# mount /dev/sda2 /mnt/data2
+# cd /mnt/data2
+# ls -al
+
 # Set Variables
 echo Set Variables
 DROPBOX_UPLOADER=/config/shell_scripts/dropbox_uploader.sh
@@ -16,8 +21,8 @@ echo Clean up old snapshots
 find "$BKP_DIR"/* -mtime +4 -exec rm {} \;
 
 # Reload Snapshots in Home Assistant
-echo Reload snapshots
-ha sn reload
+# echo Reload snapshots
+# ha backups reload
 
 # mkdir /mnt/data
 # mount /dev/sda1 /mnt/data

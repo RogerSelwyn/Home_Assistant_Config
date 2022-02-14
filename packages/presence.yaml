@@ -44,14 +44,6 @@ group:
       - binary_sensor.geniushub_living_room_occupancy
 
 
-input_boolean:
-  occupied_office:
-    name: Office Occupied
-#   living_room_occupied:
-#     name: Living Room Occupied
-  occupied_living_room:
-    name: Living Room Occupied
-
 input_select:
   location_mode:
     name: Location Mode

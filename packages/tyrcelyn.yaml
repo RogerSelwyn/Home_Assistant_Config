@@ -1,47 +1,16 @@
-binary_sensor:
-  - platform: template
-    sensors:
-      tyrcelyn_presence_all:
-        friendly_name: "TC - Presence - All"
-        device_class: presence
-        value_template: "{{ is_state('input_boolean.tyrcelyn_presence_all', 'on') }}"
-      # tyrcelyn_presence_cleaner:
-      #   friendly_name: "TC - Presence - Cleaner"
-      #   device_class: presence
-      #   value_template: "{{ is_state('input_boolean.tyrcelyn_presence_cleaner', 'on') }}"
-      tyrcelyn_bookings:
-        friendly_name: "TC - Booked"
-        device_class: presence
-        value_template: "{{ is_state('calendar.bookings', 'on') }}"
-      tyrcelyn_guests:
-        friendly_name: "TC - Guests"
-        device_class: presence
-        value_template: "{{ is_state('input_boolean.tyrcelyn_guests', 'on') }}"
-      tyrcelyn_utility_motion:
-        friendly_name: "TC - Utility Motion"
-        device_class: motion
-        value_template: "{{ is_state('input_boolean.tyrcelyn_utility_motion', 'on') }}"
+homeassistant:
+  customize:
+    binary_sensor.tyrcelyn_bookings:
+      friendly_name: "TC - Booked"
+    binary_sensor.tyrcelyn_guests:
+      friendly_name: "TC - Guests"
+    binary_sensor.tyrcelyn_presence_all:
+      friendly_name: "TC - Presence - All"
+    binary_sensor.tyrcelyn_presence_cleaner:
+      friendly_name: "TC - Presence - Cleaner"
+    binary_sensor.tyrcelyn_utility_motion:
+      friendly_name: "TC - Utility Motion"
 
-input_boolean:
-  tyrcelyn_presence_all:
-  tyrcelyn_presence_cleaner:
-  tyrcelyn_guests:
-  tyrcelyn_utility_motion:
-  
-input_number:
-  tyrcelyn_bookings_today:
-    name: Bookings Today
-    min: 0
-    max: 10
-  tyrcelyn_bookings_tomorrow:
-    name: Bookings Tomorrow
-    min: 0
-    max: 10
-  tyrcelyn_bookings_total:
-    name: Bookings Total
-    min: 0
-    max: 10
-  
 notify:
   - platform: file
     name: tyrcelyn
@@ -65,6 +34,6 @@ sensor:
         unit_of_measurement: none
 
 timer:
-  tycelyn_presence:
-    name: TC - Presence
-    duration: '00:10:00'
+  tyrcelyn_presence:
+    name: TC - Presence Timer
+    duration: '00:20:00'

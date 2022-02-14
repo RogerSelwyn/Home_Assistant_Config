@@ -28,7 +28,6 @@ history:
       - group.bedroom_2_lights_actual
       - group.bedroom_3_lights_actual
       - group.office_lights_actual
-      - sensor.security_lights
       - binary_sensor.hue
       - binary_sensor.internet
 #      - binary_sensor.dlan_dr
@@ -37,12 +36,17 @@ history:
       - weather.home
       - weather.ty_r_celyn
       - sun.sun
-      - sensor.sfups_load
-      - sensor.sfups_battery_charge
+      - sensor.security_lights
+      - binary_sensor.front_door_motion_2
+      - group.front_door_lights_actual
+      
+
 
       - binary_sensor.tyrcelyn_presence_all
       - binary_sensor.home_occupied_tyr_celyn
+      - binary_sensor.tc_living_room_3
       - binary_sensor.tyrcelyn_utility_motion
+      - timer.tyrcelyn_presence
       - calendar.bookings
     #   - climate.tyr_celyn
     #   - sensor.tyr_celyn_humidity

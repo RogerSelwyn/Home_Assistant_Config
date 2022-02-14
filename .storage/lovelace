@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace",
     "data": {
         "config": {
@@ -7,6 +8,9 @@
             "title": "Home",
             "views": [
                 {
+                    "icon": "mdi:home",
+                    "path": "default_view",
+                    "title": "Home",
                     "badges": [
                         {
                             "entity": "person.roger_selwyn"
@@ -25,34 +29,35 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "input_boolean.scene_evening_chill",
+                                    "entity": "switch.scene_evening_chill",
                                     "name": "Chill",
                                     "tap_action": {
                                         "action": "toggle"
                                     }
                                 },
                                 {
-                                    "entity": "input_boolean.scene_evening_friends",
+                                    "entity": "switch.scene_evening_friends",
                                     "name": "Friends",
                                     "tap_action": {
                                         "action": "toggle"
                                     }
                                 },
                                 {
-                                    "entity": "input_boolean.scene_reading",
+                                    "entity": "switch.scene_reading",
+                                    "name": "Reading",
                                     "tap_action": {
                                         "action": "toggle"
                                     }
                                 },
                                 {
-                                    "entity": "input_boolean.scene_evening_movie",
+                                    "entity": "switch.scene_evening_movie",
                                     "name": "Movie",
                                     "tap_action": {
                                         "action": "toggle"
                                     }
                                 },
                                 {
-                                    "entity": "input_boolean.scene_meal_time",
+                                    "entity": "switch.scene_meal_time",
                                     "name": "Meal",
                                     "tap_action": {
                                         "action": "toggle"
@@ -60,12 +65,14 @@
                                 }
                             ],
                             "show_state": false,
-                            "type": "glance"
+                            "type": "glance",
+                            "state_color": true
                         },
                         {
                             "card": {
                                 "title": "Living Room",
-                                "type": "entities"
+                                "type": "entities",
+                                "state_color": true
                             },
                             "filter": {
                                 "template": "{%if is_state('switch.zwave_living_room_main_light_switch','on')%}light.main_light{%endif%} {%if is_state('switch.zwave_living_room_main_light_switch','off')%}switch.zwave_living_room_main_light_switch{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.side_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.tv_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','off')%}switch.zwave_living_room_side_light_switch{%endif%} {%if is_state('binary_sensor.table_light_power','on')%}light.table_light{%endif%} {%if is_state('binary_sensor.table_light_power','off')%}binary_sensor.table_light_power{%endif%} timer.lights_living_room climate.living_room binary_sensor.living_room_occupancy\n"
@@ -90,36 +97,41 @@
                             ],
                             "show_header_toggle": false,
                             "title": "Kitchen",
-                            "type": "entities"
+                            "type": "entities",
+                            "state_color": true
                         },
                         {
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.cat_flap_back_door"
+                                    "entity": "sensor.cat_flap_the_fondue_pot"
                                 },
                                 {
-                                    "entity": "binary_sensor.cat_flap_back_door_connectivity"
+                                    "entity": "binary_sensor.curfew"
+                                },
+                                {
+                                    "entity": "binary_sensor.the_fondue_pot_connectivity"
                                 },
                                 {
                                     "entity": "binary_sensor.hub_home"
+                                },
+                                {
+                                    "entity": "binary_sensor.pet_brie"
+                                },
+                                {
+                                    "entity": "binary_sensor.pet_stilton"
                                 }
                             ],
-                            "title": "Cats"
+                            "title": "Cats",
+                            "state_color": true
                         },
                         {
                             "entities": [
                                 {
-                                    "entity": "input_boolean.flash_benjamin",
+                                    "entity": "switch.flash_benjamin",
+                                    "name": "Flash Benjamin",
                                     "tap_action": {
                                         "action": "toggle"
-                                    }
-                                },
-                                {
-                                    "entity": "input_boolean.url_profile",
-                                    "tap_action": {
-                                        "action": "navigate",
-                                        "navigation_path": "/profile"
                                     }
                                 },
                                 {
@@ -137,19 +149,16 @@
                         {
                             "card": {
                                 "title": "Front Door",
-                                "type": "entities"
+                                "type": "entities",
+                                "state_color": true
                             },
                             "filter": {
-                                "template": "{%if is_state('binary_sensor.front_door_light_power','on')%}light.front_door{%endif%} {%if is_state('binary_sensor.front_door_light_power','off')%}binary_sensor.front_door_light_power{%endif%} timer.lights_front_door binary_sensor.front_door_motion_2\n"
+                                "template": "{%if is_state('binary_sensor.front_door_lights_power','on')%}light.front_door{%endif%} {%if is_state('binary_sensor.front_door_lights_power','off')%}binary_sensor.front_door_lights_power{%endif%} timer.lights_front_door binary_sensor.front_door_motion_2\n"
                             },
                             "show_empty": false,
                             "type": "custom:auto-entities"
                         }
-                    ],
-                    "icon": "mdi:home",
-                    "panel": false,
-                    "path": "default_view",
-                    "title": "Home"
+                    ]
                 },
                 {
                     "icon": "mdi:home-outline",
@@ -157,10 +166,16 @@
                     "title": "Ty\u2019r Celyn",
                     "badges": [
                         {
-                            "entity": "binary_sensor.tyr_celyn"
+                            "entity": "binary_sensor.tc_dining_room"
                         },
                         {
-                            "entity": "binary_sensor.tyr_celyn_2"
+                            "entity": "binary_sensor.tc_dining_room_2"
+                        },
+                        {
+                            "entity": "binary_sensor.tc_living_room"
+                        },
+                        {
+                            "entity": "binary_sensor.tc_living_room_2"
                         },
                         {
                             "entity": "sensor.tyr_celyn_humidity"
@@ -178,10 +193,13 @@
                             "entity": "binary_sensor.home_occupied_tyr_celyn"
                         },
                         {
+                            "entity": "binary_sensor.tc_living_room_3"
+                        },
+                        {
                             "entity": "binary_sensor.tyrcelyn_utility_motion"
                         },
                         {
-                            "entity": "timer.tycelyn_presence"
+                            "entity": "timer.tyrcelyn_presence"
                         }
                     ],
                     "cards": [
@@ -207,13 +225,18 @@
                                 {
                                     "entities": [
                                         {
-                                            "entity": "switch.tyr_celyn_thermostat"
+                                            "entity": "binary_sensor.nest_heating"
                                         },
                                         {
-                                            "entity": "switch.tyr_celyn_thermostat_2"
+                                            "entity": "binary_sensor.nest_heating_manual"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.nest_hotwater"
                                         }
                                     ],
-                                    "type": "glance"
+                                    "type": "glance",
+                                    "state_color": true,
+                                    "show_icon": true
                                 }
                             ],
                             "type": "vertical-stack"
@@ -269,10 +292,11 @@
                         {
                             "card": {
                                 "title": "Bedroom 1",
-                                "type": "entities"
+                                "type": "entities",
+                                "state_color": true
                             },
                             "filter": {
-                                "template": "{%if is_state('binary_sensor.bedroom1_lights_power','on')%}light.bedroom_1{%endif%} {%if is_state('binary_sensor.bedroom1_lights_power','off')%}binary_sensor.bedroom1_lights_power{%endif%} {%if states('input_boolean.circadian_bedroom_1') %}input_boolean.circadian_bedroom_1{%endif%}  climate.bedroom_1 binary_sensor.geniushub_bedroom1_occupancy\n"
+                                "template": "{%if is_state('binary_sensor.bedroom1_lights_power','on')%}binary_sensor.bedroom1_lights_power light.bedroom_1{%endif%} {%if is_state('binary_sensor.bedroom1_lights_power','off')%}binary_sensor.bedroom1_lights_power{%endif%} {%if states('input_boolean.circadian_bedroom_1') %}input_boolean.circadian_bedroom_1{%endif%}  climate.bedroom_1 binary_sensor.geniushub_bedroom1_occupancy\n"
                             },
                             "show_empty": false,
                             "type": "custom:auto-entities"
@@ -280,10 +304,11 @@
                         {
                             "card": {
                                 "title": "Bedroom 2",
-                                "type": "entities"
+                                "type": "entities",
+                                "state_color": true
                             },
                             "filter": {
-                                "template": "{%if is_state('binary_sensor.bedroom2_lights_power','on')%}light.bedroom_2{%endif%} {%if is_state('binary_sensor.bedroom2_lights_power','off')%}binary_sensor.bedroom2_lights_power{%endif%} {%if states('input_boolean.circadian_bedroom_2') %}input_boolean.circadian_bedroom_2{%endif%}  climate.bedroom_2 binary_sensor.geniushub_bedroom2_occupancy\n"
+                                "template": "{%if is_state('binary_sensor.bedroom2_lights_power','on')%}binary_sensor.bedroom2_lights_power light.bedroom_2{%endif%} {%if is_state('binary_sensor.bedroom2_lights_power','off')%}binary_sensor.bedroom2_lights_power{%endif%} {%if states('input_boolean.circadian_bedroom_2') %}input_boolean.circadian_bedroom_2{%endif%}  climate.bedroom_2 binary_sensor.geniushub_bedroom2_occupancy\n"
                             },
                             "show_empty": false,
                             "type": "custom:auto-entities"
@@ -292,7 +317,8 @@
                             "card": {
                                 "title": "Bedroom 3",
                                 "type": "entities",
-                                "show_header_toggle": false
+                                "show_header_toggle": false,
+                                "state_color": true
                             },
                             "filter": {
                                 "template": "{%if is_state('binary_sensor.ceiling_light_power','on')%}light.ceiling_light{%endif%} {%if is_state('binary_sensor.ceiling_light_power','off')%}binary_sensor.ceiling_light_power{%endif%} {%if is_state('binary_sensor.bedside_light_power','on')%}light.bedside_light{%endif%} {%if is_state('binary_sensor.bedside_light_power','off')%}binary_sensor.bedside_light_power{%endif%} {%if states('input_boolean.circadian_bedroom_3') %}input_boolean.circadian_bedroom_3{%endif%} climate.bedroom_3 binary_sensor.geniushub_bedroom3_occupancy\n"
@@ -304,7 +330,8 @@
                             "card": {
                                 "title": "Office",
                                 "type": "entities",
-                                "show_header_toggle": false
+                                "show_header_toggle": false,
+                                "state_color": true
                             },
                             "filter": {
                                 "template": "{%if is_state('binary_sensor.office_lights_power','on')%}light.office{%endif%} {%if is_state('binary_sensor.office_lights_power','off')%}binary_sensor.office_lights_power{%endif%} {%if states('input_boolean.circadian_office') %}input_boolean.circadian_office{%endif%} sensor.zwave_office_fibaro_temperature input_boolean.work_day binary_sensor.zwave_office_fibaro_motion timer.lights_office\n"
@@ -602,13 +629,13 @@
                             "cards": [
                                 {
                                     "artwork": "cover",
-                                    "entity": "media_player.sftv_3",
                                     "hide": {
                                         "icon_state": false,
                                         "power_state": false
                                     },
                                     "icon": "mdi:television",
-                                    "type": "custom:mini-media-player"
+                                    "type": "custom:mini-media-player",
+                                    "entity": "media_player.sftv"
                                 }
                             ],
                             "title": "TV",

@@ -4,11 +4,13 @@ logger:
 #  custom_components.braviatv_psk: debug
     NodeRed: debug
     custom_components.skyq: info
+    custom_components.samsungtv_tizen: info
     # custom_components.o365: debug
     homeassistant.loader: error
     homeassistant.components.ring: error
     homeassistant.components.nut: critical
     homeassistant.components.ipp: critical
+    py.warnings: error
     # O365: debug
     # custom_components.hacs: debug
     # hacs: debug
