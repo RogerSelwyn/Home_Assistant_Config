@@ -22,7 +22,7 @@ __pycache__/
 home-assistant*
 update.sh
 shell_scripts/.dropbox_uploader
-blah
+o365_calendars.yaml
 
 Reinclude files
 !.storage/lovelace
