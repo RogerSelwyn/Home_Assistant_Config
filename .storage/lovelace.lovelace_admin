@@ -36,6 +36,7 @@
             "title": "Admin",
             "views": [
                 {
+                    "theme": "Backend-selected",
                     "icon": "mdi:information",
                     "path": "info",
                     "title": "Info",
@@ -53,7 +54,7 @@
                             "entity": "sensor.geniushub_warnings"
                         },
                         {
-                            "entity": "binary_sensor.updater"
+                            "entity": "binary_sensor.home_assistant_website_update_available"
                         },
                         {
                             "entity": "sensor.hacs"
@@ -192,13 +193,16 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "sensor.geniushub_dining_room_luminance"
+                                },
+                                {
+                                    "entity": "sensor.geniushub_kitchen_luminance"
+                                },
+                                {
                                     "entity": "sensor.geniushub_living_room_luminance"
                                 },
                                 {
                                     "entity": "sensor.living_room_hue_lightlevel"
-                                },
-                                {
-                                    "entity": "sensor.geniushub_kitchen_luminance"
                                 },
                                 {
                                     "entity": "sensor.geniushub_bedroom1_luminance"
@@ -389,6 +393,9 @@
                                 },
                                 {
                                     "entity": "binary_sensor.downstairs_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.geniushub_dining_room_occupancy"
                                 },
                                 {
                                     "entity": "binary_sensor.geniushub_kitchen_occupancy"

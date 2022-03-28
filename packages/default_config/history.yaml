@@ -42,12 +42,13 @@ history:
       
 
 
-      - binary_sensor.tyrcelyn_presence_all
-      - binary_sensor.home_occupied_tyr_celyn
-      - binary_sensor.tc_living_room_3
-      - binary_sensor.tyrcelyn_utility_motion
-      - timer.tyrcelyn_presence
-      - calendar.bookings
+    #   - binary_sensor.tyrcelyn_presence_all
+    #   - binary_sensor.home_occupied_tyr_celyn
+    #   - binary_sensor.tc_living_room_3
+    #   - binary_sensor.tyrcelyn_utility_motion
+    #   - binary_sensor.tyrcelyn_tctv
+    #   - timer.tyrcelyn_presence
+    #   - calendar.bookings
     #   - climate.tyr_celyn
     #   - sensor.tyr_celyn_humidity
 #    - binary_sensor.nest_presence_device_presence

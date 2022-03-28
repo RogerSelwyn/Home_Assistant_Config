@@ -160,6 +160,18 @@ group:
     entities:
       - binary_sensor.front_door_lights_power
       - light.front_door
+  house_lights_actual:
+    name: House Lights Actual
+    icon: mdi:ceiling-lamp-multiple
+    all: false
+    entities:
+      - group.bedroom_1_lights_actual
+      - group.bedroom_2_lights_actual
+      - group.bedroom_3_lights_actual
+      - group.living_room_lights_actual
+      - group.office_lights_actual
+      
+    
 
 input_select:
   fireplace_lights_mode:

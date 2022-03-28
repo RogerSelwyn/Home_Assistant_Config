@@ -8,6 +8,7 @@ config:
 device_tracker:
 diagnostics:
 input_button:
+media_source:
 mobile_app:
 person:
 # script: 
@@ -17,6 +18,5 @@ system_health:
 system_log:
 tts:
   - platform: google_translate
-updater:
 zeroconf:
 

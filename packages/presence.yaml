@@ -16,6 +16,7 @@ binary_sensor:
       downstairs_occupancy:
         value_template: >-
           {{ is_state('binary_sensor.living_room_hue_motion_motion', 'on')
+          or is_state('binary_sensor.geniushub_dining_room_occupancy', 'on')
           or is_state('binary_sensor.geniushub_living_room_occupancy', 'on')
           or is_state('binary_sensor.kitchen_pir', 'on')
           or is_state('binary_sensor.geniushub_kitchen_occupancy', 'on') }}

@@ -1,6 +1,6 @@
 homeassistant:
   customize:
-    binary_sensor.tyrcelyn_bookings:
+    binary_sensor.tyrcelyn_booking:
       friendly_name: "TC - Booked"
     binary_sensor.tyrcelyn_guests:
       friendly_name: "TC - Guests"
@@ -10,6 +10,9 @@ homeassistant:
       friendly_name: "TC - Presence - Cleaner"
     binary_sensor.tyrcelyn_utility_motion:
       friendly_name: "TC - Utility Motion"
+    binary_sensor.tyrcelyn_tctv:
+      friendly_name: "TC - TCTV"
+
 
 notify:
   - platform: file
@@ -32,6 +35,11 @@ sensor:
         friendly_name: "Ty'r Celyn HVAC Action"
         value_template: "{{ state_attr('climate.tyr_celyn', 'hvac_action') }}"
         unit_of_measurement: none
+      tyr_celyn_humidity_external:
+        device_class: humidity
+        unit_of_measurement: '%'
+        value_template: >-
+          {{ state_attr('weather.ty_r_celyn', 'humidity')}}
 
 timer:
   tyrcelyn_presence:

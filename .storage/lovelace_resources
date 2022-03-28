@@ -7,7 +7,7 @@
             {
                 "id": "d8ee4c7ff19c456897194e2977406707",
                 "type": "module",
-                "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js?hacstag=1485208381150"
+                "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js?hacstag=1485208381162"
             },
             {
                 "id": "862a683811d641dd8558a980710d0e2e",
@@ -22,12 +22,17 @@
             {
                 "id": "811177717c4b435a9e6cf5f712246235",
                 "type": "module",
-                "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js"
+                "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js?hacstag=1677445841110"
             },
             {
                 "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js?hacstag=246549747620",
                 "type": "module",
                 "id": "80de3000548944bd82e09d3bb7a76fd2"
+            },
+            {
+                "url": "/hacsfiles/history-explorer-card/history-explorer-card.js?hacstag=4403747941019",
+                "type": "module",
+                "id": "eea2daa69c7d4d488c9b1781ac64195a"
             }
         ]
     }

@@ -157,132 +157,26 @@
                             },
                             "show_empty": false,
                             "type": "custom:auto-entities"
-                        }
-                    ]
-                },
-                {
-                    "icon": "mdi:home-outline",
-                    "path": "tyr-celyn",
-                    "title": "Ty\u2019r Celyn",
-                    "badges": [
-                        {
-                            "entity": "binary_sensor.tc_dining_room"
                         },
                         {
-                            "entity": "binary_sensor.tc_dining_room_2"
-                        },
-                        {
-                            "entity": "binary_sensor.tc_living_room"
-                        },
-                        {
-                            "entity": "binary_sensor.tc_living_room_2"
-                        },
-                        {
-                            "entity": "sensor.tyr_celyn_humidity"
-                        },
-                        {
-                            "entity": "binary_sensor.tyrcelyn_bookings"
-                        },
-                        {
-                            "entity": "binary_sensor.tyrcelyn_guests"
-                        },
-                        {
-                            "entity": "binary_sensor.tyrcelyn_presence_all"
-                        },
-                        {
-                            "entity": "binary_sensor.home_occupied_tyr_celyn"
-                        },
-                        {
-                            "entity": "binary_sensor.tc_living_room_3"
-                        },
-                        {
-                            "entity": "binary_sensor.tyrcelyn_utility_motion"
-                        },
-                        {
-                            "entity": "timer.tyrcelyn_presence"
-                        }
-                    ],
-                    "cards": [
-                        {
-                            "disableEventLink": true,
                             "entities": [
                                 {
-                                    "entity": "calendar.bookings"
-                                }
-                            ],
-                            "showDescription": false,
-                            "showMonth": true,
-                            "showNoEventsForToday": true,
-                            "showWeekDay": true,
-                            "type": "custom:atomic-calendar-revive"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "climate.tyr_celyn",
-                                    "type": "thermostat"
+                                    "entity": "climate.dining_room"
                                 },
                                 {
-                                    "entities": [
-                                        {
-                                            "entity": "binary_sensor.nest_heating"
-                                        },
-                                        {
-                                            "entity": "binary_sensor.nest_heating_manual"
-                                        },
-                                        {
-                                            "entity": "binary_sensor.nest_hotwater"
-                                        }
-                                    ],
-                                    "type": "glance",
-                                    "state_color": true,
-                                    "show_icon": true
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "entity": "weather.ty_r_celyn",
-                            "name": "TC",
-                            "type": "custom:weather-card"
-                        },
-                        {
-                            "card": {
-                                "aspect_ratio": "16:9",
-                                "entity": "camera.workshop",
-                                "type": "picture-entity"
-                            },
-                            "conditions": [
+                                    "entity": "binary_sensor.smart_plug_5"
+                                },
                                 {
-                                    "entity": "camera.workshop",
-                                    "state": "idle"
-                                }
-                            ],
-                            "type": "conditional"
-                        },
-                        {
-                            "card": {
-                                "aspect_ratio": "16:9",
-                                "entity": "camera.garage",
-                                "type": "picture-entity"
-                            },
-                            "conditions": [
+                                    "entity": "switch.plug_dining_room"
+                                },
                                 {
-                                    "entity": "camera.garage",
-                                    "state": "idle"
+                                    "entity": "binary_sensor.geniushub_dining_room_occupancy"
                                 }
                             ],
-                            "type": "conditional"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "climate.tyr_celyn"
-                                }
-                            ],
-                            "hours_to_show": 24,
-                            "refresh_interval": 0,
-                            "type": "history-graph"
+                            "show_header_toggle": false,
+                            "title": "Dining Room",
+                            "type": "entities",
+                            "state_color": true
                         }
                     ]
                 },

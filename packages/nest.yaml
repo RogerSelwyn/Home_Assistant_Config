@@ -33,6 +33,7 @@ sensor:
     sensors:
       nest_heating:
         device_class: temperature
+        unit_of_measurement: °C
         value_template: >-
           {% if state_attr('climate.tyr_celyn', 'hvac_action') == 'heating' %}
             {{ state_attr('climate.tyr_celyn', 'current_temperature') }}
@@ -50,3 +51,13 @@ sensor:
       nest_hvac:
         value_template: >-
           {{ state_attr('climate.tyr_celyn', 'hvac_action')}}
+      nest_current_temperature:
+        device_class: temperature
+        unit_of_measurement: °C
+        value_template: >-
+          {{ state_attr('climate.tyr_celyn', 'current_temperature')}}
+      nest_set_temperature:
+        device_class: temperature
+        unit_of_measurement: °C
+        value_template: >-
+          {{ state_attr('climate.tyr_celyn', 'temperature')}}
