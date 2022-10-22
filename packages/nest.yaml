@@ -1,8 +1,8 @@
-nest:
-  client_id: !secret nest-client-id
-  client_secret: !secret nest-client-secret
-  project_id: !secret nest-project-id
-  subscriber_id: !secret nest-subscriber-id
+#nest:
+#  client_id: !secret nest-client-id
+#  client_secret: !secret nest-client-secret
+#  project_id: !secret nest-project-id
+#  subscriber_id: !secret nest-subscriber-id
 
 binary_sensor:
   - platform: template

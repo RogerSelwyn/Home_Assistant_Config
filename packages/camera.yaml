@@ -1,13 +1,13 @@
-camera:
-  - platform: generic
-    name: Front Door Events
-    still_image_url: http://localhost:8123{{ states.camera.front_door_snapshot.attributes.entity_picture }}
-    stream_source: !secret front_door_events_source
+# camera:
+#   - platform: generic
+#     name: Front Door Events
+#     still_image_url: http://localhost:8123{{ states.camera.front_door_snapshot.attributes.entity_picture }}
+#     stream_source: !secret front_door_events_source
 
-  - platform: generic
-    name: Front Door Live
-    still_image_url: http://localhost:8123{{ states.camera.front_door_snapshot.attributes.entity_picture }}
-    stream_source: !secret front_door_live_source
+#   - platform: generic
+#     name: Front Door Live
+#     still_image_url: http://localhost:8123{{ states.camera.front_door_snapshot.attributes.entity_picture }}
+#     stream_source: !secret front_door_live_source
  
 stream:
   ll_hls: true

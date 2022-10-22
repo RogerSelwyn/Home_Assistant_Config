@@ -43,11 +43,11 @@ binary_sensor:
 sensor:
   - platform: template
     sensors:
-    #   geniushub_dining_room_luminance:
-    #     value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_30', 'state').luminance | float(0)) }}"
-    #     friendly_name: 'Dining Room Genius Illuminance' 
-    #     unit_of_measurement: 'lux'
-    #     device_class: illuminance
+      geniushub_dining_room_luminance:
+        value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_30', 'state').luminance | float(0)) }}"
+        friendly_name: 'Dining Room Genius Illuminance' 
+        unit_of_measurement: 'lux'
+        device_class: illuminance
       geniushub_kitchen_luminance:
         value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_19', 'state').luminance | float(0)) }}"
         friendly_name: 'Kitchen Genius Illuminance' 
@@ -59,7 +59,7 @@ sensor:
         unit_of_measurement: 'lux'
         device_class: illuminance
       geniushub_bedroom1_luminance:
-        value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_30', 'state').luminance | float(0)) }}"
+        value_template: "{{ '%.0f'%(state_attr('sensor.room_sensor_38', 'state').luminance | float(0)) }}"
         friendly_name: 'Bedroom 1 Genius Illuminance' 
         unit_of_measurement: 'lux'
         device_class: illuminance

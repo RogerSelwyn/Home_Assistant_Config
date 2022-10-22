@@ -23,6 +23,7 @@ home-assistant*
 update.sh
 shell_scripts/.dropbox_uploader
 o365_calendars.yaml
+glow.conf
 
 Reinclude files
 !.storage/lovelace

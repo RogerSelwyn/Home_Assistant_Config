@@ -45,3 +45,5 @@ timer:
   tyrcelyn_presence:
     name: TC - Presence Timer
     duration: '00:20:00'
+    restore: true
+    

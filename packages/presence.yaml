@@ -31,6 +31,12 @@ binary_sensor:
         device_class: motion
         friendly_name: 'Upstairs Motion' 
 
+input_boolean:
+  office_motion:
+    name: Office Motion
+    icon: mdi:transition
+
+
 group:
   presence_all:
     name: Presence - All
@@ -76,6 +82,9 @@ timer:
   night:
     name: Time to Night
     duration: '00:15:00'
+    restore: true
   away:
     name: Time to Away
     duration: '00:07:00'
+    restore: true
+    

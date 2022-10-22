@@ -2,16 +2,17 @@ logger:
   default: warning
   logs:
 #  custom_components.braviatv_psk: debug
-    NodeRed: debug
+    NodeRed: info
     custom_components.skyq: info
     pyskyqremote: info
     # custom_components.o365: debug
+    # O365: debug
     homeassistant.loader: error
     homeassistant.components.ring: error
     homeassistant.components.nut: critical
     homeassistant.components.ipp: critical
     py.warnings: error
-    # O365: debug
+    braviapsk.sony_bravia_psk: critical
     # custom_components.hacs: debug
     # hacs: debug
     # queueman: debug

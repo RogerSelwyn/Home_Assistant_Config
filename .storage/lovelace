@@ -1,546 +1,577 @@
 {
-    "version": 1,
-    "minor_version": 1,
-    "key": "lovelace",
-    "data": {
-        "config": {
-            "background": "var(--background-image)",
-            "title": "Home",
-            "views": [
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace",
+  "data": {
+    "config": {
+      "background": "var(--background-image)",
+      "title": "Home",
+      "views": [
+        {
+          "icon": "mdi:home",
+          "path": "default_view",
+          "title": "Home",
+          "badges": [
+            {
+              "entity": "person.roger_selwyn"
+            },
+            {
+              "entity": "person.clare_selwyn"
+            },
+            {
+              "entity": "person.benjamin_selwyn"
+            },
+            {
+              "entity": "sensor.location_mode"
+            },
+            {
+              "entity": "device_tracker.pet_brie"
+            },
+            {
+              "entity": "device_tracker.pet_stilton"
+            }
+          ],
+          "cards": [
+            {
+              "entities": [
                 {
-                    "icon": "mdi:home",
-                    "path": "default_view",
-                    "title": "Home",
-                    "badges": [
-                        {
-                            "entity": "person.roger_selwyn"
-                        },
-                        {
-                            "entity": "person.clare_selwyn"
-                        },
-                        {
-                            "entity": "person.benjamin_selwyn"
-                        },
-                        {
-                            "entity": "sensor.location_mode"
-                        }
-                    ],
-                    "cards": [
-                        {
-                            "entities": [
-                                {
-                                    "entity": "switch.scene_evening_chill",
-                                    "name": "Chill",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    }
-                                },
-                                {
-                                    "entity": "switch.scene_evening_friends",
-                                    "name": "Friends",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    }
-                                },
-                                {
-                                    "entity": "switch.scene_reading",
-                                    "name": "Reading",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    }
-                                },
-                                {
-                                    "entity": "switch.scene_evening_movie",
-                                    "name": "Movie",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    }
-                                },
-                                {
-                                    "entity": "switch.scene_meal_time",
-                                    "name": "Meal",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    }
-                                }
-                            ],
-                            "show_state": false,
-                            "type": "glance",
-                            "state_color": true
-                        },
-                        {
-                            "card": {
-                                "title": "Living Room",
-                                "type": "entities",
-                                "state_color": true
-                            },
-                            "filter": {
-                                "template": "{%if is_state('switch.zwave_living_room_main_light_switch','on')%}light.main_light{%endif%} {%if is_state('switch.zwave_living_room_main_light_switch','off')%}switch.zwave_living_room_main_light_switch{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.side_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.tv_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','off')%}switch.zwave_living_room_side_light_switch{%endif%} {%if is_state('binary_sensor.table_light_power','on')%}light.table_light{%endif%} {%if is_state('binary_sensor.table_light_power','off')%}binary_sensor.table_light_power{%endif%} timer.lights_living_room climate.living_room binary_sensor.living_room_occupancy\n"
-                            },
-                            "show_empty": false,
-                            "type": "custom:auto-entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "climate.kitchen"
-                                },
-                                {
-                                    "entity": "binary_sensor.smart_plug_7"
-                                },
-                                {
-                                    "entity": "switch.plug_kitchen"
-                                },
-                                {
-                                    "entity": "binary_sensor.kitchen_occupancy"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Kitchen",
-                            "type": "entities",
-                            "state_color": true
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.cat_flap_the_fondue_pot"
-                                },
-                                {
-                                    "entity": "binary_sensor.curfew"
-                                },
-                                {
-                                    "entity": "binary_sensor.the_fondue_pot_connectivity"
-                                },
-                                {
-                                    "entity": "binary_sensor.hub_home"
-                                },
-                                {
-                                    "entity": "binary_sensor.pet_brie"
-                                },
-                                {
-                                    "entity": "binary_sensor.pet_stilton"
-                                }
-                            ],
-                            "title": "Cats",
-                            "state_color": true
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "switch.flash_benjamin",
-                                    "name": "Flash Benjamin",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    }
-                                },
-                                {
-                                    "entity": "switch.adguard_protection"
-                                }
-                            ],
-                            "show_state": false,
-                            "type": "glance"
-                        },
-                        {
-                            "entity": "weather.home",
-                            "name": "Home",
-                            "type": "custom:weather-card"
-                        },
-                        {
-                            "card": {
-                                "title": "Front Door",
-                                "type": "entities",
-                                "state_color": true
-                            },
-                            "filter": {
-                                "template": "{%if is_state('binary_sensor.front_door_lights_power','on')%}light.front_door{%endif%} {%if is_state('binary_sensor.front_door_lights_power','off')%}binary_sensor.front_door_lights_power{%endif%} timer.lights_front_door binary_sensor.front_door_motion_2\n"
-                            },
-                            "show_empty": false,
-                            "type": "custom:auto-entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "climate.dining_room"
-                                },
-                                {
-                                    "entity": "binary_sensor.smart_plug_5"
-                                },
-                                {
-                                    "entity": "switch.plug_dining_room"
-                                },
-                                {
-                                    "entity": "binary_sensor.geniushub_dining_room_occupancy"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Dining Room",
-                            "type": "entities",
-                            "state_color": true
-                        }
-                    ]
+                  "entity": "switch.scene_evening_chill",
+                  "name": "Chill",
+                  "tap_action": {
+                    "action": "toggle"
+                  }
                 },
                 {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "card": {
-                                "title": "Bedroom 1",
-                                "type": "entities",
-                                "state_color": true
-                            },
-                            "filter": {
-                                "template": "{%if is_state('binary_sensor.bedroom1_lights_power','on')%}binary_sensor.bedroom1_lights_power light.bedroom_1{%endif%} {%if is_state('binary_sensor.bedroom1_lights_power','off')%}binary_sensor.bedroom1_lights_power{%endif%} {%if states('input_boolean.circadian_bedroom_1') %}input_boolean.circadian_bedroom_1{%endif%}  climate.bedroom_1 binary_sensor.geniushub_bedroom1_occupancy\n"
-                            },
-                            "show_empty": false,
-                            "type": "custom:auto-entities"
-                        },
-                        {
-                            "card": {
-                                "title": "Bedroom 2",
-                                "type": "entities",
-                                "state_color": true
-                            },
-                            "filter": {
-                                "template": "{%if is_state('binary_sensor.bedroom2_lights_power','on')%}binary_sensor.bedroom2_lights_power light.bedroom_2{%endif%} {%if is_state('binary_sensor.bedroom2_lights_power','off')%}binary_sensor.bedroom2_lights_power{%endif%} {%if states('input_boolean.circadian_bedroom_2') %}input_boolean.circadian_bedroom_2{%endif%}  climate.bedroom_2 binary_sensor.geniushub_bedroom2_occupancy\n"
-                            },
-                            "show_empty": false,
-                            "type": "custom:auto-entities"
-                        },
-                        {
-                            "card": {
-                                "title": "Bedroom 3",
-                                "type": "entities",
-                                "show_header_toggle": false,
-                                "state_color": true
-                            },
-                            "filter": {
-                                "template": "{%if is_state('binary_sensor.ceiling_light_power','on')%}light.ceiling_light{%endif%} {%if is_state('binary_sensor.ceiling_light_power','off')%}binary_sensor.ceiling_light_power{%endif%} {%if is_state('binary_sensor.bedside_light_power','on')%}light.bedside_light{%endif%} {%if is_state('binary_sensor.bedside_light_power','off')%}binary_sensor.bedside_light_power{%endif%} {%if states('input_boolean.circadian_bedroom_3') %}input_boolean.circadian_bedroom_3{%endif%} climate.bedroom_3 binary_sensor.geniushub_bedroom3_occupancy\n"
-                            },
-                            "show_empty": false,
-                            "type": "custom:auto-entities"
-                        },
-                        {
-                            "card": {
-                                "title": "Office",
-                                "type": "entities",
-                                "show_header_toggle": false,
-                                "state_color": true
-                            },
-                            "filter": {
-                                "template": "{%if is_state('binary_sensor.office_lights_power','on')%}light.office{%endif%} {%if is_state('binary_sensor.office_lights_power','off')%}binary_sensor.office_lights_power{%endif%} {%if states('input_boolean.circadian_office') %}input_boolean.circadian_office{%endif%} sensor.zwave_office_fibaro_temperature input_boolean.work_day binary_sensor.zwave_office_fibaro_motion timer.lights_office\n"
-                            },
-                            "show_empty": false,
-                            "type": "custom:auto-entities"
-                        }
-                    ],
-                    "icon": "mdi:bed",
-                    "path": "night",
-                    "title": "Bedrooms"
+                  "entity": "switch.scene_evening_friends",
+                  "name": "Friends",
+                  "tap_action": {
+                    "action": "toggle"
+                  }
                 },
                 {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "cards": [
-                                {
-                                    "artwork": "cover",
-                                    "entity": "media_player.conservatory",
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power": true,
-                                        "power_state": false
-                                    },
-                                    "icon": "mdi:music-box-multiple-outline",
-                                    "speaker_group": {
-                                        "entities": [
-                                            {
-                                                "entity_id": "media_player.conservatory",
-                                                "name": "Sonos Conservatory"
-                                            },
-                                            {
-                                                "entity_id": "media_player.kitchen",
-                                                "name": "Sonos Kitchen"
-                                            },
-                                            {
-                                                "entity_id": "media_player.living_room",
-                                                "name": "Living Room"
-                                            }
-                                        ],
-                                        "platform": "sonos",
-                                        "show_group_count": true
-                                    },
-                                    "type": "custom:mini-media-player"
-                                },
-                                {
-                                    "artwork": "cover",
-                                    "entity": "media_player.living_room",
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power": true,
-                                        "power_state": false
-                                    },
-                                    "icon": "mdi:music-box-multiple-outline",
-                                    "speaker_group": {
-                                        "entities": [
-                                            {
-                                                "entity_id": "media_player.conservatory",
-                                                "name": "Sonos Conservatory"
-                                            },
-                                            {
-                                                "entity_id": "media_player.kitchen",
-                                                "name": "Sonos Kitchen"
-                                            },
-                                            {
-                                                "entity_id": "media_player.living_room",
-                                                "name": "Living Room"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:mini-media-player"
-                                }
-                            ],
-                            "title": "Sonos",
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "artwork": "cover",
-                                    "entity": "media_player.sky_q",
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power_state": false,
-                                        "source": false,
-                                        "volume": false
-                                    },
-                                    "info": "scroll",
-                                    "name": "SkyQ",
-                                    "shortcuts": {
-                                        "buttons": [
-                                            {
-                                                "icon": "mdi:chevron-up",
-                                                "id": "channelup",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:chevron-down",
-                                                "id": "channeldown",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:record-rec",
-                                                "id": "record",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": null,
-                                                "id": "sky",
-                                                "name": "Sky",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": null,
-                                                "id": "tvguide",
-                                                "name": "Guide",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:home-outline",
-                                                "id": "home",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:menu-open",
-                                                "id": "sidebar",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:keyboard-return",
-                                                "id": "dismiss",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:information-variant",
-                                                "id": "i",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:arrow-right-thick",
-                                                "id": "right",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:arrow-left-thick",
-                                                "id": "left",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:arrow-up-thick",
-                                                "id": "up",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:arrow-down-thick",
-                                                "id": "down",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": null,
-                                                "id": "select",
-                                                "name": "Select",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": null,
-                                                "name": null
-                                            },
-                                            {
-                                                "icon": null
-                                            },
-                                            {
-                                                "icon": null
-                                            },
-                                            {
-                                                "icon": null
-                                            }
-                                        ],
-                                        "columns": 6,
-                                        "hide_when_off": true
-                                    },
-                                    "type": "custom:mini-media-player"
-                                },
-                                {
-                                    "artwork": "material",
-                                    "entity": "media_player.sky_q_mini",
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power_state": false,
-                                        "source": false,
-                                        "volume": true
-                                    },
-                                    "info": "scroll",
-                                    "name": "SkyQ Mini",
-                                    "shortcuts": {
-                                        "buttons": [
-                                            {
-                                                "icon": "mdi:chevron-up",
-                                                "id": "channelup",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:chevron-down",
-                                                "id": "channeldown",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:record-rec",
-                                                "id": "record",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": null,
-                                                "id": "sky",
-                                                "name": "Sky",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": null,
-                                                "id": "tvguide",
-                                                "name": "Guide",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:home-outline",
-                                                "id": "home",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:menu-open",
-                                                "id": "sidebar",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:keyboard-return",
-                                                "id": "dismiss",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:information-variant",
-                                                "id": "i",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:arrow-right-thick",
-                                                "id": "right",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:arrow-left-thick",
-                                                "id": "left",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:arrow-up-thick",
-                                                "id": "up",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": "mdi:arrow-down-thick",
-                                                "id": "down",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": null,
-                                                "id": "select",
-                                                "name": "Select",
-                                                "type": "skyq"
-                                            },
-                                            {
-                                                "icon": null,
-                                                "name": null
-                                            },
-                                            {
-                                                "icon": null
-                                            },
-                                            {
-                                                "icon": null
-                                            },
-                                            {
-                                                "icon": null
-                                            }
-                                        ],
-                                        "columns": 6,
-                                        "hide_when_off": true
-                                    },
-                                    "type": "custom:mini-media-player"
-                                }
-                            ],
-                            "title": "Sky Q",
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "artwork": "cover",
-                                    "hide": {
-                                        "icon_state": false,
-                                        "power_state": false
-                                    },
-                                    "icon": "mdi:television",
-                                    "type": "custom:mini-media-player",
-                                    "entity": "media_player.sftv"
-                                }
-                            ],
-                            "title": "TV",
-                            "type": "vertical-stack"
-                        }
-                    ],
-                    "icon": "mdi:music-box-multiple",
-                    "path": "music",
-                    "title": "Media"
+                  "entity": "switch.scene_reading",
+                  "name": "Reading",
+                  "tap_action": {
+                    "action": "toggle"
+                  }
+                },
+                {
+                  "entity": "switch.scene_evening_movie",
+                  "name": "Movie",
+                  "tap_action": {
+                    "action": "toggle"
+                  }
+                },
+                {
+                  "entity": "switch.scene_meal_time",
+                  "name": "Meal",
+                  "tap_action": {
+                    "action": "toggle"
+                  }
                 }
-            ]
+              ],
+              "show_state": false,
+              "type": "glance",
+              "state_color": true
+            },
+            {
+              "card": {
+                "title": "Living Room",
+                "type": "entities",
+                "state_color": true
+              },
+              "filter": {
+                "template": "{%if is_state('switch.zwave_living_room_main_light_switch','on')%}light.main_light{%endif%} {%if is_state('switch.zwave_living_room_main_light_switch','off')%}switch.zwave_living_room_main_light_switch{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.side_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.tv_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','off')%}switch.zwave_living_room_side_light_switch{%endif%} {%if is_state('binary_sensor.table_light_power','on')%}light.table_light{%endif%} {%if is_state('binary_sensor.table_light_power','off')%}binary_sensor.table_light_power{%endif%} timer.lights_living_room climate.living_room binary_sensor.living_room_occupancy\n"
+              },
+              "show_empty": false,
+              "type": "custom:auto-entities"
+            },
+            {
+              "entities": [
+                {
+                  "entity": "climate.kitchen"
+                },
+                {
+                  "entity": "binary_sensor.smart_plug_7"
+                },
+                {
+                  "entity": "switch.plug_kitchen"
+                },
+                {
+                  "entity": "binary_sensor.kitchen_occupancy"
+                }
+              ],
+              "show_header_toggle": false,
+              "title": "Kitchen",
+              "type": "entities",
+              "state_color": true
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.cat_flap_the_fondue_pot"
+                },
+                {
+                  "entity": "binary_sensor.curfew"
+                },
+                {
+                  "entity": "binary_sensor.the_fondue_pot_connectivity"
+                },
+                {
+                  "entity": "binary_sensor.hub_home"
+                },
+                {
+                  "entity": "binary_sensor.pet_brie"
+                },
+                {
+                  "entity": "binary_sensor.pet_stilton"
+                }
+              ],
+              "title": "Cats",
+              "state_color": true
+            },
+            {
+              "entities": [
+                {
+                  "entity": "switch.flash_benjamin",
+                  "name": "Flash Benjamin",
+                  "tap_action": {
+                    "action": "toggle"
+                  }
+                },
+                {
+                  "entity": "switch.adguard_protection"
+                }
+              ],
+              "show_state": false,
+              "type": "glance"
+            },
+            {
+              "entity": "weather.home",
+              "name": "Home",
+              "type": "custom:weather-card"
+            },
+            {
+              "card": {
+                "title": "Front Door",
+                "type": "entities",
+                "state_color": true
+              },
+              "filter": {
+                "template": "{%if is_state('binary_sensor.front_door_lights_power','on')%}light.front_door{%endif%} {%if is_state('binary_sensor.front_door_lights_power','off')%}binary_sensor.front_door_lights_power{%endif%} timer.lights_front_door binary_sensor.front_door_motion_2\n"
+              },
+              "show_empty": false,
+              "type": "custom:auto-entities"
+            },
+            {
+              "entities": [
+                {
+                  "entity": "climate.dining_room"
+                },
+                {
+                  "entity": "binary_sensor.smart_plug_5"
+                },
+                {
+                  "entity": "switch.plug_dining_room"
+                },
+                {
+                  "entity": "binary_sensor.geniushub_dining_room_occupancy"
+                }
+              ],
+              "show_header_toggle": false,
+              "title": "Dining Room",
+              "type": "entities",
+              "state_color": true
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "climate.hall"
+                }
+              ],
+              "title": "Hall"
+            }
+          ]
+        },
+        {
+          "badges": [],
+          "cards": [
+            {
+              "card": {
+                "title": "Bedroom 1",
+                "type": "entities",
+                "state_color": true
+              },
+              "filter": {
+                "template": "{%if is_state('binary_sensor.bedroom1_lights_power','on')%}binary_sensor.bedroom1_lights_power light.bedroom_1{%endif%} {%if is_state('binary_sensor.bedroom1_lights_power','off')%}binary_sensor.bedroom1_lights_power{%endif%} {%if states('input_boolean.circadian_bedroom_1') %}input_boolean.circadian_bedroom_1{%endif%}  climate.bedroom_1 binary_sensor.geniushub_bedroom1_occupancy\n"
+              },
+              "show_empty": false,
+              "type": "custom:auto-entities"
+            },
+            {
+              "card": {
+                "title": "Bedroom 2",
+                "type": "entities",
+                "state_color": true
+              },
+              "filter": {
+                "template": "light.bedroom_2 {%if states('input_boolean.circadian_bedroom_2') %}input_boolean.circadian_bedroom_2{%endif%}  climate.bedroom_2 binary_sensor.geniushub_bedroom2_occupancy\n"
+              },
+              "show_empty": false,
+              "type": "custom:auto-entities"
+            },
+            {
+              "card": {
+                "title": "Bedroom 3",
+                "type": "entities",
+                "show_header_toggle": false,
+                "state_color": true
+              },
+              "filter": {
+                "template": "light.ceiling_light {%if is_state('binary_sensor.bedside_light_power','on')%}light.bedside_light{%endif%} {%if is_state('binary_sensor.bedside_light_power','off')%}binary_sensor.bedside_light_power{%endif%} {%if states('input_boolean.circadian_bedroom_3') %}input_boolean.circadian_bedroom_3{%endif%} climate.bedroom_3 binary_sensor.geniushub_bedroom3_occupancy\n"
+              },
+              "show_empty": false,
+              "type": "custom:auto-entities"
+            },
+            {
+              "card": {
+                "title": "Office",
+                "type": "entities",
+                "show_header_toggle": false,
+                "state_color": true
+              },
+              "filter": {
+                "template": "light.office {%if states('input_boolean.circadian_office') %}input_boolean.circadian_office{%endif%} input_boolean.office_motion sensor.zwave_office_fibaro_temperature input_boolean.work_day binary_sensor.zwave_office_fibaro_motion timer.lights_office\n"
+              },
+              "show_empty": false,
+              "type": "custom:auto-entities"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.air_con"
+            }
+          ],
+          "icon": "mdi:bed",
+          "path": "night",
+          "title": "Bedrooms"
+        },
+        {
+          "badges": [],
+          "cards": [
+            {
+              "cards": [
+                {
+                  "artwork": "cover",
+                  "entity": "media_player.conservatory",
+                  "hide": {
+                    "icon_state": false,
+                    "power": true,
+                    "power_state": false
+                  },
+                  "icon": "mdi:music-box-multiple-outline",
+                  "speaker_group": {
+                    "entities": [
+                      {
+                        "entity_id": "media_player.conservatory",
+                        "name": "Sonos Conservatory"
+                      },
+                      {
+                        "entity_id": "media_player.kitchen",
+                        "name": "Sonos Kitchen"
+                      },
+                      {
+                        "entity_id": "media_player.living_room",
+                        "name": "Living Room"
+                      }
+                    ],
+                    "platform": "sonos",
+                    "show_group_count": true
+                  },
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "artwork": "cover",
+                  "entity": "media_player.living_room",
+                  "hide": {
+                    "icon_state": false,
+                    "power": true,
+                    "power_state": false
+                  },
+                  "icon": "mdi:music-box-multiple-outline",
+                  "speaker_group": {
+                    "entities": [
+                      {
+                        "entity_id": "media_player.conservatory",
+                        "name": "Sonos Conservatory"
+                      },
+                      {
+                        "entity_id": "media_player.kitchen",
+                        "name": "Sonos Kitchen"
+                      },
+                      {
+                        "entity_id": "media_player.living_room",
+                        "name": "Living Room"
+                      }
+                    ]
+                  },
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "switch.tv_sonos"
+                    },
+                    {
+                      "entity": "switch.tv_sonos_led"
+                    }
+                  ],
+                  "state_color": true
+                }
+              ],
+              "title": "Sonos",
+              "type": "vertical-stack"
+            },
+            {
+              "cards": [
+                {
+                  "artwork": "cover",
+                  "entity": "media_player.sky_q",
+                  "hide": {
+                    "icon_state": false,
+                    "power_state": false,
+                    "source": false,
+                    "volume": false
+                  },
+                  "info": "scroll",
+                  "name": "SkyQ",
+                  "shortcuts": {
+                    "buttons": [
+                      {
+                        "icon": "mdi:chevron-up",
+                        "id": "channelup",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:chevron-down",
+                        "id": "channeldown",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:record-rec",
+                        "id": "record",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": null,
+                        "id": "sky",
+                        "name": "Sky",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": null,
+                        "id": "tvguide",
+                        "name": "Guide",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:home-outline",
+                        "id": "home",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:menu-open",
+                        "id": "sidebar",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:keyboard-return",
+                        "id": "dismiss",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:information-variant",
+                        "id": "i",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:arrow-right-thick",
+                        "id": "right",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:arrow-left-thick",
+                        "id": "left",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:arrow-up-thick",
+                        "id": "up",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:arrow-down-thick",
+                        "id": "down",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": null,
+                        "id": "select",
+                        "name": "Select",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": null,
+                        "name": null
+                      },
+                      {
+                        "icon": null
+                      },
+                      {
+                        "icon": null
+                      },
+                      {
+                        "icon": null
+                      }
+                    ],
+                    "columns": 6,
+                    "hide_when_off": true
+                  },
+                  "type": "custom:mini-media-player"
+                },
+                {
+                  "artwork": "material",
+                  "entity": "media_player.sky_q_mini",
+                  "hide": {
+                    "icon_state": false,
+                    "power_state": false,
+                    "source": false,
+                    "volume": true
+                  },
+                  "info": "scroll",
+                  "name": "SkyQ Mini",
+                  "shortcuts": {
+                    "buttons": [
+                      {
+                        "icon": "mdi:chevron-up",
+                        "id": "channelup",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:chevron-down",
+                        "id": "channeldown",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:record-rec",
+                        "id": "record",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": null,
+                        "id": "sky",
+                        "name": "Sky",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": null,
+                        "id": "tvguide",
+                        "name": "Guide",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:home-outline",
+                        "id": "home",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:menu-open",
+                        "id": "sidebar",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:keyboard-return",
+                        "id": "dismiss",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:information-variant",
+                        "id": "i",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:arrow-right-thick",
+                        "id": "right",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:arrow-left-thick",
+                        "id": "left",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:arrow-up-thick",
+                        "id": "up",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": "mdi:arrow-down-thick",
+                        "id": "down",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": null,
+                        "id": "select",
+                        "name": "Select",
+                        "type": "skyq"
+                      },
+                      {
+                        "icon": null,
+                        "name": null
+                      },
+                      {
+                        "icon": null
+                      },
+                      {
+                        "icon": null
+                      },
+                      {
+                        "icon": null
+                      }
+                    ],
+                    "columns": 6,
+                    "hide_when_off": true
+                  },
+                  "type": "custom:mini-media-player"
+                }
+              ],
+              "title": "Sky Q",
+              "type": "vertical-stack"
+            },
+            {
+              "cards": [
+                {
+                  "artwork": "cover",
+                  "hide": {
+                    "icon_state": false,
+                    "power_state": false
+                  },
+                  "icon": "mdi:television",
+                  "type": "custom:mini-media-player",
+                  "entity": "media_player.sftv"
+                }
+              ],
+              "title": "TV",
+              "type": "vertical-stack"
+            }
+          ],
+          "icon": "mdi:music-box-multiple",
+          "path": "music",
+          "title": "Media"
         }
+      ]
     }
+  }
 }

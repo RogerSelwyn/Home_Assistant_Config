@@ -1,0 +1,118 @@
+energy:
+
+input_number:
+  tc_oil_price:
+    name: TC Oil Price
+    icon: mdi:cash
+    min: 0
+    max: 100
+    step: .001
+    mode: box
+    unit_of_measurement: GBP/l
+
+template:
+  - trigger:
+    - platform: time_pattern
+      minutes: '/5'
+    - platform: time_pattern
+      minutes: '0'
+      seconds: '15'
+    - platform: state
+      entity_id: sensor.tc_oil_usage
+    - platform: event
+      event_type: event_template_reloaded
+    - platform: homeassistant
+      event: start
+    sensor:
+    #   - name: "TC Oil Usage"
+    #     state: >-
+    #       {% if is_state('binary_sensor.nest_hotwater', 'on') %}
+    #         {% if is_state('binary_sensor.nest_heating', 'on') %}
+    #           {%set value = 100%}
+    #         {% else %}
+    #           {%set value = 40%}
+    #         {% endif %}
+    #       {% elif is_state('binary_sensor.nest_heating', 'on') %}
+    #         {%set value = 100%}
+    #       {% else %}
+    #         {%set value = 0%}
+    #       {% endif %}
+    #       {{ value * 0.7921 / 100}} 
+    #     unit_of_measurement: 'l/hour'
+    #     attributes: 
+    #       triggered_at: "{{ now() }}"
+      - name: "TC Oil Power"
+        state: "{{'%0.2f'| format(float(states('sensor.tc_oil_usage')) * 10.35 * 1000)}}"
+        unit_of_measurement: 'W'
+        device_class: power
+        attributes: 
+          triggered_at: "{{ now() }}"
+
+mqtt:
+  sensor:
+    - name: "TC Electricity Instant"
+      state_topic: "SMART/HILD/84F3EB180551"
+      unit_of_measurement: 'W'
+      value_template: "{{ value_json['elecMtr']['0702']['04']['00']|int(base=16) }}"
+      icon: 'mdi:flash'
+    - name: "TC Electricity"
+      state_topic: "SMART/HILD/84F3EB180551"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ value_json['elecMtr']['0702']['00']['00']|int(base=16) * value_json['elecMtr']['0702']['03']['01']|int(base=16) / value_json['elecMtr']['0702']['03']['02']|int(base=16) }}"
+      icon: 'mdi:counter'
+      device_class: energy
+      state_class: total_increasing
+      # last_reset_topic: "SMART/HILD/84F3EB180551"
+      # last_reset_value_template: homeassistant.util.dt.utc_from_timestamp(0)
+    - name: "TC Electricity Daily"
+      state_topic: "SMART/HILD/84F3EB180551"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ value_json['elecMtr']['0702']['04']['01']|int(base=16) * value_json['elecMtr']['0702']['03']['01']|int(base=16) / value_json['elecMtr']['0702']['03']['02']|int(base=16) }}"
+      icon: 'mdi:flash'
+    - name: "TC Electricity Weekly"
+      state_topic: "SMART/HILD/84F3EB180551"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ value_json['elecMtr']['0702']['04']['30']|int(base=16) * value_json['elecMtr']['0702']['03']['01']|int(base=16) / value_json['elecMtr']['0702']['03']['02']|int(base=16) }}"
+      icon: 'mdi:flash'
+    - name: "TC Electricity Monthly"
+      state_topic: "SMART/HILD/84F3EB180551"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ value_json['elecMtr']['0702']['04']['40']|int(base=16) * value_json['elecMtr']['0702']['03']['01']|int(base=16) / value_json['elecMtr']['0702']['03']['02']|int(base=16) }}"
+      icon: 'mdi:flash'
+
+sensor:
+  - platform: template
+    sensors:
+      sfups_power:
+        friendly_name: "Sfups Power Draw"
+        value_template: "{{int(states('sensor.sfups_load')) * int(states('sensor.sfups_nominal_real_power')) / 100}}"
+        unit_of_measurement: 'W'
+        device_class: power
+      tc_oil_price:
+        friendly_name: "TC Oil Price"
+        value_template: "{{float(states('input_number.tc_oil_price')) / 10.35}}"
+        unit_of_measurement: 'GBP/kWh'
+        device_class: monetary
+    #   tc_oil_power:
+    #     friendly_name: "TC Oil Power"
+    #     value_template: "{{'%0.2f'| format(float(states('sensor.tc_oil_usage')) * 10.35 * 1000)}}"
+    #     unit_of_measurement: 'W'
+    #     device_class: power
+      tc_oil_usage:
+        friendly_name: "TC Oil Usage"
+        value_template: >-
+          {% if is_state('binary_sensor.nest_heating', 'on') %}
+            {%set value = 100%}
+          {% elif is_state('binary_sensor.nest_hotwater', 'on') %}
+            {%set value = 30%}
+          {% else %}
+            {%set value = 0%}
+          {% endif %}
+          {{ value * 0.8685 / 100}} 
+        unit_of_measurement: 'l/hour'
+
+  - platform: integration
+    source: sensor.sfups_power
+    name: "Sfups Electricity"
+    unit_prefix: k
+    round: 2

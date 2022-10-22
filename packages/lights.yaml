@@ -22,29 +22,29 @@ binary_sensor:
              not is_state('light.bedroom_1_bulb_2', 'unavailable') or
              not is_state('light.bedroom_1_bulb_3', 'unavailable')
           }}
-      bedroom2_lights_power:
-        friendly_name: "Bedroom 2 Lights - Power"
-        device_class: power
-        value_template: >-
-          {{ not is_state('light.bedroom_2_bulb_1', 'unavailable') or 
-             not is_state('light.bedroom_2_bulb_2', 'unavailable') or
-             not is_state('light.bedroom_2_bulb_3', 'unavailable') 
-          }}
-      ceiling_light_power:
-        friendly_name: "Ceiling Light - Power"
-        device_class: power
-        value_template: >-
-          {{ not is_state('light.ceiling_light', 'unavailable') }}
+    #   bedroom2_lights_power:
+    #     friendly_name: "Bedroom 2 Lights - Power"
+    #     device_class: power
+    #     value_template: >-
+    #       {{ not is_state('light.bedroom_2_bulb_1', 'unavailable') or 
+    #          not is_state('light.bedroom_2_bulb_2', 'unavailable') or
+    #          not is_state('light.bedroom_2_bulb_3', 'unavailable') 
+    #       }}
+    #   ceiling_light_power:
+    #     friendly_name: "Ceiling Light - Power"
+    #     device_class: power
+    #     value_template: >-
+    #       {{ not is_state('light.ceiling_light', 'unavailable') }}
       bedside_light_power:
         friendly_name: "Bedside Light - Power"
         device_class: power
         value_template: >-
           {{ not is_state('light.bedside_light', 'unavailable') }}
-      office_lights_power:
-        friendly_name: "Office Lights - Power"
-        device_class: power
-        value_template: >-
-          {{ not is_state('light.office_light', 'unavailable') }}
+    #  office_lights_power:
+    #    friendly_name: "Office Lights - Power"
+    #    device_class: power
+    #    value_template: >-
+    #      {{ not is_state('light.office_light', 'unavailable') }}
       table_light_power:
         friendly_name: "Table Light - Power"
         device_class: power
@@ -133,11 +133,11 @@ group:
       - binary_sensor.bedside_light_power
       - light.bedside_light
   ceiling_light_actual:
-    name: Bedroom 3 Lights Actual
+    name: Ceiling Lights Actual
     icon: mdi:lamp
     all: true
     entities:
-      - binary_sensor.ceiling_light_power
+    #   - binary_sensor.ceiling_light_power
       - light.ceiling_light
   bedroom_3_lights_actual:
     name: Bedroom 3 Lights Actual
@@ -151,7 +151,7 @@ group:
     icon: mdi:ceiling-light
     all: true
     entities:
-      - binary_sensor.office_lights_power
+#      - binary_sensor.office_lights_power
       - light.office
   front_door_lights_actual:
     name: Front Door Lights Actual
@@ -199,9 +199,13 @@ timer:
   lights_living_room:
     name: Time to Living Room Unoccupied
     duration: '00:15:00'
+    restore: true
   lights_office:
     name: Time to Office Unoccupied
     duration: '00:05:00'  
+    restore: true
   lights_front_door:
     name: Time to Front Door Lights Off
     duration: '00:05:00'
+    restore: true
+    

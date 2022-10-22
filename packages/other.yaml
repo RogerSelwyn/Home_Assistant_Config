@@ -1,0 +1,5 @@
+homeassistant:
+  customize:
+    "sensor.cat_flap_the_fondue_pot_battery_level":
+      unit_of_measurement: '%'
+

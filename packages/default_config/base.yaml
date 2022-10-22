@@ -7,7 +7,9 @@ climate:
 config:
 device_tracker:
 diagnostics:
+hardware:
 input_button:
+logbook:
 media_source:
 mobile_app:
 person:

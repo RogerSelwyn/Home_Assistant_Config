@@ -10,7 +10,7 @@ homeassistant:
 #     max: 20
 
 sensor:
-  - platform: uptime
+#  - platform: uptime
   - platform: websocket_api
 
   - platform: systemmonitor
@@ -55,3 +55,4 @@ timer:
   test:
     name: Test
     duration: '00:15:00'
+    restore: true

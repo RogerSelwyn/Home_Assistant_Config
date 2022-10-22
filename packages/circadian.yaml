@@ -2,6 +2,7 @@ sensor:
   - platform: template
     sensors:
       office_lights_brightness:
+        unit_of_measurement: '%'
         value_template: >-
           {% if state_attr('light.office', 'brightness') and 
           is_state('group.office_lights_actual', 'on') %}
