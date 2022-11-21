@@ -99,7 +99,7 @@ sensor:
     #     unit_of_measurement: 'W'
     #     device_class: power
       tc_oil_usage:
-        friendly_name: "TC Oil Usage"
+        friendly_name: "TC Oil Instant"
         value_template: >-
           {% if is_state('binary_sensor.nest_heating', 'on') %}
             {%set value = 100%}

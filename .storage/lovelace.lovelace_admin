@@ -303,73 +303,6 @@
               "show_header_toggle": false
             },
             {
-              "cards": [
-                {
-                  "entity": "sensor.hp_officejet_pro_9010_series",
-                  "type": "entity"
-                },
-                {
-                  "cards": [
-                    {
-                      "entity": "sensor.hp_officejet_pro_9010_series_black_cartridge",
-                      "max": 100,
-                      "min": 0,
-                      "name": "Black",
-                      "severity": {
-                        "green": 30,
-                        "red": 10,
-                        "yellow": 20
-                      },
-                      "type": "gauge"
-                    },
-                    {
-                      "entity": "sensor.hp_officejet_pro_9010_series_cyan_cartridge",
-                      "max": 100,
-                      "min": 0,
-                      "name": "Cyan",
-                      "severity": {
-                        "green": 30,
-                        "red": 10,
-                        "yellow": 20
-                      },
-                      "type": "gauge"
-                    }
-                  ],
-                  "type": "horizontal-stack"
-                },
-                {
-                  "cards": [
-                    {
-                      "entity": "sensor.hp_officejet_pro_9010_series_magenta_cartridge",
-                      "max": 100,
-                      "min": 0,
-                      "name": "Magenta",
-                      "severity": {
-                        "green": 30,
-                        "red": 10,
-                        "yellow": 20
-                      },
-                      "type": "gauge"
-                    },
-                    {
-                      "entity": "sensor.hp_officejet_pro_9010_series_yellow_cartridge",
-                      "max": 100,
-                      "min": 0,
-                      "name": "Yellow",
-                      "severity": {
-                        "green": 30,
-                        "red": 10,
-                        "yellow": 20
-                      },
-                      "type": "gauge"
-                    }
-                  ],
-                  "type": "horizontal-stack"
-                }
-              ],
-              "type": "vertical-stack"
-            },
-            {
               "entities": [
                 "sensor.connected_clients"
               ],
@@ -776,12 +709,6 @@
                 },
                 {
                   "entity": "sensor.home_gas_price"
-                },
-                {
-                  "entity": "sensor.tc_oil_total"
-                },
-                {
-                  "entity": "sensor.tc_oil_usage"
                 }
               ],
               "title": "Gas"
@@ -801,19 +728,80 @@
                 {
                   "entity": "sensor.tc_tv_energy"
                 }
-              ]
+              ],
+              "title": "Ty'r Celyn"
             },
             {
               "type": "entities",
               "entities": [
                 {
+                  "entity": "sensor.home_electricity"
+                },
+                {
                   "entity": "sensor.home_electricity_price"
+                },
+                {
+                  "entity": "sensor.tc_electricity"
+                },
+                {
+                  "entity": "sensor.tc_electricity_instant"
                 },
                 {
                   "entity": "sensor.tc_electricity_price"
                 }
               ],
               "title": "Electricity "
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.tc_oil_total"
+                },
+                {
+                  "entity": "sensor.tc_oil_usage"
+                },
+                {
+                  "entity": "input_number.tc_oil_price"
+                }
+              ],
+              "title": "Oil"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.sfups_electricity"
+                },
+                {
+                  "entity": "sensor.sfups_power"
+                },
+                {
+                  "entity": "sensor.home_tester_current_energy"
+                }
+              ],
+              "title": "Home"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "switch.tv_switch_1"
+                },
+                {
+                  "entity": "switch.tv_switch_2"
+                },
+                {
+                  "entity": "switch.tv_switch_3"
+                },
+                {
+                  "entity": "switch.tv_sonos"
+                },
+                {
+                  "entity": "switch.home_tester"
+                }
+              ],
+              "title": "Energy Switches"
             }
           ]
         },

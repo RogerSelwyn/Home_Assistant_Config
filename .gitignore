@@ -1,7 +1,6 @@
 # Ignore folders.
 .cloud
 .google.token
-.O365-token-cache
 .storage/*
 .vscode
 blueprints
@@ -16,13 +15,13 @@ themes
 tts
 www
 __pycache__/
+o365_storage
 
 # Ignore files
 .uuid
 home-assistant*
 update.sh
 shell_scripts/.dropbox_uploader
-o365_calendars.yaml
 glow.conf
 
 Reinclude files

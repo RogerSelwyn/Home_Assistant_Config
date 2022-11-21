@@ -81,7 +81,7 @@
                 "state_color": true
               },
               "filter": {
-                "template": "{%if is_state('switch.zwave_living_room_main_light_switch','on')%}light.main_light{%endif%} {%if is_state('switch.zwave_living_room_main_light_switch','off')%}switch.zwave_living_room_main_light_switch{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.side_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.tv_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','off')%}switch.zwave_living_room_side_light_switch{%endif%} {%if is_state('binary_sensor.table_light_power','on')%}light.table_light{%endif%} {%if is_state('binary_sensor.table_light_power','off')%}binary_sensor.table_light_power{%endif%} timer.lights_living_room climate.living_room binary_sensor.living_room_occupancy\n"
+                "template": "{%if is_state('switch.zwave_living_room_main_light_switch','on')%}light.main_light{%endif%} {%if is_state('switch.zwave_living_room_main_light_switch','off')%}switch.zwave_living_room_main_light_switch{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.side_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','on')%}light.tv_light{%endif%} {%if is_state('switch.zwave_living_room_side_light_switch','off')%}switch.zwave_living_room_side_light_switch{%endif%} {%if is_state('binary_sensor.table_light_power','on')%}light.table_light{%endif%} {%if is_state('binary_sensor.table_light_power','off')%}binary_sensor.table_light_power{%endif%} climate.living_room   binary_sensor.living_room_occupancy timer.lights_living_room\n"
               },
               "show_empty": false,
               "type": "custom:auto-entities"
@@ -159,7 +159,7 @@
                 "state_color": true
               },
               "filter": {
-                "template": "{%if is_state('binary_sensor.front_door_lights_power','on')%}light.front_door{%endif%} {%if is_state('binary_sensor.front_door_lights_power','off')%}binary_sensor.front_door_lights_power{%endif%} timer.lights_front_door binary_sensor.front_door_motion_2\n"
+                "template": "{%if is_state('binary_sensor.front_door_lights_power','on')%}light.front_door{%endif%} {%if is_state('binary_sensor.front_door_lights_power','off')%}binary_sensor.front_door_lights_power{%endif%} binary_sensor.front_door_motion_2 timer.lights_front_door \n"
               },
               "show_empty": false,
               "type": "custom:auto-entities"
@@ -249,8 +249,17 @@
               "type": "custom:auto-entities"
             },
             {
-              "type": "thermostat",
-              "entity": "climate.air_con"
+              "type": "conditional",
+              "conditions": [
+                {
+                  "entity": "climate.air_con",
+                  "state_not": "unavailable"
+                }
+              ],
+              "card": {
+                "type": "thermostat",
+                "entity": "climate.air_con"
+              }
             }
           ],
           "icon": "mdi:bed",

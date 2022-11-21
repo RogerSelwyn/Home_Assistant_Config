@@ -24,3 +24,5 @@ logger:
 #  homeassistant.components.mobile_app.webhook: fatal
 # Example configuration.yaml entry
 #  homeassistant.components.mqtt: debug
+
+    # aioasuswrt: debug
