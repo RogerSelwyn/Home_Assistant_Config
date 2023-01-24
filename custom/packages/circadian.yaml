@@ -1,23 +1,24 @@
-sensor:
-  - platform: template
-    sensors:
-      office_lights_brightness:
+template:
+  - sensor:
+      - name: office_lights_brightness
+        unique_id: office_lights_brightness
         unit_of_measurement: '%'
-        value_template: >-
+        state: >-
           {% if state_attr('light.office', 'brightness') and 
           is_state('group.office_lights_actual', 'on') %}
             {{ '%.0f'%(state_attr('light.office', 'brightness') / 255 * 100) | float}}
           {% else %}
             0
           {% endif %}
-      office_kelvin:
-        value_template: >-
+  - sensor:
+      - name: office_kelvin
+        unique_id: office_kelvin
+        state: >-
           {% if state_attr('light.office', 'color_temp') %}
             {{ '%.0f'%(1000000 / state_attr('light.office', 'color_temp')) | float}}
           {% else %}
             None
-          {% endif %}
-
+          {% endif %}  
 
 
 input_boolean:
@@ -36,13 +37,6 @@ input_boolean:
   circadian_bedroom_3:
     name: Bedroom 3 Circadian
     icon: mdi:sine-wave
-
-# input_number:
-#   circadian_kelvin:
-#     name: Target Kelvin
-#     icon: mdi:temperature-kelvin
-#     min: 0
-#     max: 10000
 
 homeassistant:
   customize:

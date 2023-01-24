@@ -1,0 +1,100 @@
+# Icons *******************************************
+
+- element: camera.front_doorbell_live
+  entities: 
+    - binary_sensor.front_doorbell_motion
+    - alarm_control_panel.the_mews_mode
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: |
+        >
+        let status = entities['binary_sensor.front_doorbell_motion'].state
+        if (entities['alarm_control_panel.the_mews_mode'].state === "disarmed")
+          {
+            status = "disarmed"
+          } else if (entities['binary_sensor.front_doorbell_motion'].state === "off")
+          {
+            status = "off"
+          } else if (entities['binary_sensor.front_doorbell_motion'].attributes.personDetected === true)
+          {
+            status = "person"
+          }
+        return `camera camera-${status}`
+
+- entity: camera.front_doorbell_live
+
+- entities: 
+    - alarm_control_panel.the_mews_mode
+    - alarm_control_panel.texecom
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 'alarm alarm-${entity.state}'
+
+# - entities:
+#     - alarm_control_panel.the_mews_mode
+#     - alarm_control_panel.texecom
+#   element: "${entity.entity_id.replace('alarm_control_panel.', 'alarm_control_panel_touch.')}"
+#   tap_action: more-info
+  
+- element: switch.plug_dining_room
+  entities:
+    - binary_sensor.smart_plug_5
+    - switch.plug_dining_room
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: |
+        >
+        let status = entities['binary_sensor.smart_plug_5'].state
+        if (entities['switch.plug_dining_room'].state === "on")
+          {
+            status = "boost"
+          } 
+        return `plug plug-${status}`
+
+- element: switch.plug_kitchen
+  entities:
+    - binary_sensor.smart_plug_7
+    - switch.plug_kitchen
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: |
+        >
+        let status = entities['binary_sensor.smart_plug_7'].state
+        if (entities['switch.plug_kitchen'].state === "on")
+          {
+            status = "boost"
+          } 
+        return `plug plug-${status}`
+
+- element: switch.hot_water
+  entities:
+    - binary_sensor.dual_channel_receiver_3_2
+    - switch.hot_water
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: |
+        >
+        let status = entities['binary_sensor.dual_channel_receiver_3_2'].state
+        if (entities['switch.hot_water'].state === "on")
+          {
+            status = "boost"
+          } 
+        return `hot-water hot-water-${status}`
+
+# - entities:
+#     - switch.plug_kitchen
+#     - switch.plug_dining_room
+#   element: "${entity.entity_id.replace('switch.', 'switch_touch.')}"
+#   tap_action: more-info
+
+- entities: 
+    - binary_sensor.curfew
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 'lock lock-${entity.state}'

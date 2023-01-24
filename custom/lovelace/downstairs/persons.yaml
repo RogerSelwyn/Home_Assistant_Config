@@ -1,0 +1,13 @@
+# Persons *******************************************
+
+- entities: 
+    - person.benjamin_selwyn
+    - person.clare_selwyn
+    - person.roger_selwyn
+    - device_tracker.pet_brie
+    - device_tracker.pet_stilton
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 'person person-${entity.state}'
+

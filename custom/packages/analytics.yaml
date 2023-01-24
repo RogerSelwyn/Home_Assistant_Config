@@ -1,0 +1,8 @@
+sensor:
+  - platform: rest
+    name: SkyQ Installations
+    scan_interval: 86400
+    resource: https://analytics.home-assistant.io/custom_integrations.json
+    value_template: "{{ value_json.skyq.total }}"
+    json_attributes_path: $.skyq
+    json_attributes: versions

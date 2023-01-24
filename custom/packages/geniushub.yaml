@@ -1,0 +1,102 @@
+homeassistant:
+  customize:
+    sensor.geniushub_dining_room_luminance:
+      friendly_name: "Dining Room Genius Illuminance"
+    sensor.geniushub_kitchen_luminance:
+      friendly_name: "Kitchen Genius Illuminance"
+    sensor.geniushub_living_room_luminance:
+      friendly_name: "Living Room Genius Illuminance"
+    sensor.geniushub_bedroom1_luminance:
+      friendly_name: "Bedroom Room 1 Genius Illuminance"
+    sensor.geniushub_bedroom2_luminance:
+      friendly_name: "Bedroom Room 2 Genius Illuminance"
+    sensor.geniushub_bedroom3_luminance:
+      friendly_name: "Bedroom Room 3 Genius Illuminance"
+    binary_sensor.geniushub_dining_room_occupancy:
+      friendly_name: "Dining Room Genius Motion"
+    binary_sensor.geniushub_kitchen_occupancy:
+      friendly_name: "Kitchen Genius Motion"
+    binary_sensor.geniushub_living_room_occupancy:
+      friendly_name: "Living Room Genius Motion"
+    binary_sensor.geniushub_bedroom1_occupancy:
+      friendly_name: "Bedroom Room 1 Genius Motion"
+    binary_sensor.geniushub_bedroom2_occupancy:
+      friendly_name: "Bedroom Room 2 Genius Motion"
+    binary_sensor.geniushub_bedroom3_occupancy:
+      friendly_name: "Bedroom Room 3 Genius Motion"
+      
+geniushub:
+  host: !secret genius_host
+  username: !secret genius_username
+  password: !secret genius_password
+
+template:
+  - binary_sensor:
+      - name: geniushub_dining_room_occupancy
+        unique_id: geniushub_dining_room_occupancy
+        state: "{{ state_attr('climate.dining_room', 'status').occupied == true }}"
+        device_class: motion
+  - binary_sensor:
+      - name: geniushub_kitchen_occupancy
+        unique_id: geniushub_kitchen_occupancy
+        state: "{{ state_attr('climate.kitchen', 'status').occupied == true }}"
+        device_class: motion
+  - binary_sensor:
+      - name: geniushub_living_room_occupancy
+        unique_id: geniushub_living_room_occupancy
+        state: "{{ state_attr('climate.living_room', 'status').occupied == true }}"
+        device_class: motion
+  - binary_sensor:
+      - name: geniushub_bedroom1_occupancy
+        unique_id: geniushub_bedroom1_occupancy
+        state: "{{ state_attr('climate.bedroom_1', 'status').occupied == true }}"
+        device_class: motion
+  - binary_sensor:
+      - name: geniushub_bedroom2_occupancy
+        unique_id: geniushub_bedroom2_occupancy
+        state: "{{ state_attr('climate.bedroom_2', 'status').occupied == true }}"
+        device_class: motion
+  - binary_sensor:
+      - name: geniushub_bedroom3_occupancy
+        unique_id: geniushub_bedroom3_occupancy
+        state: "{{ state_attr('climate.bedroom_3', 'status').occupied == true }}"
+        device_class: motion
+        
+  - sensor:
+      - name: geniushub_dining_room_luminance
+        unique_id: geniushub_dining_room_luminance
+        state: "{{ '%.0f'%(state_attr('sensor.room_sensor_45', 'state').luminance | float(0)) }}"
+        unit_of_measurement: 'lx'
+        device_class: illuminance
+  - sensor:
+      - name: geniushub_kitchen_luminance
+        unique_id: geniushub_kitchen_luminance
+        state: "{{ '%.0f'%(state_attr('sensor.room_sensor_19', 'state').luminance | float(0)) }}"
+        unit_of_measurement: 'lx'
+        device_class: illuminance
+  - sensor:
+      - name: geniushub_living_room_luminance
+        unique_id: geniushub_living_room_luminance
+        state: "{{ '%.0f'%(state_attr('sensor.room_sensor_20', 'state').luminance | float(0)) }}"
+        unit_of_measurement: 'lx'
+        device_class: illuminance
+  - sensor:
+      - name: geniushub_bedroom1_luminance
+        unique_id: geniushub_bedroom1_luminanc
+        state: "{{ '%.0f'%(state_attr('sensor.room_sensor_38', 'state').luminance | float(0)) }}"
+        unit_of_measurement: 'lx'
+        device_class: illuminance
+  - sensor:
+      - name: geniushub_bedroom2_luminance
+        unique_id: geniushub_bedroom2_luminance
+        state: "{{ '%.0f'%(state_attr('sensor.room_sensor_21', 'state').luminance | float(0)) }}"
+        unit_of_measurement: 'lx'
+        device_class: illuminance
+  - sensor:
+      - name: geniushub_bedroom3_luminance
+        unique_id: geniushub_bedroom3_luminance
+        state: "{{ '%.0f'%(state_attr('sensor.room_sensor_43', 'state').luminance | float(0)) }}"
+        unit_of_measurement: 'lx'
+        device_class: illuminance
+        attributes:
+          friendly_name: "Bedroom 3 Genius Illuminance"

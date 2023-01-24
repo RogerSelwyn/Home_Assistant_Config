@@ -1,35 +1,49 @@
-binary_sensor:
-  - platform: template
-    sensors:
-      living_room_occupancy:
-        value_template: >-
+homeassistant:
+  customize:
+    binary_sensor.living_room_occupancy:
+      friendly_name: 'Living Room Motion' 
+    binary_sensor.kitchen_occupancy:
+      friendly_name: 'Kitchen Motion' 
+    binary_sensor.downstairs_occupancy:
+      friendly_name: 'Downstairs Motion' 
+    binary_sensor.upstairs_occupancy:
+      friendly_name: 'Upstairs Motion' 
+
+
+template:
+  - binary_sensor:
+      - name: living_room_occupancy
+        unique_id: living_room_occupancy
+        state: >-
           {{ is_state('binary_sensor.living_room_hue_motion_motion', 'on')
           or is_state('binary_sensor.geniushub_living_room_occupancy', 'on') }}
         device_class: motion
-        friendly_name: 'Living Room Motion' 
-      kitchen_occupancy:
-        value_template: >-
+  - binary_sensor:
+      - name: kitchen_occupancy
+        unique_id: kitchen_occupancy
+        state: >-
           {{ is_state('binary_sensor.kitchen_pir', 'on')
           or is_state('binary_sensor.geniushub_kitchen_occupancy', 'on') }}
         device_class: motion
-        friendly_name: 'Kitchen Motion' 
-      downstairs_occupancy:
-        value_template: >-
+  - binary_sensor:
+      - name: downstairs_occupancy
+        unique_id: downstairs_occupancy
+        state: >-
           {{ is_state('binary_sensor.living_room_hue_motion_motion', 'on')
           or is_state('binary_sensor.geniushub_dining_room_occupancy', 'on')
           or is_state('binary_sensor.geniushub_living_room_occupancy', 'on')
           or is_state('binary_sensor.kitchen_pir', 'on')
           or is_state('binary_sensor.geniushub_kitchen_occupancy', 'on') }}
         device_class: motion
-        friendly_name: 'Downstairs Motion' 
-      upstairs_occupancy:
-        value_template: >-
+  - binary_sensor:
+      - name: upstairs_occupancy
+        unique_id: upstairs_occupancy
+        state: >-
           {{ is_state('binary_sensor.geniushub_bedroom1_occupancy', 'on')
           or is_state('binary_sensor.geniushub_bedroom2_occupancy', 'on')
           or is_state('binary_sensor.geniushub_bedroom3_occupancy', 'on')
           or is_state('binary_sensor.zwave_office_fibaro_motion', 'on') }}
         device_class: motion
-        friendly_name: 'Upstairs Motion' 
 
 input_boolean:
   office_motion:
@@ -38,13 +52,13 @@ input_boolean:
 
 
 group:
-  presence_all:
-    name: Presence - All
-    icon: mdi:account-group
-    entities:
-      - person.benjamin_selwyn
-      - person.clare_selwyn
-      - person.roger_selwyn
+#   presence_all:
+#     name: Presence - All
+#     icon: mdi:account-group
+#     entities:
+#       - person.benjamin_selwyn
+#       - person.clare_selwyn
+#       - person.roger_selwyn
   living_room_occupancy:
     entities:
       - binary_sensor.living_room_hue_motion_motion
@@ -64,6 +78,7 @@ sensor:
   - platform: template
     sensors:
       location_mode:
+        unique_id: location_mode
         value_template: "{{ states('input_select.location_mode') }}"
         friendly_name_template: >-
           {{ states('input_select.location_mode') }}

@@ -1,0 +1,50 @@
+# Media Players **************************************
+- entities: 
+  - sensor.tv_picture
+  - media_player.sftv
+  element: sensor.tv_picture
+  tap_action: false
+  state_action:    
+    - action: call-service
+      service: floorplan.style_set
+      service_data: 
+        style: |
+            >
+            if (entities['media_player.sftv'].state !== "on")
+            {
+                return `display: none`
+            }
+            element.setAttribute("href", entities['sensor.tv_picture'].state)
+            return `display: inline;`
+
+- entities:
+  - media_player.sftv
+  tap_action: more-info
+  state_action:
+    action: call-service
+    service: floorplan.class_set
+    service_data: 'media-player-tv media-player-${entity.state}' 
+
+- entities:
+  - media_player.sky_q
+  tap_action: more-info
+  state_action:
+    action: call-service
+    service: floorplan.class_set
+    service_data: 'media-player-sky media-player-${entity.state}' 
+
+- entities:
+  - media_player.conservatory
+  - media_player.kitchen
+  tap_action: more-info
+  state_action:
+    action: call-service
+    service: floorplan.class_set
+    service_data: 'media-player-sonos media-player-${entity.state}' 
+
+# - entities:
+#   - media_player.conservatory
+#   - media_player.kitchen
+#   element: "${entity.entity_id.replace('media_player.', 'media_player_touch.')}"
+#   tap_action: more-info
+            

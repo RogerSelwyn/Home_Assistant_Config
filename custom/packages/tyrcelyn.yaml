@@ -1,0 +1,67 @@
+homeassistant:
+  customize:
+    binary_sensor.tyrcelyn_booking:
+      friendly_name: "TC - Booked"
+    binary_sensor.tyrcelyn_guests:
+      friendly_name: "TC - Guests"
+    binary_sensor.tyrcelyn_presence_all:
+      friendly_name: "TC - Presence - All"
+    binary_sensor.tyrcelyn_presence_cleaner:
+      friendly_name: "TC - Presence - Cleaner"
+    binary_sensor.tyrcelyn_utility_motion:
+      friendly_name: "TC - Utility Motion"
+    binary_sensor.tyrcelyn_tctv:
+      friendly_name: "TC - TCTV"
+    # sensor.tc_current_temperature:
+    #   friendly_name: "Ty'r Celyn Current Temperature"
+    # sensor.tc_set_temperature:
+    #   friendly_name: "Ty'r Celyn Set Temperature"
+    # sensor.tc_hvac_action:
+    #   friendly_name: "Ty'r Celyn HVAC Action"
+
+
+notify:
+  - platform: file
+    name: tyrcelyn
+    filename: logs/tyrcelyn.csv
+    timestamp: true
+
+template:
+#   - sensor:
+#       - name: tc_current_temperature
+#         unique_id: tc_current_temperature
+#         device_class: temperature
+#         state: "{{ state_attr('climate.tyr_celyn', 'current_temperature') }}"
+#         unit_of_measurement: °C
+#   - sensor:
+#       - name: tc_set_temperature
+#         unique_id: tc_set_temperature
+#         device_class: temperature
+#         state: "{{ state_attr('climate.tyr_celyn', 'temperature') }}"
+#         unit_of_measurement: °C
+#   - sensor:
+#       - name: tc_hvac_action
+#         unique_id: tc_hvac_action
+#         state: "{{ state_attr('climate.tyr_celyn', 'hvac_action') }}"
+#         unit_of_measurement: none
+  - sensor:
+      - name: tyr_celyn_humidity_external
+        unique_id: tyr_celyn_humidity_external
+        device_class: humidity
+        unit_of_measurement: '%'
+        state: >-
+          {{ state_attr('weather.ty_r_celyn', 'humidity')}}
+  - sensor:
+      - name: tyr_celyn_temperature_external
+        unique_id: tyr_celyn_temperature_external
+        device_class: temperature
+        unit_of_measurement: °C
+        state: >-
+          {{ state_attr('weather.ty_r_celyn', 'temperature')}}
+          
+timer:
+  tyrcelyn_presence:
+    name: TC - Presence Timer
+    duration: '00:20:00'
+    restore: true
+    

@@ -1,26 +1,31 @@
-#nest:
-#  client_id: !secret nest-client-id
-#  client_secret: !secret nest-client-secret
-#  project_id: !secret nest-project-id
-#  subscriber_id: !secret nest-subscriber-id
+homeassistant:
+  customize:
+    binary_sensor.nest_heating:
+      friendly_name: "TC - Heating"
+    binary_sensor.nest_hotwater:
+      friendly_name: "TC - Hot Water"
+    binary_sensor.nest_heating_manual:
+      friendly_name: "TC - Heating Manual"
 
-binary_sensor:
-  - platform: template
-    sensors:
-      nest_heating:
-        friendly_name: TC - Heating
+
+template:
+  - binary_sensor:
+      - name: nest_heating
+        unique_id: nest_heating
         device_class: heat
-        value_template: >-
+        state: >-
           {{ is_state_attr('climate.tyr_celyn', 'hvac_action', 'heating') }}
-      nest_hotwater:
-        friendly_name: TC - Hot Water
+  - binary_sensor:
+      - name: nest_hotwater
+        unique_id: nest_hotwater
         device_class: heat
-        value_template: >-
+        state: >-
           {{ is_state('switch.tyr_celyn_thermostat_2', 'on') }}
-      nest_heating_manual:
-        friendly_name: TC - Heating Manual
+  - binary_sensor:
+      - name: nest_heating_manual
+        unique_id: nest_heating_manual
         device_class: heat
-        value_template: >-
+        state: >-
           {% if state_attr('climate.tyr_celyn', 'hvac_action') == 'heating' and
              state_attr('climate.tyr_celyn', 'temperature') is defined and
              state_attr('climate.tyr_celyn', 'current_temperature') > state_attr('climate.tyr_celyn', 'temperature') + 0.5 %}
@@ -28,46 +33,50 @@ binary_sensor:
           {% else %}
             false
           {% endif %}
-    #   nest_tc_protect_lr:
-    #     friendly_name: TC - Protect - LR
-    #     device_class: heat
-    #     value_template: >-
-    #       {% if is_state('binary_sensor.tc_living_room_3', 'on') %}
-    #         true
-    #       {% else %}
-    #         false
-    #       {% endif %}
 
-sensor:
-  - platform: template
-    sensors:
-      nest_heating:
+  - sensor:
+      - name: nest_heating
+        unique_id: nest_heating
         device_class: temperature
         unit_of_measurement: °C
-        value_template: >-
+        state: >-
           {% if state_attr('climate.tyr_celyn', 'hvac_action') == 'heating' %}
             {{ state_attr('climate.tyr_celyn', 'current_temperature') }}
           {% else %}
             0
           {% endif %}
-      nest_hotwater:
+  - sensor:
+      - name: nest_hotwater
+        unique_id: nest_hotwater
         unit_of_measurement: "on"
-        value_template: >-
+        state: >-
           {% if is_state('switch.tyr_celyn_thermostat_2', 'on') %}
             1
           {% else %}
             0
           {% endif %}
-      nest_hvac:
-        value_template: >-
+  - sensor:
+      - name: nest_hvac
+        unique_id: nest_hvac
+        state: >-
           {{ state_attr('climate.tyr_celyn', 'hvac_action')}}
-      nest_current_temperature:
+  - sensor:
+      - name: nest_current_temperature
+        unique_id: nest_current_temperature
         device_class: temperature
         unit_of_measurement: °C
-        value_template: >-
+        state: >-
           {{ state_attr('climate.tyr_celyn', 'current_temperature')}}
-      nest_set_temperature:
+  - sensor:
+      - name: nest_set_temperature
+        unique_id: nest_set_temperature
         device_class: temperature
         unit_of_measurement: °C
-        value_template: >-
+        state: >-
           {{ state_attr('climate.tyr_celyn', 'temperature')}}
+
+timer:
+  heating:
+    name: Boiler check
+    duration: '01:00:00'
+    restore: true

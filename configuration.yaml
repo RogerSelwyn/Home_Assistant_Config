@@ -1,2 +1,5 @@
 homeassistant:
-  packages: !include_dir_named packages/ 
+  packages: !include_dir_named custom/packages/ 
+  
+frontend:
+  themes: !include_dir_merge_named custom/themes/

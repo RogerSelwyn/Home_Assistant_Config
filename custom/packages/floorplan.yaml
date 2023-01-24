@@ -1,0 +1,51 @@
+lovelace:
+  mode: storage
+  dashboards:
+    floor-plan:
+      mode: yaml
+      title: Floorplan
+      icon: mdi:floor-plan
+      show_in_sidebar: true
+      filename: custom/lovelace/floorplan.yaml
+            # https://hass.selwyn.org.uk/local/floorplan/transparent.png
+
+template:
+  - sensor:
+      ## Calculates daylight brightness out of 100%
+      - name: sunlight_pct
+        unique_id: sunlight_pct
+        state: >-
+          {%- set elevation = state_attr('sun.sun','elevation') | float %}
+          {%- set cloud_coverage = states('sensor.dark_sky_cloud_coverage') | float %}
+          {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
+          {%- set min_elevation = -6 %}
+          {%- set max_elevation = 90 %}
+          {%- set adjusted_elevation = elevation - min_elevation %}
+          {%- set adjusted_elevation = [adjusted_elevation,0] | max %}
+          {%- set adjusted_elevation = [adjusted_elevation,max_elevation - min_elevation] | min %}
+          {%- set adjusted_elevation = adjusted_elevation / (max_elevation - min_elevation) %}
+          {%- set adjusted_elevation = adjusted_elevation %}
+          {%- set adjusted_elevation = adjusted_elevation * 100 %}
+          {%- set brightness = adjusted_elevation * cloud_factor * 1.4 %}
+          {{ brightness | round }}
+        unit_of_measurement: '%'
+
+      - name: sunlight_opacity
+        unique_id: sunlight_opacity
+        state: >-
+          {%- set sunpct = states('sensor.sunlight_pct') | float %}
+          {%- set opacity = sunpct / 100 | float %}
+          {{ opacity }}
+          
+      - name: tv_picture
+        unique_id: tv_picture
+        state: >-
+          {% if is_state('media_player.sftv', 'on') %}
+            {% if state_attr('media_player.sky_q', 'entity_picture') != None %}
+              {{ state_attr('media_player.sky_q', 'entity_picture') }}
+            {% else %}
+              /local/floorplan/images/tv.jpg
+            {% endif %}
+          {% else %}
+            /local/floorplan/imagestransparent.png
+          {% endif %}  

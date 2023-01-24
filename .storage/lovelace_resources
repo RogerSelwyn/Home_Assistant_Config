@@ -22,17 +22,52 @@
       {
         "id": "811177717c4b435a9e6cf5f712246235",
         "type": "module",
-        "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js?hacstag=1677445841110"
+        "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js?hacstag=1677445841121"
       },
       {
-        "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js?hacstag=246549747701",
+        "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js?hacstag=246549747720",
         "type": "module",
         "id": "80de3000548944bd82e09d3bb7a76fd2"
       },
       {
-        "url": "/hacsfiles/history-explorer-card/history-explorer-card.js?hacstag=4403747941037",
+        "url": "/hacsfiles/history-explorer-card/history-explorer-card.js?hacstag=4403747941043",
         "type": "module",
         "id": "eea2daa69c7d4d488c9b1781ac64195a"
+      },
+      {
+        "url": "/hacsfiles/config-template-card/config-template-card.js?hacstag=172177543136",
+        "type": "module",
+        "id": "5d82b1faddc04e05aeceab10c6e42582"
+      },
+      {
+        "url": "/hacsfiles/decluttering-card/decluttering-card.js?hacstag=188686483063",
+        "type": "module",
+        "id": "27c0ac6c2a7a4a24bd355b686f4a998b"
+      },
+      {
+        "url": "/hacsfiles/light-entity-card/light-entity-card.js?hacstag=168744428500",
+        "type": "module",
+        "id": "f0d4658d6c3346d89b7fe3101ae3e888"
+      },
+      {
+        "url": "/hacsfiles/lovelace-light-slider-card/light-slider-card.js?hacstag=3729437971800",
+        "type": "module",
+        "id": "2b22f978d4074053b0e0db39bbb18d91"
+      },
+      {
+        "url": "/browser_mod.js?automatically-added",
+        "type": "module",
+        "id": "592be8599ca444f383b47b0002dfa917"
+      },
+      {
+        "url": "/hacsfiles/ha-floorplan/floorplan.js?hacstag=1883234941035",
+        "type": "module",
+        "id": "8303f12b57a448499d57ee08bfb664a2"
+      },
+      {
+        "url": "/hacsfiles/lovelace-card-mod/card-mod.js?hacstag=190927524320",
+        "type": "module",
+        "id": "d03b26c8c206414b94a9077d79eb8eec"
       }
     ]
   }

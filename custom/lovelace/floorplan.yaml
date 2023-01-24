@@ -1,0 +1,13 @@
+# decluttering_templates: !include decluttering_templates.yaml
+      
+title: Floorplan
+views:
+  - !include downstairs.yaml
+  - theme: Backend-selected
+    title: Upstairs
+    path: upstairs 
+    # icon: mdi:arrow-up-bold-hexagon-outline
+    type: panel
+    badges: []
+    cards:  []
+                 

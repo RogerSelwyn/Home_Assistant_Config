@@ -1,0 +1,10 @@
+# lovelace:
+#   mode: storage
+#   # Add yaml dashboards
+#   dashboards:
+#     floor-plan:
+#       mode: yaml
+#       title: Floorplan
+#       icon: mdi:floor-plan
+#       show_in_sidebar: true
+#       filename: custom/lovelace/floorplan.yaml

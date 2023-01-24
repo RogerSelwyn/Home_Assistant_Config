@@ -1,0 +1,32 @@
+# Climate **************************************
+- entities:
+  - climate.living_room
+  - climate.dining_room
+  - climate.kitchen
+  - climate.hall
+  - climate.cloakroom
+  state_action:
+    - action: call-service
+      service: floorplan.text_set
+      service_data: |
+        > return `${entity.attributes.current_temperature.toFixed(1)}°`
+    - action: call-service
+      service: floorplan.class_set
+      service_data: |
+        > 
+        return `climate climate-${entity.attributes.hvac_action}`;
+
+- entity: weather.home
+  state_action:
+    - action: call-service
+      service: floorplan.text_set
+      service_data: |
+        > return `${entity.attributes.temperature.toFixed(1)}°`
+
+- entity: weather.home
+  element: weather.humidity
+  state_action:
+    - action: call-service
+      service: floorplan.text_set
+      service_data: |
+        > return `${entity.attributes.humidity.toFixed()}%`

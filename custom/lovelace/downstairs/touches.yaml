@@ -1,0 +1,17 @@
+- entities:
+    - camera.front_doorbell_live
+    - alarm_control_panel.the_mews_mode
+    - alarm_control_panel.texecom
+    - switch.plug_kitchen
+    - switch.plug_dining_room
+    - media_player.conservatory
+    - media_player.kitchen
+    - binary_sensor.curfew
+    - switch.hot_water
+  element: |
+    >
+    let position = entity.entity_id.search(/\./)
+    let entity_type = entity.entity_id.substring(0,position) + "_touch"
+    let entity_name = entity.entity_id.substring(position + 1)
+    return `${entity_type}.${entity_name}`
+  tap_action: more-info

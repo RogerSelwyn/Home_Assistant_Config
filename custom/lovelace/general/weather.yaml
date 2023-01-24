@@ -1,0 +1,52 @@
+  #################################################
+  # Weather
+  #################################################
+    type: custom:weather-card
+    entity: weather.home
+    current: true
+    details: false
+    forecast: false
+    card_mod:
+      style: |
+        :host {
+          transform: translate( 0, 0 );
+          position: absolute;
+          width: 240px;
+          left: 6px;
+          top: 22px;
+          opacity: 0.7;
+          mix-blend-mode: luminosity;
+        }
+        @media only screen and (max-width: 1280px)
+        {
+            :host {
+                left: -22px;
+                top: 12px;
+            }
+        }
+        ha-card {
+          background: none;
+          box-shadow: none;
+          border-width: 0;
+          height: 150px;
+        }
+        :host .icon.bigger {
+          position: unset;
+          width: 8em;
+          height: 8em;
+          margin-top: -1em;
+        }
+        .temp, .tempc, .icon {
+            position: unset !important;
+        }
+        :host .temp {
+            font-size: 1.5em !important;
+            margin-left: -1em;
+        }
+        # :host .current {
+        #   --primary-text-color: #606060; 
+        # }
+        .tempc {
+            font-size: .9em !important;
+            vertical-align: super;
+        }

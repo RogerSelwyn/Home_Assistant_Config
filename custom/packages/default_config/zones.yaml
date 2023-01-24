@@ -16,6 +16,18 @@ weather:
     scan_interval: 60
     latitude: !secret tc_latitude
     longitude: !secret tc_longitude
+    
+# Example configuration.yaml entry
+sensor:
+  - platform: darksky
+    api_key: !secret darksky_key
+    forecast:
+      - 0
+    hourly_forecast:
+      - 0
+      - 1
+    monitored_conditions:
+      - cloud_cover
 
 zone:
   - name: Home
@@ -29,3 +41,4 @@ zone:
     longitude: !secret tc_longitude
     radius: 200
     icon: mdi:home-variant-outline
+

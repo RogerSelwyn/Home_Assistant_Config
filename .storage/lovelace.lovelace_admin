@@ -69,7 +69,7 @@
               "entity": "alarm_control_panel.the_mews_mode"
             },
             {
-              "entity": "alarm_control_panel.house"
+              "entity": "alarm_control_panel.texecom"
             }
           ],
           "cards": [
@@ -148,16 +148,7 @@
                   "entity": "input_select.fireplace_lights_mode"
                 },
                 {
-                  "entity": "switch.zwave_living_room_main_light_switch"
-                },
-                {
-                  "entity": "switch.zwave_living_room_side_light_switch"
-                },
-                {
                   "entity": "binary_sensor.table_light_power"
-                },
-                {
-                  "entity": "binary_sensor.bedroom1_lights_power"
                 },
                 {
                   "entity": "binary_sensor.bedside_light_power"
@@ -167,6 +158,23 @@
               "title": "Power",
               "type": "entities",
               "state_color": true
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "switch.living_room_virtual_switch_1"
+                },
+                {
+                  "entity": "switch.living_room_virtual_switch_2"
+                },
+                {
+                  "entity": "switch.bedroom_1_virtual_switch"
+                }
+              ],
+              "title": "Switches",
+              "state_color": true,
+              "show_header_toggle": false
             },
             {
               "entities": [
@@ -193,7 +201,7 @@
                   "entity": "sensor.geniushub_living_room_luminance"
                 },
                 {
-                  "entity": "sensor.living_room_hue_lightlevel"
+                  "entity": "sensor.living_room_hue_motion_light_level"
                 },
                 {
                   "entity": "sensor.geniushub_bedroom1_luminance"
@@ -313,7 +321,7 @@
             {
               "entities": [
                 {
-                  "entity": "binary_sensor.front_door_motion_2"
+                  "entity": "binary_sensor.front_doorbell_motion"
                 },
                 {
                   "entity": "binary_sensor.downstairs_occupancy"
@@ -460,7 +468,7 @@
           "icon": "mdi:security",
           "badges": [
             {
-              "entity": "camera.front_door_live"
+              "entity": "camera.front_doorbell_live"
             },
             {
               "entity": "timer.lights_front_door"
@@ -470,32 +478,31 @@
             {
               "type": "alarm-panel",
               "states": [
-                "arm_home",
-                "arm_away"
+                "arm_home"
               ],
-              "entity": "alarm_control_panel.house",
+              "entity": "alarm_control_panel.texecom",
               "name": "Texecom Alarm"
             },
             {
               "type": "entities",
               "entities": [
                 {
-                  "entity": "alarm_control_panel.house"
+                  "entity": "alarm_control_panel.texecom"
                 },
                 {
                   "entity": "binary_sensor.kitchen_pir"
                 },
                 {
-                  "entity": "binary_sensor.front_door_toilet_door"
+                  "entity": "binary_sensor.front_toilet_doors"
                 },
                 {
                   "entity": "binary_sensor.inner_doors"
                 },
                 {
-                  "entity": "binary_sensor.back_door_garage_door"
+                  "entity": "binary_sensor.garage_back_doors"
                 },
                 {
-                  "entity": "binary_sensor.external_bell"
+                  "entity": "binary_sensor.alarm"
                 }
               ],
               "title": "Texecom",
@@ -506,6 +513,7 @@
               "type": "vertical-stack",
               "cards": [
                 {
+                  "camera_view": "auto",
                   "type": "picture-glance",
                   "title": "Front Door",
                   "entities": [
@@ -513,26 +521,26 @@
                       "entity": "alarm_control_panel.the_mews_mode"
                     },
                     {
-                      "entity": "binary_sensor.front_door_ding_2"
+                      "entity": "binary_sensor.front_doorbell_ding"
                     },
                     {
-                      "entity": "binary_sensor.front_door_motion_2"
+                      "entity": "binary_sensor.front_doorbell_motion"
                     },
                     {
-                      "entity": "switch.front_door_live_stream"
+                      "entity": "switch.front_doorbell_live_stream"
                     },
                     {
-                      "entity": "switch.front_door_event_stream"
+                      "entity": "switch.front_doorbell_event_stream"
                     }
                   ],
-                  "camera_image": "camera.front_door_events",
+                  "camera_image": "camera.front_doorbell_events",
                   "aspect_ratio": "4:3"
                 },
                 {
                   "type": "entities",
                   "entities": [
                     {
-                      "entity": "select.front_door_event_select"
+                      "entity": "select.front_doorbell_event_select"
                     }
                   ]
                 }
@@ -554,40 +562,40 @@
                   "entity": "alarm_control_panel.the_mews_mode"
                 },
                 {
-                  "entity": "number.kitchen_volume"
+                  "entity": "number.kitchen_chime_volume"
                 },
                 {
-                  "entity": "binary_sensor.front_door_ding_2"
+                  "entity": "binary_sensor.front_doorbell_ding"
                 },
                 {
-                  "entity": "binary_sensor.front_door_motion_2"
+                  "entity": "binary_sensor.front_doorbell_motion"
                 },
                 {
-                  "entity": "sensor.front_door_info"
+                  "entity": "sensor.front_doorbell_info"
                 },
                 {
-                  "entity": "camera.front_door_snapshot"
+                  "entity": "camera.front_doorbell_snapshot"
                 },
                 {
-                  "entity": "sensor.kitchen_info"
+                  "entity": "sensor.kitchen_chime_info"
                 },
                 {
-                  "entity": "switch.kitchen_play_ding_sound"
+                  "entity": "switch.kitchen_chime_play_ding_sound"
                 },
                 {
-                  "entity": "switch.kitchen_play_motion_sound"
+                  "entity": "switch.kitchen_chime_play_motion_sound"
                 },
                 {
-                  "entity": "switch.kitchen_snooze"
+                  "entity": "switch.kitchen_chime_snooze"
                 },
                 {
-                  "entity": "number.kitchen_snooze_minutes"
+                  "entity": "number.kitchen_chime_snooze_minutes"
                 },
                 {
-                  "entity": "sensor.front_door_wireless"
+                  "entity": "sensor.front_doorbell_wireless"
                 },
                 {
-                  "entity": "sensor.kitchen_wireless"
+                  "entity": "sensor.kitchen_chime_wireless"
                 }
               ],
               "title": "Ring (Add-On)",
@@ -717,7 +725,7 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.tc_tv_current_energy"
+                  "entity": "sensor.tc_tv_current_power"
                 },
                 {
                   "entity": "sensor.tc_tv_today_energy"
@@ -777,7 +785,7 @@
                   "entity": "sensor.sfups_power"
                 },
                 {
-                  "entity": "sensor.home_tester_current_energy"
+                  "entity": "sensor.home_tester_current_power"
                 }
               ],
               "title": "Home"
@@ -839,6 +847,36 @@
           "panel": true,
           "path": "map",
           "title": "Map"
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Test",
+          "path": "test",
+          "badges": [],
+          "cards": [
+            {
+              "type": "entities",
+              "card_mod": {
+                "style": {
+                  "hui-simple-entity-row": {
+                    "$": {
+                      "hui-generic-entity-row": {
+                        "$": ".text-content {\n  color: red;\n}\n"
+                      }
+                    }
+                  }
+                }
+              },
+              "entities": [
+                {
+                  "entity": "sun.sun"
+                },
+                {
+                  "entity": "sun.sun"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

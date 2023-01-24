@@ -7,26 +7,37 @@ homeassistant:
       friendly_name: Side Light Switch
       icon: mdi:power-cycle
     sensor.motion_sensor_illuminance:
-      unit_of_measurement: Lux
+      unit_of_measurement: lx
+    binary_sensor.zwave_office_fibaro_motion:
+      friendly_name: Office Fibaro Motion
+    sensor.zwave_office_fibaro_illuminance:
+      friendly_name: 'Office Fibaro Illuminance'
+    sensor.zwave_office_fibaro_temperature:
+      friendly_name: 'Office Fibaro Temperature'
+    switch.zwave_living_room_main_light_switch:
+      friendly_name: Main Light Switch
+    switch.zwave_living_room_side_light_switch:
+      friendly_name: Fireplace Light Switch
+    
+      
 
-binary_sensor:
-  - platform: template
-    sensors:
-      zwave_office_fibaro_motion:
+template:
+  - binary_sensor:
+      - name: zwave_office_fibaro_motion
+        unique_id: zwave_office_fibaro_motion
         device_class: motion
-        friendly_name: Office Fibaro Motion
-        value_template: "{{ is_state('binary_sensor.motion_sensor_home_security_motion_detection', 'on') }}"
-sensor:
-  - platform: template
-    sensors:
-      zwave_office_fibaro_illuminance:
-        value_template: "{{ '%.0f'%(states('sensor.motion_sensor_illuminance') | float(0)) }}"
-        friendly_name: 'Office Fibaro Illuminance'
-        unit_of_measurement: 'lux'
+        state: "{{ is_state('binary_sensor.motion_sensor_home_security_motion_detection', 'on') }}"
+
+  - sensor:
+      - name: zwave_office_fibaro_illuminance
+        unique_id: wave_office_fibaro_illuminance
+        state: "{{ '%.0f'%(states('sensor.motion_sensor_illuminance') | float(0)) }}"
+        unit_of_measurement: 'lx'
         device_class: illuminance
-      zwave_office_fibaro_temperature:
-        value_template: "{{ '%.0f'%(states('sensor.motion_sensor_air_temperature') | float(0)) }}"
-        friendly_name: 'Office Fibaro Temperature'
+  - sensor:
+      - name: zwave_office_fibaro_temperature
+        unique_id: zwave_office_fibaro_temperature
+        state: "{{ '%.0f'%(states('sensor.motion_sensor_air_temperature') | float(0)) }}"
         unit_of_measurement: '°C'
         device_class: temperature
 
@@ -34,7 +45,6 @@ switch:
   - platform: template
     switches:
       zwave_living_room_main_light_switch:
-        friendly_name: Main Light Switch
         value_template: "{{ is_state('switch.double_switch_2', 'on') }}"
         turn_on:
           service: switch.turn_on
@@ -45,7 +55,6 @@ switch:
           data:
             entity_id: switch.double_switch_2
       zwave_living_room_side_light_switch:
-        friendly_name: Fireplace Light Switch
         value_template: "{{ is_state('switch.double_switch_2_2', 'on') }}"
         turn_on:
           service: switch.turn_on

@@ -7,11 +7,11 @@ blueprints
 custom_components
 icloud
 image
-logs
+custom/logs
 nest
 node-red
 ssh
-themes
+custom/themes
 tts
 www
 __pycache__/
@@ -21,8 +21,9 @@ o365_storage
 .uuid
 home-assistant*
 update.sh
-shell_scripts/.dropbox_uploader
+custom/shell_scripts/.dropbox_uploader
 glow.conf
+skyq*.yaml
 
 Reinclude files
 !.storage/lovelace

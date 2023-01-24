@@ -1,0 +1,7 @@
+media_player:
+  - platform: group
+    name: Conservatory/Kitchen
+    unique_id: conservatory_speaker_group
+    entities:
+      - media_player.conservatory
+      - media_player.kitchen

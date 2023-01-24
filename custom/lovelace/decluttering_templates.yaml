@@ -1,0 +1,317 @@
+light_overlay:
+  element:
+    type: image
+    entity: 'light.[[light]]_light'
+    image: '/local/floorplan/Downstairs-[[light]]-Light.png'
+    style:
+      filter: '[[filter]]'
+      mix-blend-mode: lighten
+      opacity: '[[opacity]]'
+      left: 50%
+      top: 50%
+      width: 100%
+      height: 100%
+    action: none
+    tap_action:
+      action: none
+    hold_action:
+      action: none
+
+
+floorplan_light_colour:
+  element:
+    entity: '[[entity]]'
+    double_tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: '[[name]]'
+          content:
+            type: vertical-stack
+            cards:
+              - type: entities
+                entities:
+                  - entity: '[[entity]]'
+                    secondary_info: last-changed
+              - type: horizontal-stack
+                cards:
+                  - type: vertical-stack
+                    cards:
+                      - type: custom:light-entity-card
+                        entity: '[[entity]]'
+                        color_temp: true
+                        color_wheel: true
+                        full_width_sliders: true
+                        smooth_color_wheel: true
+                        persist_features: true
+                        header: false
+                        effects_list: false
+                        brightness: false
+                        white_value: false
+                        color_picker: false
+                        style: |
+                            ha-card {
+                              box-shadow: none !important;
+                            }
+                      - type: custom:light-entity-card
+                        entity: '[[entity]]'
+                        color_wheel: true
+                        color_picker: true
+                        effects_list: true
+                        full_width_sliders: true
+                        smooth_color_wheel: true
+                        persist_features: true
+                        header: false
+                        brightness: false
+                        color_temp: false
+                        white_value: false
+                        style: |
+                            ha-card {
+                              box-shadow: none !important;
+                            }
+                  - type: 'custom:light-slider-card'
+                    entity: '[[entity]]'
+                    color_temp: true
+                    header: false
+                    persist_features: true
+
+    icon: 'mdi:void'
+    style:
+      align-items: center
+      border-radius: 100%
+      display: flex
+      height: 1vw
+      justify-content: center
+      left: '[[left]]'
+      margin-left: '-1.5vw'
+      margin-top: '-1.5vw'
+      top: '[[top]]'
+      width: 1vw
+    tap_action:
+      action: toggle
+    type: '[[type]]'
+
+
+floorplan_media_player_sonos:
+  element:
+    entity: '[[entity]]'
+    double_tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: '[[name]]'
+          content:
+            type: vertical-stack
+            cards:
+              - type: custom:mini-media-player
+                entity: '[[entity]]'
+                artwork: cover
+                hide:
+                  power: true
+                  icon: true
+                speaker_group:
+                  platform: sonos
+                  show_group_count: true
+                  entities:
+                    - entity_id: media_player.conservatory
+                      name: Sonos Conservatory
+                    - entity_id: media_player.kitchen
+                      name: Sonos Kitchen
+                    - entity_id: media_player.living_room
+                      name: Living Room
+    icon: mdi:speaker
+    state_color: false
+    style:
+        '--iron-icon-height': 2vw
+        '--iron-icon-width': 2vw
+        '--paper-item-icon-active-color': '#111111'
+        '--paper-item-icon-color': '#111111'
+        align-items: center
+        # background-color: '#CCCCCC'
+        border-radius: 100%
+        box-shadow: '0px 0px 28px 0px rgba(0,0,0,0.39)'
+        display: flex
+        height: 2.5vw
+        justify-content: center
+        left: '[[left]]'
+        margin-left: '-1.5vw'
+        margin-top: '-1.5vw'
+        top: '[[top]]'
+        width: 2.5vw
+    tap_action:
+        action: call-service
+        service: media_player.media_play_pause
+        service_data:
+          entity_id: '[[entity]]'
+    type: '[[type]]'
+
+floorplan_media_player_skyq:
+  element:
+    entity: '[[entity]]'
+    double_tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: '[[name]]'
+          content:
+            type: vertical-stack
+            cards:
+              - type: custom:mini-media-player
+                entity: '[[entity]]'
+                artwork: cover
+                info: scroll
+                shortcuts:
+                  buttons:
+                    - icon: mdi:chevron-up
+                      id: channelup
+                      type: skyq
+                    - icon: mdi:chevron-down
+                      id: channeldown
+                      type: skyq
+                    - icon: mdi:record-rec
+                      id: record
+                      type: skyq
+                    - icon: null
+                      id: sky
+                      name: Sky
+                      type: skyq
+                    - icon: null
+                      id: tvguide
+                      name: Guide
+                      type: skyq
+                    - icon: mdi:home-outline
+                      id: home
+                      type: skyq
+                    - icon: mdi:menu-open
+                      id: sidebar
+                      type: skyq
+                    - icon: mdi:keyboard-return
+                      id: dismiss
+                      type: skyq
+                    - icon: mdi:information-variant
+                      id: i
+                      type: skyq
+                    - icon: mdi:arrow-right-thick
+                      id: right
+                      type: skyq
+                    - icon: mdi:arrow-left-thick
+                      id: left
+                      type: skyq
+                    - icon: mdi:arrow-up-thick
+                      id: up
+                      type: skyq
+                    - icon: mdi:arrow-down-thick
+                      id: down
+                      type: skyq
+                    - icon: null
+                      id: select
+                      name: Select
+                      type: skyq
+                    - icon: null
+                      name: null
+                    - icon: null
+                    - icon: null
+                    - icon: null
+                  columns: 6
+                  hide_when_off: true
+
+    icon: 'mdi:satellite-variant'
+    state-color: true
+    style:
+        # '--iron-icon-height': 2vw
+        # '--iron-icon-width': 2vw
+        # '--paper-item-icon-active-color': '#111111'
+        # '--paper-item-icon-color': '#111111'
+        align-items: center
+        # background-color: '#CCCCCC'
+        border-radius: 100%
+        box-shadow: '0px 0px 28px 0px rgba(0,0,0,0.39)'
+        display: flex
+        height: 2.5vw
+        justify-content: center
+        left: '[[left]]'
+        margin-left: '-1.5vw'
+        margin-top: '-1.5vw'
+        top: '[[top]]'
+        width: 2.5vw
+    tap_action:
+        action: call-service
+        service: media_player.toggle
+        service_data:
+          entity_id: '[[entity]]'
+    type: '[[type]]'
+
+# floorplan_heating:
+#   element:
+#     type: image
+#     action: none
+#     entity: '[[sensor]]'
+#     hold_action:
+#       action: none
+#     image: /local/floorplan/RadOff.png 
+#     state_image:
+#       "heating": /local/floorplan/RadOn.png
+#     style:
+#       top: '[[top]]'
+#       left: '[[left]]'
+#       width: '[[width]]'
+#       height: '[[height]]'
+#       transform: 'rotate([[rotate]]deg)'
+#     tap_action:
+#       action: fire-dom-event
+#       browser_mod:
+#         service: browser_mod.popup
+#         data:
+#           title: '[[name]]'
+#           content:
+#             type: vertical-stack
+#             cards:
+#               - type: thermostat
+#                 entity: '[[climate]]'
+#         style:
+#           '--ha-card-border-radius': 0vw 0vw 0.8vw 0.8vw
+#           border-radius: 0.8vw
+#           opacity: 0.9
+
+floorplan_temperature:
+  element:
+    type: state-label
+    action: none
+    entity: '[[climate]]'
+    attribute: current_temperature
+    hold_action:
+      action: none
+    style:
+      top: '[[top]]'
+      left: '[[left]]'
+      color: '[[colour]]'
+      background-color: '#222222'
+      font-size: 1vw
+      align-items: center
+      border-radius: 100%
+      box-shadow: '0px 0px 28px 0px rgba(0,0,0,0.39)'
+      display: flex
+      height: 2.0vw
+      justify-content: center
+      margin-left: '-1.5vw'
+      margin-top: '-1.5vw'
+      width: 3vw
+
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: '[[name]]'
+          content:
+            type: vertical-stack
+            cards:
+              - type: thermostat
+                entity: '[[climate]]'
+        style:
+          '--ha-card-border-radius': 0vw 0vw 0.8vw 0.8vw
+          border-radius: 0.8vw
+          opacity: 0.9

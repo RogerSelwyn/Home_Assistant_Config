@@ -1,9 +1,3 @@
-# o365:
-#   client_secret: !secret o365_secret
-#   client_id: !secret o365_id
-#   enable_update: True
-#   alt_auth_method: False
-
 o365:
   accounts:
     - account_name: converted

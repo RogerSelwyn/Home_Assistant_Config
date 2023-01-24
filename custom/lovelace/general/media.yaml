@@ -1,0 +1,146 @@
+  #################################################
+  # Right Speakers
+  #################################################
+    type: custom:mod-card
+    card_mod:
+      style: |
+        :host {
+          --vertical-stack-card-margin: 2px;
+          transform: translate( 0, 0 );
+          top: 6px;
+          right: 6px;
+          position: absolute;
+          width: 265px;
+          height: auto !important;
+        }
+        
+    card:
+      type: vertical-stack
+      cards:
+        # - type: custom:auto-entities
+        #   card:
+        #     type: entities
+
+        #   filter:
+        #     include:
+        #       - entity_id: '/media_player\..*_speaker_group/'
+        #   sort:
+        #     method: entity_id
+        #     ignore_case: true
+
+        - type: custom:auto-entities
+          show_empty: false
+          filter:
+            include:
+              - domain: media_player
+                entity_id: '/media_player\..*_speaker_group/'
+                state: paused
+            exclude:
+              - integration: sonos
+                attributes:
+                  media_title: "TV" 
+                # entity_id: 'media_player.sky*'
+            # exclude:
+            #   - entity_id: 'media_player.kitchen'
+
+ 
+          card:
+            type: entities
+            card_mod:
+              style: 
+                .: |
+                    :host {
+                      --paper-item-icon-color: #fff;
+                      --ha-card-background: #c8bcd733;
+                    }
+                    #states {
+                        padding: 4px
+                    }
+     
+                hui-media-player-entity-row: 
+                  $: |
+                    .volume {
+                      display: none !important;
+                    }
+                    .flex {
+                        position: absolute;
+                        top: -5px;
+                        right: 0px;
+                    }
+        - type: custom:auto-entities
+          show_empty: false
+          filter:
+            include:
+              - domain: media_player
+                integration: skyq
+                state: playing
+              - domain: media_player
+                integration: sonos
+                state: playing
+            exclude:
+              - integration: sonos
+                attributes:
+                  media_title: "TV" 
+                # entity_id: 'media_player.sky*'
+            # exclude:
+            #   - entity_id: 'media_player.kitchen'                  
+          card:
+            type: entities
+            card_mod:
+              style: 
+                .: |
+                    :host {
+                      --paper-item-icon-color: #fff;
+                      --ha-card-background: #c8bcd733;
+                    }
+                    #states {
+                        padding: 4px
+                    }
+                    hui-media-player-entity-row {
+                      height: 70px !important; 
+                    }
+
+                #     ha-card {
+                #         height: 74px !important;
+                #     }
+                #     #states {
+                #         padding: 4px
+                #     }
+                hui-media-player-entity-row: 
+                  $: |
+                    .flex {
+                        position: absolute;
+                        top: 30px;
+                    }
+
+
+        # - type: grid
+        #   square: false
+        #   columns: 2
+        #   cards:
+        #     - type: custom:button-card
+        #       show_label: false
+        #       show_icon: false
+        #       entity: input_select.led_fx_scene
+        #       color: '#ffffff45'
+        #       styles:
+        #         card:
+        #           - height: '100%'
+        #         name:
+        #           - color: '#ffffff45'
+        #           - font-size: 1.5em
+        #           - font-style: italic
+        #       state:
+        #         - operator: '!='
+        #           value: 'Off'
+        #           styles:
+        #             card:
+        #               - box-shadow: '0px 0px 5px #0072ffd9'
+        #       tap_action:
+        #         action: more-info
+
+        #     - type: custom:button-card
+        #       icon: mdi:video
+        #       label: All Cameras
+        #       show_label: false
+        #       color: '#ffffff45'
