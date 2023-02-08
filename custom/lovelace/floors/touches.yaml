@@ -6,7 +6,7 @@
     - switch.plug_dining_room
     - media_player.conservatory
     - media_player.kitchen
-    - binary_sensor.curfew
+    - binary_sensor.cat_flap
     - switch.hot_water
   element: |
     >

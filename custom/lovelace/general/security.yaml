@@ -1,0 +1,33 @@
+#################################################
+# Security States
+#################################################
+type: glance
+show_state: false
+entities:
+  - entity: sensor.location_mode
+    name: House
+  - entity: alarm_control_panel.texecom
+    name: Texe
+  - entity: alarm_control_panel.the_mews_mode
+    name: Ring
+  - entity: binary_sensor.cat_flap
+    name: Fondue    
+  - entity: switch.adguard_protection
+    name: WWW
+card_mod:
+  style: 
+    .: |
+      :host {
+        position: absolute;
+        bottom: 6px;
+        left: 6px;
+        width: 300px;
+        --ha-card-background: #c8bcd733;
+        --paper-item-icon-color: #fff;
+      }
+      ha-card div.entities{
+        padding: 4px;
+      ha-card div.entities.no-header{
+        padding-top:8px;
+      }
+            

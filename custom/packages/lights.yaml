@@ -8,6 +8,8 @@ homeassistant:
       friendly_name: Bedroom 3 Lights
     light.living_room:
       friendly_name: Living Room Lights
+    light.front_door:
+      friendly_name: Front Door Lights
     sensor.living_room_hue_motion_light_level:
       unit_of_measurement: lux
     # binary_sensor.bedroom1_lights_power:
@@ -276,7 +278,25 @@ input_select:
     options:
       - Evening Chill
       - Evening Friends
-
+  living_room_scenes:
+    name: Living Room Scenes
+    options:
+      - Evening Chill
+      - Evening Friends
+      - Meal Time
+      - Normal
+      - Reading
+      - None
+    initial: None
+  bedroom_2_scenes:
+    name: Bedroom 2 Scenes
+    options:
+      - Zoom
+      - Relax
+      - Flash
+      - None
+    initial: None
+    
 
 timer:
   lights_living_room:

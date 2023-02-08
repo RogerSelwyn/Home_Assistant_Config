@@ -1,0 +1,177 @@
+# Lights ************************************
+- entities:
+  - light.side_light
+  - light.tv_light
+  - light.table_light
+  - light.main_light
+  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+  tap_action: 'toggle'
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: "${entity.entity_id}"
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        style: "${functions.overlayStyle()}"
+  double_tap_action: 
+      - service: floorplan.execute
+        service_data:
+          lightCard: "${functions.lightCard('Living Room', entity, false,'input_select.living_room_scenes' )}"
+
+- entities:
+  - light.living_room
+  element: "${entity.entity_id.replace('light.', 'path_')}"
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('light', element.id)}"
+
+
+- entities:
+  - light.front_door
+  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+  tap_action: 'toggle'
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: "${entity.entity_id}"
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        style: "${functions.overlayStyle()}"
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('light', entity.entity_id.replace('light.', 'path_'))}"
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Front Door', entity)}"
+
+
+- entities:
+  - light.office_light
+  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+  tap_action: 'toggle'
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: "${entity.entity_id}"
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        style: "${functions.overlayStyle()}"
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Office', entity)}"
+
+- entities:
+  - light.office
+  element: "${entity.entity_id.replace('light.', 'path_')}"
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('light', element.id)}"
+
+- entities:
+  - light.bedroom_1
+  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+  tap_action: 'toggle'
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: "${entity.entity_id}"
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        style: "${functions.overlayStyle()}"
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('light', entity.entity_id.replace('light.', 'path_'))}"
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Bedroom 1', entity)}"
+
+- entities:
+  - light.bedroom_2_bulb_1
+  - light.bedroom_2_bulb_2
+  - light.bedroom_2_bulb_3
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: "${entity.entity_id}"
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        style: "${functions.overlayStyle()}"
+
+- entities:
+  - light.bedroom_2
+  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+  tap_action: 'toggle'
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('light', entity.entity_id.replace('light.', 'path_'))}"
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Bedroom 2', entity, false,'input_select.bedroom_2_scenes')}"
+
+
+- entities:
+  - light.ceiling_light
+  - light.bedside_light
+  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+  tap_action: 'toggle'
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: "${entity.entity_id}"
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        style: "${functions.overlayStyle()}"
+  double_tap_action: 
+      - service: floorplan.execute
+        service_data:
+          lightCard: "${functions.lightCard('Bedroom 3', entity )}"
+
+- entities:
+  - light.bedroom_3
+  element: "${entity.entity_id.replace('light.', 'path_')}"
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('light', element.id)}"
+
+                
+# - entities:
+#   - light.side_light
+#   - light.tv_light
+#   - light.table_light
+#   - light.main_light
+#   - light.front_door_lights
+#   element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+#   tap_action: 'toggle'
+#   double_tap_action: more-info

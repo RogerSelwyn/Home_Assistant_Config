@@ -159,7 +159,7 @@
                 "state_color": true
               },
               "filter": {
-                "template": "{%if is_state('binary_sensor.front_door_lights_power','on')%}light.front_door_lights{%endif%} {%if is_state('binary_sensor.front_door_lights_power','off')%}binary_sensor.front_door_lights_power{%endif%} binary_sensor.front_doorbell_motion timer.lights_front_door \n"
+                "template": "{%if is_state('binary_sensor.front_door_lights_power','on')%}light.front_door{%endif%} {%if is_state('binary_sensor.front_door_lights_power','off')%}binary_sensor.front_door_lights_power{%endif%} binary_sensor.front_doorbell_motion timer.lights_front_door \n"
               },
               "show_empty": false,
               "type": "custom:auto-entities"

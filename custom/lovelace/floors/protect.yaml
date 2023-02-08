@@ -1,0 +1,25 @@
+- entities:
+  - binary_sensor.downstairs
+  - binary_sensor.downstairs_2
+  element: room_hall_downstairs
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('protect', element.id)}"
+
+- entities:
+  - binary_sensor.upstairs
+  - binary_sensor.upstairs_2
+  element: room_hall_upstairs_1
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('protect', element.id)}"
+- entities:
+  - binary_sensor.upstairs
+  - binary_sensor.upstairs_2
+  element: room_hall_upstairs_2
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('protect', element.id)}"

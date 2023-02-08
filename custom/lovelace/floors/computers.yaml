@@ -1,0 +1,10 @@
+# Computers **************************************
+
+- entities:
+  - binary_sensor.rogers_imac_active
+  - device_tracker.ben_pc
+  tap_action: more-info
+  state_action:
+    action: call-service
+    service: floorplan.class_set
+    service_data: 'computer computer-${entity.state}' 

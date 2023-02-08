@@ -2,7 +2,7 @@ weather:
   - platform: darksky
     name: Home
     api_key: !secret darksky_key
- #  units: auto
+    # units: uk2
     mode: daily
     scan_interval: 20
     latitude: !secret home_latitude

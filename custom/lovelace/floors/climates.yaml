@@ -3,8 +3,12 @@
   - climate.living_room
   - climate.dining_room
   - climate.kitchen
-  - climate.hall
   - climate.cloakroom
+  - climate.bedroom_1
+  - climate.bedroom_2
+  - climate.bedroom_3
+  - climate.bathroom
+  - climate.ensuite
   state_action:
     - action: call-service
       service: floorplan.text_set
@@ -15,6 +19,30 @@
       service_data: |
         > 
         return `climate climate-${entity.attributes.hvac_action}`;
+
+- entity: climate.hall
+  elements:
+    - climate.hall
+    - climate.hall_upstairs
+  state_action:
+    - action: call-service
+      service: floorplan.text_set
+      service_data: |
+        > return `${entity.attributes.current_temperature.toFixed(1)}°`
+    - action: call-service
+      service: floorplan.class_set
+      service_data: |
+        > 
+        return `climate climate-${entity.attributes.hvac_action}`;
+
+- entity: sensor.zwave_office_fibaro_temperature
+  element: climate.office
+  state_action:
+    - action: call-service
+      service: floorplan.text_set
+      service_data: |
+        > return `${Number(entity.state).toFixed(1)}°`
+
 
 - entity: weather.home
   state_action:

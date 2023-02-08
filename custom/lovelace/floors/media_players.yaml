@@ -27,6 +27,7 @@
 
 - entities:
   - media_player.sky_q
+  - media_player.sky_q_mini
   tap_action: more-info
   state_action:
     action: call-service

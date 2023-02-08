@@ -1,5 +1,15 @@
 homeassistant:
   customize:
-    "sensor.cat_flap_the_fondue_pot_battery_level":
+    sensor.cat_flap_the_fondue_pot_battery_level:
       unit_of_measurement: '%'
+    binary_sensor.cat_flap:
+      friendly_name: Cat Flap
 
+template:
+  - binary_sensor:
+      - name: cat_flap
+        unique_id: cat_flap
+        state: >-
+          {{ is_state('binary_sensor.curfew', 'on')
+          and is_state('sensor.cat_flap_the_fondue_pot', 'unlocked') }}
+        device_class: lock

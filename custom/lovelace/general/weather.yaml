@@ -12,8 +12,8 @@
           transform: translate( 0, 0 );
           position: absolute;
           width: 240px;
-          left: 6px;
-          top: 22px;
+          left: 0px;
+          top: 0px;
           opacity: 0.7;
           mix-blend-mode: luminosity;
         }
@@ -21,7 +21,7 @@
         {
             :host {
                 left: -22px;
-                top: 12px;
+                top: -22px;
             }
         }
         ha-card {
@@ -43,9 +43,6 @@
             font-size: 1.5em !important;
             margin-left: -1em;
         }
-        # :host .current {
-        #   --primary-text-color: #606060; 
-        # }
         .tempc {
             font-size: .9em !important;
             vertical-align: super;

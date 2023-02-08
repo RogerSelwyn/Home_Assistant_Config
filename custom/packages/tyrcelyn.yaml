@@ -23,7 +23,7 @@ homeassistant:
 notify:
   - platform: file
     name: tyrcelyn
-    filename: logs/tyrcelyn.csv
+    filename: custom/logs/tyrcelyn.csv
     timestamp: true
 
 template:

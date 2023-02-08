@@ -855,26 +855,18 @@
           "badges": [],
           "cards": [
             {
-              "type": "entities",
-              "card_mod": {
-                "style": {
-                  "hui-simple-entity-row": {
-                    "$": {
-                      "hui-generic-entity-row": {
-                        "$": ".text-content {\n  color: red;\n}\n"
-                      }
-                    }
-                  }
-                }
+              "type": "custom:auto-entities",
+              "title": "Blah",
+              "card": {
+                "type": "history-graph"
               },
-              "entities": [
-                {
-                  "entity": "sun.sun"
-                },
-                {
-                  "entity": "sun.sun"
-                }
-              ]
+              "filter": {
+                "include": [
+                  {
+                    "area": "Helper"
+                  }
+                ]
+              }
             }
           ]
         }

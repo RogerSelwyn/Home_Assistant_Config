@@ -1,0 +1,257 @@
+title: Downstairs
+path: downstairs
+panel: true
+theme: floorplan-tutorial
+badges: []
+cards:
+  - type: horizontal-stack
+    cards:
+ 
+
+      #################################################
+      # Floorplan
+      #################################################
+      - type: custom:floorplan-card
+        full_height: true
+        # title: Floorplanner Home
+        style: >
+          ha-card {
+            #  max-width: 177vh;
+              margin: 0 -4px;
+              background: radial-gradient(ellipse at 40% 70%, rgba(99,191,197,1) 0%, rgba(34,118,146,1) 38%, rgba(28,73,97,1) 79%);
+              border-width: 0;
+              border-radius: 0px;
+              box-shadow: none
+              transform: scale(1.0);
+          }
+        config:
+          console_log_level: info
+        #   log_level: info
+          defaults:
+            # hold_action: more-info
+            tap_action: more-info
+            hover_action: hover-info
+            hover_info_filter: !include hover_filter.yaml
+          image: /local/floorplan/floors_optimised.svg
+          stylesheet: /local/floorplan/floorplan.css
+          rules: !include_dir_merge_list floors/
+          functions: |
+            >
+            return {
+        
+
+              overlayStyle: () => {
+                if( entity.state !== "on" )
+                    return "display: none;";
+                let hue = 0;
+                let sat = 0;
+                if( entity.attributes.hs_color ) {
+                    hue = entity.attributes.hs_color[0];
+                    sat = entity.attributes.hs_color[1];
+                }
+                let brightness = entity.attributes.brightness / 255
+                if( sat < 10 ) {
+                  return `
+                    display: block;
+                    opacity: ${brightness};`
+                }
+                return `
+                  display: block;
+                  opacity: ${brightness};
+                  filter:
+                    sepia(100%)
+                    hue-rotate(calc( ${hue}deg - 55deg ))
+                    saturate(calc( ${sat}% * 2 ));`
+              },
+              
+              classAdd: (classnew, elementName) => {
+                  let elem = elements[elementName]
+                  elem.classList.remove(classnew + "-off")
+                  elem.classList.remove(classnew + "-on")
+                  elem.classList.add(classnew)
+                  elem.classList.add(classnew + '-' + entity.state)
+              },
+              
+              excludedItems: () => {
+                  let excluded_list = []
+                  excluded_list.push({attributes: {device_class: "battery"}})
+                  excluded_list.push({attributes: {is_hue_group: true}})
+                  excluded_list.push({entity_id: "*microphone*"})
+                  excluded_list.push({entity_id: "*surround*"})
+                  excluded_list.push({entity_id: "*bass*"})
+                  excluded_list.push({entity_id: "*treble*"})
+                  excluded_list.push({entity_id: "*delay*"})
+                  excluded_list.push({entity_id: "*crossfade*"})
+                  excluded_list.push({entity_id: "*loudness*"})
+                  excluded_list.push({entity_id: "*night_sound*"})
+                  excluded_list.push({entity_id: "*speech_enhancement*"})
+                  excluded_list.push({entity_id: "*chime*"})
+                  excluded_list.push({entity_id: "*nightlight*"})
+                  excluded_list.push({entity_id: "*sensor.geniushub_*_luminance*"})
+                  excluded_list.push({entity_id: "*switch.*luminance*"})
+                  excluded_list.push({entity_id: "*switch.*motion*"})
+                  excluded_list.push({entity_id: "*scene*"})
+                  excluded_list.push({entity_id: "sensor.sky_q*"})
+                  excluded_list.push({entity_id: "number.front_doorbell*"})
+                  excluded_list.push({entity_id: "sensor.front_doorbell*"})
+                  excluded_list.push({entity_id: "select.front_doorbell*"})
+                  excluded_list.push({entity_id: "switch.front_doorbell*"})
+                  excluded_list.push({entity_id: "switch.texecom*"})
+                  excluded_list.push({entity_id: "switch.tv_sonos_led*"})
+                  excluded_list.push({domain: "device_tracker"})
+                  excluded_list.push({domain: "camera"})
+                  return excluded_list
+              },
+
+              infoCard: (area, area2 = false) => {
+                // Call browser_mod service
+                let title = area
+                let logbook_list = []
+                logbook_list.push({area: area})
+                if (area2) {
+                  logbook_list.push({area: area2})
+                  title = title + " & " + area2
+                }
+                let exclude_list = functions.excludedItems()
+                browser_mod.service('popup',{
+                title: title,
+                content: 
+                    {
+                      type: "custom:tabbed-card",
+                      tabs: [
+                        {
+                          attributes: {
+                              label: "Logbook"
+                          },
+                          card: {
+                              type: "custom:auto-entities",
+                              card: {
+                                type: "logbook"
+                              },
+                              filter: {
+                                include: logbook_list
+                              }
+                          }
+                        },
+                        {
+                          attributes: {
+                              label: "History"
+                          },
+                          card: {
+                              type: "custom:auto-entities",
+                              card: {
+                                type: "history-graph"
+                              },
+                              filter: {
+                                include: logbook_list,
+                                exclude: exclude_list
+                              }
+                          }
+                        }
+                      ]
+                    }
+                })
+              },
+              
+              lightCard: (area, lightentity = false,  area_filter = false, scenes = false) => {
+                // Call browser_mod service
+                let title = lightentity.attributes.friendly_name
+                let entity_list = []
+                if (scenes) {
+                  entity_list.push({entity_id: scenes})   
+                }
+                entity_list.push({area: area, entity_id: "light.*"})
+                entity_list.push({area: area, entity_id: "switch.*_virtual_switch*"})
+                let logbook_list = []
+                if (area_filter) {
+                    logbook_list.push({area: area})
+                    title = area
+                } else {
+                    logbook_list.push({entity_id: entity.entity_id})
+                }
+                let exclude_list = functions.excludedItems()
+
+                browser_mod.service('popup',{
+                title: title,
+                content: 
+                    {
+                      type: "custom:tabbed-card",
+                      tabs: [
+                        {
+                          attributes: {
+                            label: "Lights"
+                          },
+                          card: {
+                                  type: "horizontal-stack",
+                                  cards: [
+                                    {
+                                      type: "custom:auto-entities",
+                                      card: {
+                                        type: "entities"
+                                      },
+                                      filter: {
+                                        include: entity_list,
+                                        exclude: [
+                                          {
+                                            attributes: {
+                                              is_hue_group: true
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }, 
+                                    {
+                                      type: "custom:light-entity-card",
+                                      entity: lightentity.entity_id,
+                                      full_width_sliders: true,
+                                      smooth_color_wheel: true,
+                                      persist_features: true
+                                    }
+                                  ]
+                          }
+                        },
+                        {
+                          attributes: {
+                              label: "Logbook"
+                          },
+                          card: {
+                              type: "custom:auto-entities",
+                              card: {
+                                type: "logbook"
+                              },
+                              filter: {
+                                include: logbook_list
+                              }
+                          }
+                        },
+                        {
+                          attributes: {
+                              label: "History"
+                          },
+                          card: {
+                              type: "custom:auto-entities",
+                              card: {
+                                type: "history-graph"
+                              },
+                              filter: {
+                                include: logbook_list,
+                                exclude: exclude_list
+                              }
+                          }
+                        }
+                      ]
+                    }
+                })
+              }
+            };
+
+
+
+            
+      - !include general/batteries.yaml
+      - !include general/weather.yaml
+      - !include general/media.yaml
+      - !include general/security.yaml
+      
+
+

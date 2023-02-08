@@ -2,7 +2,7 @@
 
 # Set Variables
 echo Set Variables
-DROPBOX_UPLOADER=/config/shell_scripts/dropbox_uploader.sh
+DROPBOX_UPLOADER=/config/custom/shell_scripts/dropbox_uploader.sh
 BKP_CONFIG=/config/custom/secrets/.quotes_uploader
 BKP_DIR=/config/custom/quotes
 BKP_FOLDER=/Home/Money

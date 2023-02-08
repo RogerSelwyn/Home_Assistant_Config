@@ -1,0 +1,401 @@
+# Backgrounds ******************************
+- entity: input_select.floorplan
+  element: up_touch
+  tap_action:
+    service: input_select.select_option
+    service_data: 
+      option: up
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        elements:
+          - upstairs
+          - downstairs
+          - up
+          - down
+        class: 'floorplan floorplan-${entity.state}'
+- entity: input_select.floorplan
+  element: down_touch
+  tap_action:
+    service: input_select.select_option
+    service_data: 
+      option: down
+
+- entity: sun.sun
+  elements: 
+    - downstairs_day
+    - upstairs_day
+  hover_action: false
+  state_action:
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        entity: sensor.sunlight_opacity
+        style: |
+            > 
+            if( entity.state == 0 )
+                return "display: none;";
+            return `opacity: ${entities['sensor.sunlight_opacity'].state};`
+
+
+# Motion Areas *************************************
+- entity: binary_sensor.kitchen_occupancy
+  elements:
+    - room_kitchen
+    - path_kitchen
+    - light_overlay.kitchen_light
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 'motion motion-${entity.state}'    
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.kitchen
+         motion: binary_sensor.kitchen_occupancy
+  double_tap_action: 
+      - service: floorplan.execute
+        service_data:
+          infoCard: "${functions.infoCard('Kitchen')}"
+
+- entity: binary_sensor.kitchen_occupancy
+  elements:
+    - room_conservatory
+    - path_conservatory
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 'motion motion-${entity.state}'    
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.kitchen
+         motion: binary_sensor.kitchen_occupancy
+         plug: switch.plug_kitchen
+  double_tap_action: 
+      - service: floorplan.execute
+        service_data:
+          infoCard: "${functions.infoCard( 'Conservatory')}"
+
+
+- entity: binary_sensor.garage_back_doors
+  elements:
+    - room_utility
+    - room_garage
+    - path_utility
+    - path_garage
+    - light_overlay.garage_light
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 'motion motion-${entity.state}' 
+  hold_action:
+    action: call-service
+    service: honeycomb
+    service_data:
+      template: area
+      autoclose: false
+      variables:
+        motion: binary_sensor.garage_back_doors
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        infoCard: "${functions.infoCard('Utility', 'Garage')}"
+
+- entity: binary_sensor.front_toilet_doors
+  elements:
+    - room_cloakroom
+    - path_cloakroom
+    - light_overlay.cloakroom_light
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 'motion motion-${entity.state}' 
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.cloakroom
+         motion: binary_sensor.front_toilet_doors
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        infoCard: "${functions.infoCard('Cloakroom')}"
+         
+- entity: binary_sensor.downstairs_3
+  elements:
+    - room_hall_downstairs
+    - path_hall_downstairs
+    - light_overlay.hall_downstairs_light
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.hall
+         motion: binary_sensor.downstairs_3
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        infoCard: "${functions.infoCard('Hall - Downstairs')}"
+
+- entity: binary_sensor.geniushub_dining_room_occupancy
+  elements:
+    - room_dining_room
+    - path_dining_room
+    - light_overlay.dining_room_light
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 'motion motion-${entity.state}' 
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.dining_room
+         motion: binary_sensor.geniushub_dining_room_occupancy
+         plug: switch.plug_dining_room
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        infoCard: "${functions.infoCard('Dining Room')}"
+
+- entity: binary_sensor.upstairs_3
+  elements:
+    - room_hall_upstairs_1
+    - room_hall_upstairs_2
+    - path_hall_upstairs
+    - light_overlay.hall_upstairs_light
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.hall
+         motion: binary_sensor.upstairs_3
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        infoCard: "${functions.infoCard('Hall - Upstairs')}"
+
+- entity: binary_sensor.upstairs_3
+  elements:
+    - room_boxroom
+    - path_boxroom
+    - light_overlay.boxroom_light
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         motion: binary_sensor.upstairs_3
+         plug: switch.plug_box_room
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        infoCard: "${functions.infoCard('Box Room')}"
+
+- entity: binary_sensor.upstairs_3
+  elements:
+    - room_bathroom
+    - path_bathroom
+    - light_overlay.bathroom_light
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.bathroom
+         motion: binary_sensor.upstairs_3
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        infoCard: "${functions.infoCard('Bathroom')}"
+
+
+
+- entity: binary_sensor.dual_channel_receiver_3_2
+  element: room_airing_cupboard
+
+
+# Complex Areas *************************************
+- entity: binary_sensor.front_doorbell_motion
+  elements:
+  - path_front_door
+  - room_front_door
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         light: light.front_door
+         motion: binary_sensor.front_doorbell_motion
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Front Door', entities['light.front_door'], true)}"
+
+- entity: binary_sensor.living_room_occupancy
+  elements: 
+  - path_living_room
+  - room_living_room
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.living_room
+         light: light.living_room
+         motion: binary_sensor.living_room_occupancy
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Living Room', entities['light.living_room'], true,'input_select.living_room_scenes')}"
+
+
+- entity: binary_sensor.geniushub_bedroom1_occupancy
+  elements:
+  - path_bedroom_1
+  - room_bedroom_1
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.bedroom_1
+         light: light.bedroom_1
+         motion: binary_sensor.geniushub_bedroom1_occupancy
+         circadian: input_boolean.circadian_bedroom_1
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Bedroom 1', entities['light.bedroom_1'], true)}"
+
+- entity: binary_sensor.geniushub_bedroom2_occupancy
+  elements:
+  - path_bedroom_2
+  - room_bedroom_2
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.bedroom_2
+         light: light.bedroom_2
+         motion: binary_sensor.geniushub_bedroom2_occupancy
+         circadian: input_boolean.circadian_bedroom_2
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Bedroom 2', entities['light.bedroom_2'], true, 'input_select.bedroom_2_scenes')}"
+      
+- entity: binary_sensor.geniushub_bedroom3_occupancy
+  elements:
+  - path_bedroom_3
+  - room_bedroom_3
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.bedroom_3
+         light: light.bedroom_3
+         motion: binary_sensor.geniushub_bedroom3_occupancy
+         circadian: input_boolean.circadian_bedroom_3
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Bedroom 3', entities['light.bedroom_3'], true)}"
+
+- entity: binary_sensor.zwave_office_fibaro_motion
+  elements:
+  - path_office
+  - room_office
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: call-service
+     service: honeycomb
+     service_data:
+      template: area
+      autoclose: false
+      variables:
+         climate: sensor.zwave_office_fibaro_temperature
+         light: light.office
+         motion: binary_sensor.zwave_office_fibaro_motion
+         circadian: input_boolean.circadian_office
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Office', entities['light.office'], true)}"

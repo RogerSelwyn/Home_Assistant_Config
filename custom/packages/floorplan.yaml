@@ -1,3 +1,7 @@
+frontend:
+  extra_module_url:
+    - /hacsfiles/lovelace-card-mod/card-mod.js
+    
 lovelace:
   mode: storage
   dashboards:
@@ -7,7 +11,6 @@ lovelace:
       icon: mdi:floor-plan
       show_in_sidebar: true
       filename: custom/lovelace/floorplan.yaml
-            # https://hass.selwyn.org.uk/local/floorplan/transparent.png
 
 template:
   - sensor:
@@ -49,3 +52,14 @@ template:
           {% else %}
             /local/floorplan/imagestransparent.png
           {% endif %}  
+
+
+input_select:
+  floorplan:
+    name: Floorplan
+    icon: mdi:floorplan
+    options:
+      - up
+      - down
+      - office
+      

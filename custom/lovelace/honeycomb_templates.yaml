@@ -1,0 +1,48 @@
+area:
+  variables:
+    light: null
+    climate: null
+    motion: null
+    plug: null
+    circadian: null
+  size: 150
+  buttons:
+    - icon: 'mdi:information-variant'
+      show: '[[[ return (variables.light) ]]]'
+      entity: '[[[ return (variables.light) ]]]'
+      tap_action:
+         action: more-info
+    - icon: 'mdi:lightbulb-group'
+      show: '[[[ return (variables.light) ]]]'
+      entity: '[[[ return (variables.light) ]]]'
+      active: true
+      tap_action:
+        action: call-service
+        service: light.turn_off
+        service_data:
+          entity_id: '[[[ return (variables.light) ]]]'
+    - icon: 'mdi:motion-sensor'
+      show: '[[[ return (variables.motion) ]]]'
+      entity: '[[[ return (variables.motion) ]]]'
+      active: true
+      tap_action:
+         action: more-info
+    - icon: 'mdi:power-plug'
+      show: '[[[ return (variables.plug) ]]]'
+      entity: '[[[ return (variables.plug) ]]]'
+      active: true
+      tap_action:
+         action: more-info
+    - icon: 'mdi:sine-wave'
+      show: '[[[ return (variables.circadian) ]]]'
+      entity: '[[[ return (variables.circadian) ]]]'
+      active: true
+      tap_action:
+         action: toggle
+    - icon: 'mdi:radiator'
+      show: '[[[ return (variables.climate) ]]]'
+      entity: '[[[ return (variables.climate) ]]]'
+      active: true
+      position: 5
+      tap_action:
+         action: more-info

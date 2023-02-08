@@ -32,12 +32,6 @@
       service: floorplan.class_set
       service_data: 'alarm alarm-${entity.state}'
 
-# - entities:
-#     - alarm_control_panel.the_mews_mode
-#     - alarm_control_panel.texecom
-#   element: "${entity.entity_id.replace('alarm_control_panel.', 'alarm_control_panel_touch.')}"
-#   tap_action: more-info
-  
 - element: switch.plug_dining_room
   entities:
     - binary_sensor.smart_plug_5
@@ -70,6 +64,22 @@
           } 
         return `plug plug-${status}`
 
+- element: switch.plug_box_room
+  entities:
+    - binary_sensor.smart_plug_6
+    - switch.plug_box_room
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: |
+        >
+        let status = entities['binary_sensor.smart_plug_6'].state
+        if (entities['switch.plug_box_room'].state === "on")
+          {
+            status = "boost"
+          } 
+        return `plug plug-${status}`
+
 - element: switch.hot_water
   entities:
     - binary_sensor.dual_channel_receiver_3_2
@@ -85,15 +95,25 @@
             status = "boost"
           } 
         return `hot-water hot-water-${status}`
+- element: switch.upstairs_hot_water
+  entities:
+    - binary_sensor.dual_channel_receiver_3_2
+    - switch.hot_water
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: |
+        >
+        let status = entities['binary_sensor.dual_channel_receiver_3_2'].state
+        if (entities['switch.hot_water'].state === "on")
+          {
+            status = "boost"
+          } 
+        return `hot-water hot-water-${status}`
 
-# - entities:
-#     - switch.plug_kitchen
-#     - switch.plug_dining_room
-#   element: "${entity.entity_id.replace('switch.', 'switch_touch.')}"
-#   tap_action: more-info
 
 - entities: 
-    - binary_sensor.curfew
+    - binary_sensor.cat_flap
   state_action:
     - action: call-service
       service: floorplan.class_set

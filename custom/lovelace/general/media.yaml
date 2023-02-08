@@ -8,26 +8,21 @@
           --vertical-stack-card-margin: 2px;
           transform: translate( 0, 0 );
           top: 6px;
-          right: 6px;
+          right: 2px;
           position: absolute;
           width: 265px;
           height: auto !important;
+        }
+        @media only screen and (max-width: 428px)
+        {
+            ha-card {
+                display: none;
+            }
         }
         
     card:
       type: vertical-stack
       cards:
-        # - type: custom:auto-entities
-        #   card:
-        #     type: entities
-
-        #   filter:
-        #     include:
-        #       - entity_id: '/media_player\..*_speaker_group/'
-        #   sort:
-        #     method: entity_id
-        #     ignore_case: true
-
         - type: custom:auto-entities
           show_empty: false
           filter:
@@ -39,11 +34,6 @@
               - integration: sonos
                 attributes:
                   media_title: "TV" 
-                # entity_id: 'media_player.sky*'
-            # exclude:
-            #   - entity_id: 'media_player.kitchen'
-
- 
           card:
             type: entities
             card_mod:
@@ -73,6 +63,9 @@
             include:
               - domain: media_player
                 integration: skyq
+                state: paused
+              - domain: media_player
+                integration: skyq
                 state: playing
               - domain: media_player
                 integration: sonos
@@ -81,9 +74,6 @@
               - integration: sonos
                 attributes:
                   media_title: "TV" 
-                # entity_id: 'media_player.sky*'
-            # exclude:
-            #   - entity_id: 'media_player.kitchen'                  
           card:
             type: entities
             card_mod:
@@ -100,18 +90,17 @@
                       height: 70px !important; 
                     }
 
-                #     ha-card {
-                #         height: 74px !important;
-                #     }
-                #     #states {
-                #         padding: 4px
-                #     }
                 hui-media-player-entity-row: 
                   $: |
                     .flex {
                         position: absolute;
                         top: 30px;
+                        width: 100%;
                     }
+                    # hui-generic-entity-row > div.controls {
+                    #     position: absolute;
+                    #     top: 30px;
+                    # }
 
 
         # - type: grid

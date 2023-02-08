@@ -35,24 +35,9 @@
         "id": "eea2daa69c7d4d488c9b1781ac64195a"
       },
       {
-        "url": "/hacsfiles/config-template-card/config-template-card.js?hacstag=172177543136",
-        "type": "module",
-        "id": "5d82b1faddc04e05aeceab10c6e42582"
-      },
-      {
-        "url": "/hacsfiles/decluttering-card/decluttering-card.js?hacstag=188686483063",
-        "type": "module",
-        "id": "27c0ac6c2a7a4a24bd355b686f4a998b"
-      },
-      {
         "url": "/hacsfiles/light-entity-card/light-entity-card.js?hacstag=168744428500",
         "type": "module",
         "id": "f0d4658d6c3346d89b7fe3101ae3e888"
-      },
-      {
-        "url": "/hacsfiles/lovelace-light-slider-card/light-slider-card.js?hacstag=3729437971800",
-        "type": "module",
-        "id": "2b22f978d4074053b0e0db39bbb18d91"
       },
       {
         "url": "/browser_mod.js?automatically-added",
@@ -68,6 +53,26 @@
         "url": "/hacsfiles/lovelace-card-mod/card-mod.js?hacstag=190927524320",
         "type": "module",
         "id": "d03b26c8c206414b94a9077d79eb8eec"
+      },
+      {
+        "url": "/hacsfiles/lovelace-card-tools/card-tools.js?hacstag=16140332811",
+        "type": "module",
+        "id": "f1f1e27b531c4c9096a9946d1058efea"
+      },
+      {
+        "url": "/hacsfiles/honeycomb-menu/honeycomb-menu.js?hacstag=2591267600110",
+        "type": "module",
+        "id": "0838ef2890d544568e0bd9fd331ffd3f"
+      },
+      {
+        "url": "/hacsfiles/button-card/button-card.js?hacstag=146194325342",
+        "type": "module",
+        "id": "96e4fd8250184d62b06fdea8e4c27b09"
+      },
+      {
+        "url": "/hacsfiles/tabbed-card/tabbed-card.js?hacstag=452866308031",
+        "type": "module",
+        "id": "b3ee699b09f44a41a393c0040979d5f2"
       }
     ]
   }
