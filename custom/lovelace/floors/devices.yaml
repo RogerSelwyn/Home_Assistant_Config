@@ -1,0 +1,53 @@
+# Motion Areas *************************************
+- elements:
+  - SFRouter
+  double_tap_action: 
+      - service: floorplan.execute
+        service_data:
+          deviceCard: "${functions.deviceCard(element.id)}"
+
+- entity: sensor.sfprinter
+  element: SFPrinter
+  tap_action: more-info
+  state_action:
+    action: call-service
+    service: floorplan.class_set
+    service_data: 'printer printer-${entity.state}' 
+  double_tap_action: 
+      - service: floorplan.execute
+        service_data:
+          deviceCard: "${functions.deviceCard(element.id)}"
+
+- entity: sensor.sfups_status
+  element: SFUPS
+  tap_action: more-info
+  state_action:
+    action: call-service
+    service: floorplan.class_set
+    service_data: 'ups ups-${entity.state}' 
+  double_tap_action: 
+      - service: floorplan.execute
+        service_data:
+          deviceCard: "${functions.deviceCard(element.id)}"
+
+- element: SFNAS
+#   tap_action: more-info
+#   state_action:
+#     action: call-service
+#     service: floorplan.class_set
+#     service_data: 'ups ups-${entity.state}' 
+  double_tap_action: 
+      - service: floorplan.execute
+        service_data:
+          deviceCard: "${functions.deviceCard(element.id, 'area')}"
+
+- element: Energy
+#   tap_action: more-info
+#   state_action:
+#     action: call-service
+#     service: floorplan.class_set
+#     service_data: 'ups ups-${entity.state}' 
+  double_tap_action: 
+      - service: floorplan.execute
+        service_data:
+          deviceCard: "${functions.deviceCard(element.id, 'area')}"

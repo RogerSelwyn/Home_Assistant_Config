@@ -64,6 +64,38 @@ cards:
                     saturate(calc( ${sat}% * 2 ));`
               },
               
+              setImage: () => {
+                let elementName= entity.entity_id.replace('light.', 'light_overlay.')
+                let elem = elements[elementName]
+                if( entity.state !== "on" ) {
+                  elem.style.display = "none"
+                  return
+                }
+                let brightness = entity.attributes.brightness / 255
+                elem.style.opacity = brightness;
+                elem.style.filter = "sepia(100%)";
+                elem.style.display = "block"
+              },
+              
+              failedImage: () => {
+                let elementName= entity.entity_id.replace('light.', 'light_overlay.')
+                let elem = elements[elementName]
+                let imgElem = document.createElement('img')
+                const href = elem.getAttribute("href")
+                imgElem.setAttribute("src", href)
+                const width = elem.getAttribute("width")
+                imgElem.setAttribute("width", width)
+                const height = elem.getAttribute("height")
+                imgElem.setAttribute("height", height)
+                imgElem.classList.add("test")
+                console.log(imgElem)
+                var rect = elem.getBoundingClientRect();
+                console.log(rect.top, rect.right, rect.bottom, rect.left);
+                elem.parentNode.replaceChild(imgElem, elem)
+                var rect = imgElem.getBoundingClientRect();
+                console.log(rect.top, rect.right, rect.bottom, rect.left);
+              },
+              
               classAdd: (classnew, elementName) => {
                   let elem = elements[elementName]
                   elem.classList.remove(classnew + "-off")
@@ -103,6 +135,70 @@ cards:
                   return excluded_list
               },
 
+              deviceCard: (device = false, type = "device") => {
+                // Call browser_mod service
+                let title = device
+                let logbook_list = []
+                if (type === "device") {
+                    logbook_list.push({device: device})
+                } else {
+                    logbook_list.push({area: device})
+                }
+                let exclude_list = functions.excludedItems()
+                browser_mod.service('popup',{
+                title: title,
+                content: 
+                    {
+                      type: "custom:tabbed-card",
+                      tabs: [
+                        {
+                          attributes: {
+                              label: "Entities"
+                          },
+                          card: {
+                              type: "custom:auto-entities",
+                              card: {
+                                type: "entities"
+                              },
+                              filter: {
+                                include: logbook_list
+                              }
+                          }
+                        },
+                        {
+                          attributes: {
+                              label: "Logbook"
+                          },
+                          card: {
+                              type: "custom:auto-entities",
+                              card: {
+                                type: "logbook"
+                              },
+                              filter: {
+                                include: logbook_list
+                              }
+                          }
+                        },
+                        {
+                          attributes: {
+                              label: "History"
+                          },
+                          card: {
+                              type: "custom:auto-entities",
+                              card: {
+                                type: "history-graph"
+                              },
+                              filter: {
+                                include: logbook_list,
+                                exclude: exclude_list
+                              }
+                          }
+                        }
+                      ]
+                    }
+                })
+              },
+              
               infoCard: (area, area2 = false) => {
                 // Call browser_mod service
                 let title = area
@@ -162,6 +258,7 @@ cards:
                 }
                 entity_list.push({area: area, entity_id: "light.*"})
                 entity_list.push({area: area, entity_id: "switch.*_virtual_switch*"})
+                entity_list.push({area: area, entity_id: "input_boolean.circadian_*"})
                 let logbook_list = []
                 if (area_filter) {
                     logbook_list.push({area: area})
@@ -248,7 +345,7 @@ cards:
 
 
             
-      - !include general/batteries.yaml
+      - !include general/warnings.yaml
       - !include general/weather.yaml
       - !include general/media.yaml
       - !include general/security.yaml

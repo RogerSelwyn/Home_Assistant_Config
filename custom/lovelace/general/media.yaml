@@ -30,6 +30,9 @@
               - domain: media_player
                 entity_id: '/media_player\..*_speaker_group/'
                 state: paused
+              - domain: media_player
+                entity_id: '/media_player\..*_speaker_group/'
+                state: idle
             exclude:
               - integration: sonos
                 attributes:

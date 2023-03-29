@@ -4,12 +4,20 @@
     type: custom:mod-card
     card_mod:
       style: |
-          :host {
-            position: absolute;
-            bottom: 2px;
-            right: 6px;
-            width: 265px;
-          }
+        :host {
+          position: absolute;
+          bottom: 2px;
+          right: 6px;
+          width: 265px;
+        }
+        @media only screen and (max-width: 428px)
+        {
+            :host {
+                top: 80px;
+                bottom: auto;
+            }
+        }
+
     card:
       type: custom:auto-entities
       show_empty: false
@@ -17,6 +25,16 @@
         include:
           - entity_id: '/sensor\..*battery/'
             state: "< 25"
+          - entity_id: sensor.geniushub_errors
+            state: "> 0"
+          - entity_id: sensor.geniushub_warnings
+            state: "> 0"
+          - entity_id: sensor.hacs
+            state: "> 0"
+          - entity_id: sensor.addon_updates
+            state: "> 0"
+          - entity_id: binary_sensor.home_assistant_website_update_available
+            state: "on"
         exclude:
           - entity_id: '/sensor\..*phone/'
           - entity_id: '/sensor\.sfups*/'

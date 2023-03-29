@@ -19,7 +19,7 @@ template:
         unique_id: sunlight_pct
         state: >-
           {%- set elevation = state_attr('sun.sun','elevation') | float %}
-          {%- set cloud_coverage = states('sensor.dark_sky_cloud_coverage') | float %}
+          {%- set cloud_coverage = states('sensor.openweathermap_cloud_coverage') | float %}
           {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
           {%- set min_elevation = -6 %}
           {%- set max_elevation = 90 %}

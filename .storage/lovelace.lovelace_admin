@@ -746,13 +746,16 @@
                   "entity": "sensor.home_electricity"
                 },
                 {
+                  "entity": "sensor.home_electricity_instant"
+                },
+                {
                   "entity": "sensor.home_electricity_price"
                 },
                 {
-                  "entity": "sensor.tc_electricity"
+                  "entity": "sensor.tc_electricity_api"
                 },
                 {
-                  "entity": "sensor.tc_electricity_instant"
+                  "entity": "sensor.tc_electricity_instant_api"
                 },
                 {
                   "entity": "sensor.tc_electricity_price"
@@ -783,12 +786,9 @@
                 },
                 {
                   "entity": "sensor.sfups_power"
-                },
-                {
-                  "entity": "sensor.home_tester_current_power"
                 }
               ],
-              "title": "Home"
+              "title": "Home Various"
             },
             {
               "type": "entities",
@@ -804,9 +804,6 @@
                 },
                 {
                   "entity": "switch.tv_sonos"
-                },
-                {
-                  "entity": "switch.home_tester"
                 }
               ],
               "title": "Energy Switches"
@@ -863,7 +860,7 @@
               "filter": {
                 "include": [
                   {
-                    "area": "Helper"
+                    "device": "SFRouter"
                   }
                 ]
               }

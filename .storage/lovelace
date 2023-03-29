@@ -150,7 +150,8 @@
             {
               "entity": "weather.home",
               "name": "Home",
-              "type": "custom:weather-card"
+              "type": "custom:weather-card",
+              "number_of_forecasts": "5"
             },
             {
               "card": {

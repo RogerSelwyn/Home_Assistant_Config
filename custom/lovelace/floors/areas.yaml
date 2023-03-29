@@ -11,8 +11,10 @@
       service_data: 
         elements:
           - upstairs
+          - office
           - downstairs
           - up
+          - office_icon
           - down
         class: 'floorplan floorplan-${entity.state}'
 - entity: input_select.floorplan
@@ -21,10 +23,17 @@
     service: input_select.select_option
     service_data: 
       option: down
+- entity: input_select.floorplan
+  element: office_touch
+  tap_action:
+    service: input_select.select_option
+    service_data: 
+      option: office
 
 - entity: sun.sun
   elements: 
     - downstairs_day
+    - office_day
     - upstairs_day
   hover_action: false
   state_action:
@@ -380,6 +389,8 @@
   elements:
   - path_office
   - room_office
+  - path_office2
+  - room_office2
   state_action:
     - service: floorplan.execute
       service_data:

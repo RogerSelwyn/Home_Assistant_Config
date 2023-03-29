@@ -6,3 +6,10 @@ sensor:
     value_template: "{{ value_json.skyq.total }}"
     json_attributes_path: $.skyq
     json_attributes: versions
+  - platform: rest
+    name: o365 Installations
+    scan_interval: 86400
+    resource: https://analytics.home-assistant.io/custom_integrations.json
+    value_template: "{{ value_json.o365.total }}"
+    json_attributes_path: $.o365
+    json_attributes: versions

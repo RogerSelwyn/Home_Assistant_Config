@@ -51,6 +51,7 @@ influxdb:
     #   - sensor.ovo_last_electricity_reading
     #   - sensor.ovo_last_electricity_cost
       - sensor.tc_electricity_instant
+      - sensor.tc_electricity_instant_api
       - sensor.tc_oil_power
       - sensor.tc_oil_usage
       - sensor.tc_oil_total

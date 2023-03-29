@@ -17,6 +17,11 @@
       service_data:
         element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
         style: "${functions.overlayStyle()}"
+    # - service: floorplan.execute
+    #   service_data:
+    #     setImage: "${functions.setImage()}"
+        
+        
   double_tap_action: 
       - service: floorplan.execute
         service_data:
@@ -55,29 +60,41 @@
         lightCard: "${functions.lightCard('Front Door', entity)}"
 
 
-- entities:
-  - light.office_light
-  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+- entity: light.office_light
+  elements:
+   - light_touch.office_light
+   - light_touch.office_light2
   tap_action: 'toggle'
   state_action:
     - action: call-service
       service: floorplan.class_set
       service_data: 
-        element: "${entity.entity_id}"
+        element: light.office_light
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: light.office_light2
         class: 'light-${entity.state}'
     - action: call-service
       service: floorplan.style_set
       service_data:
-        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        element: light_overlay.office_light
+        style: "${functions.overlayStyle()}"
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: light_overlay.office_light2
         style: "${functions.overlayStyle()}"
   double_tap_action: 
     - service: floorplan.execute
       service_data:
         lightCard: "${functions.lightCard('Office', entity)}"
 
-- entities:
-  - light.office
-  element: "${entity.entity_id.replace('light.', 'path_')}"
+- entity: light.office
+  elements: 
+  - path_office
+  - path_office2
   state_action:
     - service: floorplan.execute
       service_data:

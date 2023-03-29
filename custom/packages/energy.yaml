@@ -109,6 +109,77 @@ mqtt:
     #   value_template: "{{ value_json['elecMtr']['0702']['04']['40']|int(base=16) * value_json['elecMtr']['0702']['03']['01']|int(base=16) / value_json['elecMtr']['0702']['03']['02']|int(base=16) }}"
     #   icon: 'mdi:flash'
 
+    - name: "Home Electricity Instant"
+      unique_id: home_electricity_instant
+      state_topic: "glow/441793505160/SENSOR/electricitymeter"
+      unit_of_measurement: 'W'
+      value_template: "{{ value_json['electricitymeter']['power']['value'] * 1000 }}"
+      icon: 'mdi:flash'
+      state_class: measurement
+    - name: "Home Electricity"
+      unique_id: home_electricity
+      state_topic: "glow/441793505160/SENSOR/electricitymeter"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ value_json['electricitymeter']['energy']['import']['cumulative'] }}"
+      icon: 'mdi:counter'
+      device_class: energy
+      state_class: total_increasing
+    - name: "Home Electricity Daily"
+      unique_id: home_electricity_daily
+      state_topic: "glow/441793505160/SENSOR/electricitymeter"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ value_json['electricitymeter']['energy']['import']['day'] }}"
+      icon: 'mdi:flash'
+      state_class: total_increasing
+    - name: "Home Electricity Weekly"
+      unique_id: home_electricity_weekly
+      state_topic: "glow/441793505160/SENSOR/electricitymeter"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ value_json['electricitymeter']['energy']['import']['week'] }}"
+      icon: 'mdi:flash'
+      state_class: total_increasing
+    - name: "Home Electricity Price"
+      unique_id: home_electricity_price
+      state_topic: "glow/441793505160/SENSOR/electricitymeter"
+      unit_of_measurement: 'GBP/kWh'
+      value_template: "{{ value_json['electricitymeter']['energy']['import']['price']['unitrate'] }}"
+      icon: 'mdi:cash'
+
+    - name: "Home Gas"
+      unique_id: home_gas
+      state_topic: "glow/441793505160/SENSOR/gasmeter"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ value_json['gasmeter']['energy']['import']['cumulative'] }}"
+      icon: 'mdi:counter'
+      device_class: energy
+      state_class: total_increasing
+    - name: "Home Gas Daily"
+      unique_id: home_gas_daily
+      state_topic: "glow/441793505160/SENSOR/gasmeter"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ value_json['gasmeter']['energy']['import']['day'] }}"
+      icon: 'mdi:flash'
+      state_class: total_increasing
+    - name: "Home Gas Weekly"
+      unique_id: home_gas_weekly
+      state_topic: "glow/441793505160/SENSOR/gasmeter"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ value_json['gasmeter']['energy']['import']['week'] }}"
+      icon: 'mdi:flash'
+      state_class: total_increasing
+    - name: "Home Gas Price"
+      unique_id: home_gas_price
+      state_topic: "glow/441793505160/SENSOR/gasmeter"
+      unit_of_measurement: 'GBP/kWh'
+      value_template: "{{ value_json['gasmeter']['energy']['import']['price']['unitrate'] }}"
+      icon: 'mdi:cash'
+
+    - name: "Home Glow IHD Version"
+      unique_id: home_glow_ihd_version
+      state_topic: "glow/441793505160/STATE"
+      value_template: "{{ value_json['software'] }}"
+
+
 sensor:
   - platform: integration
     source: sensor.sfups_power
