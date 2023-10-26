@@ -8,6 +8,7 @@ custom_components
 icloud
 image
 custom/logs
+secrets
 custom/quotes
 nest
 node-red
