@@ -47,6 +47,8 @@ influxdb:
     #   - alarm_control_panel
       - climate
       - weather
+    entity_globs:
+      - sensor.*_last_tested_date
     entities:
     #   - sensor.ovo_last_electricity_reading
     #   - sensor.ovo_last_electricity_cost
@@ -55,8 +57,9 @@ influxdb:
       - sensor.tc_oil_power
       - sensor.tc_oil_usage
       - sensor.tc_oil_total
-      - sensor.tc_tv_power
-      - sensor.tc_utility_power
+      - sensor.tc_tv_current_power
+      - sensor.tc_boiler_current_power
+      - sensor.workshop_it_voltage
       - sensor.nest_heating
       - sensor.nest_hotwater
       - sensor.tyr_celyn_humidity

@@ -10,6 +10,3 @@ mqtt_discoverystream:
     #   - binary_sensor.tc_living_room_3
       - binary_sensor.tyrcelyn_protect_lr
       - climate.tyr_celyn
-      - binary_sensor.zwave_office_fibaro_motion
-      - light.bedside_light
-      

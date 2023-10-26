@@ -174,21 +174,21 @@ group:
     icon: mdi:ceiling-light
     all: true
     entities:
-      - switch.zwave_living_room_main_light_switch
+      - switch.living_room_virtual_switch_1
       - light.main_light
   side_light_actual:
     name: Side Light Actual
     icon: mdi:wall-sconce-flat
     all: true
     entities:
-      - switch.zwave_living_room_side_light_switch
+      - switch.living_room_virtual_switch_2
       - light.side_light
   tv_light_actual:
     name: TV Light Actual
     icon: mdi:wall-sconce-flat
     all: true
     entities:
-      - switch.zwave_living_room_side_light_switch
+      - switch.living_room_virtual_switch_2
       - light.tv_light
   table_light_actual:
     name: Table Light Actual

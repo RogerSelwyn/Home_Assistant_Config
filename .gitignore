@@ -8,6 +8,7 @@ custom_components
 icloud
 image
 custom/logs
+custom/quotes
 nest
 node-red
 ssh
@@ -16,6 +17,7 @@ tts
 www
 __pycache__/
 o365_storage
+
 
 # Ignore files
 .uuid

@@ -1,8 +1,5 @@
 honeycomb_menu_templates: !include honeycomb_templates.yaml
-
-
-       
+ 
 title: Floorplan
 views:
   - !include floors.yaml
-

@@ -56,15 +56,15 @@
                   }
                 },
                 {
-                  "entity": "switch.scene_evening_movie",
-                  "name": "Movie",
+                  "entity": "switch.scene_meal_time",
+                  "name": "Meal",
                   "tap_action": {
                     "action": "toggle"
                   }
                 },
                 {
-                  "entity": "switch.scene_meal_time",
-                  "name": "Meal",
+                  "entity": "switch.plex",
+                  "name": "Plex",
                   "tap_action": {
                     "action": "toggle"
                   }
@@ -227,7 +227,7 @@
               "card": {
                 "title": "Bedroom 3",
                 "type": "entities",
-                "show_header_toggle": false,
+                "show_header_toggle": true,
                 "state_color": true
               },
               "filter": {

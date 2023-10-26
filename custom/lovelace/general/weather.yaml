@@ -13,7 +13,7 @@
           position: absolute;
           width: 240px;
           left: 0px;
-          top: 0px;
+          top: 34px !important;
           opacity: 0.7;
           mix-blend-mode: luminosity;
         }

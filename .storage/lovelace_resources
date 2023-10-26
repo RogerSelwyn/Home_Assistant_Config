@@ -25,17 +25,17 @@
         "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js?hacstag=1677445841121"
       },
       {
-        "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js?hacstag=246549747720",
+        "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js?hacstag=246549747920",
         "type": "module",
         "id": "80de3000548944bd82e09d3bb7a76fd2"
       },
       {
-        "url": "/hacsfiles/history-explorer-card/history-explorer-card.js?hacstag=4403747941045",
+        "url": "/hacsfiles/history-explorer-card/history-explorer-card.js?hacstag=4403747941050",
         "type": "module",
         "id": "eea2daa69c7d4d488c9b1781ac64195a"
       },
       {
-        "url": "/hacsfiles/light-entity-card/light-entity-card.js?hacstag=168744428606",
+        "url": "/hacsfiles/light-entity-card/light-entity-card.js?hacstag=168744428610",
         "type": "module",
         "id": "f0d4658d6c3346d89b7fe3101ae3e888"
       },
@@ -45,12 +45,12 @@
         "id": "592be8599ca444f383b47b0002dfa917"
       },
       {
-        "url": "/hacsfiles/ha-floorplan/floorplan.js?hacstag=1883234941035",
+        "url": "/hacsfiles/ha-floorplan/floorplan.js?hacstag=1883234941039",
         "type": "module",
         "id": "8303f12b57a448499d57ee08bfb664a2"
       },
       {
-        "url": "/hacsfiles/lovelace-card-mod/card-mod.js?hacstag=190927524320",
+        "url": "/hacsfiles/lovelace-card-mod/card-mod.js?hacstag=190927524323",
         "type": "module",
         "id": "d03b26c8c206414b94a9077d79eb8eec"
       },
@@ -60,19 +60,24 @@
         "id": "f1f1e27b531c4c9096a9946d1058efea"
       },
       {
-        "url": "/hacsfiles/honeycomb-menu/honeycomb-menu.js?hacstag=2591267600110",
+        "url": "/hacsfiles/honeycomb-menu/honeycomb-menu.js?hacstag=2591267600131",
         "type": "module",
         "id": "0838ef2890d544568e0bd9fd331ffd3f"
       },
       {
-        "url": "/hacsfiles/button-card/button-card.js?hacstag=146194325342",
+        "url": "/hacsfiles/button-card/button-card.js?hacstag=146194325411",
         "type": "module",
         "id": "96e4fd8250184d62b06fdea8e4c27b09"
       },
       {
-        "url": "/hacsfiles/tabbed-card/tabbed-card.js?hacstag=452866308031",
+        "url": "/hacsfiles/tabbed-card/tabbed-card.js?hacstag=452866308032",
         "type": "module",
         "id": "b3ee699b09f44a41a393c0040979d5f2"
+      },
+      {
+        "id": "7f6085928436477ea2a063833db577a3",
+        "url": "/hacsfiles/lovelace-template-entity-row/template-entity-row.js?hacstag=231674882132",
+        "type": "module"
       }
     ]
   }

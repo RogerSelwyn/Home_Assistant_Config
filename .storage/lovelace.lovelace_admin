@@ -699,6 +699,10 @@
                 }
               ],
               "type": "horizontal-stack"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.air_con"
             }
           ]
         },
@@ -728,13 +732,13 @@
                   "entity": "sensor.tc_tv_current_power"
                 },
                 {
-                  "entity": "sensor.tc_tv_today_energy"
-                },
-                {
-                  "entity": "sensor.tc_tv_month_energy"
-                },
-                {
                   "entity": "sensor.tc_tv_energy"
+                },
+                {
+                  "entity": "sensor.tc_boiler_current_power"
+                },
+                {
+                  "entity": "sensor.tc_boiler_energy"
                 }
               ],
               "title": "Ty'r Celyn"

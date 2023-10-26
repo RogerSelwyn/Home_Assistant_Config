@@ -5,6 +5,7 @@ automation:
 camera:
 climate:
 config:
+conversation:
 device_tracker:
 diagnostics:
 hardware:
@@ -12,6 +13,7 @@ input_button:
 logbook:
 media_source:
 mobile_app:
+my:
 person:
 # script: 
 ssdp:

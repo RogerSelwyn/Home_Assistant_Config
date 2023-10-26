@@ -6,6 +6,7 @@ alarm_control_panel:
         name: Texecom
         unique_id: texecom
         code_arm_required: False
+        # code_format: number
         code_format: no_code
         value_template: >
           {% if is_state('binary_sensor.alarm', 'on') %}

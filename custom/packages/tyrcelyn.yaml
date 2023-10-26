@@ -26,6 +26,16 @@ notify:
     filename: custom/logs/tyrcelyn.csv
     timestamp: true
 
+binary_sensor:
+  - platform: group
+    name: "Ty'r Celyn Gable Window"
+    unique_id: tyrcelyn_gable_window
+    device_class: opening
+    entities:
+      - binary_sensor.tyrcelyn_gable_window_left
+      - binary_sensor.tyrcelyn_gable_window_right
+
+
 template:
 #   - sensor:
 #       - name: tc_current_temperature

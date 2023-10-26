@@ -7,7 +7,7 @@
         :host {
           --vertical-stack-card-margin: 2px;
           transform: translate( 0, 0 );
-          top: 6px;
+          top: 62px !important;
           right: 2px;
           position: absolute;
           width: 265px;
@@ -17,6 +17,7 @@
         {
             ha-card {
                 display: none;
+                right: 2px
             }
         }
         

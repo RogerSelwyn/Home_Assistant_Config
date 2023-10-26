@@ -25,6 +25,12 @@ card_mod:
         --ha-card-background: #c8bcd733;
         --paper-item-icon-color: #fff;
       }
+      @media only screen and (max-width: 1194px)
+      {
+          :host {
+              bottom: 26px;
+          }
+      }
       ha-card div.entities{
         padding: 4px;
       ha-card div.entities.no-header{

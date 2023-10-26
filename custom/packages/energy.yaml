@@ -10,6 +10,8 @@ homeassistant:
       friendly_name: "TC Oil Price"
     sensor.sfups_power:
       friendly_name: "Sfups Power Draw"
+    sensor.charger_last_meter_reading:
+      state_class: total
       
 input_number:
   tc_oil_price:
@@ -69,7 +71,16 @@ template:
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-
+  - binary_sensor:
+      - name: Boiler Firing
+        unique_id: boiler_firing
+        state: >
+          {{ states('sensor.tc_boiler_current_power')|float > 100 }}
+  - binary_sensor:
+      - name: Boiler Pump
+        unique_id: boiler_pump
+        state: >
+          {{ states('sensor.tc_boiler_current_power')|float > 10 }}
 mqtt:
   sensor:
     - name: "TC Electricity Instant"

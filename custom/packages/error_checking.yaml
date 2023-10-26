@@ -21,7 +21,11 @@ notify:
     name: noderedlog
     filename: custom/logs/noderedlog.csv
     timestamp: true
+#   - platform: file
+#     name: lights
+#     filename: custom/logs/lights.csv
+#     timestamp: true
   - platform: file
-    name: lights
-    filename: custom/logs/lights.csv
-    timestamp: true
+    name: nest
+    filename: custom/logs/nest.csv
+    timestamp: false
