@@ -25,18 +25,19 @@
     service: floorplan.class_set
     service_data: 'media-player-tv media-player-${entity.state}' 
 
-- entities:
-  - media_player.sky_q
-  - media_player.sky_q_mini
-  tap_action: more-info
-  state_action:
-    action: call-service
-    service: floorplan.class_set
-    service_data: 'media-player-sky media-player-${entity.state}' 
+# - entities:
+#   - media_player.sky_q
+#   - media_player.sky_q_mini
+#   tap_action: more-info
+#   state_action:
+#     action: call-service
+#     service: floorplan.class_set
+#     service_data: 'media-player-sky media-player-${entity.state}' 
 
 - entities:
   - media_player.conservatory
   - media_player.kitchen
+  - media_player.living_room
   tap_action: more-info
   state_action:
     action: call-service

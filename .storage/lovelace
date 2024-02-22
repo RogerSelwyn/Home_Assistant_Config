@@ -92,10 +92,16 @@
                   "entity": "climate.kitchen"
                 },
                 {
-                  "entity": "binary_sensor.smart_plug_7"
+                  "entity": "binary_sensor.smart_plug_kitchen"
                 },
                 {
                   "entity": "switch.plug_kitchen"
+                },
+                {
+                  "entity": "binary_sensor.smart_plug_conservatory"
+                },
+                {
+                  "entity": "switch.plug_conservatory"
                 },
                 {
                   "entity": "binary_sensor.kitchen_occupancy"
@@ -141,7 +147,7 @@
                   }
                 },
                 {
-                  "entity": "switch.adguard_protection"
+                  "entity": "switch.adguard_home_protection"
                 }
               ],
               "show_state": false,
@@ -171,7 +177,7 @@
                   "entity": "climate.dining_room"
                 },
                 {
-                  "entity": "binary_sensor.smart_plug_5"
+                  "entity": "binary_sensor.smart_plug_dining_room"
                 },
                 {
                   "entity": "switch.plug_dining_room"
@@ -351,222 +357,6 @@
               "cards": [
                 {
                   "artwork": "cover",
-                  "entity": "media_player.sky_q",
-                  "hide": {
-                    "icon_state": false,
-                    "power_state": false,
-                    "source": false,
-                    "volume": false
-                  },
-                  "info": "scroll",
-                  "name": "SkyQ",
-                  "shortcuts": {
-                    "buttons": [
-                      {
-                        "icon": "mdi:chevron-up",
-                        "id": "channelup",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:chevron-down",
-                        "id": "channeldown",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:record-rec",
-                        "id": "record",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": null,
-                        "id": "sky",
-                        "name": "Sky",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": null,
-                        "id": "tvguide",
-                        "name": "Guide",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:home-outline",
-                        "id": "home",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:menu-open",
-                        "id": "sidebar",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:keyboard-return",
-                        "id": "dismiss",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:information-variant",
-                        "id": "i",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:arrow-right-thick",
-                        "id": "right",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:arrow-left-thick",
-                        "id": "left",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:arrow-up-thick",
-                        "id": "up",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:arrow-down-thick",
-                        "id": "down",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": null,
-                        "id": "select",
-                        "name": "Select",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": null,
-                        "name": null
-                      },
-                      {
-                        "icon": null
-                      },
-                      {
-                        "icon": null
-                      },
-                      {
-                        "icon": null
-                      }
-                    ],
-                    "columns": 6,
-                    "hide_when_off": true
-                  },
-                  "type": "custom:mini-media-player"
-                },
-                {
-                  "artwork": "material",
-                  "entity": "media_player.sky_q_mini",
-                  "hide": {
-                    "icon_state": false,
-                    "power_state": false,
-                    "source": false,
-                    "volume": true
-                  },
-                  "info": "scroll",
-                  "name": "SkyQ Mini",
-                  "shortcuts": {
-                    "buttons": [
-                      {
-                        "icon": "mdi:chevron-up",
-                        "id": "channelup",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:chevron-down",
-                        "id": "channeldown",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:record-rec",
-                        "id": "record",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": null,
-                        "id": "sky",
-                        "name": "Sky",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": null,
-                        "id": "tvguide",
-                        "name": "Guide",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:home-outline",
-                        "id": "home",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:menu-open",
-                        "id": "sidebar",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:keyboard-return",
-                        "id": "dismiss",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:information-variant",
-                        "id": "i",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:arrow-right-thick",
-                        "id": "right",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:arrow-left-thick",
-                        "id": "left",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:arrow-up-thick",
-                        "id": "up",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": "mdi:arrow-down-thick",
-                        "id": "down",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": null,
-                        "id": "select",
-                        "name": "Select",
-                        "type": "skyq"
-                      },
-                      {
-                        "icon": null,
-                        "name": null
-                      },
-                      {
-                        "icon": null
-                      },
-                      {
-                        "icon": null
-                      },
-                      {
-                        "icon": null
-                      }
-                    ],
-                    "columns": 6,
-                    "hide_when_off": true
-                  },
-                  "type": "custom:mini-media-player"
-                }
-              ],
-              "title": "Sky Q",
-              "type": "vertical-stack"
-            },
-            {
-              "cards": [
-                {
-                  "artwork": "cover",
                   "hide": {
                     "icon_state": false,
                     "power_state": false
@@ -578,11 +368,53 @@
               ],
               "title": "TV",
               "type": "vertical-stack"
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "condition": "state",
+                  "entity": "media_player.sftv_android",
+                  "state": "on"
+                }
+              ],
+              "card": {
+                "type": "custom:mini-media-player",
+                "entity": "media_player.sftv_android",
+                "volume_stateless": true,
+                "toggle_power": true
+              }
             }
           ],
           "icon": "mdi:music-box-multiple",
           "path": "music",
           "title": "Media"
+        },
+        {
+          "title": "WiFi",
+          "path": "wifi",
+          "icon": "mdi:wifi",
+          "badges": [],
+          "cards": [
+            {
+              "type": "picture",
+              "image_entity": "image.rogerwap_qr_code"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "switch.rogerwap"
+                },
+                {
+                  "entity": "switch.sfiot"
+                },
+                {
+                  "entity": "switch.sfiot_2"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

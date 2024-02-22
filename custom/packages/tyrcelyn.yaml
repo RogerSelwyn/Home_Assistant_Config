@@ -12,6 +12,20 @@ homeassistant:
       friendly_name: "TC - Utility Motion"
     binary_sensor.tyrcelyn_tctv:
       friendly_name: "TC - TCTV"
+    sensor.tyr_celyn_environment_heatloss:
+      friendly_name: "TC - Heat Loss"
+    sensor.tyr_celyn_environment_ventilation:
+      friendly_name: "TC - Ventilation"
+    sensor.tyr_celyn_environment_airquality:
+      friendly_name: "TC - Air Quality"
+    sensor.tyr_celyn_environment_mould:
+      friendly_name: "TC - Mould"
+    sensor.tyr_celyn_environment_abandonment:
+      friendly_name: "TC - Abandonment"
+    sensor.tyr_celyn_environment_excessheat:
+      friendly_name: "TC - Excess Heat"
+    sensor.tyr_celyn_environment_coldhomes:
+      friendly_name: "TC - Cold Homes"
     # sensor.tc_current_temperature:
     #   friendly_name: "Ty'r Celyn Current Temperature"
     # sensor.tc_set_temperature:
@@ -59,6 +73,7 @@ template:
         unique_id: tyr_celyn_humidity_external
         device_class: humidity
         unit_of_measurement: '%'
+        state_class: measurement
         state: >-
           {{ state_attr('weather.ty_r_celyn', 'humidity')}}
   - sensor:
@@ -66,8 +81,66 @@ template:
         unique_id: tyr_celyn_temperature_external
         device_class: temperature
         unit_of_measurement: °C
+        state_class: measurement
         state: >-
           {{ state_attr('weather.ty_r_celyn', 'temperature')}}
+#   - sensor:
+#       - name: tyr_celyn_environment_heatloss
+#         unique_id: tyr_celyn_environment_heatloss
+#         unit_of_measurement: "%"
+#         state_class: measurement
+#         state: >-
+#           {% for insight in state_attr('binary_sensor.homelink_environment', 'insights') if insight.type == "HEATLOSS" -%}
+#             {{ insight.value }} 
+#           {% endfor %}
+#       - name: tyr_celyn_environment_ventilation
+#         unique_id: tyr_celyn_environment_ventilation
+#         unit_of_measurement: "%"
+#         state_class: measurement
+#         state: >-
+#           {% for insight in state_attr('binary_sensor.homelink_environment', 'insights') if insight.type == "VENTILATION" -%}
+#             {{ insight.value }} 
+#           {% endfor %}
+#       - name: tyr_celyn_environment_airquality
+#         unique_id: tyr_celyn_environment_airquality
+#         unit_of_measurement: "%"
+#         state_class: measurement
+#         state: >-
+#           {% for insight in state_attr('binary_sensor.homelink_environment', 'insights') if insight.type == "AIRQUALITY" -%}
+#             {{ insight.value }} 
+#           {% endfor %}
+#       - name: tyr_celyn_environment_mould
+#         unique_id: tyr_celyn_environment_mould
+#         unit_of_measurement: "%"
+#         state_class: measurement
+#         state: >-
+#           {% for insight in state_attr('binary_sensor.homelink_environment', 'insights') if insight.type == "MOULD" -%}
+#             {{ insight.value }} 
+#           {% endfor %}
+#       - name: tyr_celyn_environment_abandonment
+#         unique_id: tyr_celyn_environment_abandonment
+#         unit_of_measurement: "%"
+#         state_class: measurement
+#         state: >-
+#           {% for insight in state_attr('binary_sensor.homelink_environment', 'insights') if insight.type == "ABANDONMENT" -%}
+#             {{ insight.value }} 
+#           {% endfor %}
+#       - name: tyr_celyn_environment_excessheat
+#         unique_id: tyr_celyn_environment_excessheat
+#         unit_of_measurement: "%"
+#         state_class: measurement
+#         state: >-
+#           {% for insight in state_attr('binary_sensor.homelink_environment', 'insights') if insight.type == "EXCESSHEAT" -%}
+#             {{ insight.value }} 
+#           {% endfor %}
+#       - name: tyr_celyn_environment_coldhomes
+#         unique_id: tyr_celyn_environment_coldhomes
+#         unit_of_measurement: "%"
+#         state_class: measurement
+#         state: >-
+#           {% for insight in state_attr('binary_sensor.homelink_environment', 'insights') if insight.type == "COLDHOMES" -%}
+#             {{ insight.value }} 
+#           {% endfor %}
           
 timer:
   tyrcelyn_presence:

@@ -1,10 +1,16 @@
 # Motion Areas *************************************
+# - elements:
+#   - SFRouter
+#   double_tap_action: 
+#       - service: floorplan.execute
+#         service_data:
+#           deviceCard: "${functions.deviceCard(element.id)}"
 - elements:
   - SFRouter
   double_tap_action: 
       - service: floorplan.execute
         service_data:
-          deviceCard: "${functions.deviceCard(element.id)}"
+          deviceCard: "${functions.deviceCard('Network', 'area')}"
 
 - entity: sensor.sfprinter
   element: SFPrinter

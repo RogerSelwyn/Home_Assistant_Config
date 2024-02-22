@@ -75,12 +75,12 @@ template:
       - name: Boiler Firing
         unique_id: boiler_firing
         state: >
-          {{ states('sensor.tc_boiler_current_power')|float > 100 }}
+          {{ states('sensor.tc_boiler_current_power')|float(0) > 100 }}
   - binary_sensor:
       - name: Boiler Pump
         unique_id: boiler_pump
         state: >
-          {{ states('sensor.tc_boiler_current_power')|float > 10 }}
+          {{ states('sensor.tc_boiler_current_power')|float(0) > 10 }}
 mqtt:
   sensor:
     - name: "TC Electricity Instant"

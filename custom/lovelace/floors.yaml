@@ -14,16 +14,17 @@ cards:
       - type: custom:floorplan-card
         full_height: true
         # title: Floorplanner Home
-        style: >
-          ha-card {
-            #  max-width: 177vh;
+        card_mod:
+          style: |
+            ha-card {
               margin: 0 -4px;
               background: radial-gradient(ellipse at 40% 70%, rgba(99,191,197,1) 0%, rgba(34,118,146,1) 38%, rgba(28,73,97,1) 79%);
               border-width: 0;
               border-radius: 0px;
               box-shadow: none
               transform: scale(1.0);
-          }
+            }
+
         config:
           console_log_level: info
         #   log_level: info

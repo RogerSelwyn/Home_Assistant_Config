@@ -20,7 +20,7 @@ template:
         unique_id: nest_hotwater
         device_class: heat
         state: >-
-          {{ is_state('switch.tyr_celyn_thermostat_2', 'on') }}
+          {{ is_state('switch.tyr_celyn_thermostat_hot_water', 'on') }}
   - binary_sensor:
       - name: nest_heating_manual
         unique_id: nest_heating_manual
@@ -45,16 +45,16 @@ template:
           {% else %}
             0
           {% endif %}
-  - sensor:
-      - name: nest_hotwater
-        unique_id: nest_hotwater
-        unit_of_measurement: "on"
-        state: >-
-          {% if is_state('switch.tyr_celyn_thermostat_2', 'on') %}
-            1
-          {% else %}
-            0
-          {% endif %}
+#   - sensor:
+#       - name: nest_hotwater
+#         unique_id: nest_hotwater
+#         unit_of_measurement: "on"
+#         state: >-
+#           {% if is_state('switch.tyr_celyn_thermostat_hot_water', 'on') %}
+#             1
+#           {% else %}
+#             0
+#           {% endif %}
   - sensor:
       - name: nest_hvac
         unique_id: nest_hvac

@@ -8,6 +8,8 @@ homeassistant:
       friendly_name: 'Downstairs Motion' 
     binary_sensor.upstairs_occupancy:
       friendly_name: 'Upstairs Motion' 
+    sensor.front_door_person_motion:
+      friendly_name: "Front Door Person Motion"
 
 
 template:
@@ -44,6 +46,20 @@ template:
           or is_state('binary_sensor.geniushub_bedroom3_occupancy', 'on')
           or is_state('binary_sensor.zwave_office_fibaro_motion', 'on') }}
         device_class: motion
+
+  - sensor:
+    - name: front_door_person_motion
+      unique_id: front_door_person_motion
+      state: >-
+          {% if is_state('binary_sensor.front_doorbell_motion', 'off') %}
+            off
+          {% else %}
+            {% if state_attr('binary_sensor.front_doorbell_motion', 'personDetected') == false %}
+              on
+            {% else %}
+              person
+            {% endif %}
+          {% endif %}  
 
 input_boolean:
   office_motion:

@@ -13,10 +13,10 @@ sensor:
 #  - platform: uptime
   - platform: websocket_api
 
-  - platform: systemmonitor
-    resources:
-      - type: processor_use
-      - type: memory_free
+#   - platform: systemmonitor
+#     resources:
+#       - type: processor_use
+#       - type: memory_free
 
 #   - platform: command_line
 #     name: Supervisor addons
@@ -51,8 +51,8 @@ sensor:
 #   - addons 
 
 
-timer:
-  test:
-    name: Test
-    duration: '00:15:00'
-    restore: true
+# timer:
+#   test:
+#     name: Test
+#     duration: '00:15:00'
+#     restore: true

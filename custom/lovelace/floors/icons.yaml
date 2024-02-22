@@ -34,14 +34,14 @@
 
 - element: switch.plug_dining_room
   entities:
-    - binary_sensor.smart_plug_5
+    - binary_sensor.smart_plug_dining_room
     - switch.plug_dining_room
   state_action:
     - action: call-service
       service: floorplan.class_set
       service_data: |
         >
-        let status = entities['binary_sensor.smart_plug_5'].state
+        let status = entities['binary_sensor.smart_plug_dining_room'].state
         if (entities['switch.plug_dining_room'].state === "on")
           {
             status = "boost"
@@ -50,31 +50,31 @@
 
 - element: switch.plug_kitchen
   entities:
-    - binary_sensor.smart_plug_7
+    - binary_sensor.smart_plug_kitchen
     - switch.plug_kitchen
   state_action:
     - action: call-service
       service: floorplan.class_set
       service_data: |
         >
-        let status = entities['binary_sensor.smart_plug_7'].state
+        let status = entities['binary_sensor.smart_plug_kitchen'].state
         if (entities['switch.plug_kitchen'].state === "on")
           {
             status = "boost"
           } 
         return `plug plug-${status}`
 
-- element: switch.plug_box_room
+- element: switch.plug_conservatory
   entities:
-    - binary_sensor.smart_plug_6
-    - switch.plug_box_room
+    - binary_sensor.smart_plug_conservatory
+    - switch.plug_conservatory
   state_action:
     - action: call-service
       service: floorplan.class_set
       service_data: |
         >
-        let status = entities['binary_sensor.smart_plug_6'].state
-        if (entities['switch.plug_box_room'].state === "on")
+        let status = entities['binary_sensor.smart_plug_conservatory'].state
+        if (entities['switch.plug_conservatory'].state === "on")
           {
             status = "boost"
           } 

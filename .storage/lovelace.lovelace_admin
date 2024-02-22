@@ -110,18 +110,6 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.asuswrt_download"
-                },
-                {
-                  "entity": "sensor.asuswrt_upload"
-                },
-                {
-                  "entity": "sensor.asuswrt_download_speed"
-                },
-                {
-                  "entity": "sensor.asuswrt_upload_speed"
-                },
-                {
                   "entity": "binary_sensor.internet"
                 },
                 {
@@ -179,19 +167,6 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.processor_use"
-                },
-                {
-                  "entity": "sensor.memory_free"
-                }
-              ],
-              "show_header_toggle": false,
-              "title": "HassioVM",
-              "type": "entities"
-            },
-            {
-              "entities": [
-                {
                   "entity": "sensor.geniushub_dining_room_luminance"
                 },
                 {
@@ -223,16 +198,16 @@
             {
               "entities": [
                 {
-                  "entity": "binary_sensor.smart_plug_6"
+                  "entity": "binary_sensor.smart_plug_conservatory"
                 },
                 {
-                  "entity": "binary_sensor.smart_plug_5"
+                  "entity": "binary_sensor.smart_plug_dining_room"
                 },
                 {
-                  "entity": "binary_sensor.smart_plug_7"
+                  "entity": "binary_sensor.smart_plug_kitchen"
                 },
                 {
-                  "entity": "switch.plug_box_room"
+                  "entity": "switch.plug_conservatory"
                 },
                 {
                   "entity": "switch.plug_dining_room"
@@ -291,19 +266,19 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.adguard_average_processing_speed"
+                  "entity": "sensor.adguard_home_average_processing_speed"
                 },
                 {
-                  "entity": "sensor.adguard_dns_queries"
+                  "entity": "sensor.adguard_home_dns_queries"
                 },
                 {
-                  "entity": "sensor.adguard_dns_queries_blocked_ratio"
+                  "entity": "sensor.adguard_home_dns_queries_blocked_ratio"
                 },
                 {
-                  "entity": "switch.adguard_filtering"
+                  "entity": "switch.adguard_home_filtering"
                 },
                 {
-                  "entity": "switch.adguard_protection"
+                  "entity": "switch.adguard_home_protection"
                 }
               ],
               "title": "AdGuard",
@@ -360,10 +335,10 @@
                   "entity": "binary_sensor.zwave_office_fibaro_motion"
                 },
                 {
-                  "entity": "binary_sensor.downstairs_3"
+                  "entity": "binary_sensor.downstairs_occupancy_2"
                 },
                 {
-                  "entity": "binary_sensor.upstairs_3"
+                  "entity": "binary_sensor.upstairs_occupancy_2"
                 }
               ],
               "title": "Motion",
@@ -868,6 +843,101 @@
                   }
                 ]
               }
+            },
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:auto-entities",
+                  "show_empty": false,
+                  "filter": {
+                    "include": [
+                      {
+                        "domain": "media_player",
+                        "entity_id": "/media_player\\..*_speaker_group/",
+                        "state": "paused"
+                      },
+                      {
+                        "domain": "media_player",
+                        "entity_id": "/media_player\\..*_speaker_group/",
+                        "state": "idle"
+                      }
+                    ],
+                    "exclude": [
+                      {
+                        "integration": "sonos",
+                        "attributes": {
+                          "media_title": "TV"
+                        }
+                      }
+                    ]
+                  },
+                  "card": {
+                    "type": "entities",
+                    "card_mod": {
+                      "style": {
+                        ".": ":host {\n  --paper-item-icon-color: #fff;\n  --ha-card-background: #c8bcd733;\n}\n#states {\n    padding: 4px\n}\n",
+                        "hui-media-player-entity-row": {
+                          "$": ".volume {\n  display: none !important;\n}\n.flex {\n    position: absolute;\n    top: -5px;\n    right: 0px;\n}\n"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "custom:auto-entities",
+                  "show_empty": false,
+                  "filter": {
+                    "include": [
+                      {
+                        "domain": "media_player",
+                        "integration": "skyq",
+                        "state": "paused"
+                      },
+                      {
+                        "domain": "media_player",
+                        "integration": "skyq",
+                        "state": "playing"
+                      },
+                      {
+                        "domain": "media_player",
+                        "integration": "sonos",
+                        "state": "playing"
+                      },
+                      {
+                        "domain": "media_player",
+                        "integration": "braviatv",
+                        "state": "on"
+                      }
+                    ],
+                    "exclude": [
+                      {
+                        "integration": "sonos",
+                        "attributes": {
+                          "media_title": "TV"
+                        }
+                      },
+                      {
+                        "integration": "braviatv",
+                        "attributes": {
+                          "app_id": "com.sony.dtv.tvx"
+                        }
+                      }
+                    ]
+                  },
+                  "card": {
+                    "type": "entities",
+                    "card_mod": {
+                      "style": {
+                        ".": ":host {\n  --paper-item-icon-color: #fff;\n  --ha-card-background: #c8bcd733;\n}\n#states {\n    padding: 4px\n}\nhui-media-player-entity-row {\n  height: 70px !important; \n}\n",
+                        "hui-media-player-entity-row": {
+                          "$": ".flex {\n    position: absolute;\n    top: 30px;\n    width: 100%;\n}\n# hui-generic-entity-row > div.controls {\n#     position: absolute;\n#     top: 30px;\n# }\n"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
             }
           ]
         }

@@ -18,7 +18,7 @@ area:
       active: true
       tap_action:
         action: call-service
-        service: light.turn_off
+        service: light.toggle
         service_data:
           entity_id: '[[[ return (variables.light) ]]]'
     - icon: 'mdi:motion-sensor'

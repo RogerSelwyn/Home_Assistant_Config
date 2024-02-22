@@ -8,5 +8,29 @@ mqtt_discoverystream:
   include:
     entities:
     #   - binary_sensor.tc_living_room_3
-      - binary_sensor.tyrcelyn_protect_lr
       - climate.tyr_celyn
+
+
+mqtt:
+  sensor:
+    - name: "TC AICO Humidity"
+      unique_id: tc_aico_humidity
+      state_topic: "homelink/roger_selwyn/reading/roger_selwyn_tyr_celyn/c3cec7fb-001fd75f/environment-humidity-indoor"
+      unit_of_measurement: '%'
+      value_template: "{{ value_json['value'] }}"
+      state_class: measurement
+      device_class: humidity
+    - name: "TC AICO Temperature"
+      unique_id: tc_aico_temperature
+      state_topic: "homelink/roger_selwyn/reading/roger_selwyn_tyr_celyn/c3cec7fb-001fd75f/environment-temperature-indoor"
+      unit_of_measurement: '°C'
+      value_template: "{{ value_json['value'] }}"
+      state_class: measurement
+      device_class: temperature
+    - name: "TC AICO CO2"
+      unique_id: tc_aico_co2
+      state_topic: "homelink/roger_selwyn/reading/roger_selwyn_tyr_celyn/c3cec7fb-001fd75f/environment-co2-indoor"
+      unit_of_measurement: 'ppm'
+      value_template: "{{ value_json['value'] }}"
+      state_class: measurement
+      device_class: carbon_dioxide

@@ -1,0 +1,7 @@
+logbook:
+  exclude:
+    entities:
+      - sensor.tc_sunlight_opacity
+      - sensor.circadian_kelvin
+      - sensor.nas_uptime
+      - sensor.sunlight_opacity

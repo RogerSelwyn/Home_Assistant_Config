@@ -12,7 +12,7 @@ entities:
     name: Ring
   - entity: binary_sensor.cat_flap
     name: Fondue    
-  - entity: switch.adguard_protection
+  - entity: switch.adguard_home_protection
     name: WWW
 card_mod:
   style: 

@@ -143,7 +143,7 @@
       service_data:
         infoCard: "${functions.infoCard('Cloakroom')}"
          
-- entity: binary_sensor.downstairs_3
+- entity: binary_sensor.downstairs_occupancy_2
   elements:
     - room_hall_downstairs
     - path_hall_downstairs
@@ -160,7 +160,7 @@
       autoclose: false
       variables:
          climate: climate.hall
-         motion: binary_sensor.downstairs_3
+         motion: binary_sensor.downstairs_occupancy_2
   double_tap_action: 
     - service: floorplan.execute
       service_data:
@@ -190,7 +190,7 @@
       service_data:
         infoCard: "${functions.infoCard('Dining Room')}"
 
-- entity: binary_sensor.upstairs_3
+- entity: binary_sensor.upstairs_occupancy_2
   elements:
     - room_hall_upstairs_1
     - room_hall_upstairs_2
@@ -208,13 +208,13 @@
       autoclose: false
       variables:
          climate: climate.hall
-         motion: binary_sensor.upstairs_3
+         motion: binary_sensor.upstairs_occupancy_2
   double_tap_action: 
     - service: floorplan.execute
       service_data:
         infoCard: "${functions.infoCard('Hall - Upstairs')}"
 
-- entity: binary_sensor.upstairs_3
+- entity: binary_sensor.upstairs_occupancy_2
   elements:
     - room_boxroom
     - path_boxroom
@@ -230,14 +230,14 @@
       template: area
       autoclose: false
       variables:
-         motion: binary_sensor.upstairs_3
+         motion: binary_sensor.upstairs_occupancy_2
          plug: switch.plug_box_room
   double_tap_action: 
     - service: floorplan.execute
       service_data:
         infoCard: "${functions.infoCard('Box Room')}"
 
-- entity: binary_sensor.upstairs_3
+- entity: binary_sensor.upstairs_occupancy_2
   elements:
     - room_bathroom
     - path_bathroom
@@ -254,7 +254,7 @@
       autoclose: false
       variables:
          climate: climate.bathroom
-         motion: binary_sensor.upstairs_3
+         motion: binary_sensor.upstairs_occupancy_2
   double_tap_action: 
     - service: floorplan.execute
       service_data:

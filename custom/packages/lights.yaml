@@ -301,11 +301,11 @@ input_select:
 timer:
   lights_living_room:
     name: Time to Living Room Unoccupied
-    duration: '00:15:00'
+    duration: '00:02:00'
     restore: true
   lights_office:
     name: Time to Office Unoccupied
-    duration: '00:05:00'  
+    duration: '00:05:00'
     restore: true
   lights_front_door:
     name: Time to Front Door Lights Off

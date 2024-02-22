@@ -19,7 +19,7 @@ template:
         unique_id: sunlight_pct
         state: >-
           {%- set elevation = state_attr('sun.sun','elevation') | float %}
-          {%- set cloud_coverage = states('sensor.openweathermap_cloud_coverage') | float %}
+          {%- set cloud_coverage = states('sensor.home_cloud_coverage') | float %}
           {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
           {%- set min_elevation = -6 %}
           {%- set max_elevation = 90 %}
@@ -44,13 +44,22 @@ template:
         unique_id: tv_picture
         state: >-
           {% if is_state('media_player.sftv', 'on') %}
-            {% if state_attr('media_player.sky_q', 'entity_picture') != None %}
-              {{ state_attr('media_player.sky_q', 'entity_picture') }}
+            {% if state_attr('media_player.sftv_adb', 'entity_picture') is none %}
+              {{ state_attr('sensor.sftv_picture', 'picture') }}
             {% else %}
-              /local/floorplan/images/tv.jpg
+              {{ state_attr('media_player.sftv_adb', 'entity_picture') }}
             {% endif %}
           {% else %}
-            /local/floorplan/imagestransparent.png
+            /local/floorplan/images/transparent.png
+          {% endif %}  
+
+      - name: sftv_app
+        unique_id: sftv_app
+        state: >-
+          {% if is_state('media_player.sftv_android', 'on') %}
+            {{ state_attr('media_player.sftv_android', 'app_id') }}
+          {% else %}
+            off
           {% endif %}  
 
 

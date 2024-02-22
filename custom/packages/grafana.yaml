@@ -63,6 +63,9 @@ influxdb:
       - sensor.nest_heating
       - sensor.nest_hotwater
       - sensor.tyr_celyn_humidity
+      - sensor.hall_environment_sensor_carbon_dioxide
+      - sensor.hall_environment_sensor_humidity
+      - sensor.hall_environment_sensor_temperature
       - sensor.sfups_load
       - sensor.sfups_battery_charge
       

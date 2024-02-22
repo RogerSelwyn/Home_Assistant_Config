@@ -7,8 +7,8 @@
 
 # Set Variables
 echo Set Variables
-DROPBOX_UPLOADER=/config/custom/shell_scripts/dropbox_uploader.sh
-BKP_CONFIG=/config/custom/shell_scripts/.dropbox_uploader
+DROPBOX_UPLOADER=/homeassistant/custom/shell_scripts/dropbox_uploader.sh
+BKP_CONFIG=/homeassistant/custom/shell_scripts/.dropbox_uploader
 BKP_DIR=/backup
 BKP_FOLDER=/debian
 

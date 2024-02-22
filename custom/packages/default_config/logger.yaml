@@ -3,10 +3,11 @@ logger:
   logs:
 #  custom_components.braviatv_psk: debug
     NodeRed: info
-    custom_components.homelink: debug
-    custom_components.homelink.helpers.coordinator: info
-    custom_components.skyq: info
-    pyskyqremote: info
+    custom_components.homelink: info
+
+   # custom_components.homelink.helpers.coordinator: info
+    # custom_components.skyq: info
+    # pyskyqremote: info
     # custom_components.o365: debug
     # O365: debug
     homeassistant.loader: error
@@ -14,7 +15,7 @@ logger:
     homeassistant.components.nut: critical
     homeassistant.components.ipp: critical
     py.warnings: error
-    braviapsk.sony_bravia_psk: critical
+    # braviapsk.sony_bravia_psk: critical
     # custom_components.hacs: debug
     # hacs: debug
     # queueman: debug
