@@ -39,7 +39,7 @@ template:
     sensor:
       - name: tc_oil_power
         unique_id: tc_oil_power
-        state: "{{'%0.2f'| format(float(states('sensor.tc_oil_usage')) * 10.35 * 1000)}}"
+        state: "{{ '%0.2f'| format((states('sensor.tc_oil_usage') | float(0)) * 10.35 * 1000)}}"
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
@@ -61,7 +61,7 @@ template:
   - sensor:
       - name: tc_oil_price
         unique_id: tc_oil_price
-        state: "{{float(states('input_number.tc_oil_price')) / 10.35}}"
+        state: "{{(states('input_number.tc_oil_price') | float(0)) / 10.35}}"
         unit_of_measurement: 'GBP/kWh'
         device_class: monetary
   - sensor:

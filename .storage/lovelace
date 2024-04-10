@@ -407,10 +407,10 @@
                   "entity": "switch.rogerwap"
                 },
                 {
-                  "entity": "switch.sfiot"
+                  "entity": "switch.sfiot_2"
                 },
                 {
-                  "entity": "switch.sfiot_2"
+                  "entity": "switch.sfiot_20"
                 }
               ]
             }

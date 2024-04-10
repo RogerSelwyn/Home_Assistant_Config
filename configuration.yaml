@@ -3,5 +3,3 @@ homeassistant:
   
 frontend:
   themes: !include_dir_merge_named custom/themes/
-
-automation: !include automations.yaml

@@ -4,6 +4,8 @@ logger:
 #  custom_components.braviatv_psk: debug
     NodeRed: info
     custom_components.homelink: info
+    custom_components.mqtt_discoverystream: info
+    custom_components.mqtt.discovery: debug
 
    # custom_components.homelink.helpers.coordinator: info
     # custom_components.skyq: info

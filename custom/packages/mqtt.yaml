@@ -2,13 +2,19 @@ mqtt_discoverystream:
   base_topic: themews
   discovery_topic: themews-discovery
   command_topic: themews-command
+  remote_status: 
+    topic: tyrcelyn/status
+  local_status: 
+    topic: themews/status
   publish_attributes: false
   publish_timestamps: false
   publish_discovery: true
+#   republish_time: 00:01:00
   include:
     entities:
     #   - binary_sensor.tc_living_room_3
       - climate.tyr_celyn
+    #   - light.bedside_light
 
 
 mqtt:

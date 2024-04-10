@@ -140,6 +140,9 @@
                 },
                 {
                   "entity": "binary_sensor.bedside_light_power"
+                },
+                {
+                  "entity": "binary_sensor.front_door_lights_power"
                 }
               ],
               "show_header_toggle": false,

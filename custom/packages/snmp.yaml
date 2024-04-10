@@ -79,14 +79,14 @@ sensor:
       value_template: '{{((value | int) / 1024) | round(2)}}'
       unit_of_measurement: 'Tb'
       
-    - platform: snmp
-      unique_id: nas_cpu_usage
-      name: 'NAS CPU Usage'
-      host: 192.168.1.30
-      community: public
-      baseoid: 1.3.6.1.4.1.44738.2.7.1.1.2.0
-      version: '2c'
-      unit_of_measurement: '%'
+    # - platform: snmp
+    #   unique_id: nas_cpu_usage
+    #   name: 'NAS CPU Usage'
+    #   host: 192.168.1.30
+    #   community: public
+    #   baseoid: 1.3.6.1.4.1.44738.2.7.1.1.2.0
+    #   version: '2c'
+    #   unit_of_measurement: '%'
     
     - platform: snmp
       unique_id: nas_serial_number

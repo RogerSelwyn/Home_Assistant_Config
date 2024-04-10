@@ -1,0 +1,47 @@
+# automation:
+#   - id: '1710406281850'
+#     alias: Discovery test
+#     description: ""
+#     trigger: []
+#     condition: []
+#     action:
+#       - variables:
+#           name: ghost_1
+#           discovery_topic: homeassistant
+#           base_topic: testing
+#           command_topic: testing-command
+#       - service: mqtt.publish
+#         data:
+#           topic: "{{ base_topic }}/switch/{{ name }}/state"
+#           retain: true
+#           payload: "on"
+#       - service: mqtt.publish
+#         data:
+#           topic: "{{ base_topic }}/switch/{{ name }}/attributes"
+#           retain: true
+#           payload: |-
+#             {
+#               "icon": "mdi:door-open-lock",
+#               "friendly_name": "{{ name }} Entity"
+#             }
+#       - service: mqtt.publish
+#         data:
+#           topic: "{{ base_topic }}/switch/{{ name }}/availability"
+#           retain: true
+#           payload: online
+#       - service: mqtt.publish
+#         data:
+#           topic: "{{ discovery_topic }}/switch/{{ name }}/config"
+#           payload: |-
+#             {
+#               "uniq_id": "mqtt_switch.{{ name }}",
+#               "obj_id": "{{ name }}",
+#               "stat_t": "{{ base_topic }}/switch/{{ name }}/state",
+#               "json_attr_t": "{{ base_topic }}/switch/{{ name }}/attributes",
+#               "avty_t": "{{ base_topic }}/switch/{{ name }}/availability",
+#               "name": "{{ name }} Entity",
+#               "pl_off": "off",
+#               "pl_on": "on",
+#               "cmd_t": "{{ command_topic }}/switch/{{ name }}/set"
+#             }
+#     mode: single
