@@ -17,16 +17,18 @@ custom/themes
 tts
 www
 __pycache__/
-o365_storage
+ms365_storage
 
 
 # Ignore files
+.timeline
 .uuid
+.vacuum
+frigate*
 home-assistant*
+glow.conf
 update.sh
 custom/shell_scripts/.dropbox_uploader
-glow.conf
-skyq*.yaml
 
 Reinclude files
 !.storage/lovelace

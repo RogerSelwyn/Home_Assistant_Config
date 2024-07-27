@@ -17,15 +17,15 @@ notify:
     name: all_ios_devices
     services:
       - service: mobile_app_rogers_iphone
-  - platform: file
-    name: noderedlog
-    filename: custom/logs/noderedlog.csv
-    timestamp: true
 #   - platform: file
-#     name: lights
-#     filename: custom/logs/lights.csv
+#     name: noderedlog
+#     filename: custom/logs/noderedlog.csv
 #     timestamp: true
-  - platform: file
-    name: nest
-    filename: custom/logs/nest.csv
-    timestamp: false
+# #   - platform: file
+# #     name: lights
+# #     filename: custom/logs/lights.csv
+# #     timestamp: true
+#   - platform: file
+#     name: nest
+#     filename: custom/logs/nest.csv
+#     timestamp: false

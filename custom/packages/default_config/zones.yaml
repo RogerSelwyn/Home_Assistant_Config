@@ -29,16 +29,16 @@
 #     monitored_conditions:
 #       - cloud_cover
 
-zone:
-  - name: Home
-    latitude: !secret home_latitude
-    longitude: !secret home_longitude
-    radius: 100
-    icon: mdi:home
+# zone:
+#   - name: Home
+#     latitude: !secret home_latitude
+#     longitude: !secret home_longitude
+#     radius: 100
+#     icon: mdi:home
 
-  - name: Ty'r Celyn
-    latitude: !secret tc_latitude
-    longitude: !secret tc_longitude
-    radius: 200
-    icon: mdi:home-variant-outline
+#   - name: Ty'r Celyn
+#     latitude: !secret tc_latitude
+#     longitude: !secret tc_longitude
+#     radius: 200
+#     icon: mdi:home-variant-outline
 

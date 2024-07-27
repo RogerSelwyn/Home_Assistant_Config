@@ -34,11 +34,11 @@ homeassistant:
     #   friendly_name: "Ty'r Celyn HVAC Action"
 
 
-notify:
-  - platform: file
-    name: tyrcelyn
-    filename: custom/logs/tyrcelyn.csv
-    timestamp: true
+# notify:
+#   - platform: file
+#     name: tyrcelyn
+#     filename: custom/logs/tyrcelyn.csv
+#     timestamp: true
 
 binary_sensor:
   - platform: group

@@ -8,8 +8,6 @@ entities:
     name: House
   - entity: alarm_control_panel.texecom
     name: Texe
-  - entity: alarm_control_panel.the_mews_mode
-    name: Ring
   - entity: binary_sensor.cat_flap
     name: Fondue    
   - entity: switch.adguard_home_protection

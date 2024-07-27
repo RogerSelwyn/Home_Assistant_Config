@@ -1,5 +1,7 @@
 homeassistant:
   packages: !include_dir_named custom/packages/ 
-  
+  allowlist_external_dirs:
+    - "/config/custom/logs"
+    
 frontend:
   themes: !include_dir_merge_named custom/themes/

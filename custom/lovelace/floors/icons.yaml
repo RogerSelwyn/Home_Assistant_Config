@@ -1,31 +1,31 @@
 # Icons *******************************************
 
-- element: camera.front_doorbell_live
+- element: camera.front_door
   entities: 
-    - binary_sensor.front_doorbell_motion
-    - alarm_control_panel.the_mews_mode
+    - binary_sensor.front_door_object_detected
+    - binary_sensor.front_door_person_detected
+    - camera.front_door_high_resolution_channel
   state_action:
     - action: call-service
       service: floorplan.class_set
       service_data: |
         >
-        let status = entities['binary_sensor.front_doorbell_motion'].state
-        if (entities['alarm_control_panel.the_mews_mode'].state === "disarmed")
+        let status = entities['camera.front_door_high_resolution_channel'].state
+        if (entities['camera.front_door_high_resolution_channel'].state === "unavailable")
           {
             status = "disarmed"
-          } else if (entities['binary_sensor.front_doorbell_motion'].state === "off")
-          {
-            status = "off"
-          } else if (entities['binary_sensor.front_doorbell_motion'].attributes.personDetected === true)
+          } else if (entities['binary_sensor.front_door_person_detected'].state === "on")
           {
             status = "person"
+          } else if (entities['binary_sensor.front_door_object_detected'].state === "on")
+          {
+            status = "object"
           }
         return `camera camera-${status}`
 
-- entity: camera.front_doorbell_live
+- entity: camera.front_door
 
 - entities: 
-    - alarm_control_panel.the_mews_mode
     - alarm_control_panel.texecom
   state_action:
     - action: call-service

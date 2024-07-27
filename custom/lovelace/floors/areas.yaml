@@ -267,7 +267,7 @@
 
 
 # Complex Areas *************************************
-- entity: binary_sensor.front_doorbell_motion
+- entity: binary_sensor.front_door_motion
   elements:
   - path_front_door
   - room_front_door
@@ -283,7 +283,7 @@
       autoclose: false
       variables:
          light: light.front_door
-         motion: binary_sensor.front_doorbell_motion
+         motion: binary_sensor.front_door_motion
   double_tap_action: 
     - service: floorplan.execute
       service_data:

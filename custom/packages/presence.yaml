@@ -51,14 +51,12 @@ template:
     - name: front_door_person_motion
       unique_id: front_door_person_motion
       state: >-
-          {% if is_state('binary_sensor.front_doorbell_motion', 'off') %}
-            off
+          {% if is_state('binary_sensor.front_door_person_detected', 'on') %}
+            person
+          {% elif is_state('binary_sensor.front_door_object_detected', 'on') %}
+            on
           {% else %}
-            {% if state_attr('binary_sensor.front_doorbell_motion', 'personDetected') == false %}
-              on
-            {% else %}
-              person
-            {% endif %}
+            off
           {% endif %}  
 
 input_boolean:

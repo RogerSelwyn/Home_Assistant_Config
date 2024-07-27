@@ -1,4 +1,4 @@
-mqtt_discoverystream:
+mqtt_discoverystream_alt:
   base_topic: themews
   discovery_topic: themews-discovery
   command_topic: themews-command
@@ -15,7 +15,29 @@ mqtt_discoverystream:
     #   - binary_sensor.tc_living_room_3
       - climate.tyr_celyn
     #   - light.bedside_light
+    #   - switch.homeassistant_public_ping
+    #   - input_boolean.homeassistant_public_ping_helper 
+# input_boolean:
+#   homeassistant_public_ping_helper:
+#     name: homeassistant_public_ping_helper
+#     icon: mdi:lock-alert
 
+# switch:
+#   - platform: template
+#     switches:
+#       homeassistant_public_ping:
+#         unique_id: homeassistant_public_ping
+#         value_template: "{{ is_state('input_boolean.homeassistant_public_ping_helper', 'on') }}"
+#         turn_on:
+#           - service: input_boolean.turn_on
+#             target:
+#               entity_id: input_boolean.homeassistant_public_ping_helper
+#           - delay:
+#               seconds: 2
+#           - service: input_boolean.turn_off
+#             target:
+#               entity_id: input_boolean.homeassistant_public_ping_helper
+#         turn_off: []
 
 mqtt:
   sensor:

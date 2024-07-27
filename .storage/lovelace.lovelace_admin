@@ -66,9 +66,6 @@
               "entity": "input_select.location_mode"
             },
             {
-              "entity": "alarm_control_panel.the_mews_mode"
-            },
-            {
               "entity": "alarm_control_panel.texecom"
             }
           ],
@@ -299,7 +296,7 @@
             {
               "entities": [
                 {
-                  "entity": "binary_sensor.front_doorbell_motion"
+                  "entity": "binary_sensor.front_door_object_detected"
                 },
                 {
                   "entity": "binary_sensor.downstairs_occupancy"
@@ -446,7 +443,10 @@
           "icon": "mdi:security",
           "badges": [
             {
-              "entity": "camera.front_doorbell_live"
+              "entity": "camera.front_door"
+            },
+            {
+              "entity": "camera.front_door_package_camera"
             },
             {
               "entity": "timer.lights_front_door"
@@ -496,89 +496,84 @@
                   "title": "Front Door",
                   "entities": [
                     {
-                      "entity": "alarm_control_panel.the_mews_mode"
+                      "entity": "camera.package"
                     },
                     {
-                      "entity": "binary_sensor.front_doorbell_ding"
+                      "entity": "binary_sensor.front_door_object_detected"
                     },
                     {
-                      "entity": "binary_sensor.front_doorbell_motion"
+                      "entity": "binary_sensor.front_door_person_detected"
                     },
                     {
-                      "entity": "switch.front_doorbell_live_stream"
+                      "entity": "binary_sensor.front_door_animal_detected"
                     },
                     {
-                      "entity": "switch.front_doorbell_event_stream"
+                      "entity": "binary_sensor.front_door_vehicle_detected"
+                    },
+                    {
+                      "entity": "binary_sensor.front_door_package_detected"
                     }
                   ],
-                  "camera_image": "camera.front_doorbell_events",
+                  "camera_image": "camera.front_door",
                   "aspect_ratio": "4:3"
-                },
-                {
-                  "type": "entities",
-                  "entities": [
-                    {
-                      "entity": "select.front_doorbell_event_select"
-                    }
-                  ]
                 }
               ]
-            },
-            {
-              "type": "alarm-panel",
-              "states": [
-                "arm_home",
-                "arm_away"
-              ],
-              "entity": "alarm_control_panel.the_mews_mode",
-              "name": "Ring Doorbell"
             },
             {
               "type": "entities",
               "entities": [
                 {
-                  "entity": "alarm_control_panel.the_mews_mode"
+                  "entity": "binary_sensor.front_door_doorbell"
                 },
                 {
-                  "entity": "number.kitchen_chime_volume"
+                  "entity": "binary_sensor.front_door_is_dark"
                 },
                 {
-                  "entity": "binary_sensor.front_doorbell_ding"
+                  "entity": "sensor.front_door_last_doorbell_ring"
                 },
                 {
-                  "entity": "binary_sensor.front_doorbell_motion"
+                  "entity": "sensor.front_door_last_motion_detected"
                 },
                 {
-                  "entity": "sensor.front_doorbell_info"
+                  "entity": "binary_sensor.front_door_motion_2"
                 },
                 {
-                  "entity": "camera.front_doorbell_snapshot"
+                  "entity": "binary_sensor.front_door_object_detected"
                 },
                 {
-                  "entity": "sensor.kitchen_chime_info"
+                  "entity": "binary_sensor.front_door_package_detected"
                 },
                 {
-                  "entity": "switch.kitchen_chime_play_ding_sound"
-                },
-                {
-                  "entity": "switch.kitchen_chime_play_motion_sound"
-                },
-                {
-                  "entity": "switch.kitchen_chime_snooze"
-                },
-                {
-                  "entity": "number.kitchen_chime_snooze_minutes"
-                },
-                {
-                  "entity": "sensor.front_doorbell_wireless"
-                },
-                {
-                  "entity": "sensor.kitchen_chime_wireless"
+                  "entity": "binary_sensor.front_door_vehicle_detected"
                 }
               ],
-              "title": "Ring (Add-On)",
+              "title": "Unifi Protect",
               "show_header_toggle": false,
               "state_color": true
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.property_person_count"
+                },
+                {
+                  "entity": "sensor.property_cat_count"
+                },
+                {
+                  "entity": "sensor.package_package_count"
+                }
+              ],
+              "title": "Frigate"
+            },
+            {
+              "type": "history-graph",
+              "entities": [
+                {
+                  "entity": "sensor.frigate_cpu_inference_speed"
+                }
+              ],
+              "hours_to_show": 24
             }
           ]
         },
@@ -806,7 +801,6 @@
           ],
           "cards": [
             {
-              "dark_mode": false,
               "default_zoom": 10,
               "entities": [
                 {
@@ -819,7 +813,11 @@
                   "entity": "person.benjamin_selwyn"
                 }
               ],
-              "type": "map"
+              "type": "map",
+              "theme_mode": "auto",
+              "geo_location_sources": [
+                "all"
+              ]
             }
           ],
           "icon": "mdi:map-marker",

@@ -1,8 +1,8 @@
-o365:
-  accounts:
-    - account_name: converted
-      alt_auth_method: false
-      client_secret: !secret o365_secret
-      client_id: !secret o365_id
-      enable_update: true
-      track_new_calendar: true
+# o365:
+#   accounts:
+#     - account_name: converted
+#       alt_auth_method: false
+#       client_secret: !secret o365_secret
+#       client_id: !secret o365_id
+#       enable_update: true
+#       track_new_calendar: true

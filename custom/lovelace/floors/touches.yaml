@@ -1,6 +1,5 @@
 - entities:
-    - camera.front_doorbell_live
-    - alarm_control_panel.the_mews_mode
+    - camera.front_door
     - alarm_control_panel.texecom
     - switch.plug_kitchen
     - switch.plug_dining_room
