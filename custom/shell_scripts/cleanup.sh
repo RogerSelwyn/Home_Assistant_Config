@@ -19,9 +19,9 @@ RING_DIR_3=/media/ding
 
 
 # Clean up old images
-tidy_up $NEST_DIR_1 7
-tidy_up $NEST_DIR_2 7
-tidy_up $RING_DIR_1 2
-tidy_up $RING_DIR_2 2
-tidy_up $RING_DIR_3 2
+# tidy_up $NEST_DIR_1 7
+# tidy_up $NEST_DIR_2 7
+# tidy_up $RING_DIR_1 2
+# tidy_up $RING_DIR_2 2
+# tidy_up $RING_DIR_3 2
 

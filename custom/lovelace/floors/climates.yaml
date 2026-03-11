@@ -35,7 +35,19 @@
         > 
         return `climate climate-${entity.attributes.hvac_action}`;
 
-- entity: sensor.zwave_office_fibaro_temperature
+- entity: water_heater.hot_water
+  state_action:
+    - action: call-service
+      service: floorplan.text_set
+      service_data: |
+        > return `${entity.attributes.current_temperature.toFixed(1)}°`
+    # - action: call-service
+    #   service: floorplan.class_set
+    #   service_data: |
+    #     > 
+    #     return `climate climate-${entity.attributes.hvac_action}`;
+
+- entity: sensor.office_hue_motion_temperature
   element: climate.office
   state_action:
     - action: call-service

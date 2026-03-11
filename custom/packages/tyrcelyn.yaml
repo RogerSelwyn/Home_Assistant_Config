@@ -26,6 +26,8 @@ homeassistant:
       friendly_name: "TC - Excess Heat"
     sensor.tyr_celyn_environment_coldhomes:
       friendly_name: "TC - Cold Homes"
+    binary_sensor.tyr_celyn_living_room_hot_water_control:
+      device_class: heat
     # sensor.tc_current_temperature:
     #   friendly_name: "Ty'r Celyn Current Temperature"
     # sensor.tc_set_temperature:
@@ -51,6 +53,28 @@ binary_sensor:
 
 
 template:
+#   - sensor:
+#       - name: "TC Electricity"
+#         unique_id: tc_electricity
+#         device_class: energy
+#         unit_of_measurement: kWh
+#         state_class: total
+#         variables:
+#           my_entity: sensor.tc_electricity_mqtt
+#         availability: "{{ my_entity | has_value }}"
+#         state: >-
+#           {{ states(my_entity)}}
+#   - sensor:
+#       - name: "TC Electricity Instant"
+#         unique_id: tc_electricity_instant
+#         device_class: power
+#         unit_of_measurement: W
+#         state_class: measurement
+#         variables:
+#           my_entity: sensor.tc_electricity_instant_api
+#         availability: "{{ my_entity | has_value }}"
+#         state: >-
+#           {{ states(my_entity)}}
 #   - sensor:
 #       - name: tc_current_temperature
 #         unique_id: tc_current_temperature

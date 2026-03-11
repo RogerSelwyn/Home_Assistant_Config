@@ -1,6 +1,6 @@
-frontend:
-  extra_module_url:
-    - /hacsfiles/lovelace-card-mod/card-mod.js
+# frontend:
+#   extra_module_url:
+#     - /hacsfiles/lovelace-card-mod/card-mod.js?hacstag=190927524420
     
 lovelace:
   mode: storage
@@ -61,7 +61,6 @@ template:
           {% else %}
             off
           {% endif %}  
-
 
 input_select:
   floorplan:

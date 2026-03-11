@@ -1,11 +1,11 @@
 influxdb:
-  api_version: 2
-  ssl: false
-  host: !secret influx_host
-  port: !secret influx_port
-  token: !secret influx_token
-  organization: !secret influx_organization
-  bucket: homeassistant
+#   api_version: 2
+#   ssl: false
+#   host: !secret influx_host
+#   port: !secret influx_port
+#   token: !secret influx_token
+#   organization: !secret influx_organization
+#   bucket: homeassistant
   default_measurement: state
   tags_attributes:
     - friendly_name

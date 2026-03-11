@@ -1,27 +1,63 @@
+# Snippet to be inserted in configuration.yaml
+# Load frontend themes from the themes folder
+frontend:
+  themes:
+    My Theme: # Define new theme for which we change the colors
+      # This theme must be selected in the user preference to become active
+      # Allow switch between dark and light mode and inherit styles from these
+      primary-color: coral
+      modes:
+        light:
+          secondary-text-color: olive
+        dark:
+          secondary-text-color: slategray
+      # redefine energy source colors
+      energy-grid-consumption-color-0: "#587cfc"
+      energy-grid-consumption-color-1: "#0000ff"
+      energy-grid-consumption-color-2: "#b5b5b5"
+      energy-grid-consumption-color-3: "#ebebeb"
+      energy-grid-consumption-color-4: "#fa7575"
+      energy-grid-consumption-color-5: "#ff0000"
+
 energy:
 
 homeassistant:
   customize:
-    sensor.tc_oil_power:
-      friendly_name: "TC Oil Power"
-    sensor.tc_oil_usage:
-      friendly_name: "TC Oil Instant"
-    sensor.tc_oil_price:
-      friendly_name: "TC Oil Price"
-    sensor.sfups_power:
-      friendly_name: "Sfups Power Draw"
-    sensor.charger_last_meter_reading:
-      state_class: total
+    sensor.bedroom_1_lights_power:
+      device_class: power
+    sensor.bedroom_2_lights_power:
+      device_class: power
+    sensor.bedroom_3_lights_power:
+      device_class: power
+    sensor.living_room_lights_power:
+      device_class: power
+    sensor.front_door_lights_power:
+      device_class: power
+    # sensor.bedroom_1_lights_energy:
+    #   state_class: total_increasing
+    #   device_class: energy
+    # sensor.bedroom_2_lights_energy:
+    #   state_class: total_increasing
+    #   device_class: energy
+    # sensor.bedroom_3_lights_energy:
+    #   state_class: total_increasing
+    #   device_class: energy
+    # sensor.living_room_lights_energy:
+    #   state_class: total_increasing
+    #   device_class: energy
+    # sensor.front_door_lights_energy:
+    #   state_class: total_increasing
+    #   device_class: energy
       
-input_number:
-  tc_oil_price:
-    name: TC Oil Price
-    icon: mdi:cash
-    min: 0
-    max: 100
-    step: .001
-    mode: box
-    unit_of_measurement: GBP/l
+# input_number:
+#   tc_oil_price:
+#     name: TC Oil Price
+#     icon: mdi:cash
+#     min: 0
+#     max: 100
+#     step: .001
+#     mode: box
+#     unit_of_measurement: GBP/l
 
 template:
   - trigger:
@@ -31,94 +67,94 @@ template:
       minutes: '0'
       seconds: '15'
     - platform: state
-      entity_id: sensor.tc_oil_usage
+    #   entity_id: sensor.tc_oil_usage
+      entity_id: sensor.sfups_power
     - platform: event
       event_type: event_template_reloaded
     - platform: homeassistant
       event: start
     sensor:
-      - name: tc_oil_power
-        unique_id: tc_oil_power
-        state: "{{ '%0.2f'| format((states('sensor.tc_oil_usage') | float(0)) * 10.35 * 1000)}}"
-        unit_of_measurement: 'W'
-        state_class: measurement
-        device_class: power
-        attributes: 
-          triggered_at: "{{ now() }}"
-  - sensor:
-      - name: tc_oil_usage
-        unique_id: tc_oil_usage
-        state: >-
-          {% if is_state('binary_sensor.nest_heating', 'on') %}
-            {%set value = 100%}
-          {% elif is_state('binary_sensor.nest_hotwater', 'on') %}
-            {%set value = 30%}
-          {% else %}
-            {%set value = 0%}
-          {% endif %}
-          {{ value * 0.8685 / 100}} 
-        unit_of_measurement: 'l/hour'
-  - sensor:
-      - name: tc_oil_price
-        unique_id: tc_oil_price
-        state: "{{(states('input_number.tc_oil_price') | float(0)) / 10.35}}"
-        unit_of_measurement: 'GBP/kWh'
-        device_class: monetary
-  - sensor:
       - name: sfups_power
         unique_id: sfups_power
-        state: "{{int(states('sensor.sfups_load')) * int(states('sensor.sfups_nominal_real_power')) / 100}}"
+        variables:
+          my_entity: sensor.sfups_load
+        availability: "{{ my_entity | has_value }}"
+        state: >-
+          {{int(states(my_entity)) * int(states('sensor.sfups_nominal_real_power')) / 100}}
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-  - binary_sensor:
-      - name: Boiler Firing
-        unique_id: boiler_firing
+        
+  - sensor:
+      - name: EV Charger Energy
+        unique_id: ev_charger_energy
+        state_class: total
+        device_class: energy
+        unit_of_measurement: kWh
+        availability: '{{ "sensor.ev_charger_last_charge" | has_value }}'
         state: >
-          {{ states('sensor.tc_boiler_current_power')|float(0) > 100 }}
-  - binary_sensor:
-      - name: Boiler Pump
-        unique_id: boiler_pump
-        state: >
-          {{ states('sensor.tc_boiler_current_power')|float(0) > 10 }}
+            {% if is_state('sensor.ev_charger_last_charge', 'charging') %}
+              {{float(state_attr('sensor.ev_charger_last_charge','consumedKwh'),0)}}
+            {% endif %}
+
+      - name: Front Door Lights Energy
+        unique_id: front_door_lights_energy
+        state_class: total_increasing
+        device_class: energy
+        unit_of_measurement: kWh
+        availability: '{{ "sensor.front_door_down_energy" | has_value }}'
+        state: >-
+            {{float(states("sensor.front_door_down_energy"),0) + float(states("sensor.front_door_up_energy"),0)}}
+      - name: Bedroom 1 Lights Energy
+        unique_id: bedroom_1_lights_energy
+        state_class: total_increasing
+        device_class: energy
+        unit_of_measurement: kWh
+        availability: '{{ "sensor.bedroom_1_bulb_1_energy" | has_value }}'
+        state: >-
+            {{float(states("sensor.bedroom_1_bulb_1_energy"),0) + float(states("sensor.bedroom_1_bulb_2_energy"),0) + float(states("sensor.bedroom_1_bulb_3_energy"),0)}}
+      - name: Bedroom 2 Lights Energy
+        unique_id: bedroom_2_lights_energy
+        state_class: total_increasing
+        device_class: energy
+        unit_of_measurement: kWh
+        availability: '{{ "sensor.bedroom_2_bulb_1_energy" | has_value }}'
+        state: >-
+            {{float(states("sensor.bedroom_2_bulb_1_energy"),0) + float(states("sensor.bedroom_2_bulb_2_energy"),0) + float(states("sensor.bedroom_2_bulb_3_energy"),0)}}
+      - name: Bedroom 3 Lights Energy
+        unique_id: bedroom_3_lights_energy
+        state_class: total_increasing
+        device_class: energy
+        unit_of_measurement: kWh
+        availability: '{{ "sensor.bedside_light_energy" | has_value }}'
+        state: >-
+            {{float(states("sensor.bedside_light_energy"),0) + float(states("sensor.ceiling_light_energy"),0)}} 
+      - name: Living Room Lights Energy
+        unique_id: living_room_lights_energy
+        state_class: total_increasing
+        device_class: energy
+        unit_of_measurement: kWh
+        availability: '{{ "sensor.side_light_energy" | has_value }}'
+        state: >-
+            {{float(states("sensor.side_light_energyy"),0) + float(states("sensor.tv_light_energy"),0) + float(states("sensor.main_light_energy"),0) + float(states("sensor.table_light_energy"),0)}} 
+
+
+
+
 mqtt:
   sensor:
-    - name: "TC Electricity Instant"
-      unique_id: tc_electricity_instant
-      state_topic: "SMART/HILD/84F3EB180551"
-      unit_of_measurement: 'W'
-      value_template: "{{ value_json['elecMtr']['0702']['04']['00']|int(base=16) }}"
-      icon: 'mdi:flash'
-      state_class: measurement
-    - name: "TC Electricity"
-      unique_id: tc_electricity
-      state_topic: "SMART/HILD/84F3EB180551"
-      unit_of_measurement: 'kWh'
-      value_template: "{{ value_json['elecMtr']['0702']['00']['00']|int(base=16) * value_json['elecMtr']['0702']['03']['01']|int(base=16) / value_json['elecMtr']['0702']['03']['02']|int(base=16) }}"
-      icon: 'mdi:counter'
-      device_class: energy
-      state_class: total_increasing
-      # last_reset_topic: "SMART/HILD/84F3EB180551"
-      # last_reset_value_template: homeassistant.util.dt.utc_from_timestamp(0)
-    - name: "TC Electricity Daily"
-      unique_id: tc_electricity_daily
-      state_topic: "SMART/HILD/84F3EB180551"
-      unit_of_measurement: 'kWh'
-      value_template: "{{ value_json['elecMtr']['0702']['04']['01']|int(base=16) * value_json['elecMtr']['0702']['03']['01']|int(base=16) / value_json['elecMtr']['0702']['03']['02']|int(base=16) }}"
-      icon: 'mdi:flash'
-      state_class: total_increasing
-    - name: "TC Electricity Weekly"
-      unique_id: tc_electricity_weekly
-      state_topic: "SMART/HILD/84F3EB180551"
-      unit_of_measurement: 'kWh'
-      value_template: "{{ value_json['elecMtr']['0702']['04']['30']|int(base=16) * value_json['elecMtr']['0702']['03']['01']|int(base=16) / value_json['elecMtr']['0702']['03']['02']|int(base=16) }}"
-      icon: 'mdi:flash'
-      state_class: total_increasing
-    # - name: "TC Electricity Monthly"
-    #   state_topic: "SMART/HILD/84F3EB180551"
-    #   unit_of_measurement: 'kWh'
-    #   value_template: "{{ value_json['elecMtr']['0702']['04']['40']|int(base=16) * value_json['elecMtr']['0702']['03']['01']|int(base=16) / value_json['elecMtr']['0702']['03']['02']|int(base=16) }}"
-    #   icon: 'mdi:flash'
+
+    - name: "Home Glow IHD Version"
+      unique_id: home_glow_ihd_version
+      state_topic: "glow/441793505160/STATE"
+      value_template: "{{ value_json['software'] }}"
+      device:
+        identifiers: ["44:17:93:50:51:60"]
+        sw_version: 1.9.1
+        manufacturer: "glowmarkt"
+        model: "Glow Display and CAD"
+        model_id: "smets2"
+        name: "Glow - MQTT - Home"
 
     - name: "Home Electricity Instant"
       unique_id: home_electricity_instant
@@ -126,7 +162,10 @@ mqtt:
       unit_of_measurement: 'W'
       value_template: "{{ value_json['electricitymeter']['power']['value'] * 1000 }}"
       icon: 'mdi:flash'
+      device_class: power
       state_class: measurement
+      device:
+        identifiers: ["44:17:93:50:51:60"]
     - name: "Home Electricity"
       unique_id: home_electricity
       state_topic: "glow/441793505160/SENSOR/electricitymeter"
@@ -135,6 +174,8 @@ mqtt:
       icon: 'mdi:counter'
       device_class: energy
       state_class: total_increasing
+      device:
+        identifiers: ["44:17:93:50:51:60"]
     - name: "Home Electricity Daily"
       unique_id: home_electricity_daily
       state_topic: "glow/441793505160/SENSOR/electricitymeter"
@@ -142,6 +183,8 @@ mqtt:
       value_template: "{{ value_json['electricitymeter']['energy']['import']['day'] }}"
       icon: 'mdi:flash'
       state_class: total_increasing
+      device:
+        identifiers: ["44:17:93:50:51:60"]
     - name: "Home Electricity Weekly"
       unique_id: home_electricity_weekly
       state_topic: "glow/441793505160/SENSOR/electricitymeter"
@@ -149,12 +192,16 @@ mqtt:
       value_template: "{{ value_json['electricitymeter']['energy']['import']['week'] }}"
       icon: 'mdi:flash'
       state_class: total_increasing
+      device:
+        identifiers: ["44:17:93:50:51:60"]
     - name: "Home Electricity Price"
       unique_id: home_electricity_price
       state_topic: "glow/441793505160/SENSOR/electricitymeter"
       unit_of_measurement: 'GBP/kWh'
       value_template: "{{ value_json['electricitymeter']['energy']['import']['price']['unitrate'] }}"
       icon: 'mdi:cash'
+      device:
+        identifiers: ["44:17:93:50:51:60"]
 
     - name: "Home Gas"
       unique_id: home_gas
@@ -164,6 +211,8 @@ mqtt:
       icon: 'mdi:counter'
       device_class: energy
       state_class: total_increasing
+      device:
+        identifiers: ["44:17:93:50:51:60"]
     - name: "Home Gas Daily"
       unique_id: home_gas_daily
       state_topic: "glow/441793505160/SENSOR/gasmeter"
@@ -171,6 +220,8 @@ mqtt:
       value_template: "{{ value_json['gasmeter']['energy']['import']['day'] }}"
       icon: 'mdi:flash'
       state_class: total_increasing
+      device:
+        identifiers: ["44:17:93:50:51:60"]
     - name: "Home Gas Weekly"
       unique_id: home_gas_weekly
       state_topic: "glow/441793505160/SENSOR/gasmeter"
@@ -178,17 +229,17 @@ mqtt:
       value_template: "{{ value_json['gasmeter']['energy']['import']['week'] }}"
       icon: 'mdi:flash'
       state_class: total_increasing
+      device:
+        identifiers: ["44:17:93:50:51:60"]
     - name: "Home Gas Price"
       unique_id: home_gas_price
       state_topic: "glow/441793505160/SENSOR/gasmeter"
       unit_of_measurement: 'GBP/kWh'
       value_template: "{{ value_json['gasmeter']['energy']['import']['price']['unitrate'] }}"
       icon: 'mdi:cash'
+      device:
+        identifiers: ["44:17:93:50:51:60"]
 
-    - name: "Home Glow IHD Version"
-      unique_id: home_glow_ihd_version
-      state_topic: "glow/441793505160/STATE"
-      value_template: "{{ value_json['software'] }}"
 
 
 sensor:

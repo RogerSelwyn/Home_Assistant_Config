@@ -44,7 +44,7 @@ template:
           {{ is_state('binary_sensor.geniushub_bedroom1_occupancy', 'on')
           or is_state('binary_sensor.geniushub_bedroom2_occupancy', 'on')
           or is_state('binary_sensor.geniushub_bedroom3_occupancy', 'on')
-          or is_state('binary_sensor.zwave_office_fibaro_motion', 'on') }}
+          or is_state('binary_sensor.office_hue_motion_motion', 'on') }}
         device_class: motion
 
   - sensor:
@@ -53,11 +53,35 @@ template:
       state: >-
           {% if is_state('binary_sensor.front_door_person_detected', 'on') %}
             person
-          {% elif is_state('binary_sensor.front_door_object_detected', 'on') %}
+          {% elif is_state('binary_sensor.front_door_person_occupancy', 'on') %}
+            person
+          {% elif is_state('binary_sensor.front_door_motion', 'on') %}
+            on
+          {% elif is_state('binary_sensor.front_door_all_occupancy', 'on') %}
+            on
+          {% elif is_state('binary_sensor.front_door_animal_detected', 'on') %}
             on
           {% else %}
             off
           {% endif %}  
+
+  - sensor:
+      default_entity_id: sensor.location_mode
+      unique_id: location_mode
+      state: "{{ states('input_select.location_mode') }}"
+      name: >-
+        {{ states('input_select.location_mode') }}
+      picture: >-
+        {% if is_state('input_select.location_mode', 'Home') %}
+          /local/icons/home.png
+        {% elif is_state('input_select.location_mode', 'Away') %}
+          /local/icons/shield-lock.png
+        {% elif is_state('input_select.location_mode', 'Night') %}
+          /local/icons/weather-night.png
+        {% elif is_state('input_select.location_mode', 'Evening Time') %}
+          /local/icons/weather-sunset.png
+        {% endif %}
+
 
 input_boolean:
   office_motion:
@@ -78,6 +102,14 @@ group:
       - binary_sensor.living_room_hue_motion_motion
       - binary_sensor.geniushub_living_room_occupancy
 
+# binary_sensor:
+#   - platform: group
+#     name: "Front Door Combined Motion"
+#     unique_id: front_door_combined_motion
+#     device_class: motion
+#     entities:
+#       - binary_sensor.front_door_person_occupancy
+#       - binary_sensor.front_door_person_detected
 
 input_select:
   location_mode:
@@ -88,24 +120,24 @@ input_select:
       - Night
       - Evening Time
 
-sensor:
-  - platform: template
-    sensors:
-      location_mode:
-        unique_id: location_mode
-        value_template: "{{ states('input_select.location_mode') }}"
-        friendly_name_template: >-
-          {{ states('input_select.location_mode') }}
-        entity_picture_template: >-
-          {% if is_state('input_select.location_mode', 'Home') %}
-            /local/icons/home.png
-          {% elif is_state('input_select.location_mode', 'Away') %}
-            /local/icons/shield-lock.png
-          {% elif is_state('input_select.location_mode', 'Night') %}
-            /local/icons/weather-night.png
-          {% elif is_state('input_select.location_mode', 'Evening Time') %}
-            /local/icons/weather-sunset.png
-          {% endif %}
+# sensor:
+#   - platform: template
+#     sensors:
+#       location_mode:
+#         unique_id: location_mode
+#         value_template: "{{ states('input_select.location_mode') }}"
+#         friendly_name_template: >-
+#           {{ states('input_select.location_mode') }}
+#         entity_picture_template: >-
+#           {% if is_state('input_select.location_mode', 'Home') %}
+#             /local/icons/home.png
+#           {% elif is_state('input_select.location_mode', 'Away') %}
+#             /local/icons/shield-lock.png
+#           {% elif is_state('input_select.location_mode', 'Night') %}
+#             /local/icons/weather-night.png
+#           {% elif is_state('input_select.location_mode', 'Evening Time') %}
+#             /local/icons/weather-sunset.png
+#           {% endif %}
 
 timer:
   night:

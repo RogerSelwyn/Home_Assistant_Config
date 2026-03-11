@@ -10,16 +10,15 @@ entities:
     name: Texe
   - entity: binary_sensor.cat_flap
     name: Fondue    
-  - entity: switch.adguard_home_protection
-    name: WWW
 card_mod:
   style: 
     .: |
       :host {
         position: absolute;
-        bottom: 6px;
+        bottom: 30px;
         left: 6px;
-        width: 300px;
+        border-radius: 12px;
+        width: 250px;
         --ha-card-background: #c8bcd733;
         --paper-item-icon-color: #fff;
       }
@@ -27,6 +26,12 @@ card_mod:
       {
           :host {
               bottom: 26px;
+          }
+      }
+      @media only screen and (max-width: 428px)
+      {
+          :host {
+              bottom: 40px;
           }
       }
       ha-card div.entities{

@@ -1,4 +1,61 @@
 # Lights ************************************
+- entity: light.conservatory_side_lights
+  elements:
+    - light_touch.conservatory_side_lights
+    - light_touch.conservatory_side_lights2
+  tap_action: 'toggle'
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: light.conservatory_side_lights
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: light.conservatory_side_lights2
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: light_overlay.conservatory_side_lights
+        style: "${functions.overlayStyle()}"
+
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Conservatory', entity)}"
+
+- entities:
+  - light.conservatory_ceiling_light
+  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+  tap_action: 'toggle'
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: "${entity.entity_id}"
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        style: "${functions.overlayStyle()}"
+
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Conservatory', entity)}"
+
+- entities:
+  - light.conservatory
+  element: "${entity.entity_id.replace('light.', 'path_')}"
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('light', element.id)}"
+
+
 - entities:
   - light.side_light
   - light.tv_light
@@ -182,13 +239,79 @@
       service_data:
         classAdd: "${functions.classAdd('light', element.id)}"
 
-                
-# - entities:
-#   - light.side_light
-#   - light.tv_light
-#   - light.table_light
-#   - light.main_light
-#   - light.front_door_lights
-#   element: "${entity.entity_id.replace('light.', 'light_touch.')}"
-#   tap_action: 'toggle'
-#   double_tap_action: more-info
+- entities:
+  - light.bathroom
+  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+  tap_action: 'toggle'
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: "${entity.entity_id}"
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        style: "${functions.overlayStyle()}"
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('light', entity.entity_id.replace('light.', 'path_'))}"
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Bathroom', entity)}"
+
+- entities:
+  - light.cabinet_lights
+  - light.worktop_lights
+  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+  tap_action: 'toggle'
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: "${entity.entity_id}"
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        style: "${functions.overlayStyle()}"
+
+  double_tap_action: 
+      - service: floorplan.execute
+        service_data:
+          lightCard: "${functions.lightCard('Kitchen', entity)}"
+
+- entities:
+  - light.living_room
+  element: "${entity.entity_id.replace('light.', 'path_')}"
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('light', element.id)}"
+
+- entities:
+  - light.dining_room_light
+  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+  tap_action: 'toggle'
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: "${entity.entity_id}"
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        style: "${functions.overlayStyle()}"
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('light', entity.entity_id.replace('light.', 'path_'))}"
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Dining Room', entity)}"
+

@@ -10,8 +10,8 @@ homeassistant:
       friendly_name: Living Room Lights
     light.front_door:
       friendly_name: Front Door Lights
-    sensor.living_room_hue_motion_light_level:
-      unit_of_measurement: lux
+    # sensor.living_room_hue_motion_light_level:
+    #   unit_of_measurement: lux
     # binary_sensor.bedroom1_lights_power:
     #   friendly_name: "Bedroom 1 Lights - Power"
     binary_sensor.bedside_light_power:
@@ -75,7 +75,7 @@ template:
   - sensor:
       - name: living_room_hue_lightlevel
         unique_id: living_room_hue_lightlevel
-        state: "{{state_attr('sensor.living_room_hue_motion_light_level','light_level')}}"
+        state: "{{state_attr('sensor.living_room_hue_motion_illuminance','light_level')}}"
         unit_of_measurement: 'lumens'
 
 # light:
@@ -168,6 +168,8 @@ group:
       - light.bedside_light
       - light.ceiling_light
       - light.office_light
+      - light.bedroom_2
+      - light.conservatory_ceiling_light
     
   main_light_actual:
     name: Main Light Actual

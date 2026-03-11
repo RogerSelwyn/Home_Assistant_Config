@@ -11,3 +11,16 @@
       service: floorplan.class_set
       service_data: 'person person-${entity.state}'
 
+- entities: 
+    - input_text.people_at_home
+  state_action:
+    - action: call-service
+      service: floorplan.text_set
+      service_data: |
+        > return `${entity.state}`
+        
+    # - action: call-service
+    #   service: floorplan.class_set
+    #   service_data: |
+    #     > 
+    #     return `climate climate-${entity.attributes.hvac_action}`;

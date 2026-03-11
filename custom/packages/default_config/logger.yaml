@@ -5,9 +5,9 @@ logger:
     NodeRed: info
     custom_components.homelink: info
     custom_components.mqtt_discoverystream_alt: info
+    custom_components.geniushub: info
     custom_components.mqtt.discovery_alt: debug
 
-   # custom_components.homelink.helpers.coordinator: info
     # custom_components.skyq: info
     # pyskyqremote: info
     # custom_components.o365: debug

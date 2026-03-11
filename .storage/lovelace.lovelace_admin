@@ -42,39 +42,88 @@
           "title": "Info",
           "badges": [
             {
-              "entity": "binary_sensor.dual_channel_receiver_3_1"
+              "type": "entity",
+              "entity": "sensor.geniushub_errors",
+              "display_type": "complete"
             },
             {
-              "entity": "binary_sensor.dual_channel_receiver_3_2"
-            },
-            {
-              "entity": "sensor.geniushub_errors"
-            },
-            {
-              "entity": "sensor.geniushub_warnings"
+              "type": "entity",
+              "entity": "sensor.geniushub_warnings",
+              "display_type": "complete"
             },
             {
               "entity": "binary_sensor.home_assistant_website_update_available"
             },
             {
-              "entity": "sensor.hacs"
+              "type": "entity",
+              "entity": "sensor.hacs_updates",
+              "show_entity_picture": false
             },
             {
-              "entity": "sensor.addon_updates"
+              "type": "entity",
+              "entity": "sensor.addon_updates",
+              "display_type": "complete"
             },
             {
-              "entity": "input_select.location_mode"
-            },
-            {
-              "entity": "alarm_control_panel.texecom"
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "input_boolean.work_day_enabled",
+              "color": ""
             }
           ],
           "cards": [
             {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "sensor.monitors_switch_0_power",
+                      "name": "Monitors"
+                    },
+                    {
+                      "entity": "sensor.mini_switch_0_power",
+                      "name": "Mini"
+                    },
+                    {
+                      "entity": "sensor.sfups_power",
+                      "name": "UPS"
+                    }
+                  ],
+                  "title": "Mini",
+                  "logarithmic_scale": false,
+                  "hours_to_show": 12
+                },
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "sensor.monitors_switch_0_power"
+                    },
+                    {
+                      "entity": "sensor.mini_switch_0_power"
+                    },
+                    {
+                      "entity": "sensor.sfups_power"
+                    },
+                    {
+                      "entity": "switch.monitors_switch_0"
+                    },
+                    {
+                      "entity": "binary_sensor.rogers_mac_mini_active"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "filter": {
                 "include": [
                   {
-                    "entity_id": "binary_sensor.zwave_office_fibaro_motion"
+                    "entity_id": "binary_sensor.office_hue_motion_motion"
                   },
                   {
                     "entity_id": "input_boolean.occupied_office"
@@ -176,7 +225,7 @@
                   "entity": "sensor.geniushub_living_room_luminance"
                 },
                 {
-                  "entity": "sensor.living_room_hue_motion_light_level"
+                  "entity": "sensor.living_room_hue_motion_illuminance"
                 },
                 {
                   "entity": "sensor.geniushub_bedroom1_luminance"
@@ -188,7 +237,7 @@
                   "entity": "sensor.geniushub_bedroom3_luminance"
                 },
                 {
-                  "entity": "sensor.zwave_office_fibaro_illuminance"
+                  "entity": "sensor.office_hue_motion_illuminance"
                 }
               ],
               "show_header_toggle": false,
@@ -197,15 +246,6 @@
             },
             {
               "entities": [
-                {
-                  "entity": "binary_sensor.smart_plug_conservatory"
-                },
-                {
-                  "entity": "binary_sensor.smart_plug_dining_room"
-                },
-                {
-                  "entity": "binary_sensor.smart_plug_kitchen"
-                },
                 {
                   "entity": "switch.plug_conservatory"
                 },
@@ -266,37 +306,7 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.adguard_home_average_processing_speed"
-                },
-                {
-                  "entity": "sensor.adguard_home_dns_queries"
-                },
-                {
-                  "entity": "sensor.adguard_home_dns_queries_blocked_ratio"
-                },
-                {
-                  "entity": "switch.adguard_home_filtering"
-                },
-                {
-                  "entity": "switch.adguard_home_protection"
-                }
-              ],
-              "title": "AdGuard",
-              "type": "entities",
-              "show_header_toggle": false
-            },
-            {
-              "entities": [
-                "sensor.connected_clients"
-              ],
-              "hours_to_show": 24,
-              "refresh_interval": 0,
-              "type": "history-graph"
-            },
-            {
-              "entities": [
-                {
-                  "entity": "binary_sensor.front_door_object_detected"
+                  "entity": "binary_sensor.front_door_motion"
                 },
                 {
                   "entity": "binary_sensor.downstairs_occupancy"
@@ -320,9 +330,6 @@
                   "entity": "binary_sensor.geniushub_living_room_occupancy"
                 },
                 {
-                  "entity": "binary_sensor.upstairs_occupancy"
-                },
-                {
                   "entity": "binary_sensor.geniushub_bedroom1_occupancy"
                 },
                 {
@@ -332,13 +339,13 @@
                   "entity": "binary_sensor.geniushub_bedroom3_occupancy"
                 },
                 {
-                  "entity": "binary_sensor.zwave_office_fibaro_motion"
+                  "entity": "binary_sensor.office_hue_motion_motion"
                 },
                 {
-                  "entity": "binary_sensor.downstairs_occupancy_2"
+                  "entity": "binary_sensor.downstairs_occupancy"
                 },
                 {
-                  "entity": "binary_sensor.upstairs_occupancy_2"
+                  "entity": "binary_sensor.upstairs_occupancy"
                 }
               ],
               "title": "Motion",
@@ -348,10 +355,10 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.living_room_hue_motion_light_level"
+                  "entity": "sensor.office_hue_motion_illuminance"
                 },
                 {
-                  "entity": "sensor.zwave_office_fibaro_illuminance"
+                  "entity": "sensor.living_room_hue_motion_illuminance"
                 }
               ],
               "hours_to_show": 24,
@@ -434,6 +441,18 @@
                 "type": "entities",
                 "title": "UPS"
               }
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "name": "Clear Frontend Cache",
+              "tap_action": {
+                "action": "fire-dom-event",
+                "card_mod": {
+                  "action": "clear_cache"
+                }
+              }
             }
           ]
         },
@@ -443,13 +462,30 @@
           "icon": "mdi:security",
           "badges": [
             {
-              "entity": "camera.front_door"
+              "type": "entity",
+              "entity": "alarm_control_panel.texecom"
             },
             {
-              "entity": "camera.front_door_package_camera"
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "camera.front_door_high"
             },
             {
-              "entity": "timer.lights_front_door"
+              "type": "entity",
+              "entity": "camera.front_door_package_camera",
+              "display_type": "complete"
+            },
+            {
+              "type": "entity",
+              "entity": "timer.lights_front_door",
+              "display_type": "complete"
+            },
+            {
+              "type": "entity",
+              "entity": "input_select.location_mode",
+              "display_type": "complete"
             }
           ],
           "cards": [
@@ -480,7 +516,7 @@
                   "entity": "binary_sensor.garage_back_doors"
                 },
                 {
-                  "entity": "binary_sensor.alarm"
+                  "entity": "binary_sensor.texecom_alarm_bell"
                 }
               ],
               "title": "Texecom",
@@ -492,11 +528,12 @@
               "cards": [
                 {
                   "camera_view": "auto",
+                  "fit_mode": "cover",
                   "type": "picture-glance",
                   "title": "Front Door",
                   "entities": [
                     {
-                      "entity": "camera.package"
+                      "entity": "camera.front_door_package_camera"
                     },
                     {
                       "entity": "binary_sensor.front_door_object_detected"
@@ -514,7 +551,7 @@
                       "entity": "binary_sensor.front_door_package_detected"
                     }
                   ],
-                  "camera_image": "camera.front_door",
+                  "camera_image": "camera.front_door_high",
                   "aspect_ratio": "4:3"
                 }
               ]
@@ -535,13 +572,19 @@
                   "entity": "sensor.front_door_last_motion_detected"
                 },
                 {
-                  "entity": "binary_sensor.front_door_motion_2"
+                  "entity": "binary_sensor.front_door_motion"
+                },
+                {
+                  "entity": "binary_sensor.front_door_animal_detected"
                 },
                 {
                   "entity": "binary_sensor.front_door_object_detected"
                 },
                 {
                   "entity": "binary_sensor.front_door_package_detected"
+                },
+                {
+                  "entity": "binary_sensor.front_door_person_detected"
                 },
                 {
                   "entity": "binary_sensor.front_door_vehicle_detected"
@@ -555,25 +598,40 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.property_person_count"
+                  "entity": "binary_sensor.front_door_person_detected"
                 },
                 {
-                  "entity": "sensor.property_cat_count"
+                  "entity": "binary_sensor.front_door_motion"
                 },
                 {
-                  "entity": "sensor.package_package_count"
+                  "entity": "sensor.front_door_person_motion"
                 }
               ],
-              "title": "Frigate"
+              "title": "Combined Front Door"
             },
             {
-              "type": "history-graph",
-              "entities": [
+              "type": "vertical-stack",
+              "cards": [
                 {
-                  "entity": "sensor.frigate_cpu_inference_speed"
+                  "camera_view": "auto",
+                  "fit_mode": "cover",
+                  "type": "picture-glance",
+                  "title": "Front Door",
+                  "entities": [
+                    {
+                      "entity": "binary_sensor.back_door_object_detected"
+                    },
+                    {
+                      "entity": "binary_sensor.back_door_person_detected"
+                    },
+                    {
+                      "entity": "binary_sensor.back_door_animal_detected"
+                    }
+                  ],
+                  "aspect_ratio": "3:4",
+                  "camera_image": "camera.back_door_high"
                 }
-              ],
-              "hours_to_show": 24
+              ]
             }
           ]
         },
@@ -583,10 +641,25 @@
           "title": "Heating",
           "badges": [
             {
-              "entity": "binary_sensor.dual_channel_receiver_3_1"
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "binary_sensor.heating"
             },
             {
-              "entity": "binary_sensor.dual_channel_receiver_3_2"
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "binary_sensor.hot_water"
+            },
+            {
+              "type": "entity",
+              "show_name": false,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "sensor.ebusd_bai_statenumber"
             }
           ],
           "cards": [
@@ -643,7 +716,7 @@
                 },
                 {
                   "type": "entity",
-                  "entity": "sensor.zwave_office_fibaro_temperature"
+                  "entity": "sensor.office_hue_motion_temperature"
                 }
               ]
             },
@@ -674,8 +747,58 @@
               "type": "horizontal-stack"
             },
             {
+              "type": "horizontal-stack",
+              "cards": [
+                {
+                  "type": "thermostat",
+                  "entity": "climate.meacocool_mc_series_9000_pro",
+                  "name": "Bedroom 1",
+                  "visibility": [
+                    {
+                      "condition": "state",
+                      "entity": "climate.meacocool_mc_series_9000_pro",
+                      "state_not": "unavailable"
+                    }
+                  ]
+                },
+                {
+                  "type": "thermostat",
+                  "entity": "climate.air_con",
+                  "name": "Bedroom 3",
+                  "visibility": [
+                    {
+                      "condition": "state",
+                      "entity": "climate.air_con",
+                      "state_not": "unavailable"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "water_heater.hot_water"
+              ]
+            },
+            {
+              "type": "history-graph",
+              "entities": [
+                {
+                  "entity": "sensor.geniushub_hot_water_temperature"
+                },
+                {
+                  "entity": "sensor.ebusd_bai_status01_temp"
+                },
+                {
+                  "entity": "sensor.ebusd_bai_status01_temp_1"
+                }
+              ],
+              "hours_to_show": 12
+            },
+            {
               "type": "thermostat",
-              "entity": "climate.air_con"
+              "entity": "water_heater.hot_water"
             }
           ]
         },
@@ -693,7 +816,7 @@
                   "entity": "sensor.home_gas"
                 },
                 {
-                  "entity": "sensor.home_gas_price"
+                  "entity": "sensor.octopus_energy_gas_e6s14829932562_4026717301_current_rate"
                 }
               ],
               "title": "Gas"
@@ -702,16 +825,7 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.tc_tv_current_power"
-                },
-                {
-                  "entity": "sensor.tc_tv_energy"
-                },
-                {
                   "entity": "sensor.tc_boiler_current_power"
-                },
-                {
-                  "entity": "sensor.tc_boiler_energy"
                 }
               ],
               "title": "Ty'r Celyn"
@@ -726,13 +840,13 @@
                   "entity": "sensor.home_electricity_instant"
                 },
                 {
-                  "entity": "sensor.home_electricity_price"
+                  "entity": "sensor.octopus_energy_electricity_25j0249719_2000018401231_current_rate"
                 },
                 {
-                  "entity": "sensor.tc_electricity_api"
+                  "entity": "sensor.tc_electricity"
                 },
                 {
-                  "entity": "sensor.tc_electricity_instant_api"
+                  "entity": "sensor.tc_electricity_instant"
                 },
                 {
                   "entity": "sensor.tc_electricity_price"
@@ -750,7 +864,7 @@
                   "entity": "sensor.tc_oil_usage"
                 },
                 {
-                  "entity": "input_number.tc_oil_price"
+                  "entity": "number.tc_oil_price"
                 }
               ],
               "title": "Oil"
@@ -784,8 +898,244 @@
                 }
               ],
               "title": "Energy Switches"
+            },
+            {
+              "filter": {
+                "include": [
+                  {
+                    "options": {},
+                    "integration": "octopus_energy",
+                    "device": "/Electricity Meter/"
+                  }
+                ]
+              },
+              "type": "custom:auto-entities",
+              "card": {
+                "type": "entities",
+                "title": "Octopus Electricity",
+                "state_color": true
+              },
+              "sort": {
+                "method": "state",
+                "reverse": true
+              }
+            },
+            {
+              "filter": {
+                "include": [
+                  {
+                    "options": {},
+                    "integration": "octopus_energy",
+                    "device": "/Gas Meter/"
+                  }
+                ]
+              },
+              "type": "custom:auto-entities",
+              "card": {
+                "type": "entities",
+                "title": "Octopus Gas",
+                "state_color": true
+              },
+              "sort": {
+                "method": "state",
+                "reverse": true
+              }
             }
           ]
+        },
+        {
+          "icon": "mdi:fire",
+          "path": "fire-alarm",
+          "title": "Fire Alarm",
+          "type": "sections",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "filter": {
+                    "include": [
+                      {
+                        "integration": "homelink",
+                        "name": "ROGER_SELWYN_The_Mews*",
+                        "attributes": {
+                          "device_class": "safety"
+                        },
+                        "options": {
+                          "tap_action": {
+                            "action": "navigate",
+                            "navigation_path": "/tyr-celyn/alarm#property"
+                          }
+                        }
+                      },
+                      {
+                        "integration": "homelink",
+                        "name": "ROGER_SELWYN_The_Mews*",
+                        "attributes": {
+                          "device_class": "problem"
+                        },
+                        "options": {
+                          "tap_action": {
+                            "action": "navigate",
+                            "navigation_path": "/tyr-celyn/alarm#property"
+                          }
+                        }
+                      }
+                    ],
+                    "exclude": [
+                      {
+                        "entity_id": "binary_sensor.roger_selwyn_the_mews_study_envco2sensor"
+                      },
+                      {
+                        "state": "off"
+                      }
+                    ]
+                  },
+                  "type": "custom:auto-entities",
+                  "card": {
+                    "type": "entities",
+                    "title": "Property",
+                    "state_color": true
+                  },
+                  "sort": {
+                    "method": "state",
+                    "reverse": true
+                  }
+                },
+                {
+                  "filter": {
+                    "include": [
+                      {
+                        "integration": "homelink",
+                        "name": "ROGER_SELWYN_The_Mews*",
+                        "attributes": {
+                          "device_class": "smoke"
+                        },
+                        "options": {
+                          "tap_action": {
+                            "action": "navigate",
+                            "navigation_path": "/tyr-celyn/alarm#alarms"
+                          }
+                        }
+                      },
+                      {
+                        "integration": "homelink",
+                        "name": "ROGER_SELWYN_The_Mews*",
+                        "attributes": {
+                          "device_class": "carbon_monoxide"
+                        },
+                        "options": {
+                          "tap_action": {
+                            "action": "navigate",
+                            "navigation_path": "/tyr-celyn/alarm#alarms"
+                          }
+                        }
+                      },
+                      {
+                        "entity_id": "binary_sensor.roger_selwyn_the_mews_study_envco2sensor",
+                        "options": {
+                          "tap_action": {
+                            "action": "navigate",
+                            "navigation_path": "/tyr-celyn/alarm#environment"
+                          }
+                        }
+                      }
+                    ],
+                    "exclude": [
+                      {
+                        "state": "off"
+                      }
+                    ]
+                  },
+                  "type": "custom:auto-entities",
+                  "card": {
+                    "type": "entities",
+                    "title": "Alarms",
+                    "state_color": true
+                  },
+                  "sort": {
+                    "method": "state",
+                    "reverse": true
+                  }
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "filter": {
+                    "include": [
+                      {
+                        "integration": "homelink",
+                        "name": "ROGER_SELWYN_The_Mews*",
+                        "domain": "event",
+                        "state": "< 7d ago",
+                        "options": {
+                          "tap_action": {
+                            "action": "navigate",
+                            "navigation_path": "/tyr-celyn/alarm#events"
+                          }
+                        }
+                      }
+                    ],
+                    "exclude": [
+                      {
+                        "state": "unknown"
+                      }
+                    ]
+                  },
+                  "type": "custom:auto-entities",
+                  "card": {
+                    "type": "entities",
+                    "title": "Events",
+                    "state_color": true
+                  },
+                  "sort": {
+                    "method": "state",
+                    "reverse": true
+                  }
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                },
+                {
+                  "type": "custom:auto-entities",
+                  "show_empty": false,
+                  "filter": {
+                    "include": [
+                      {
+                        "options": {},
+                        "attributes": {
+                          "group_members": "$$/^[^,]+$/"
+                        }
+                      }
+                    ]
+                  },
+                  "card": {
+                    "type": "entities"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                }
+              ]
+            }
+          ],
+          "max_columns": 3,
+          "cards": []
         },
         {
           "badges": [
@@ -826,121 +1176,108 @@
           "title": "Map"
         },
         {
-          "theme": "Backend-selected",
-          "title": "Test",
-          "path": "test",
-          "badges": [],
-          "cards": [
+          "type": "sections",
+          "max_columns": 4,
+          "icon": "mdi:lan",
+          "path": "network",
+          "title": "Network",
+          "sections": [
             {
-              "type": "custom:auto-entities",
-              "title": "Blah",
-              "card": {
-                "type": "history-graph"
-              },
-              "filter": {
-                "include": [
-                  {
-                    "device": "SFRouter"
-                  }
-                ]
-              }
-            },
-            {
-              "type": "vertical-stack",
+              "type": "grid",
               "cards": [
                 {
                   "type": "custom:auto-entities",
-                  "show_empty": false,
+                  "card": {
+                    "type": "entities",
+                    "title": "Network CPU",
+                    "state_color": true
+                  },
                   "filter": {
                     "include": [
                       {
-                        "domain": "media_player",
-                        "entity_id": "/media_player\\..*_speaker_group/",
-                        "state": "paused"
-                      },
-                      {
-                        "domain": "media_player",
-                        "entity_id": "/media_player\\..*_speaker_group/",
-                        "state": "idle"
-                      }
-                    ],
-                    "exclude": [
-                      {
-                        "integration": "sonos",
-                        "attributes": {
-                          "media_title": "TV"
-                        }
+                        "options": {},
+                        "integration": "unifi",
+                        "entity_id": "*cpu*"
                       }
                     ]
                   },
-                  "card": {
-                    "type": "entities",
-                    "card_mod": {
-                      "style": {
-                        ".": ":host {\n  --paper-item-icon-color: #fff;\n  --ha-card-background: #c8bcd733;\n}\n#states {\n    padding: 4px\n}\n",
-                        "hui-media-player-entity-row": {
-                          "$": ".volume {\n  display: none !important;\n}\n.flex {\n    position: absolute;\n    top: -5px;\n    right: 0px;\n}\n"
-                        }
-                      }
-                    }
+                  "sort": {
+                    "method": "state",
+                    "reverse": true,
+                    "numeric": true
                   }
                 },
                 {
                   "type": "custom:auto-entities",
-                  "show_empty": false,
+                  "card": {
+                    "type": "entities",
+                    "title": "Network Memory",
+                    "state_color": true
+                  },
                   "filter": {
                     "include": [
                       {
-                        "domain": "media_player",
-                        "integration": "skyq",
-                        "state": "paused"
-                      },
-                      {
-                        "domain": "media_player",
-                        "integration": "skyq",
-                        "state": "playing"
-                      },
-                      {
-                        "domain": "media_player",
-                        "integration": "sonos",
-                        "state": "playing"
-                      },
-                      {
-                        "domain": "media_player",
-                        "integration": "braviatv",
-                        "state": "on"
-                      }
-                    ],
-                    "exclude": [
-                      {
-                        "integration": "sonos",
-                        "attributes": {
-                          "media_title": "TV"
-                        }
-                      },
-                      {
-                        "integration": "braviatv",
-                        "attributes": {
-                          "app_id": "com.sony.dtv.tvx"
-                        }
+                        "options": {},
+                        "integration": "unifi",
+                        "entity_id": "*memory*"
                       }
                     ]
                   },
-                  "card": {
-                    "type": "entities",
-                    "card_mod": {
-                      "style": {
-                        ".": ":host {\n  --paper-item-icon-color: #fff;\n  --ha-card-background: #c8bcd733;\n}\n#states {\n    padding: 4px\n}\nhui-media-player-entity-row {\n  height: 70px !important; \n}\n",
-                        "hui-media-player-entity-row": {
-                          "$": ".flex {\n    position: absolute;\n    top: 30px;\n    width: 100%;\n}\n# hui-generic-entity-row > div.controls {\n#     position: absolute;\n#     top: 30px;\n# }\n"
-                        }
-                      }
-                    }
+                  "sort": {
+                    "method": "state",
+                    "reverse": true,
+                    "numeric": true
                   }
                 }
               ]
             }
+          ],
+          "badges": [
+            {
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "binary_sensor.tyr_celyn_sd_wan",
+              "name": {
+                "type": "area"
+              }
+            }
           ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "GitHub",
+          "path": "test",
+          "badges": [],
+          "cards": [
+            {
+              "filter": {
+                "include": [
+                  {
+                    "entity_id": "sensor.*_installations"
+                  }
+                ]
+              },
+              "type": "custom:auto-entities",
+              "card": {
+                "type": "entities",
+                "title": "Installations",
+                "state_color": true
+              },
+              "sort": {
+                "method": "state",
+                "reverse": true,
+                "numeric": true
+              }
+            },
+            {
+              "type": "markdown",
+              "content": "{{ state_attr('sensor.github_issues','content') }}",
+              "title": "Github Issues"
+            }
+          ],
+          "icon": "mdi:github"
         }
       ]
     }

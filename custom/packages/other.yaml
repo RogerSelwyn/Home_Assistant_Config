@@ -13,3 +13,19 @@ template:
           {{ is_state('binary_sensor.curfew', 'on')
           and is_state('sensor.cat_flap_the_fondue_pot', 'unlocked') }}
         device_class: lock
+  - sensor:
+      - name: home_temperature_external
+        unique_id: home_temperature_external
+        device_class: temperature
+        unit_of_measurement: °C
+        state_class: measurement
+        state: >-
+          {{ state_attr('weather.home', 'temperature')}}
+  - sensor:
+      - name: home_humidity_external
+        unique_id: home_humidity_external
+        device_class: humidity
+        unit_of_measurement: '%'
+        state_class: measurement
+        state: >-
+          {{ state_attr('weather.home', 'humidity')}}

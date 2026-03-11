@@ -1,0 +1,28 @@
+# mqtt:
+#   sensor:
+#     - name: "ModulationTempDesired "
+#       unique_id: ebusd_bai_ModulationTempDesired_0
+#       state_topic: "ebusd/bai/ModulationTempDesired"
+#       value_template: "{{value_json[\"0\"].value}}"
+#       unit_of_measurement: "%"
+#       state_class: measurement
+#       device:
+#         identifiers: ["ebusd_bai"]
+
+# ebusd:
+#   host: 127.0.0.1
+#   circuit: "bai"
+#   monitored_conditions:
+#     - ReturnTemperature
+#     - FlowTemperature
+#     # - PowerEnergyConsumptionHeatingCircuit
+#     - DesiredFlowTemperature
+#     - ModulationPercentage
+#     - StateNumber
+# ebusd: 
+#   host: 192.168.20.226
+#   port: 9999
+#   circuit: "bai"
+#   monitored_conditions:
+#     - ReturnTemperature
+#     - FlowTemperature

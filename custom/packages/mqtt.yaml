@@ -1,22 +1,35 @@
 mqtt_discoverystream_alt:
-  base_topic: themews
-  discovery_topic: themews-discovery
-  command_topic: themews-command
-  remote_status: 
-    topic: tyrcelyn/status
-  local_status: 
-    topic: themews/status
-  publish_attributes: false
-  publish_timestamps: false
-  publish_discovery: true
-#   republish_time: 00:01:00
-  include:
-    entities:
-    #   - binary_sensor.tc_living_room_3
-      - climate.tyr_celyn
-    #   - light.bedside_light
-    #   - switch.homeassistant_public_ping
-    #   - input_boolean.homeassistant_public_ping_helper 
+  - base_topic: themews
+    discovery_topic: themews-discovery
+    command_topic: themews-command
+    remote_status: 
+      topic: tyrcelyn/status
+    local_status: 
+      topic: themews/status
+    publish_attributes: false
+    publish_timestamps: false
+    publish_discovery: true
+    #   republish_time: 00:01:00
+    include:
+      entities:
+        # - climate.tyr_celyn
+        # - binary_sensor.tyrcelyn_guests
+        # - sensor.tc_electricity
+        # - sensor.tc_electricity_instant
+        # - sensor.tc_electricity_price
+        # - sensor.charger_last_meter_reading
+        - switch.tyr_celyn_living_room_hot_water_boost
+        - climate.tyr_celyn_living_room
+        - light.bedside_light
+        #   - light.bedside_light
+        #   - switch.homeassistant_public_ping
+        #   - input_boolean.homeassistant_public_ping_helper 
+        #   - binary_sensor.tc_living_room_3
+        #   - sensor.tc_electricity_api
+        #   - sensor.tc_electricity_instant_api
+        #   - sensor.tc_oil
+        #   - sensor.tc_oil_price
+
 # input_boolean:
 #   homeassistant_public_ping_helper:
 #     name: homeassistant_public_ping_helper
@@ -39,26 +52,26 @@ mqtt_discoverystream_alt:
 #               entity_id: input_boolean.homeassistant_public_ping_helper
 #         turn_off: []
 
-mqtt:
-  sensor:
-    - name: "TC AICO Humidity"
-      unique_id: tc_aico_humidity
-      state_topic: "homelink/roger_selwyn/reading/roger_selwyn_tyr_celyn/c3cec7fb-001fd75f/environment-humidity-indoor"
-      unit_of_measurement: '%'
-      value_template: "{{ value_json['value'] }}"
-      state_class: measurement
-      device_class: humidity
-    - name: "TC AICO Temperature"
-      unique_id: tc_aico_temperature
-      state_topic: "homelink/roger_selwyn/reading/roger_selwyn_tyr_celyn/c3cec7fb-001fd75f/environment-temperature-indoor"
-      unit_of_measurement: '°C'
-      value_template: "{{ value_json['value'] }}"
-      state_class: measurement
-      device_class: temperature
-    - name: "TC AICO CO2"
-      unique_id: tc_aico_co2
-      state_topic: "homelink/roger_selwyn/reading/roger_selwyn_tyr_celyn/c3cec7fb-001fd75f/environment-co2-indoor"
-      unit_of_measurement: 'ppm'
-      value_template: "{{ value_json['value'] }}"
-      state_class: measurement
-      device_class: carbon_dioxide
+# mqtt:
+#   sensor:
+#     - name: "TC AICO Humidity"
+#       unique_id: tc_aico_humidity
+#       state_topic: "homelink/roger_selwyn/reading/roger_selwyn_tyr_celyn/c3cec7fb-001fd75f/environment-humidity-indoor"
+#       unit_of_measurement: '%'
+#       value_template: "{{ value_json['value'] }}"
+#       state_class: measurement
+#       device_class: humidity
+#     - name: "TC AICO Temperature"
+#       unique_id: tc_aico_temperature
+#       state_topic: "homelink/roger_selwyn/reading/roger_selwyn_tyr_celyn/c3cec7fb-001fd75f/environment-temperature-indoor"
+#       unit_of_measurement: '°C'
+#       value_template: "{{ value_json['value'] }}"
+#       state_class: measurement
+#       device_class: temperature
+#     - name: "TC AICO CO2"
+#       unique_id: tc_aico_co2
+#       state_topic: "homelink/roger_selwyn/reading/roger_selwyn_tyr_celyn/c3cec7fb-001fd75f/environment-co2-indoor"
+#       unit_of_measurement: 'ppm'
+#       value_template: "{{ value_json['value'] }}"
+#       state_class: measurement
+#       device_class: carbon_dioxide

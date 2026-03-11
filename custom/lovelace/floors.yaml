@@ -1,5 +1,5 @@
-title: Downstairs
-path: downstairs
+title: The Mews
+path: themews
 panel: true
 theme: floorplan-tutorial
 badges: []
@@ -24,7 +24,6 @@ cards:
               box-shadow: none
               transform: scale(1.0);
             }
-
         config:
           console_log_level: info
         #   log_level: info

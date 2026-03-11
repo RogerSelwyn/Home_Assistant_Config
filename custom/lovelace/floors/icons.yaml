@@ -1,17 +1,17 @@
 # Icons *******************************************
 
-- element: camera.front_door
+- element: camera.front_door_high
   entities: 
     - binary_sensor.front_door_object_detected
     - binary_sensor.front_door_person_detected
-    - camera.front_door_high_resolution_channel
+    - camera.front_door_high
   state_action:
     - action: call-service
       service: floorplan.class_set
       service_data: |
         >
-        let status = entities['camera.front_door_high_resolution_channel'].state
-        if (entities['camera.front_door_high_resolution_channel'].state === "unavailable")
+        let status = entities['camera.front_door_high'].state
+        if (entities['camera.front_door_high'].state === "unavailable")
           {
             status = "disarmed"
           } else if (entities['binary_sensor.front_door_person_detected'].state === "on")
@@ -23,7 +23,31 @@
           }
         return `camera camera-${status}`
 
-- entity: camera.front_door
+
+- element: camera.back_door_high
+  entities: 
+    - binary_sensor.back_door_object_detected
+    - binary_sensor.back_door_person_detected
+    - camera.back_door_high
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: |
+        >
+        let status = entities['camera.back_door_high'].state
+        if (entities['camera.back_door_high'].state === "unavailable")
+          {
+            status = "disarmed"
+          } else if (entities['binary_sensor.back_door_person_detected'].state === "on")
+          {
+            status = "person"
+          } else if (entities['binary_sensor.back_door_object_detected'].state === "on")
+          {
+            status = "object"
+          }
+        return `camera camera-${status}`
+
+
 
 - entities: 
     - alarm_control_panel.texecom
@@ -32,17 +56,31 @@
       service: floorplan.class_set
       service_data: 'alarm alarm-${entity.state}'
 
+- element: switch.plug_box_room
+  entities:
+    - switch.plug_box_room
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: |
+        >
+        let status = entities['switch.plug_box_room'].state
+        if (entities['switch.plug_box_room'].attributes.status.mode === "override")
+          {
+            status = "boost"
+          } 
+        return `plug plug-${status}`
+
 - element: switch.plug_dining_room
   entities:
-    - binary_sensor.smart_plug_dining_room
     - switch.plug_dining_room
   state_action:
     - action: call-service
       service: floorplan.class_set
       service_data: |
         >
-        let status = entities['binary_sensor.smart_plug_dining_room'].state
-        if (entities['switch.plug_dining_room'].state === "on")
+        let status = entities['switch.plug_dining_room'].state
+        if (entities['switch.plug_dining_room'].attributes.status.mode === "override")
           {
             status = "boost"
           } 
@@ -50,15 +88,14 @@
 
 - element: switch.plug_kitchen
   entities:
-    - binary_sensor.smart_plug_kitchen
     - switch.plug_kitchen
   state_action:
     - action: call-service
       service: floorplan.class_set
       service_data: |
         >
-        let status = entities['binary_sensor.smart_plug_kitchen'].state
-        if (entities['switch.plug_kitchen'].state === "on")
+        let status = entities['switch.plug_kitchen'].state
+        if (entities['switch.plug_kitchen'].attributes.status.mode === "override")
           {
             status = "boost"
           } 
@@ -66,50 +103,28 @@
 
 - element: switch.plug_conservatory
   entities:
-    - binary_sensor.smart_plug_conservatory
     - switch.plug_conservatory
   state_action:
     - action: call-service
       service: floorplan.class_set
       service_data: |
         >
-        let status = entities['binary_sensor.smart_plug_conservatory'].state
-        if (entities['switch.plug_conservatory'].state === "on")
+        let status = entities['switch.plug_conservatory'].state
+        if (entities['switch.plug_conservatory'].attributes.status.mode === "override")
           {
             status = "boost"
           } 
         return `plug plug-${status}`
 
-- element: switch.hot_water
-  entities:
-    - binary_sensor.dual_channel_receiver_3_2
-    - switch.hot_water
+- entities: 
+  - binary_sensor.hot_water
+  - binary_sensor.heating
   state_action:
     - action: call-service
       service: floorplan.class_set
       service_data: |
         >
-        let status = entities['binary_sensor.dual_channel_receiver_3_2'].state
-        if (entities['switch.hot_water'].state === "on")
-          {
-            status = "boost"
-          } 
-        return `hot-water hot-water-${status}`
-- element: switch.upstairs_hot_water
-  entities:
-    - binary_sensor.dual_channel_receiver_3_2
-    - switch.hot_water
-  state_action:
-    - action: call-service
-      service: floorplan.class_set
-      service_data: |
-        >
-        let status = entities['binary_sensor.dual_channel_receiver_3_2'].state
-        if (entities['switch.hot_water'].state === "on")
-          {
-            status = "boost"
-          } 
-        return `hot-water hot-water-${status}`
+        return `hot-water hot-water-${entity.state}`
 
 
 - entities: 

@@ -1,9 +1,25 @@
-# Oven **************************************
-# - entities: 
-#   - sensor.neff_top_oven_common_status_operationstate
-#   - sensor.neff_bottom_oven_common_status_operationstate
-#   tap_action: more-info
-#   state_action:
-#     action: call-service
-#     service: floorplan.class_set
-#     service_data: 'appliance oven-${entity.state}' 
+# Kitchen appliances **************************************
+- entities: 
+  - sensor.neff_hob_common_status_operationstate
+  tap_action: more-info
+  state_action:
+    action: call-service
+    service: floorplan.class_set
+    service_data: 'appliance-hob ${entity.state}' 
+
+- entities: 
+  - sensor.neff_dishwasher_common_status_operationstate
+  tap_action: more-info
+  state_action:
+    action: call-service
+    service: floorplan.class_set
+    service_data: 'appliance-dishwasher ${entity.state}' 
+
+- entities: 
+  - sensor.neff_top_oven_common_status_operationstate
+  - sensor.neff_bottom_oven_common_status_operationstate
+  tap_action: more-info
+  state_action:
+    action: call-service
+    service: floorplan.class_set
+    service_data: 'appliance-oven ${entity.state}' 

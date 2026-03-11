@@ -6,9 +6,14 @@
       style: |
         :host {
           position: absolute;
-          bottom: 6px;
+          bottom: 30px;
           right: 6px;
+          border-radius: 12px;
           width: 265px;
+          --ha-card-background: #c8bcd700;
+        }
+        ha-card {
+            border-style: none;
         }
         @media only screen and (max-width: 1194px)
         {
@@ -35,7 +40,7 @@
             state: "> 0"
           - entity_id: sensor.geniushub_warnings
             state: "> 0"
-          - entity_id: sensor.hacs
+          - entity_id: sensor.hacs_updates
             state: "> 0"
           - entity_id: sensor.addon_updates
             state: "> 0"

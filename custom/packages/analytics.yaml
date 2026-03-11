@@ -1,15 +1,92 @@
 sensor:
   - platform: rest
+    unique_id: skyq_installations
     name: SkyQ Installations
     scan_interval: 86400
     resource: https://analytics.home-assistant.io/custom_integrations.json
     value_template: "{{ value_json.skyq.total }}"
     json_attributes_path: $.skyq
     json_attributes: versions
+    unit_of_measurement: installs
   - platform: rest
-    name: o365 Installations
+    unique_id: o365_installations
+    name: O365 Installations
     scan_interval: 86400
     resource: https://analytics.home-assistant.io/custom_integrations.json
-    value_template: "{{ value_json.o365.total }}"
+    value_template: "{{ value_json.o365.total | int(0) }}"
     json_attributes_path: $.o365
     json_attributes: versions
+    unit_of_measurement: installs
+  - platform: rest
+    unique_id: ms365_calendar_installations
+    name: MS365 Calendar Installations
+    scan_interval: 86400
+    resource: https://analytics.home-assistant.io/custom_integrations.json
+    value_template: "{{ value_json.ms365_calendar.total | int(0) }}"
+    json_attributes_path: $.ms365_calendar
+    json_attributes: versions
+    unit_of_measurement: installs
+  - platform: rest
+    unique_id: ms365_contacts_installations
+    name: MS365 Contacts Installations
+    scan_interval: 86400
+    resource: https://analytics.home-assistant.io/custom_integrations.json
+    value_template: "{{ value_json.ms365_contacts.total | int(0) }}"
+    json_attributes_path: $.ms365_contacts
+    json_attributes: versions
+    unit_of_measurement: installs
+  - platform: rest
+    unique_id: ms365_mail_installations
+    name: MS365 Mail Installations
+    scan_interval: 86400
+    resource: https://analytics.home-assistant.io/custom_integrations.json
+    value_template: "{{ value_json.ms365_mail.total | int(0) }}"
+    json_attributes_path: $.ms365_mail
+    json_attributes: versions
+    unit_of_measurement: installs
+  - platform: rest
+    unique_id: ms365_teams_installations
+    name: MS365 Teams Installations
+    scan_interval: 86400
+    resource: https://analytics.home-assistant.io/custom_integrations.json
+    value_template: "{{ value_json.ms365_teams.total | int(0) }}"
+    json_attributes_path: $.ms365_teams
+    json_attributes: versions
+    unit_of_measurement: installs
+  - platform: rest
+    unique_id: ms365_todo_installations
+    name: MS365 To Do Installations
+    scan_interval: 86400
+    resource: https://analytics.home-assistant.io/custom_integrations.json
+    value_template: "{{ value_json.ms365_todo.total | int(0) }}"
+    json_attributes_path: $.ms365_todo
+    json_attributes: versions
+    unit_of_measurement: installs
+  - platform: rest
+    unique_id: mqtt_discovery_stream_alt_installations
+    name: MQTT Discoverystream Alt Installations
+    scan_interval: 86400
+    resource: https://analytics.home-assistant.io/custom_integrations.json
+    value_template: "{{ value_json.mqtt_discoverystream_alt.total | int(0) }}"
+    json_attributes_path: $.mqtt_discoverystream_alt
+    json_attributes: versions
+    unit_of_measurement: installs
+  - platform: rest
+    unique_id: homelink_installations
+    name: AICO HomeLINK Installations
+    scan_interval: 86400
+    resource: https://analytics.home-assistant.io/custom_integrations.json
+    value_template: "{{ value_json.homelink.total | int(0) }}"
+    json_attributes_path: $.homelink
+    json_attributes: versions
+    unit_of_measurement: installs
+  - platform: rest
+    unique_id: geniushub_installations
+    name: Genius Hub Installations
+    scan_interval: 86400
+    resource: https://analytics.home-assistant.io/custom_integrations.json
+    value_template: "{{ value_json.geniushub.total | int(0) }}"
+    json_attributes_path: $.geniushub
+    json_attributes: versions
+    unit_of_measurement: installs
+ 

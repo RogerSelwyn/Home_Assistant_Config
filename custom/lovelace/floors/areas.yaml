@@ -49,52 +49,28 @@
 
 
 # Motion Areas *************************************
-- entity: binary_sensor.kitchen_occupancy
-  elements:
-    - room_kitchen
-    - path_kitchen
-    - light_overlay.kitchen_light
-  state_action:
-    - action: call-service
-      service: floorplan.class_set
-      service_data: 'motion motion-${entity.state}'    
-  hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
-      template: area
-      autoclose: false
-      variables:
-         climate: climate.kitchen
-         motion: binary_sensor.kitchen_occupancy
-  double_tap_action: 
-      - service: floorplan.execute
-        service_data:
-          infoCard: "${functions.infoCard('Kitchen')}"
-
-- entity: binary_sensor.kitchen_occupancy
-  elements:
-    - room_conservatory
-    - path_conservatory
-  state_action:
-    - action: call-service
-      service: floorplan.class_set
-      service_data: 'motion motion-${entity.state}'    
-  hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
-      template: area
-      autoclose: false
-      variables:
-         climate: climate.kitchen
-         motion: binary_sensor.kitchen_occupancy
-         plug: switch.plug_kitchen
-  double_tap_action: 
-      - service: floorplan.execute
-        service_data:
-          infoCard: "${functions.infoCard( 'Conservatory')}"
-
+# - entity: binary_sensor.kitchen_occupancy
+#   elements:
+#     - room_kitchen
+#     - path_kitchen
+#     - light_overlay.kitchen_light
+#   state_action:
+#     - action: call-service
+#       service: floorplan.class_set
+#       service_data: 'motion motion-${entity.state}'    
+#   hold_action:
+#      action: fire-dom-event
+#      honeycomb_menu:
+#       template: area
+#       autoclose: false
+#       variables:
+#          climate: climate.kitchen
+#          motion: binary_sensor.kitchen_occupancy
+#          plug: switch.plug_kitchen
+#   double_tap_action: 
+#       - service: floorplan.execute
+#         service_data:
+#           infoCard: "${functions.infoCard('Kitchen')}"
 
 - entity: binary_sensor.garage_back_doors
   elements:
@@ -108,9 +84,8 @@
       service: floorplan.class_set
       service_data: 'motion motion-${entity.state}' 
   hold_action:
-    action: call-service
-    service: honeycomb
-    service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
@@ -130,9 +105,8 @@
       service: floorplan.class_set
       service_data: 'motion motion-${entity.state}' 
   hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
@@ -153,9 +127,8 @@
       service_data:
         classAdd: "${functions.classAdd('motion', element.id)}"
   hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
@@ -166,29 +139,28 @@
       service_data:
         infoCard: "${functions.infoCard('Hall - Downstairs')}"
 
-- entity: binary_sensor.geniushub_dining_room_occupancy
-  elements:
-    - room_dining_room
-    - path_dining_room
-    - light_overlay.dining_room_light
-  state_action:
-    - action: call-service
-      service: floorplan.class_set
-      service_data: 'motion motion-${entity.state}' 
-  hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
-      template: area
-      autoclose: false
-      variables:
-         climate: climate.dining_room
-         motion: binary_sensor.geniushub_dining_room_occupancy
-         plug: switch.plug_dining_room
-  double_tap_action: 
-    - service: floorplan.execute
-      service_data:
-        infoCard: "${functions.infoCard('Dining Room')}"
+# - entity: binary_sensor.geniushub_dining_room_occupancy
+#   elements:
+#     - room_dining_room
+#     - path_dining_room
+#     - light_overlay.dining_room_light
+#   state_action:
+#     - action: call-service
+#       service: floorplan.class_set
+#       service_data: 'motion motion-${entity.state}' 
+#   hold_action:
+#      action: fire-dom-event
+#      honeycomb_menu:
+#       template: area
+#       autoclose: false
+#       variables:
+#          climate: climate.dining_room
+#          motion: binary_sensor.geniushub_dining_room_occupancy
+#          plug: switch.plug_dining_room
+#   double_tap_action: 
+#     - service: floorplan.execute
+#       service_data:
+#         infoCard: "${functions.infoCard('Dining Room')}"
 
 - entity: binary_sensor.upstairs_occupancy_2
   elements:
@@ -201,9 +173,8 @@
       service_data:
         classAdd: "${functions.classAdd('motion', element.id)}"
   hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
@@ -224,9 +195,8 @@
       service_data:
         classAdd: "${functions.classAdd('motion', element.id)}"
   hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
@@ -241,20 +211,18 @@
   elements:
     - room_bathroom
     - path_bathroom
-    - light_overlay.bathroom_light
   state_action:
     - service: floorplan.execute
       service_data:
         classAdd: "${functions.classAdd('motion', element.id)}"
   hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
+         light: light.bathroom
          climate: climate.bathroom
-         motion: binary_sensor.upstairs_occupancy_2
   double_tap_action: 
     - service: floorplan.execute
       service_data:
@@ -262,11 +230,55 @@
 
 
 
-- entity: binary_sensor.dual_channel_receiver_3_2
+- entity: water_heater.hot_water
   element: room_airing_cupboard
 
 
 # Complex Areas *************************************
+- entity: binary_sensor.kitchen_occupancy
+  elements:
+  - path_conservatory
+  - room_conservatory
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: fire-dom-event
+     honeycomb_menu:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.kitchen
+         light: light.conservatory
+         motion: binary_sensor.kitchen_occupancy
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Conservatory', entities['light.conservatory'], true)}"
+
+- entity: binary_sensor.kitchen_occupancy
+  elements:
+  - path_kitchen
+  - room_kitchen
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: fire-dom-event
+     honeycomb_menu:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.kitchen
+         light: light.kitchen
+         motion: binary_sensor.kitchen_occupancy
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Kitchen', entities['light.kitchen'], true)}"
+
 - entity: binary_sensor.front_door_motion
   elements:
   - path_front_door
@@ -276,9 +288,8 @@
       service_data:
         classAdd: "${functions.classAdd('motion', element.id)}"
   hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
@@ -289,6 +300,27 @@
       service_data:
         lightCard: "${functions.lightCard('Front Door', entities['light.front_door'], true)}"
 
+- entity: binary_sensor.back_door_motion
+  elements:
+  - path_back_door
+  - room_back_door
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: fire-dom-event
+     honeycomb_menu:
+      template: area
+      autoclose: false
+      variables:
+#         light: light.front_door
+         motion: binary_sensor.back_door_motion
+#   double_tap_action: 
+#     - service: floorplan.execute
+#       service_data:
+#         lightCard: "${functions.lightCard('Front Door', entities['light.front_door'], true)}"
+
 - entity: binary_sensor.living_room_occupancy
   elements: 
   - path_living_room
@@ -298,9 +330,8 @@
       service_data:
         classAdd: "${functions.classAdd('motion', element.id)}"
   hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
@@ -322,9 +353,8 @@
       service_data:
         classAdd: "${functions.classAdd('motion', element.id)}"
   hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
@@ -346,9 +376,8 @@
       service_data:
         classAdd: "${functions.classAdd('motion', element.id)}"
   hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
@@ -370,9 +399,8 @@
       service_data:
         classAdd: "${functions.classAdd('motion', element.id)}"
   hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
@@ -385,7 +413,7 @@
       service_data:
         lightCard: "${functions.lightCard('Bedroom 3', entities['light.bedroom_3'], true)}"
 
-- entity: binary_sensor.zwave_office_fibaro_motion
+- entity: binary_sensor.office_hue_motion_motion
   elements:
   - path_office
   - room_office
@@ -396,17 +424,39 @@
       service_data:
         classAdd: "${functions.classAdd('motion', element.id)}"
   hold_action:
-     action: call-service
-     service: honeycomb
-     service_data:
+     action: fire-dom-event
+     honeycomb_menu:
       template: area
       autoclose: false
       variables:
-         climate: sensor.zwave_office_fibaro_temperature
+         climate: sensor.office_hue_motion_temperature
          light: light.office
-         motion: binary_sensor.zwave_office_fibaro_motion
+         motion: binary_sensor.office_hue_motion_motion
          circadian: input_boolean.circadian_office
   double_tap_action: 
     - service: floorplan.execute
       service_data:
         lightCard: "${functions.lightCard('Office', entities['light.office'], true)}"
+
+- entity: binary_sensor.geniushub_dining_room_occupancy
+  elements:
+  - path_dining_room
+  - room_dining_room
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: fire-dom-event
+     honeycomb_menu:
+      template: area
+      autoclose: false
+      variables:
+         climate: climate.dining_room
+         light: light.dining_room
+         motion: binary_sensor.geniushub_dining_room_occupancy
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Dining Room', entities['light.dining_room'], true)}"
+

@@ -1,5 +1,6 @@
 # Ignore folders.
 .cloud
+.cache
 .google.token
 .storage/*
 .vscode
@@ -21,9 +22,13 @@ ms365_storage
 
 
 # Ignore files
+.exports
+.ha_run.lock
+.jwt_secret
 .timeline
 .uuid
 .vacuum
+backup.db
 frigate*
 home-assistant*
 glow.conf
@@ -34,6 +39,7 @@ Reinclude files
 !.storage/lovelace
 !.storage/lovelace.lovelace_admin
 !.storage/lovelace_resources
+
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
