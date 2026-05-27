@@ -1,0 +1,367 @@
+
+/*Animations*********************/
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to: {
+		opacity: 1;
+	}
+}
+@keyframes cycle-tv {
+    0%   { stroke:#98fb0b; }
+    25%  { stroke:green;}
+    50%  { stroke:blue;}
+    75%  { stroke:red;}
+    100% { stroke:#98fb0b; }
+}
+@keyframes cycle-sonos {
+    0%   { fill: #98fb0b22; stroke:#98fb0b; }
+    33%  { fill: #00ff0044; stroke:green;}
+    66%  { fill: #ff000044; stroke:red;}
+    100% { fill: #98fb0b22; stroke:#98fb0b; }
+}
+@keyframes cycle-sky-paused {
+    0%   { fill:#0000ff20; }
+    25%  { fill:#0000ff60; }
+    50%  { fill:#0000ffa0; }
+    75%  { fill:#0000ff60; }
+    100% { fill:#0000ff20; }
+} 
+@keyframes cycle-alarm {
+    0%   { stroke:red; }
+    50%  { stroke:#63bfc544; fill: #ff000066;}
+    100% { stroke:red; }
+}
+@keyframes cycle-oven {
+    0%   { stroke:red; }
+    50%  { stroke:#63bfc544; fill: #ff0000aa;}
+    100% { stroke:red; }
+}
+@keyframes cycle-protect {
+    0%   { fill: #ff000044; stroke:#ff0000cc;}
+    33%  { fill: #ff0000cc; stroke:#ff000044;}
+    66%  { fill: #ff0000cc; stroke:#ff000044;}
+    100% { fill: #ff000044; stroke:#ff0000cc;}
+}
+
+/*@keyframes cycle-camera-motion {*/
+/*    0%   { stroke:blue; }*/
+/*    50%  { stroke:none;}*/
+/*    100% { stroke:blue; }*/
+/*}*/
+
+/*Core SVG stuff*********************/
+svg, svg * {
+  pointer-events: all !important;
+  cursor: auto !important;
+}
+
+svg path {
+  fill: inherit;
+  stroke: inherit;
+  stroke-width: inherit;
+}
+
+/*.floorplan-shape:hover:after,*/
+/*.floorplan-hover:hover:after {*/
+/*    background-color: blue !important;*/
+/*    color: green !important;*/
+/*}*/
+/*Highlight active items*********************/
+/*, g use:active, .light-on:active, g#entities > g:active path:not(.touch-area)*/
+g path:active, g ellipse:active, g circle:active, g rect:active {
+	stroke: #9ed8ff !important;
+	stroke-width: 4px;
+	stroke-opacity: 0.9;
+}
+/*Setup*********************/
+#downstairs,
+#office,
+#upstairs {
+    display: none;
+}
+#downstairs.floorplan-down,
+#office.floorplan-office,
+#upstairs.floorplan-up {
+    display: inline;
+}
+
+/*Base day blend*********************/
+#downstairs_day, 
+#office_day, 
+#upstairs_day {
+    mix-blend-mode: lighten;
+}
+
+/*Areas*********************/
+#downstairs_areas path, 
+#office_areas path, 
+#upstairs_areas path {
+  fill: none;
+  stroke: none;
+}
+#downstairs_paths .light-on, 
+#office_paths .light-on, 
+#upstairs_paths .light-on {
+  stroke-width: 3px;
+  stroke-opacity: 0.5;
+  stroke: #a58ee1;
+}
+#downstairs_paths .motion-on, 
+#office_paths .motion-on, 
+#upstairs_paths .motion-on {
+  stroke-width: 3px;
+  stroke-opacity: 0.5;
+  stroke: #98fb0b;
+}
+
+/*Lights*********************/
+/*#downstairs_paths .motion-on, */
+#downstairs_light_overlays image, 
+#office_light_overlays image, 
+#upstairs_light_overlays image {
+  display: none;
+  mix-blend-mode: lighten;
+  animation: 0.75s fade-in linear forwards;
+}
+
+#downstairs_light_overlays image.light-on, 
+#office_light_overlays image.light-on, 
+#upstairs_light_overlays image.light-on {
+  display: block;
+}
+
+#downstairs_light_overlays image.motion-on, 
+#office_light_overlays image.motion-on, 
+#upstairs_light_overlays image.motion-on {
+  display: block;
+  opacity: 0.5;
+} 
+
+/*Entities*********************/
+g#downstairs_entities path, g#downstairs_entities ellipse, g#downstairs_entities rect, 
+g#office_entities path, g#office_entities ellipse, 
+g#upstairs_entities path, g#upstairs_entities ellipse {
+	stroke: #888888;
+	stroke-width: 3px;
+	stroke-opacity: 0.3;
+	fill: none;
+}
+g#downstairs_entities path#Energy {
+	stroke-opacity: 0.5;
+}
+g#downstairs_entities .light-on, 
+g#office_entities .light-on, 
+g#upstairs_entities .light-on {
+	stroke: #a58ee1;
+	stroke-opacity: 1;
+}
+/*g#entities .media-player-tv.media-player-idle,*/
+g#downstairs_entities .media-player-sky.media-player-paused, 
+g#upstairs_entities .media-player-sky.media-player-paused {
+    animation: cycle-sky-paused 3s infinite;
+    stroke: blue;
+	stroke-width: 3px;
+
+}
+g#downstairs_entities .media-player-tv.media-player-on, 
+g#upstairs_entities .media-player-sky.media-player-playing {
+	stroke-width: 4px;
+	animation: cycle-tv 5s infinite;
+}
+
+g#downstairs_entities .media-player-sky.media-player-playing,
+g#downstairs_entities .media-player-sonos.media-player-playing,
+g#office_entities .computer.computer-on,
+g#office_entities .computer.computer-on,
+g#office_entities .printer.printer-printing,
+g#upstairs_entities .computer.computer-on,
+g#upstairs_entities .computer.computer-home {
+	stroke-width: 3px;
+	animation: cycle-sonos 5s infinite;
+}
+g#office_entities .ups:not(.ups-Online) {
+    animation: cycle-alarm 2s infinite;
+}
+/*g#office_entities .ups.ups-Online {*/
+/*    stroke-width: 3px;*/
+/*    stroke: green;*/
+/*    fill: #00ff0044*/
+/*}*/
+
+/*Touchpoints*********************/
+g#downstairs_touches path, g#downstairs_touches ellipse, 
+g#office_touches path, g#office_touches ellipse, 
+g#upstairs_touches path, g#upstairs_touches ellipse, 
+g#all-touches ellipse {
+    stroke-width: 0px;
+}
+
+/*Climate Text*********************/
+g#downstairs_climates tspan, 
+g#upstairs_climates tspan {
+    fill: #888888;
+    stroke: #888888;
+    filter: drop-shadow(1px 1px 0px #bbb);
+}
+.climate-heating tspan {
+    fill: #820202 !important;
+    stroke: #820202 !important;
+}
+.climate-idle tspan {
+    fill: blue !important;
+    stroke: blue !important;
+}
+.climate-off tspan {
+    fill: #019301 !important;
+    stroke: #019301 !important;
+}
+
+/*Weather Text*********************/
+g#downstairs_weathers tspan {
+    stroke: #333333;
+    fill: #333333;
+}
+
+/*Camera icons*********************/
+.camera circle {
+    stroke: none;
+    stroke-width: 3px;
+    fill: #63bfc5;
+}
+.camera path {
+    display: none;
+}
+.camera.camera-person circle {
+    animation: cycle-alarm 2s infinite;
+}
+.camera:not(.camera-disarmed) path:nth-child(3) {
+    display:inline;
+}
+.camera.camera-disarmed path:nth-child(2) {
+    display:inline;
+}
+
+/*Appliance icons*********************/
+g#downstairs_entities .appliance-hob(.BSH\.Common\.EnumType\.OperationState\.Run),
+g#downstairs_entities .appliance-oven(.BSH\.Common\.EnumType\.OperationState\.Run),
+g#downstairs_entities .appliance-dishwasher(.BSH\.Common\.EnumType\.OperationState\.Run)   {
+    animation: cycle-oven 2s infinite;
+}
+
+/*Alarm icons*********************/
+.alarm circle {
+    stroke: #fff;
+    stroke-width:1px;
+    fill: #000;
+}
+.alarm path {
+    display: none;
+}
+.alarm.alarm-disarmed path:nth-child(2) {
+    display:inline;
+    fill: #63bfc5;
+}
+.alarm.alarm-armed_home path:nth-child(3) {
+    display:inline;
+    fill: #4caf50;
+}
+.alarm.alarm-armed_away path:nth-child(4) {
+    display:inline;
+    fill: #489177;
+}
+
+/*Plug icons*********************/
+.plug circle {
+    stroke: #000;
+    stroke-width: 1px;
+    fill: #63bfc5;
+}
+.plug:not(.plug-off) path:nth-child(2) {
+    display: none;
+}
+.plug.plug-boost circle{
+    fill: #000;
+}
+.plug.plug-boost path:nth-child(3){
+    fill: #63bfc5;
+}
+
+/*Hot water icons*********************/
+.hot-water circle {
+    stroke:  #000;
+    stroke-width: 1px;
+    fill: #63bfc5;
+}
+
+/*.hot-water path:nth-child(2){*/
+/*    fill: #63bfc5;*/
+/*}*/
+
+/*.hot-water.hot-water-auto path:nth-child(2){*/
+/*    fill: red;*/
+/*    stroke: red;*/
+/*}*/
+.hot-water.hot-water-off path:nth-child(2){
+    fill: blue;
+    stroke: blue;
+}
+.hot-water.hot-water-on circle{
+    fill: red;
+    stroke: white;
+}
+.hot-water.hot-water-on path:nth-child(2){
+    fill: white;
+}
+
+
+/*Lock icons*********************/
+.lock circle {
+    stroke: none;
+    /*stroke-width: 1px;*/
+    fill: #63bfc5;
+}
+.lock path {
+    display: none;
+    fill: #000;
+}
+.lock.lock-off circle{
+    fill: red;
+}
+.lock.lock-off path:nth-child(2){
+    display: inline;
+}
+.lock.lock-on circle{
+    fill: green;
+}
+.lock.lock-on path:nth-child(3){
+    display: inline;
+}
+
+/*Persons*********************/
+#downstairs_persons image {
+    opacity: 0.3;
+}
+#downstairs_persons image.person.person-home {
+    opacity: 0.9;
+}
+
+/*Protects*********************/
+#downstairs_rooms .protect-on,
+#upstairs_rooms .protect-on {
+    animation: cycle-protect 3s infinite;
+}
+
+/*Upstairs icons*********************/
+#down,
+#office_icon,
+#up {
+    fill: #ffffff;
+}
+#down.floorplan-down,
+#office_icon.floorplan-office,
+#up.floorplan-up {
+    fill: #aaaaaa;
+}
+

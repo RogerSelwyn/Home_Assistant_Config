@@ -16,7 +16,10 @@ node-red
 ssh
 custom/themes
 tts
-www/*
+www/alexa_tts
+www/community
+www/floorplan/*
+www/icons
 __pycache__/
 ms365_storage
 
