@@ -49,36 +49,12 @@
 
 
 # Motion Areas *************************************
-# - entity: binary_sensor.kitchen_occupancy
-#   elements:
-#     - room_kitchen
-#     - path_kitchen
-#     - light_overlay.kitchen_light
-#   state_action:
-#     - action: call-service
-#       service: floorplan.class_set
-#       service_data: 'motion motion-${entity.state}'    
-#   hold_action:
-#      action: fire-dom-event
-#      honeycomb_menu:
-#       template: area
-#       autoclose: false
-#       variables:
-#          climate: climate.kitchen
-#          motion: binary_sensor.kitchen_occupancy
-#          plug: switch.plug_kitchen
-#   double_tap_action: 
-#       - service: floorplan.execute
-#         service_data:
-#           infoCard: "${functions.infoCard('Kitchen')}"
 
 - entity: binary_sensor.garage_back_doors
   elements:
     - room_utility
-    - room_garage
     - path_utility
-    - path_garage
-    - light_overlay.garage_light
+    - light_overlay.utility_light
   state_action:
     - action: call-service
       service: floorplan.class_set
@@ -93,7 +69,27 @@
   double_tap_action: 
     - service: floorplan.execute
       service_data:
-        infoCard: "${functions.infoCard('Utility', 'Garage')}"
+        infoCard: "${functions.infoCard('Garage')}"
+
+- entity: binary_sensor.garage_back_doors
+  elements:
+    - room_garage
+    - path_garage
+  state_action:
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('motion', element.id)}"
+  hold_action:
+     action: fire-dom-event
+     honeycomb_menu:
+      template: area
+      autoclose: false
+      variables:
+         light: light.garage_light
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        infoCard: "${functions.infoCard('Garage')}"
 
 - entity: binary_sensor.front_toilet_doors
   elements:
@@ -117,7 +113,7 @@
       service_data:
         infoCard: "${functions.infoCard('Cloakroom')}"
          
-- entity: binary_sensor.downstairs_occupancy_2
+- entity: binary_sensor.nest_protect_downstairs_occupancy
   elements:
     - room_hall_downstairs
     - path_hall_downstairs
@@ -133,7 +129,7 @@
       autoclose: false
       variables:
          climate: climate.hall
-         motion: binary_sensor.downstairs_occupancy_2
+         motion: binary_sensor.nest_protect_downstairs_occupancy
   double_tap_action: 
     - service: floorplan.execute
       service_data:
@@ -162,7 +158,8 @@
 #       service_data:
 #         infoCard: "${functions.infoCard('Dining Room')}"
 
-- entity: binary_sensor.upstairs_occupancy_2
+# - entity: binary_sensor.nest_protect_upstairs_occupancy
+- entity: binary_sensor.upstairs_occupancy
   elements:
     - room_hall_upstairs_1
     - room_hall_upstairs_2
@@ -179,13 +176,14 @@
       autoclose: false
       variables:
          climate: climate.hall
-         motion: binary_sensor.upstairs_occupancy_2
+         motion: binary_sensor.upstairs
   double_tap_action: 
     - service: floorplan.execute
       service_data:
         infoCard: "${functions.infoCard('Hall - Upstairs')}"
 
-- entity: binary_sensor.upstairs_occupancy_2
+# - entity: binary_sensor.nest_protect_upstairs_occupancy
+- entity: binary_sensor.upstairs_occupancy
   elements:
     - room_boxroom
     - path_boxroom
@@ -200,14 +198,15 @@
       template: area
       autoclose: false
       variables:
-         motion: binary_sensor.upstairs_occupancy_2
+         motion: binary_sensor.upstairs
          plug: switch.plug_box_room
   double_tap_action: 
     - service: floorplan.execute
       service_data:
         infoCard: "${functions.infoCard('Box Room')}"
 
-- entity: binary_sensor.upstairs_occupancy_2
+# - entity: binary_sensor.nest_protect_upstairs_occupancy
+- entity: binary_sensor.upstairs_occupancy
   elements:
     - room_bathroom
     - path_bathroom

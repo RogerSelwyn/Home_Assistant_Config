@@ -86,16 +86,16 @@ template:
         device_class: power
         
   - sensor:
-      - name: EV Charger Energy
-        unique_id: ev_charger_energy
-        state_class: total
-        device_class: energy
-        unit_of_measurement: kWh
-        availability: '{{ "sensor.ev_charger_last_charge" | has_value }}'
-        state: >
-            {% if is_state('sensor.ev_charger_last_charge', 'charging') %}
-              {{float(state_attr('sensor.ev_charger_last_charge','consumedKwh'),0)}}
-            {% endif %}
+    #   - name: EV Charger Energy
+    #     unique_id: ev_charger_energy
+    #     state_class: total
+    #     device_class: energy
+    #     unit_of_measurement: kWh
+    #     availability: '{{ "sensor.ev_charger_last_charge" | has_value }}'
+    #     state: >
+    #         {% if is_state('sensor.ev_charger_last_charge', 'charging') %}
+    #           {{float(state_attr('sensor.ev_charger_last_charge','consumedKwh'),0)}}
+    #         {% endif %}
 
       - name: Front Door Lights Energy
         unique_id: front_door_lights_energy

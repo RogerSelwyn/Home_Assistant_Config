@@ -123,7 +123,6 @@ cards:
                   excluded_list.push({entity_id: "*switch.*luminance*"})
                   excluded_list.push({entity_id: "*switch.*motion*"})
                   excluded_list.push({entity_id: "*scene*"})
-                  excluded_list.push({entity_id: "sensor.sky_q*"})
                   excluded_list.push({entity_id: "number.front_doorbell*"})
                   excluded_list.push({entity_id: "sensor.front_doorbell*"})
                   excluded_list.push({entity_id: "select.front_doorbell*"})

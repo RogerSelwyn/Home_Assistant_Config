@@ -43,13 +43,23 @@
           "badges": [
             {
               "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
               "entity": "sensor.geniushub_errors",
-              "display_type": "complete"
+              "name": {
+                "type": "entity"
+              }
             },
             {
               "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
               "entity": "sensor.geniushub_warnings",
-              "display_type": "complete"
+              "name": {
+                "type": "entity"
+              }
             },
             {
               "entity": "binary_sensor.home_assistant_website_update_available"
@@ -61,8 +71,13 @@
             },
             {
               "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
               "entity": "sensor.addon_updates",
-              "display_type": "complete"
+              "name": {
+                "type": "entity"
+              }
             },
             {
               "type": "entity",
@@ -1275,6 +1290,14 @@
               "type": "markdown",
               "content": "{{ state_attr('sensor.github_issues','content') }}",
               "title": "Github Issues"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "input_button.github_update"
+                }
+              ]
             }
           ],
           "icon": "mdi:github"

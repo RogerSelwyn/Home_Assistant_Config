@@ -18,9 +18,10 @@ mqtt_discoverystream_alt:
         # - sensor.tc_electricity_instant
         # - sensor.tc_electricity_price
         # - sensor.charger_last_meter_reading
-        - switch.tyr_celyn_living_room_hot_water_boost
-        - climate.tyr_celyn_living_room
+        # - switch.tyr_celyn_living_room_hot_water_boost
+        # - climate.tyr_celyn_living_room
         - light.bedside_light
+        - sensor.home_electricity_instant
         #   - light.bedside_light
         #   - switch.homeassistant_public_ping
         #   - input_boolean.homeassistant_public_ping_helper 

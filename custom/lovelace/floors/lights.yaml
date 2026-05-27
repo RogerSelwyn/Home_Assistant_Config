@@ -263,8 +263,9 @@
         lightCard: "${functions.lightCard('Bathroom', entity)}"
 
 - entities:
-  - light.cabinet_lights
   - light.worktop_lights
+  - light.cabinet_lights
+  - light.kitchen_ceiling_lights
   element: "${entity.entity_id.replace('light.', 'light_touch.')}"
   tap_action: 'toggle'
   state_action:
@@ -278,14 +279,13 @@
       service_data:
         element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
         style: "${functions.overlayStyle()}"
-
   double_tap_action: 
       - service: floorplan.execute
         service_data:
           lightCard: "${functions.lightCard('Kitchen', entity)}"
 
 - entities:
-  - light.living_room
+  - light.kitchen
   element: "${entity.entity_id.replace('light.', 'path_')}"
   state_action:
     - service: floorplan.execute
@@ -315,3 +315,25 @@
       service_data:
         lightCard: "${functions.lightCard('Dining Room', entity)}"
 
+- entities:
+  - light.garage_light
+  element: "${entity.entity_id.replace('light.', 'light_touch.')}"
+  tap_action: 'toggle'
+  state_action:
+    - action: call-service
+      service: floorplan.class_set
+      service_data: 
+        element: "${entity.entity_id}"
+        class: 'light-${entity.state}'
+    - action: call-service
+      service: floorplan.style_set
+      service_data:
+        element: "${entity.entity_id.replace('light.', 'light_overlay.')}"
+        style: "${functions.overlayStyle()}"
+    - service: floorplan.execute
+      service_data:
+        classAdd: "${functions.classAdd('light', entity.entity_id.replace('light.', 'path_'))}"
+  double_tap_action: 
+    - service: floorplan.execute
+      service_data:
+        lightCard: "${functions.lightCard('Garage', entity)}"

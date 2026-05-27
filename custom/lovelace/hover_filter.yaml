@@ -18,8 +18,6 @@
 - max_temp
 - source_list
 - entity_picture_local
-- skyq_transport_status
-- skyq_media_type
 - forecast
 - attribution
 - min_color_temp_kelvin

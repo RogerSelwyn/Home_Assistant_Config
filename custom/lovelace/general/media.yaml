@@ -48,14 +48,21 @@
           toggle_power: true
           card_mod:
             style: 
-              .: |
+                .: |
                   :host {
                     --paper-item-icon-color: #fff;
                     --ha-card-background: #c8bcd733;
                   }
+
                   #states {
                       padding: 4px
                   }
+                  
+                mmp-media-controls: 
+                  $: |
+                    .mmp-media-controls__volume{
+                      display: none !important;
+                    }
         - type: custom:auto-entities
           show_empty: false
           filter:
@@ -105,12 +112,6 @@
           show_empty: false
           filter:
             include:
-            #   - domain: media_player
-            #     integration: skyq
-            #     state: paused
-            #   - domain: media_player
-            #     integration: skyq
-            #     state: playing
               - domain: media_player
                 integration: sonos
                 state: playing

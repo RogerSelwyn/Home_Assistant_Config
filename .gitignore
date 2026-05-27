@@ -16,7 +16,7 @@ node-red
 ssh
 custom/themes
 tts
-www
+www/*
 __pycache__/
 ms365_storage
 
@@ -39,7 +39,7 @@ Reinclude files
 !.storage/lovelace
 !.storage/lovelace.lovelace_admin
 !.storage/lovelace_resources
-
+!www/floorplan/floorplan.css
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml

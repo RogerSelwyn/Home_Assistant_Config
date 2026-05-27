@@ -1,3 +1,32 @@
+template:
+  - binary_sensor:
+      - default_entity_id: binary_sensor.tyr_celyn_hot_water_schedule
+        name: TC - Hot Water Schedule
+        unique_id: tyr_celyn_hot_water_schedule
+        device_class: heat
+        state: >-
+          {{ is_state_attr('water_heater.living_room_heat_link', 'hot_water_schedule_active', true) }}
+  - binary_sensor:
+      - default_entity_id: binary_sensor.tyr_celyn_hot_water_boiler
+        name: TC - Hot Water Boiler
+        unique_id: tyr_celyn_hot_water_boiler
+        device_class: heat
+        state: >-
+          {{ is_state_attr('water_heater.living_room_heat_link', 'boiler_active', true) }}
+  - binary_sensor:
+      - default_entity_id: binary_sensor.tyr_celyn_hot_water_boost
+        name: TC - Hot Water Boost
+        unique_id: tyr_celyn_hot_water_boost
+        device_class: heat
+        state: >
+          {% if state_attr('water_heater.living_room_heat_link', 'boost_timer_end') == None %}
+            false
+          {% else %}
+            true
+          {% endif %}
+
+
+
 # homeassistant:
 #   customize:
 #     binary_sensor.nest_heating:

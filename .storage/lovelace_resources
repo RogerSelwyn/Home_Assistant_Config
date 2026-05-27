@@ -7,7 +7,7 @@
       {
         "id": "d8ee4c7ff19c456897194e2977406707",
         "type": "module",
-        "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js?hacstag=14852083811611"
+        "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js?hacstag=14852083811612"
       },
       {
         "id": "862a683811d641dd8558a980710d0e2e",
@@ -25,22 +25,22 @@
         "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js?hacstag=1677445841161"
       },
       {
-        "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js?hacstag=2465497471020",
+        "url": "/hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js?hacstag=2465497471030",
         "type": "module",
         "id": "80de3000548944bd82e09d3bb7a76fd2"
       },
       {
-        "url": "/hacsfiles/history-explorer-card/history-explorer-card.js?hacstag=7917316461054",
+        "url": "/hacsfiles/history-explorer-card/history-explorer-card.js?hacstag=11852913871124",
         "type": "module",
         "id": "eea2daa69c7d4d488c9b1781ac64195a"
       },
       {
-        "url": "/hacsfiles/light-entity-card/light-entity-card.js?hacstag=168744428613",
+        "url": "/hacsfiles/light-entity-card/light-entity-card.js?hacstag=168744428631",
         "type": "module",
         "id": "f0d4658d6c3346d89b7fe3101ae3e888"
       },
       {
-        "url": "/hacsfiles/ha-floorplan/floorplan.js?hacstag=188323494114",
+        "url": "/hacsfiles/ha-floorplan/floorplan.js?hacstag=188323494115",
         "type": "module",
         "id": "8303f12b57a448499d57ee08bfb664a2"
       },
@@ -71,12 +71,12 @@
       },
       {
         "id": "380f9cee91074bb48c47aaf73c2b0b79",
-        "url": "/hacsfiles/Bubble-Card/bubble-card.js?hacstag=680112919314",
+        "url": "/hacsfiles/Bubble-Card/bubble-card.js?hacstag=680112919322",
         "type": "module"
       },
       {
         "id": "596b9aec0f454665b6b0d75e0c6b75ca",
-        "url": "/browser_mod.js?automatically-added&2.9.0",
+        "url": "/browser_mod.js?automatically-added&2.13.4",
         "type": "module"
       },
       {
